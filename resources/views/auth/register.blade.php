@@ -1,0 +1,288 @@
+@extends('layouts.guest')
+
+@section('content')
+    <div class="col-lg-6">
+        <div class="auth-cover-wrapper bg-primary-100">
+            <div class="auth-cover">
+                <div class="title text-center">
+                    <h1 class="text-primary mb-10">{{ __('Register') }}</h1>
+                </div>
+                <div class="cover-image">
+                    <img src="{{ asset('images/auth/signin-image.svg') }}" alt="">
+                </div>
+                <div class="shape-image">
+                    <img src="{{ asset('images/auth/shape.svg') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end col -->
+    <div class="col-lg-6">
+        <div class="signin-wrapper">
+            <div class="form-wrapper">
+                <h6 class="mb-15">{{ __('WELCOME TO LOCALIZED YOUTH ORGANIZATION REGISTRATION PROGRAM - CALAMBA CITY') }}</h6>
+                <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-style-1">
+                                <label for="name">{{ __('Name of Organization *') }}</label>
+                                <input type="text" @error('name') class="form-control is-invalid" @enderror
+                                    name="name" id="name" placeholder="{{ __('Name of Organization') }}"
+                                    value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="input-style-1">
+                                <label for="email">{{ __('Email *') }}</label>
+                                <input @error('email') class="form-control is-invalid" @enderror type="email"
+                                    name="email" id="email" placeholder="{{ __('Email') }}"
+                                    value="{{ old('email') }}" required autocomplete="email">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="input-style-1">
+                                <label
+                                    for="name_of_the_primary_representative">{{ __('Name of the Primary Representative ( Surname, First Name, Middle Initial: eg Dela Cruz, Juan, D.) *') }}</label>
+                                <input type="text"
+                                    @error('name_of_the_primary_representative') class="form-control is-invalid" @enderror
+                                    name="name_of_the_primary_representative" id="name_of_the_primary_representative"
+                                    placeholder="{{ __('Name of the Primary Representative') }}"
+                                    value="{{ old('name_of_the_primary_representative') }}" required
+                                    autocomplete="name_of_the_primary_representative" autofocus>
+                                @error('name_of_the_primary_representative')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- end col -->
+
+                        <div class="col-6">
+                            <div class="input">
+                                <label for="sex">{{ __('Sex') }}</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sex" id="sexMale" value="male">
+                                    <label class="form-check-label" for="sexMale">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sex" id="sexFemale" value="female" checked>
+                                    <label class="form-check-label" for="sexFemale">
+                                        Female
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sex" id="sexPreferNotToSay" value="other">
+                                    <label class="form-check-label" for="sexPreferNotToSay">
+                                        Prefer not to say
+                                    </label>
+                                </div>
+                                @error('sex')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+
+                        <div class="col-6">
+                            <div class="input-style-1">
+                                <label for="age">{{ __('Age *') }}</label>
+                                <input type="number" @error('age') class="form-control is-invalid" @enderror name="age"
+                                    id="age" placeholder="{{ __('Age') }}" value="{{ old('age') }}" required
+                                    autocomplete="age" autofocus>
+                                @error('age')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="input-style-1">
+                                <label for="phone_number">{{ __('Phone Number *') }}</label>
+                                <input type="number" @error('phone_number') class="form-control is-invalid" @enderror
+                                    name="phone_number" id="phone_number" placeholder="{{ __('Phone Number') }}"
+                                    value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus>
+                                @error('phone_number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="input-style-1">
+                                <label for="facebook_url">{{ __('Facebook Url *') }}</label>
+                                <input type="url" @error('facebook_url') class="form-control is-invalid" @enderror
+                                    name="facebook_url" id="facebook_url" placeholder="{{ __('Facebook Url') }}"
+                                    value="{{ old('facebook_url') }}" required autocomplete="facebook_url">
+                                @error('facebook_url')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="input-style-1">
+                                <label
+                                    for="duty_accomplished_registration_form">{{ __('Duly Accomplished Registration Form *') }}</label>
+                                <input type="file"
+                                    @error('duty_accomplished_registration_form') class="form-control is-invalid" @enderror
+                                    name="duty_accomplished_registration_form" id="duty_accomplished_registration_form"
+                                    placeholder="{{ __('Duly Accomplished Registration Form') }}"
+                                    value="{{ old('duty_accomplished_registration_form') }}" required
+                                    autocomplete="duty_accomplished_registration_form" autofocus>
+                                @error('duty_accomplished_registration_form')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="input-style-1">
+                                <label
+                                    for="list_of_officers_and_adviser">{{ __('List of Officers and Adviser *') }}</label>
+                                <input type="file"
+                                    @error('list_of_officers_and_adviser') class="form-control is-invalid" @enderror
+                                    name="list_of_officers_and_adviser" id="list_of_officers_and_adviser"
+                                    placeholder="{{ __('List of Officers and Adviser') }}"
+                                    value="{{ old('list_of_officers_and_adviser') }}" required
+                                    autocomplete="list_of_officers_and_adviser" autofocus>
+                                @error('list_of_officers_and_adviser')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="input-style-1">
+                                <label
+                                    for="list_of_member_in_good_standing">{{ __('List of member in good standing *') }}</label>
+                                <input type="file"
+                                    @error('list_of_member_in_good_standing') class="form-control is-invalid" @enderror
+                                    name="list_of_member_in_good_standing" id="list_of_member_in_good_standing"
+                                    placeholder="{{ __('List of member in good standing') }}"
+                                    value="{{ old('list_of_member_in_good_standing') }}" required
+                                    autocomplete="list_of_member_in_good_standing" autofocus>
+                                @error('list_of_member_in_good_standing')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="input-style-1">
+                                <label
+                                    for="constitution_and_by_laws">{{ __('Constitution and By- laws ( If available)') }}</label>
+                                <input type="file"
+                                    @error('constitution_and_by_laws') class="form-control is-invalid" @enderror
+                                    name="constitution_and_by_laws" id="constitution_and_by_laws"
+                                    placeholder="{{ __('Constitution and By- laws') }}"
+                                    value="{{ old('constitution_and_by_laws') }}" required
+                                    autocomplete="constitution_and_by_laws" autofocus>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="input-style-1">
+                                <label
+                                    for="endorsement_certification_from_proper_authority">{{ __('Endorsement / Certification from proper authority ( Brgy Certificate/ School Certificate/ Certification for Pastor or Church) -  ( If Available)') }}</label>
+                                <input type="file"
+                                    @error('endorsement_certification_from_proper_authority') class="form-control is-invalid" @enderror
+                                    name="endorsement_certification_from_proper_authority"
+                                    id="endorsement_certification_from_proper_authority"
+                                    placeholder="{{ __('Endorsement / Certification from proper authority') }}"
+                                    value="{{ old('endorsement_certification_from_proper_authority') }}" required
+                                    autocomplete="endorsement_certification_from_proper_authority" autofocus>
+                                @error('endorsement_certification_from_proper_authority')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- end col -->
+
+                        <div class="col-6">
+                            <div class="input-style-1">
+                                <label for="password">{{ __('Password') }}</label>
+                                <input type="password" @error('password') class="form-control is-invalid" @enderror
+                                    name="password" id="password" placeholder="{{ __('Password') }}" required
+                                    autocomplete="new-password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-6">
+                            <div class="input-style-1">
+                                <label for="password_confirmation">{{ __('Confirm Password') }}</label>
+                                <input type="password" @error('password') class="form-control is-invalid" @enderror
+                                    name="password_confirmation" id="password_confirmation"
+                                    placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">
+                            </div>
+                        </div>
+                        <!-- end col -->
+
+                        <div class="col-12">
+                            <div class="button-group d-flex justify-content-center flex-wrap">
+                                <button type="submit" class="main-btn primary-btn btn-hover w-100 text-center">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
+
+                        @if (Route::has('login'))
+                            <div class="col-12 mt-3">
+                                <div class="button-group d-flex justify-content-center flex-wrap">
+                                    <a href="{{ route('login') }}"
+                                        class="main-btn success-btn btn-hover w-100 text-center">{{ __('Login') }}</a>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                    <!-- end row -->
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end col -->
+@endsection
