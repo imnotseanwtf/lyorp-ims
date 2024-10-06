@@ -1,31 +1,40 @@
-@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.bunny.net/css?family=Nunito');
 
-@import "variables";
-@import "mixin";
-@import "common";
+@import 'variables'; // Check the path
+@import "mixin"; // Check the path
+@import "common"; // Check the path
 
-@import "./typography/typography";
+// @import "./typography/typography"; // Check the path
 
-@import "./buttons/buttons";
+@import "./buttons/buttons"; // Check the path
 
-@import "./alerts/alerts";
+@import "./alerts/alerts"; // Check the path
 
-@import "./cards/cards";
+@import "./cards/cards"; // Check the path
 
-@import "./tables/tables";
+// @import "./tables/tables"; // Check the path
 
-@import "./forms/form-elements";
+@import "./forms/form-elements"; // Check the path
 
-@import "./notification/notification";
+@import "./notification/notification"; // Check the path
 
-@import "./header/header";
+@import "./header/header"; // Check the path
 
-// ======= auth css
-@import "./auth/signin";
-@import "./auth/signup";
+// ======= Auth CSS
+@import "./auth/signin"; // Check the path
+@import "./auth/signup"; // Check the path
 
-@import "./icons/icons";
+@import "./icons/icons"; // Check the path
 
-@import "sidebar";
+@import "sidebar"; // Ensure this is correctly named
 
-@import "default";
+@import "default"; // Check the path
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+ 
+// DataTables
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+@import "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css";
+@import 'datatables.net-select-bs5/css/select.bootstrap5.css';

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- ========== title-wrapper start ========== -->
     <div class="title-wrapper pt-30">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -9,68 +8,69 @@
                     <h2>{{ __('Users') }}</h2>
                 </div>
             </div>
-            <!-- end col -->
-        </div>
-        <!-- end row -->
-    </div>
-    <!-- ========== title-wrapper end ========== -->
-
-    <div class="card-styles">
-        <div class="card-style-3 mb-30">
-            <div class="card-content">
-
-                <div class="table-wrapper table-responsive">
-                    <table class="table striped-table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <h6>Name</h6>
-                                </th>
-                                <th>
-                                    <h6>Email</h6>
-                                </th>
-                                <th>
-                                    <h6>Status</h6>
-                                </th>
-                                <th>
-                                    <h6>Action</h6>
-                                </th>
-                            </tr>
-                            <!-- end table row-->
-                        </thead>
-                        <tbody>
-                            @foreach ($users as $user)
-                                <tr>
-                                    <td>
-                                        <p>{{ $user->name }}</p>
-                                    </td>
-                                    <td>
-                                        <p>{{ $user->email }}</p>
-                                    </td>
-                                    <td>
-                                        @if ($user->status == false)
-                                            <p class="text-danger">Not Active</p>
-                                        @else
-                                            <p class="text-success">Active</p>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($user->status == false)
-                                            <a href="{{ route('activate', $user->id) }}"
-                                                class="btn btn-primary">Activate</a>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                            <!-- end table row -->
-                        </tbody>
-                    </table>
-                    <!-- end table -->
-
-                    {{ $users->links() }}
-                </div>
-
-            </div>
         </div>
     </div>
+
+    <div class="card">
+        <div class="card card-body border-0 shadow table-wrapper table-responsive">
+            {{ $dataTable->table() }}
+        </div>
+    </div>
+
+    {{-- ACTIVATE --}}
+    @include('users.modals.activate')
+
+    {{-- REJECT --}}
+    @include('users.modals.reject')
+
+    {{-- VIEW --}}
+    @include('users.modals.view')
 @endsection
+
+@push('scripts')
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+    <script type="module">
+        $(() => {
+            const tableInstance = window.LaravelDataTables['user_dataTable'] = $('#user_dataTable')
+                .DataTable()
+            tableInstance.on('draw.dt', function() {
+
+                $('.viewBtn').click(function() {
+                    const userId = $(this).data('user');
+                    fetch('/users/' + userId)
+                        .then(response => response.json())
+                        .then(user => {
+                            console.log(user); // Log the fetched user data
+
+                            // Set download links for each file with '/storage/' prepended
+                            $('#link_duty_accomplished_registration_form').attr('href',
+                                '/storage/' + user.duty_accomplished_registration_form);
+                            $('#link_list_of_officers_and_adviser').attr('href', '/storage/' +
+                                user.list_of_officers_and_adviser);
+                            $('#link_list_of_member_in_good_standing').attr('href',
+                                '/storage/' + user.list_of_member_in_good_standing);
+                            $('#link_constitution_and_by_laws').attr('href', '/storage/' + user
+                                .constitution_and_by_laws);
+                            $('#link_endorsement_certification').attr('href', '/storage/' + user
+                                .endorsement_certification_from_proper_authority);
+
+                            // Show the modal
+                            $('#viewModal').modal('show');
+                        })
+                        .catch(error => {
+                            console.error('Error fetching user data:', error);
+                        });
+                });
+
+
+                $('.activateBtn').click(function() {
+                    $('#activate-form').attr('action', '/activate/' + $(this).data('user'));
+                })
+
+                $('.rejectBtn').click(function() {
+                    $('#reject-form').attr('action', '/reject/' + $(this).data('user'));
+                })
+            })
+        })
+    </script>
+@endpush

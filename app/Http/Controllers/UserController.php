@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\UserDataTable;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(UserDataTable $userDataTable): JsonResponse | View
     {
-        $users = User::whereHas('roles', function($query) {
-            $query->where('name', 'organization');
-        })->paginate();
-    
+        return $userDataTable->render('users.index');
+    }
 
-        return view('users.index', compact('users'));
+    public function show(User $user): JsonResponse | View
+    {
+        return response()->json($user);
     }
 }

@@ -12,10 +12,8 @@ class ActivateController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke($id): RedirectResponse
+    public function __invoke(User $user): RedirectResponse
     {
-        $user = User::find($id);;
-
         $user->update(
             [
                 'status' => true

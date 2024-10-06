@@ -42,11 +42,21 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        if ($user->status == false) {
+        if ($user->status == null) {
             auth()->logout();
 
             throw ValidationException::withMessages([
                'email' => [trans('Account is not Activate! Please Contact the Admin.')],
+            ]);
+
+            return redirect()->route('login');
+        }
+
+        if ($user->status == false) {
+            auth()->logout();
+
+            throw ValidationException::withMessages([
+               'email' => [trans('Account is Rejected! Please Contact the Admin.')],
             ]);
 
             return redirect()->route('login');

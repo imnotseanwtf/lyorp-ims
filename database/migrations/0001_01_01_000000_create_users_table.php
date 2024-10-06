@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('list_of_member_in_good_standing')->nullable();
             $table->string('constitution_and_by_laws')->nullable();
             $table->string('endorsement_certification_from_proper_authority')->nullable();
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

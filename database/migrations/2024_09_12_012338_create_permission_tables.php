@@ -128,6 +128,7 @@ return new class extends Migration
             ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));
 
+        Role::create(['name' => UserTypeEnum::Admin]);
         Role::create(['name' => UserTypeEnum::Organization]);
     }
 

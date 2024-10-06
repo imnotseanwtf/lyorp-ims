@@ -12,7 +12,7 @@
 
 <body>
     @include('sweetalert::alert')
-    <div class="row g-0 auth-row">
+    <div class="row g-0 auth-row" style="background-color: #F9D6A8;">
         @yield('content')
     </div>
 </body>

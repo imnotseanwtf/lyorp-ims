@@ -14,11 +14,11 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (Role::all() as $role) {
-            $users = User::factory(3)->create();
-            foreach ($users as $user) {
-                $user->assignRole($role);
-            }
-        }
+        // foreach (Role::all() as $role) {
+        //     $users = User::factory(3)->create();
+        //     foreach ($users as $user) {
+        //         $user->assignRole($role);
+        //     }
+        // }
     }
 }

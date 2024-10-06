@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\UserTypeEnum;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -91,16 +93,12 @@ class RegisterController extends Controller
             'list_of_member_in_good_standing' => $data['list_of_member_in_good_standing']->store('organizationFiles', 'public'),
             'constitution_and_by_laws' => isset($data['constitution_and_by_laws']) ? $data['constitution_and_by_laws']->store('organizationFiles', 'public') : null,
             'endorsement_certification_from_proper_authority' => isset($data['endorsement_certification_from_proper_authority']) ? $data['endorsement_certification_from_proper_authority']->store('organizationFiles', 'public') : null,
-        ]);
+        ])->assignRole(Role::findByName(UserTypeEnum::Organization->value));
     }
 
     protected function registered(Request $request, $user)
     {
         auth()->logout();
-
-        // Regenerate the session to avoid CSRF mismatch
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
 
         alert()->success('Wait For the Admin to Review your account.');
 
