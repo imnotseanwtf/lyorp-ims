@@ -11,7 +11,7 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <form action="{{ route('assign') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
 
@@ -25,7 +25,7 @@
                         </select>
                     </div>
 
-                    <input type="hidden" id="criteria_id" name="criteria_id">
+                    <input type="hidden" value="{{ $criteriaId }}" name="criteria_id">
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -14,9 +14,8 @@
         <i class="fa-solid fa-trash"></i>
     </button>
 
-    <button class="btn btn-success assignToAnswerBtn" data-bs-toggle="modal" data-bs-target="#assignToAnswerModal"
-        data-criteria="{{ $criteria->id }}">
-        <i class="fa-solid fa-plus"></i>
-    </button>
+    <a href="{{ route('review.index', $criteria->id) }}" class="btn btn-success">
+        <i class="fa-solid fa-pen-to-square"></i>
+    </a>
 
 </div>

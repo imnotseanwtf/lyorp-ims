@@ -1,13 +1,17 @@
 <?php
 
+use App\Http\Controllers\AdminReportController;
 use App\Http\Controllers\AssignToAnswerController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\EvaluationAnswerController;
 use App\Http\Controllers\FileDownloadController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ReviewAnswerController;
 use App\Http\Controllers\UserAction\ActivateController;
 use App\Http\Controllers\UserAction\RejectUserController;
+use App\Http\Controllers\UserAnsweredQuestion;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,7 +26,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('role:admin')->group(function () {
 
-        Route::post('assign', AssignToAnswerController::class)->name('assign');
+        Route::get('answer/{id}', UserAnsweredQuestion::class)->name('answer');
 
         // RESOURCES
         Route::resources(
@@ -30,6 +34,8 @@ Route::middleware('auth')->group(function () {
                 'criteria' => CriteriaController::class,
                 'question' => QuestionController::class,
                 'users' => UserController::class,
+                'review' => ReviewAnswerController::class,
+                'admin-report' => AdminReportController::class,
             ],
             [
                 'except' => ['create', 'edit'],
@@ -38,8 +44,6 @@ Route::middleware('auth')->group(function () {
                 ]
             ]
         );
-        
-        Route::get('/download', FileDownloadController::class);
 
         Route::put('activate/{user}', ActivateController::class)->name('activate');
         Route::put('reject/{user}', RejectUserController::class)->name('reject');
@@ -51,6 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::resources(
             [
                 'evaluation' => EvaluationAnswerController::class,
+                'user-report' => UserReportController::class,
             ]
         );
     });

@@ -42,17 +42,35 @@
                         .then(user => {
                             console.log(user); // Log the fetched user data
 
-                            // Set download links for each file with '/storage/' prepended
-                            $('#link_duty_accomplished_registration_form').attr('href',
-                                '/storage/' + user.duty_accomplished_registration_form);
-                            $('#link_list_of_officers_and_adviser').attr('href', '/storage/' +
-                                user.list_of_officers_and_adviser);
-                            $('#link_list_of_member_in_good_standing').attr('href',
-                                '/storage/' + user.list_of_member_in_good_standing);
-                            $('#link_constitution_and_by_laws').attr('href', '/storage/' + user
-                                .constitution_and_by_laws);
-                            $('#link_endorsement_certification').attr('href', '/storage/' + user
-                                .endorsement_certification_from_proper_authority);
+                            // Function to set link or show "No file" message
+                            function setLinkOrMessage(fileKey, linkId, inputId) {
+                                const fileName = user[fileKey];
+                                if (fileName) {
+                                    $(`#${linkId}`).attr('href', '/storage/' + fileName).show();
+                                    $(`#${inputId}`).val(fileName);
+                                    $(`#${inputId}`).show();
+                                } else {
+                                    $(`#${linkId}`).hide();
+                                    $(`#${inputId}`).val('No file').show();
+                                }
+                            }
+
+                            // Set download links or show "No file" for each file
+                            setLinkOrMessage('duty_accomplished_registration_form',
+                                'link_duty_accomplished_registration_form',
+                                'view_duty_accomplished_registration_form');
+                            setLinkOrMessage('list_of_officers_and_adviser',
+                                'link_list_of_officers_and_adviser',
+                                'view_list_of_officers_and_adviser');
+                            setLinkOrMessage('list_of_member_in_good_standing',
+                                'link_list_of_member_in_good_standing',
+                                'view_list_of_member_in_good_standing');
+                            setLinkOrMessage('constitution_and_by_laws',
+                                'link_constitution_and_by_laws',
+                                'view_constitution_and_by_laws');
+                            setLinkOrMessage('endorsement_certification_from_proper_authority',
+                                'link_endorsement_certification',
+                                'view_endorsement_certification');
 
                             // Show the modal
                             $('#viewModal').modal('show');
@@ -61,6 +79,7 @@
                             console.error('Error fetching user data:', error);
                         });
                 });
+
 
 
                 $('.activateBtn').click(function() {

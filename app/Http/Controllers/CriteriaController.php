@@ -19,11 +19,7 @@ class CriteriaController extends Controller
      */
     public function index(CriteriaDataTable $criteriaDataTable): JsonResponse | View
     {
-        $organizations = User::whereHas('roles', function($q) {
-            $q->where('name', 'organization');
-        })->select('id', 'name')->get();
-
-        return $criteriaDataTable->render('criteria.index', compact('organizations'));
+        return $criteriaDataTable->render('criteria.index');
     }
 
     /**

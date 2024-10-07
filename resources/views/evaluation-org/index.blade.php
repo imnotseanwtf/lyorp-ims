@@ -26,7 +26,6 @@
                                     @csrf <!-- CSRF token for protection -->
 
                                     <input type="hidden" value="{{ $assignment->id }}" name="assign_id">
-                                    <input type="hidden" value="{{ $assignment->criteria->id }}" name="criteria_id">
 
                                     @foreach ($assignment->criteria->questions as $index => $question)
                                         <div class="row my-3">

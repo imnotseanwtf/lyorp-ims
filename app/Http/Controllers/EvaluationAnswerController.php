@@ -28,8 +28,6 @@ class EvaluationAnswerController extends Controller
      */
     public function store(StoreEvaluationAnswerRequest $storeEvaluationAnswerRequest): RedirectResponse
     {
-        $userId = auth()->id();
-
         $assignToAnswer = EvaluationAssignToAnswer::find($storeEvaluationAnswerRequest->assign_id);
 
         $assignToAnswer->update(
@@ -40,11 +38,9 @@ class EvaluationAnswerController extends Controller
 
         foreach ($storeEvaluationAnswerRequest->validated()['ratings'] as $questionId => $rating) {
             EvaluationAnswer::create(
-                $storeEvaluationAnswerRequest->only(['criteria_id'])
-                    +
                     [
                         'answer' => $rating,
-                        'user_id' => $userId,
+                        'evaluation_assign_to_answer_id' => $assignToAnswer->id,
                         'question_id' => $questionId,
                     ]
             );
@@ -53,37 +49,5 @@ class EvaluationAnswerController extends Controller
         alert()->success('Rating Has Submitted Successfully!');
 
         return redirect()->route('evaluation.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
