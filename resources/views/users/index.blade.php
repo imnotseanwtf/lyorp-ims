@@ -40,9 +40,7 @@
                     fetch('/users/' + userId)
                         .then(response => response.json())
                         .then(user => {
-                            console.log(user); // Log the fetched user data
-
-                            // Function to set link or show "No file" message
+                            
                             function setLinkOrMessage(fileKey, linkId, inputId) {
                                 const fileName = user[fileKey];
                                 if (fileName) {

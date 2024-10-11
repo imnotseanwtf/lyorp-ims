@@ -34,7 +34,8 @@ class UserReportDataTable extends DataTable
     public function query(Report $model): QueryBuilder
     {
         return $model->newQuery()
-            ->where('user_id', auth()->user()->id);
+            ->where('user_id', auth()->user()->id)
+            ->where('folder_id', array_key_first(request()->query()));
     }
 
     /**
@@ -68,10 +69,15 @@ class UserReportDataTable extends DataTable
             Column::make('id'),
             Column::make('title', 'title'),
             Column::make('content', 'content'),
+            Column::make('seminars_and_activities_conducted', 'seminars_and_activities_conducted'),
+            Column::make('seminars_and_activities_attended', 'seminars_and_activities_attended'),
+            Column::make('recruitment', 'Recruitment'),
+            Column::make('meeting_conducted', 'Meeting Conducted'),
+            Column::make('others', 'Others'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
+                ->width(140)
                 ->addClass('text-center'),
         ];
     }

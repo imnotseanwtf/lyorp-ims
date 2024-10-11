@@ -14,6 +14,56 @@
                 @csrf
                 <div class="modal-body">
 
+                    {{-- Seminars & Activities Conducted --}}
+                    <div class="form-group">
+                        <label for="seminars_and_activities_conducted">Seminars & Activities Conducted</label>
+                        <input type="number" class="form-control" name="seminars_and_activities_conducted"
+                            value="{{ old('seminars_and_activities_conducted') }}" required>
+                        @error('seminars_&_activities_conducted')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    {{-- Seminars & Activities Attended --}}
+                    <div class="form-group">
+                        <label for="seminars_and_activities_attended">Seminars & Activities Attended</label>
+                        <input type="number" class="form-control" name="seminars_and_activities_attended"
+                            value="{{ old('seminars_and_activities_attended') }}" required>
+                        @error('seminars_&_activities_attended')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    {{-- Recruitment --}}
+                    <div class="form-group">
+                        <label for="recruitment">Recruitment</label>
+                        <input type="number" class="form-control" name="recruitment" value="{{ old('recruitment') }}"
+                            required>
+                        @error('recruitment')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    {{-- Meetings Conducted --}}
+                    <div class="form-group">
+                        <label for="meeting_conducted">Meetings Conducted</label>
+                        <input type="number" class="form-control" name="meeting_conducted"
+                            value="{{ old('meeting_conducted') }}" required>
+                        @error('meeting_conducted')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    {{-- Others --}}
+                    <div class="form-group">
+                        <label for="others">Others</label>
+                        <input type="text" class="form-control" name="others" value="{{ old('others') }}"
+                            placeholder="Any other information">
+                        @error('others')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
                     {{-- Title Input --}}
                     <div class="form-group">
                         <label for="title">Title</label>
@@ -36,11 +86,14 @@
                     {{-- File Input --}}
                     <div class="form-group">
                         <label for="file">File</label>
-                        <input type="file" class="form-control" name="file" required>
+                        <input type="file" class="form-control" name="file">
                         @error('file')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+
+
+                    <input type="hidden" value="{{ $folderId }}" name="folder_id">
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

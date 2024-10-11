@@ -13,10 +13,18 @@ class Report extends Model
 
     protected $fillable = [
         'user_id',
+        'folder_id', // Assuming this is the foreign key for Folder
         'title',
         'content',
         'file',
+        'seminars_and_activities_conducted',
+        'seminars_and_activities_attended',
+        'recruitment',
+        'meeting_conducted',
+        'others',
+        'status'
     ];
+    
 
     public function user(): BelongsTo
     {

@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\EvaluationAnswer;
+use App\Models\OrganizationMember;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class EvaluationAnswerDataTable extends DataTable
+class OrganizationMemberDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,14 +22,14 @@ class EvaluationAnswerDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'evaluationanswer.action')
+            ->addColumn('action', 'organizationmember.action')
             ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(EvaluationAnswer $model): QueryBuilder
+    public function query(OrganizationMember $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -40,7 +40,7 @@ class EvaluationAnswerDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('evaluationanswer-table')
+                    ->setTableId('organizationmember-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -79,6 +79,6 @@ class EvaluationAnswerDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'EvaluationAnswer_' . date('YmdHis');
+        return 'OrganizationMember_' . date('YmdHis');
     }
 }

@@ -22,9 +22,15 @@ class StoreReportRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'seminars_and_activities_conducted' => ['required', 'integer',],
+            'seminars_and_activities_attended' => ['required', 'integer',],
+            'recruitment' => ['required', 'integer',],
+            'meeting_conducted' => ['required', 'integer',],
+            'others' => ['required', 'string', 'max:255'],
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string'],
-            'file' => ['required', 'file', 'max:2048'],
+            'file' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:2048'],
+            'folder_id' => ['required', 'numeric'],
         ];
     }
 }

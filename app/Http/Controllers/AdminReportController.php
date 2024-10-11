@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\AdminReportDataTable;
+use App\Models\Report;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,54 +15,15 @@ class AdminReportController extends Controller
      */
     public function index(AdminReportDataTable $adminReportDataTable): JsonResponse | View
     {
-        return $adminReportDataTable->render('admin-report');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return $adminReportDataTable->render('admin-report.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Report $report): JsonResponse | View
     {
-        //
+        return response()->json($report);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    
 }

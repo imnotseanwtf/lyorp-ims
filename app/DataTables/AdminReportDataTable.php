@@ -24,7 +24,7 @@ class AdminReportDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->setRowId('id')
-            ->addColumn('action', fn(Report $report) => view('admin-report.components.action'))
+            ->addColumn('action', fn(Report $report) => view('admin-report.components.action', compact('report')))
             ->rawColumns(['action']);
     }
 
@@ -34,7 +34,9 @@ class AdminReportDataTable extends DataTable
     public function query(Report $model): QueryBuilder
     {
         return $model->newQuery()
-            ->with('user');
+            ->where('folder_id', array_key_first(request()->query()))
+            ->with('user')
+            ->select('reports.*');
     }
 
     /**
@@ -65,14 +67,13 @@ class AdminReportDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-
-            Column::make('id'),
+            Column::make('id', 'id'),
             Column::make('user.name', 'user.name'),
             Column::make('title', 'title'),
             Column::make('content', 'content'),
             Column::computed('action')
                 ->exportable(false)
-                ->printable(false)
+                ->printable(false)  
                 ->width(60)
                 ->addClass('text-center'),
         ];

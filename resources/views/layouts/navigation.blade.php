@@ -39,9 +39,9 @@
                 <span class="text">{{ __('Evaluation') }}</span>
             </a>
         </li>
-        
-        <li class="nav-item @if (request()->routeIs('admin-report.index')) active @endif">
-            <a href="{{ route('admin-report.index') }}">
+
+        <li class="nav-item @if (request()->routeIs('announcement.index')) active @endif">
+            <a href="{{ route('announcement.index') }}">
                 <span class="icon">
                     <svg width="22" height="22" aria-hidden="true" fill="none" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,7 +50,7 @@
                         </path>
                     </svg>
                 </span>
-                <span class="text">{{ __('Report') }}</span>
+                <span class="text">{{ __('Announcement') }}</span>
             </a>
         </li>
     @endadmin
@@ -69,23 +69,51 @@
                 <span class="text">{{ __('Evaluation') }}</span>
             </a>
         </li>
-
-        <li class="nav-item @if (request()->routeIs('user-report.index')) active @endif">
-            <a href="{{ route('user-report.index') }}">
-                <span class="icon">
-                    <svg width="22" height="22" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
-                        </path>
-                    </svg>
-                </span>
-                <span class="text">{{ __('Report') }}</span>
-            </a>
-        </li>
     @endorganization
 
-    <li class="nav-item @if (request()->routeIs('about')) active @endif">
+    <li class="nav-item @if (request()->routeIs('certificate.index')) active @endif">
+        <a href="{{ route('certificate.index') }}">
+            <span class="icon">
+                <svg width="22" height="22" aria-hidden="true" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                        d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
+                    </path>
+                </svg>
+            </span>
+            <span class="text">{{ __('Certificate') }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item @if (request()->routeIs('activity-request.index')) active @endif">
+        <a href="{{ route('activity-request.index') }}">
+            <span class="icon">
+                <svg width="22" height="22" aria-hidden="true" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                        d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
+                    </path>
+                </svg>
+            </span>
+            <span class="text">{{ __('Activity Request') }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item @if (request()->routeIs('folder.index')) active @endif">
+        <a href="{{ route('folder.index') }}">
+            <span class="icon">
+                <svg width="22" height="22" aria-hidden="true" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                        d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
+                    </path>
+                </svg>
+            </span>
+            <span class="text">{{ __('Report') }}</span>
+        </a>
+    </li>
+
+    {{-- <li class="nav-item @if (request()->routeIs('about')) active @endif">
         <a href="{{ route('about') }}">
             <span class="icon">
                 <svg width="22" height="22" aria-hidden="true" fill="none" stroke-linecap="round"
@@ -97,7 +125,7 @@
             </span>
             <span class="text">{{ __('About us') }}</span>
         </a>
-    </li>
+    </li> --}}
 
     {{-- <li class="nav-item nav-item-has-children">
         <a class="collapsed" href="#0" class="" data-bs-toggle="collapse" data-bs-target="#ddmenu_1"

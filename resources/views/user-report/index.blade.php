@@ -10,6 +10,9 @@
             </div>
             <div class="col-md-6">
                 <div class="title mb-30 text-end">
+                    <a href="{{ route('archive.index') }}" class="main-btn btn-danger btn-hover">
+                        Archive
+                    </a>
                     <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
                         Create Report
                     </button>
@@ -24,9 +27,17 @@
         </div>
     </div>
 
-
     {{-- CREATE REPORT --}}
     @include('user-report.modals.create')
+
+    {{-- VIEW REPORT --}}
+    @include('user-report.modals.view')
+
+    {{-- EDIT REPORT --}}
+    @include('user-report.modals.edit')
+
+    {{-- DELETE REPORT --}}
+    @include('user-report.modals.delete')
 @endsection
 
 @push('scripts')
@@ -42,7 +53,28 @@
                     fetch('/user-report/' + $(this).data('report'))
                         .then(response => response.json())
                         .then(report => {
-                            $('#view_name').val(report.name);
+                            $('#view_title').val(report.title);
+                            $('#view_content').val(report.content);
+                            $('#view_seminars_activities_conducted').val(report
+                                .seminars_and_activities_conducted || 'N/A');
+                            $('#view_seminars_activities_attended').val(report
+                                .seminars_and_activities_attended || 'N/A');
+                            $('#view_recruitment').val(report.recruitment || 'N/A');
+                            $('#view_meeting_conducted').val(report.meeting_conducted || 'N/A');
+                            $('#view_others').val(report.others || 'N/A');
+
+                            function setLinkOrMessage(fileKey, linkId, inputId) {
+                                const fileName = report[fileKey];
+                                if (fileName) {
+                                    $(`#${linkId}`).attr('href', '/storage/' + fileName).show();
+                                    $(`#${inputId}`).show();
+                                } else {
+                                    $(`#${linkId}`).hide();
+                                    $(`#${inputId}`).val('No file').show();
+                                }
+                            }
+
+                            setLinkOrMessage('file', 'link_file', 'view_file');
                         });
                 })
 
@@ -50,14 +82,22 @@
                     fetch('/user-report/' + $(this).data('report'))
                         .then(response => response.json())
                         .then(report => {
-                            $('#edit_name').val(report.name);
+                            $('#edit_title').val(report.title);
+                            $('#edit_content').val(report.content);
+                            $('#edit_seminars_activities_conducted').val(report
+                                .seminars_and_activities_conducted);
+                            $('#edit_seminars_activities_attended').val(report
+                                .seminars_and_activities_attended);
+                            $('#edit_recruitment').val(report.recruitment);
+                            $('#edit_meeting_conducted').val(report.meeting_conducted);
+                            $('#edit_others').val(report.others);
                             $('#update-form').attr('action', '/user-report/' + $(this).data(
                                 'report'));
                         });
                 })
 
                 $('.deleteBtn').click(function() {
-                    $('#delete-form').attr('action', '/user-report/' + $(this).data('report'));
+                    $('#delete-form').attr('action', '/soft-delete/' + $(this).data('report'));
                 });
 
             })

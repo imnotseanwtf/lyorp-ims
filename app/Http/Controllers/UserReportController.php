@@ -18,7 +18,9 @@ class UserReportController extends Controller
      */
     public function index(UserReportDataTable $userReportDataTable): JsonResponse | View
     {
-        return $userReportDataTable->render('user-report.index');
+        $folderId = array_key_first(request()->query());
+
+        return $userReportDataTable->render('user-report.index', compact('folderId'));
     }
 
     /**
@@ -28,7 +30,7 @@ class UserReportController extends Controller
     {
         $userId = auth()->id();
 
-        Report::create($storeReportRequest->except('file') +
+        $report = Report::create($storeReportRequest->except('file') +
             [
                 'user_id' => $userId,
                 'file' => $storeReportRequest->file('file')->store('userReports', 'public')
@@ -36,7 +38,7 @@ class UserReportController extends Controller
 
         alert()->success('Report Submitted Successfully!');
 
-        return redirect()->route('user-report.index');
+        return redirect()->route('user-report.index', $report->folder_id);
     }
 
     /**
@@ -52,11 +54,17 @@ class UserReportController extends Controller
      */
     public function update(UpdateReportRequest $updateReportRequest, Report $report): RedirectResponse
     {
-        $report->update($updateReportRequest->validated());
+        $data = $updateReportRequest->except('file');
+
+        if ($updateReportRequest->hasFile('file')) {
+            $data['file'] = $updateReportRequest->file('file')->store('userReports', 'public'); // Adjust storage path as needed
+        }
+
+        $report->update($data);
 
         alert()->success('Report Updated Successfully!');
 
-        return redirect()->route('user-report');
+        return redirect()->route('user-report.index', $report->folder_id);
     }
 
     /**
@@ -64,10 +72,12 @@ class UserReportController extends Controller
      */
     public function destroy(Report $report): RedirectResponse
     {
+        $folderId = $report->folder_id;
+
         $report->delete();
 
         alert()->success('Report Deleted Successfully!');
 
-        return redirect()->route('user-report');
+        return redirect()->route('user-report.index', $folderId);
     }
 }
