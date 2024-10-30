@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignIdFor(Question::class)->constrained()->cascadeOnDelete();
 
             $table->string('answer');
-            $table->boolean('is_notif');
+            $table->boolean('is_notif')->default(false);
             $table->timestamps();
         });
     }

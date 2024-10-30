@@ -45,7 +45,7 @@ class AnswerController extends Controller
             );
         }
 
-        alert()->success('Rating Has Submitted Successfully!');
+        alert()->success('Answer Has Submitted Successfully!');
 
         return redirect()->route('evaluation.index');
     }
