@@ -16,7 +16,7 @@ class UserReportController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(UserReportDataTable $userReportDataTable): JsonResponse | View
+    public function index(UserReportDataTable $userReportDataTable)
     {
         $folderId = array_key_first(request()->query());
 

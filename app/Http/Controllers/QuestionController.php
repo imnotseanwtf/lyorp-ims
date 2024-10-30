@@ -17,7 +17,7 @@ class QuestionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(QuestionDataTable $questionDataTable): JsonResponse | View
+    public function index(QuestionDataTable $questionDataTable)
     {
         $criteria = Criteria::find(array_key_first(request()->query()));
         $criteriaName = $criteria->name;

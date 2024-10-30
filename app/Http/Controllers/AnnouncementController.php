@@ -17,7 +17,7 @@ class AnnouncementController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(AnnouncementDataTable $announcementDataTable): JsonResponse | View
+    public function index(AnnouncementDataTable $announcementDataTable)
     {
         return $announcementDataTable->render('announcement.index');
     }

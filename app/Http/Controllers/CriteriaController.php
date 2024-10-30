@@ -17,7 +17,7 @@ class CriteriaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(CriteriaDataTable $criteriaDataTable): JsonResponse | View
+    public function index(CriteriaDataTable $criteriaDataTable)
     {
         return $criteriaDataTable->render('criteria.index');
     }

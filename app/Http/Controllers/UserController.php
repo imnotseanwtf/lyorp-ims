@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
-    public function index(UserDataTable $userDataTable): JsonResponse | View
+    public function index(UserDataTable $userDataTable)
     {
         return $userDataTable->render('users.index');
     }

@@ -13,7 +13,7 @@ class AdminReportController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(AdminReportDataTable $adminReportDataTable): JsonResponse | View
+    public function index(AdminReportDataTable $adminReportDataTable)
     {
         $folderId = array_key_first(request()->query());
 

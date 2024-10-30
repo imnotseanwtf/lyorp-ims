@@ -17,7 +17,7 @@ class ActivityRequestController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(ActivityRequestDataTable $activityRequestDataTable): JsonResponse | View
+    public function index(ActivityRequestDataTable $activityRequestDataTable)
     {
         if (auth()->user()->isAdmin()) {
             ActivityRequest::query()->update(['is_notif' => true]);

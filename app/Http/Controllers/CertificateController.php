@@ -17,7 +17,7 @@ class CertificateController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(CertificateDataTable $certificateDataTable): JsonResponse | View
+    public function index(CertificateDataTable $certificateDataTable)
     {
         $organizations = User::whereHas('roles', function ($q) {
             $q->where('name', 'organization');

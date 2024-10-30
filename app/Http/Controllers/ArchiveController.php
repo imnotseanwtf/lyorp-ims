@@ -13,7 +13,7 @@ class ArchiveController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(ArchiveReportDataTable $archiveReportDataTable): JsonResponse | View
+    public function index(ArchiveReportDataTable $archiveReportDataTable)
     {
         $folderId = array_key_first(request()->query());
 
