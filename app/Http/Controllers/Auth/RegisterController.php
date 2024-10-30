@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-
+            'address' => ['required', 'string', 'max:255'],
             'name_of_the_primary_representative' => ['required', 'string', 'max:255'],
             'facebook_url' => ['required', 'url', 'max:255'],
             'phone_number' => ['required', 'string', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10', 'max:15'],
@@ -87,6 +87,7 @@ class RegisterController extends Controller
             'phone_number' => $data['phone_number'],
             'age' => $data['age'],
             'sex' => $data['sex'],
+            'address' => $data['address'],
             // Handling file uploads
             'duty_accomplished_registration_form' => $data['duty_accomplished_registration_form']->store('organizationFiles', 'public'),
             'list_of_officers_and_adviser' => $data['list_of_officers_and_adviser']->store('organizationFiles', 'public'),

@@ -1,11 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Organizations</li>
+        </ol>
+    </nav>
+
     <div class="title-wrapper pt-30">
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="title mb-30">
-                    <h2>{{ __('Users') }}</h2>
+                    <h2>{{ __('Organizations') }}</h2>
                 </div>
             </div>
         </div>
@@ -29,7 +36,15 @@
 
 @push('scripts')
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+    
     <script type="module">
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'))
+            tooltipTriggerList.forEach(function(tooltipTriggerEl) {
+                new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        });
+
         $(() => {
             const tableInstance = window.LaravelDataTables['user_dataTable'] = $('#user_dataTable')
                 .DataTable()
@@ -40,7 +55,7 @@
                     fetch('/users/' + userId)
                         .then(response => response.json())
                         .then(user => {
-                            
+
                             function setLinkOrMessage(fileKey, linkId, inputId) {
                                 const fileName = user[fileKey];
                                 if (fileName) {
@@ -77,8 +92,6 @@
                             console.error('Error fetching user data:', error);
                         });
                 });
-
-
 
                 $('.activateBtn').click(function() {
                     $('#activate-form').attr('action', '/activate/' + $(this).data('user'));

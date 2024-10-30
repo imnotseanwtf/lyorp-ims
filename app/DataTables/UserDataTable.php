@@ -2,6 +2,9 @@
 
 namespace App\DataTables;
 
+use App\Models\ActivityRequest;
+use App\Models\Answer;
+use App\Models\Report;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Illuminate\Support\Facades\Log;
@@ -24,17 +27,47 @@ class UserDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->setRowId('id')
-            ->addColumn('action', fn(User $user) => view('users.components.action', compact('user')))
+            ->addColumn('action', function (User $user) {
+                $activityRequestAnnounced = ActivityRequest::where('user_id', $user->id)
+                    ->where('is_notif', 0)
+                    ->exists();
+                $reportAnnounced = Report::where('user_id', $user->id)
+                    ->where('is_notif', 0)
+                    ->exists();
+                $answerAnnounced = Answer::whereHas('assignToAnswer', function ($query) use ($user) {
+                    $query->where('user_id', $user->id);
+                })
+                    ->where('is_notif', 0)
+                    ->exists();
+
+                return view('users.components.action', compact('user', 'activityRequestAnnounced', 'reportAnnounced', 'answerAnnounced'));
+            })
+
             ->addColumn('status', function (User $user) {
                 if ($user->status === true || $user->status === 1) {
                     return 'Activated'; // For true or 1
                 } elseif ($user->status === false || $user->status === 0) {
                     return 'Rejected'; // For false or 0
                 } else {
-                    return 'Deactivate'; // For null
+                    return 'Pending'; // For null
                 }
             })
-            ->rawColumns(['action']);
+            ->addColumn('name', function (User $user) {
+                $hasUnannounced = ActivityRequest::where('user_id', $user->id)
+                    ->where('is_notif', 0)
+                    ->exists() ||
+                    Report::where('user_id', $user->id)
+                    ->where('is_notif', 0)
+                    ->exists() ||
+                    Answer::whereHas('assignToAnswer', function ($query) use ($user) {
+                        $query->where('user_id', $user->id);
+                    })
+                    ->where('is_notif', 0)
+                    ->exists();
+
+                return $user->name . ($hasUnannounced ? '<span class="btn btn-primary text-white mx-2" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">New</span>' : '');
+            })
+            ->rawColumns(['action', 'name']);
     }
 
     /**
@@ -62,7 +95,6 @@ class UserDataTable extends DataTable
             ->buttons([
                 Button::make('excel'),
                 Button::make('csv'),
-                Button::make('pdf'),
                 Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
@@ -70,15 +102,16 @@ class UserDataTable extends DataTable
     }
 
     /**
-     * Get the dataTable columns definition.
+     * Get the dataTable columns definition. 
      */
     public function getColumns(): array
     {
         return [
             Column::make('id', 'id'),
-            Column::make('email', 'email'),
             Column::make('name', 'name'),
+            Column::make('email', 'email'),
             Column::make('name_of_the_primary_representative', 'name_of_the_primary_representative'),
+            Column::make('address', 'address'),
             Column::make('facebook_url', 'facebook_url'),
             Column::make('phone_number', 'phone_number'),
             Column::make('age', 'age'),

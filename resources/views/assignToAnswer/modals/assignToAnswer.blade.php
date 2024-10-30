@@ -11,14 +11,14 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <form action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('assign-answer.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
 
                     <div class="form-group">
                         <label for="name">Name Organization</label>
-                        <select name="user_id" class="form-control">
-                            <option selected disabled>Select</option>
+                        <select name="user_id" class="form-control" required>
+                            <option selected disabled value="">Select</option>
                             @foreach ($organizations as $organization)
                                 <option value="{{ $organization->id }}">{{ $organization->name }}</option>
                             @endforeach

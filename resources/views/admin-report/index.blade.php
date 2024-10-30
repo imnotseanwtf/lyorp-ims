@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('folder.index') }}">Folders</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Reports</li>
+        </ol>
+    </nav>
+
     <div class="title-wrapper pt-30">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -10,7 +18,7 @@
             </div>
             <div class="col-md-6">
                 <div class="title mb-30 text-end">
-                    <a href="{{ route('archive.index') }}" class="main-btn btn-danger btn-hover">
+                    <a href="{{ route('archive.index', $folderId) }}" class="main-btn btn-danger btn-hover">
                         Archive
                     </a>
                 </div>
@@ -32,6 +40,12 @@
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script type="module">
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'))
+            tooltipTriggerList.forEach(function(tooltipTriggerEl) {
+                new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        });
         $(() => {
             const tableInstance = window.LaravelDataTables['adminReport_dataTable'] = $('#adminReport_dataTable')
                 .DataTable()

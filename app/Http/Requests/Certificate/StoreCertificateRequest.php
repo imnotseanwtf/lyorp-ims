@@ -22,9 +22,7 @@ class StoreCertificateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'file' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:2048'],
-            'user_id' => ['required', 'integer'],
+            'user_id' => ['required', 'integer', 'exists:users,id'],
         ];
     }
 }

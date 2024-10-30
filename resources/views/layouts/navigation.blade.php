@@ -26,20 +26,6 @@
             </a>
         </li>
 
-        <li class="nav-item @if (request()->routeIs('criteria.index')) active @endif">
-            <a href="{{ route('criteria.index') }}">
-                <span class="icon">
-                    <svg width="22" height="22" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
-                        </path>
-                    </svg>
-                </span>
-                <span class="text">{{ __('Evaluation') }}</span>
-            </a>
-        </li>
-
         <li class="nav-item @if (request()->routeIs('announcement.index')) active @endif">
             <a href="{{ route('announcement.index') }}">
                 <span class="icon">
@@ -55,21 +41,19 @@
         </li>
     @endadmin
 
-    @organization
-        <li class="nav-item @if (request()->routeIs('evaluation.index')) active @endif">
-            <a href="{{ route('evaluation.index') }}">
-                <span class="icon">
-                    <svg width="22" height="22" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
-                        </path>
-                    </svg>
-                </span>
-                <span class="text">{{ __('Evaluation') }}</span>
-            </a>
-        </li>
-    @endorganization
+    <li class="nav-item @if (request()->routeIs('criteria.index')) active @endif">
+        <a href="{{ route('criteria.index') }}">
+            <span class="icon">
+                <svg width="22" height="22" aria-hidden="true" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                        d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
+                    </path>
+                </svg>
+            </span>
+            <span class="text">{{ __('Evaluation') }}</span>
+        </a>
+    </li>
 
     <li class="nav-item @if (request()->routeIs('certificate.index')) active @endif">
         <a href="{{ route('certificate.index') }}">
@@ -95,7 +79,7 @@
                     </path>
                 </svg>
             </span>
-            <span class="text">{{ __('Activity Request') }}</span>
+            <span class="text">{{ __('Technical Assist') }}</span>
         </a>
     </li>
 

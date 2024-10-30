@@ -24,6 +24,9 @@ class ActivityRequestDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->setRowId('id')
+            ->addColumn('organization.name', function (ActivityRequest $activityRequest) {
+                return $activityRequest->user->name;
+            })
             ->addColumn('action', fn(ActivityRequest $activity) => view('activity-request.components.action', compact('activity')))
             ->addColumn('status', fn(ActivityRequest $activity) => match ($activity->status) {
                 0 => 'Pending',
@@ -75,7 +78,6 @@ class ActivityRequestDataTable extends DataTable
             ->buttons([
                 Button::make('excel'),
                 Button::make('csv'),
-                Button::make('pdf'),
                 Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
@@ -89,8 +91,11 @@ class ActivityRequestDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('title'),
-            Column::make('content'),
+            Column::make('organization.name'),
+            Column::make('activity_name'),
+            Column::make('date'),
+            Column::make('time'),
+            Column::make('venue'),
             Column::make('status'),
             Column::computed('action')
                 ->exportable(false)

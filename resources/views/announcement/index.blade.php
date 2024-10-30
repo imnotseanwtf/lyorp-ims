@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Annoucement</li>
+        </ol>
+    </nav>
+
     <div class="title-wrapper pt-30">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -35,13 +42,18 @@
 
     {{-- DELETE announcement --}}
     @include('announcement.modals.delete')
-
 @endsection
 
 @push('scripts')
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script type="module">
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'))
+            tooltipTriggerList.forEach(function(tooltipTriggerEl) {
+                new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        });
         $(() => {
             const tableInstance = window.LaravelDataTables['announcement_dataTable'] = $('#announcement_dataTable')
                 .DataTable()
@@ -68,7 +80,8 @@
                 })
 
                 $('.deleteBtn').click(function() {
-                    $('#delete-form').attr('action', '/announcement/' + $(this).data('announcement'));
+                    $('#delete-form').attr('action', '/announcement/' + $(this).data(
+                        'announcement'));
                 });
 
             })

@@ -78,6 +78,15 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-3 mt-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Pending Evaluation To Fill Up</h6>
+                                    <h5>{{ $evaluationPending }}</h5>
+                                </div>
+                            </div>
+                        </div>
                     @endadmin
                 </div>
             </div>

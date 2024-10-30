@@ -2,8 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\EvaluationAssignToAnswer;
-use App\Models\ReviewAnswer;
+use App\Models\AssignToAnswer;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -13,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ReviewAnswersDataTable extends DataTable
+class AssignToAnswerDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -24,24 +23,20 @@ class ReviewAnswersDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->setRowId('id')
-            ->addColumn('action', fn(EvaluationAssignToAnswer $evaluationAssignToAnswer) => view('review-answer.components.action', compact('evaluationAssignToAnswer')))
-            ->addColumn('is_answered', fn(EvaluationAssignToAnswer $evaluationAssignToAnswer) => $evaluationAssignToAnswer->is_answered ? 'Yes' : 'No Answered Yet')
-            ->rawColumns(['actions']);
+            ->addColumn('action', fn(AssignToAnswer $assign) => view('assignToAnswer.components.action', compact('assign')))
+            ->editColumn('is_answered', fn(AssignToAnswer $assignToAnswer) => $assignToAnswer->is_answered ? 'Yes' : 'No')
+            ->rawColumns(['action']);
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(EvaluationAssignToAnswer $model): QueryBuilder
+    public function query(AssignToAnswer $model): QueryBuilder
     {
         return $model->newQuery()
-            ->with(
-                [
-                    'user',
-                    'criteria'
-                ]
-            )
-            ->where('criteria_id', array_key_first(request()->query()));
+            ->where('criteria_id', array_key_first(request()->query()))
+            ->with('user')
+            ->select('assign_to_answers.*');
     }
 
     /**
@@ -50,7 +45,7 @@ class ReviewAnswersDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('reviewAnswers_dataTable')
+            ->setTableId('assignToAnswer_dataTable')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
@@ -59,7 +54,6 @@ class ReviewAnswersDataTable extends DataTable
             ->buttons([
                 Button::make('excel'),
                 Button::make('csv'),
-                Button::make('pdf'),
                 Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
@@ -72,10 +66,8 @@ class ReviewAnswersDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('user.name', 'user.name')
-                ->title('Organization'),
-            Column::make('is_answered', 'is_answered')
-                ->title('is Answered?'),
+            Column::make('user.name'),
+            Column::make('is_answered'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
@@ -89,6 +81,6 @@ class ReviewAnswersDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'ReviewAnswers_' . date('YmdHis');
+        return 'AssignToAnswer_' . date('YmdHis');
     }
 }

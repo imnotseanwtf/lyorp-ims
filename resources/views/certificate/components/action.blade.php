@@ -1,18 +1,12 @@
 <div class="d-flex justify-content-around">
-
-    <button type="button" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#editModal"
-        data-certificate="{{ $certificate->id }}">
-        <i class="fa-solid fa-pen"></i>
-    </button>
-
-    <button class="btn btn-info viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"
-        data-certificate="{{ $certificate->id }}">
+    <!-- View PDF button with tooltip -->
+    <a href="{{ route('pdf', $certificate->id) }}" class="btn btn-info" title="View PDF">
         <i class="fa-solid fa-eye"></i>
-    </button>
+    </a>
 
+    <!-- Delete certificate button with tooltip -->
     <button class="btn btn-danger deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"
-        data-certificate="{{ $certificate->id }}">
+        data-certificate="{{ $certificate->id }}" title="Delete Certificate">
         <i class="fa-solid fa-trash"></i>
     </button>
-
 </div>

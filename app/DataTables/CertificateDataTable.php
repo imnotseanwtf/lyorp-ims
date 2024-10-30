@@ -37,7 +37,8 @@ class CertificateDataTable extends DataTable
         $query = $model->newQuery();
 
         if ($user->isOrganization()) {
-            $query->where('user_id', $user->id);
+            $query->where('user_id', $user->id)
+                ->with('user');
         }
         if ($user->isAdmin()) {
             $query->with('user')
@@ -62,7 +63,6 @@ class CertificateDataTable extends DataTable
             ->buttons([
                 Button::make('excel'),
                 Button::make('csv'),
-                Button::make('pdf'),
                 Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
@@ -76,13 +76,11 @@ class CertificateDataTable extends DataTable
     {
         return array_filter(
             [
-                Column::make('id'),
-                auth()->user()->isAdmin() ? Column::make('user.name', 'user.name') : null,
-                Column::make('name'),
+                Column::make('user.name', 'user.name'),
                 Column::computed('action')
                     ->exportable(false)
                     ->printable(false)
-                    ->width(140)
+                    ->width(80)
                     ->addClass('text-center'),
             ]
         );

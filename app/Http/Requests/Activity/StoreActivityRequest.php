@@ -22,8 +22,16 @@ class StoreActivityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
-            'content' => ['required', 'string'],
+            'activity_name' => ['required', 'string', 'max:255'],
+            'date' => ['required', 'date'],
+            'time' => ['required'], // Ensure time is in the correct format
+            'venue' => ['required', 'string', 'max:255'],
+            'specific_objectives' => ['required', 'string'],
+            'specific_outputs' => ['required', 'string'],
+            'topics' => ['required', 'array'],
+            'topics.*' => ['string'], // Each topic should be a string
+            'equipment' => ['required', 'array'],
+            'equipment.*' => ['string'], // Each equipment should be a string
             'file' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:2048'],
         ];
     }

@@ -38,12 +38,15 @@ class ArchiveReportDataTable extends DataTable
             ->where('reports.status', false);
 
         if ($user->isOrganization()) {
-            $query->where('user_id', $user->id);
+            $query
+                ->where('user_id', $user->id)
+                ->where('folder_id',  array_key_first(request()->query()));
         }
 
         if ($user->isAdmin()) {
             $query->with('user')
-                ->select('reports.*');
+                ->select('reports.*')
+                ->where('folder_id',  array_key_first(request()->query()));
         }
 
         return $query;

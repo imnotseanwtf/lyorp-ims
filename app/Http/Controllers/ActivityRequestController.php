@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ActivityRequestController extends Controller
 {
@@ -18,6 +19,10 @@ class ActivityRequestController extends Controller
      */
     public function index(ActivityRequestDataTable $activityRequestDataTable): JsonResponse | View
     {
+        if (auth()->user()->isAdmin()) {
+            ActivityRequest::query()->update(['is_notif' => true]);
+        }
+
         return $activityRequestDataTable->render('activity-request.index');
     }
 
@@ -27,10 +32,12 @@ class ActivityRequestController extends Controller
     public function store(StoreActivityRequest $storeActivityRequest): RedirectResponse
     {
         ActivityRequest::create(
-            $storeActivityRequest->except('file')
+            $storeActivityRequest->except(['file', 'topics', 'equipment'])
                 + [
                     'file' => $storeActivityRequest->file('file')->store('activityRequest', 'public'),
                     'user_id' => auth()->id(),
+                    'topics' => json_encode($storeActivityRequest->topics),
+                    'equipment' => json_encode($storeActivityRequest->equipment),
                 ]
         );
 
@@ -52,16 +59,32 @@ class ActivityRequestController extends Controller
      */
     public function update(UpdateActivityRequest $updateActivityRequest, ActivityRequest $activity): RedirectResponse
     {
-        $data = $updateActivityRequest->except('file');
+        // Prepare data, encoding arrays for JSON storage
+        $data = array_merge(
+            $updateActivityRequest->except(['file', 'topics', 'equipment']),
+            [
+                'topics' => json_encode($updateActivityRequest->input('topics', [])),
+                'equipment' => json_encode($updateActivityRequest->input('equipment', [])),
+            ]
+        );
 
+        // Handle file upload if present
         if ($updateActivityRequest->hasFile('file')) {
-            $data['file'] = $updateActivityRequest->file('file')->store('activityRequest', 'public'); // Adjust storage path as needed
+            // Delete old file if it exists
+            if ($activity->file) {
+                Storage::disk('public')->delete($activity->file);
+            }
+            // Store the new file
+            $data['file'] = $updateActivityRequest->file('file')->store('activityRequest', 'public');
         }
 
+        // Update the activity with new data
         $activity->update($data);
 
+        // Provide success feedback
         alert()->success('Activity Request Updated Successfully!');
 
+        // Redirect to the activity request index
         return redirect()->route('activity-request.index');
     }
 

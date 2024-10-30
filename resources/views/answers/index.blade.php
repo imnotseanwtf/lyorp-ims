@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('criteria.index') }}">Criteria</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('assign-answer.index', $assign->criteria->id) }}"></a>Review Answers
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Answer</li>
+        </ol>
+    </nav>
+
     <div class="card mt-3">
         <div class="card-header">
             <h3>{{ $assign->user->name }}</h3>
@@ -12,28 +22,12 @@
                         <div class="row text-center">
                             <h4>{{ $assign->criteria->name }}</h4>
                         </div>
-                        @foreach ($evaluationAnswers as $index => $evaluationAnswer)
+                        @foreach ($answers as $index => $answer)
                             <div class="row my-3">
                                 <div class="col">
                                     <p><strong>Question {{ $index + 1 }}:
-                                        </strong>{{ $evaluationAnswer->question->question }}</p>
-                                    <p><strong>Answer: </strong>{{ $evaluationAnswer->answer }}</p>
-                                    <div class="d-flex justify-content-between">
-                                        @foreach (App\Enums\RatingLegendsEnum::cases() as $item)
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio"
-                                                    name="ratings[{{ $evaluationAnswer->question->id }}]"
-                                                    id="rating-{{ $evaluationAnswer->question->id }}-{{ $item->value }}"
-                                                    value="{{ $item->value }}"
-                                                    @if ($evaluationAnswer->answer == $item->value) checked @endif disabled>
-                                                <!-- Disabled attribute to make it non-selectable -->
-                                                <label class="form-check-label"
-                                                    for="rating-{{ $evaluationAnswer->question->id }}-{{ $item->value }}">
-                                                    {{ $item->value }}
-                                                </label>
-                                            </div>
-                                        @endforeach
-                                    </div>
+                                        </strong>{{ $answer->question->question }}</p>
+                                    <p><strong>Answer: </strong>{{ $answer->answer }}</p>
                                 </div>
                             </div>
                         @endforeach

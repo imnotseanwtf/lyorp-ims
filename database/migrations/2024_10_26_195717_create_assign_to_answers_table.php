@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Criteria;
+use App\Models\Question;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,12 +14,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('evaluation_assign_to_answers', function (Blueprint $table) {
+        Schema::create('assign_to_answers', function (Blueprint $table) {
             $table->id();
 
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Criteria::class)->constrained()->cascadeOnDelete();
-            $table->boolean('is_answered')->default(false);
+            
+            $table->boolean('is_answered')->default(0);
 
             $table->timestamps();
         });
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('evaluation_assign_to_answers');
+        Schema::dropIfExists('assign_to_answers');
     }
 };

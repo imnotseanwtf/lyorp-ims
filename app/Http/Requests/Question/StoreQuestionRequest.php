@@ -23,7 +23,8 @@ class StoreQuestionRequest extends FormRequest
     {
         return [
             'criteria_id' => ['required', 'numeric', 'exists:criterias,id'],
-            'question' => ['required', 'string', 'max:255', 'unique:questions,question']
+            'question' => ['required', 'string', 'max:255', 'unique:questions,question'],
+            'answer_type' => ['required', 'string']
         ];
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Evaluation;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreEvaluationAnswerRequest extends FormRequest
+class StoreAnswerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class StoreEvaluationAnswerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'assign_id' => ['required', 'numeric', 'exists:evaluation_assign_to_answers,id'],
+            'assign_id' => ['required', 'numeric', 'exists:assign_to_answers,id'],
             'ratings' => ['required', 'array'],
             'ratings.*' => ['required', 'string'],
         ];

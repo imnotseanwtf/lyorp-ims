@@ -12,13 +12,19 @@ class ActivityRequest extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'content',
-        'file',
+        'activity_name',
+        'date',
+        'time',
+        'venue',
+        'specific_objectives',
+        'specific_outputs',
+        'topics',
+        'equipment',
         'status',
-        'user_id'
+        'file',
+        'user_id',
+        'is_notif'
     ];
-
 
     public function user(): BelongsTo
     {

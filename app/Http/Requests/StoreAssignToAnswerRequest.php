@@ -22,8 +22,8 @@ class StoreAssignToAnswerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['required', 'numeric', 'exists:users,id'],
-            'criteria_id' => ['required', 'numeric', 'exists:criterias,id'],
+            'user_id' => ['nullable', 'exists:users,id'],
+            'criteria_id' => ['required', 'exists:criterias,id'],
         ];
     }
 }

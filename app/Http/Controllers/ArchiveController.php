@@ -15,9 +15,11 @@ class ArchiveController extends Controller
      */
     public function index(ArchiveReportDataTable $archiveReportDataTable): JsonResponse | View
     {
-        return $archiveReportDataTable->render('archive.index');
+        $folderId = array_key_first(request()->query());
+
+        return $archiveReportDataTable->render('archive.index', compact('folderId'));
     }
-    
+
     public function show(Report $report): JsonResponse | View
     {
         return response()->json($report);

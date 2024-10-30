@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\AssignToAnswer;
 use App\Models\Criteria;
-use App\Models\EvaluationAssignToAnswer;
 use App\Models\Question;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -15,13 +15,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('evaluation_answers', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('answer');
 
-            $table->foreignIdFor(EvaluationAssignToAnswer::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(AssignToAnswer::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Question::class)->constrained()->cascadeOnDelete();
 
+            $table->string('answer');
+            $table->boolean('is_notif');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('evaluation_answers');
+        Schema::dropIfExists('answers');
     }
 };

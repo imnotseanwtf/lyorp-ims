@@ -15,12 +15,19 @@ return new class extends Migration
         Schema::create('activity_requests', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title');
-            $table->string('content');
-            $table->string('file');
-            $table->integer('status')->default(false);
+            $table->string('activity_name'); // Name of the activity
+            $table->date('date'); // Date of the activity
+            $table->time('time'); // Time of the activity
+            $table->string('venue'); // Venue of the activity
+            $table->text('specific_objectives'); // Specific objectives of the discussion
+            $table->text('specific_outputs'); // Specific outputs of the discussion
+            $table->json('topics')->nullable(); // JSON array of selected topics
+            $table->json('equipment')->nullable();
 
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->integer('status')->default(0);
+            $table->string('file');
+            $table->boolean('is_notif')->default(false);
 
             $table->timestamps();
         });

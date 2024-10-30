@@ -15,7 +15,9 @@ class AdminReportController extends Controller
      */
     public function index(AdminReportDataTable $adminReportDataTable): JsonResponse | View
     {
-        return $adminReportDataTable->render('admin-report.index');
+        $folderId = array_key_first(request()->query());
+
+        return $adminReportDataTable->render('admin-report.index', compact('folderId'));
     }
 
     /**

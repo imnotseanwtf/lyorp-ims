@@ -32,6 +32,7 @@ class User extends Authenticatable
         'list_of_member_in_good_standing',
         'constitution_and_by_laws',
         'endorsement_certification_from_proper_authority',
+        'address',
         'status',
     ];
 
@@ -58,9 +59,9 @@ class User extends Authenticatable
         ];
     }
 
-    public function evaluationAssignToAnswers(): HasMany
+    public function assignToAnswer(): HasMany
     {
-        return $this->hasMany(EvaluationAssignToAnswer::class);
+        return $this->hasMany(AssignToAnswer::class);
     }
 
     public function isOrganization()
@@ -76,5 +77,16 @@ class User extends Authenticatable
     public function reports(): HasMany
     {
         return $this->hasMany(Report::class);
+    }
+
+    public function activityRequests(): HasMany
+    {
+        return $this->hasMany(ActivityRequest::class);
+    }
+
+    // in User model
+    public function certificates()
+    {
+        return $this->hasMany(Certificate::class);
     }
 }

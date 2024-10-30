@@ -10,9 +10,11 @@
             </div>
             <div class="col-md-6">
                 <div class="title mb-30 text-end">
-                    <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
-                        Create Certificate
-                    </button>
+                    @admin
+                        <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
+                            Create Certificate
+                        </button>
+                    @endadmin
                 </div>
             </div>
         </div>
@@ -27,21 +29,20 @@
     {{-- CREATE certificate --}}
     @include('certificate.modals.create')
 
-    {{-- EDIT certificate --}}
-    @include('certificate.modals.edit')
-
-    {{-- VIEW certificate --}}
-    @include('certificate.modals.view')
-
     {{-- DELETE certificate --}}
     @include('certificate.modals.delete')
-
 @endsection
 
 @push('scripts')
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script type="module">
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'))
+            tooltipTriggerList.forEach(function(tooltipTriggerEl) {
+                new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        });
         $(() => {
             const tableInstance = window.LaravelDataTables['certificate_dataTable'] = $('#certificate_dataTable')
                 .DataTable()
@@ -52,7 +53,7 @@
                         .then(response => response.json())
                         .then(certificate => {
                             $('#view_name').val(certificate.name);
-                            
+
                             function setLinkOrMessage(fileKey, linkId, inputId) {
                                 const fileName = certificate[fileKey];
                                 if (fileName) {

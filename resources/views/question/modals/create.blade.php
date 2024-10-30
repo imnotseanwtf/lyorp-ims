@@ -16,13 +16,24 @@
 
                     <input type="number" class="d-none" value="{{ $criteriaId }}" name="criteria_id">
 
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="question">Question</label>
                         <textarea type="text" class="form-control" name="question" placeholder="Enter Question" value="{{ old('question') }}"
                             required></textarea>
                         @error('question')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="">Select Answer Type</label>
+                        <select name="answer_type" required class="form-control">
+                            <option value="" selected disabled>Select</option>
+                            <option value="Yes Or No">Yes Or No</option>
+                            <option value="Likert Scales">Likert Scales</option>
+                            <option value="Rating Legends">Rating Legends</option>
+                            <option value="Input">Input</option>
+                        </select>
                     </div>
 
                     <div class="modal-footer">

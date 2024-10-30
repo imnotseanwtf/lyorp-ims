@@ -29,6 +29,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
 
             $table->boolean('status')->default(true);
+            $table->boolean('is_notif')->default(false);
 
             $table->timestamps();
         });

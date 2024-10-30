@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\AssignToAnswer;
 use App\Models\Certificate;
-use App\Models\EvaluationAssignToAnswer;
 use App\Models\Report;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -40,7 +40,7 @@ class HomeController extends Controller
             ->role('organization')
             ->count();
 
-        $evaluationPending = EvaluationAssignToAnswer::where('user_id', $userId)
+        $evaluationPending = AssignToAnswer::where('user_id', $userId)
             ->where('is_answered', false)
             ->count();
 
@@ -52,6 +52,6 @@ class HomeController extends Controller
 
         $reportCount = Report::count();
 
-        return view('home', compact('approvedOrganization', 'pendingOrganization', 'announcementCount', 'reportCount', 'reportSent', 'evaluationPending', 'certificateRecieved', 'announcements'));
+        return view('home', compact('approvedOrganization', 'pendingOrganization', 'announcementCount', 'reportCount', 'reportSent', 'certificateRecieved', 'announcements', 'evaluationPending'));
     }
 }

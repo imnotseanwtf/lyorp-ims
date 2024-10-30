@@ -19,7 +19,7 @@ class QuestionController extends Controller
      */
     public function index(QuestionDataTable $questionDataTable): JsonResponse | View
     {
-        $criteria = Criteria::find(array_key_first(request()->query())); 
+        $criteria = Criteria::find(array_key_first(request()->query()));
         $criteriaName = $criteria->name;
         $criteriaId = $criteria->id;
 
@@ -31,7 +31,13 @@ class QuestionController extends Controller
      */
     public function store(StoreQuestionRequest $storeQuestionRequest): RedirectResponse
     {
-        $question = Question::create($storeQuestionRequest->validated());
+        $question = Question::create(
+            $storeQuestionRequest->validated()
+                +
+                [
+                    'user_id' => auth()->id(),
+                ]
+        );
 
         alert()->success('Question Created Successfully!');
 

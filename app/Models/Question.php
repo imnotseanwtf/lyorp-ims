@@ -12,7 +12,9 @@ class Question extends Model
 
     protected $fillable = [
         'criteria_id',
-        'question'
+        'question',
+        'answer_type',
+        'user_id'
     ];
 
     public function criteria(): BelongsTo

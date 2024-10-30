@@ -103,6 +103,20 @@
                                 </div>
                             </div>
 
+                            <div class="col-12">
+                                <div class="input-style-1">
+                                    <label for="name">{{ __('Address') }} <span style="color: red;">*</span></label>
+                                    <input type="text" @error('address') class="form-control is-invalid" @enderror
+                                        name="address" id="address" placeholder="{{ __('Address') }}"
+                                        value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                    @error('address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <!-- end col -->
 
                             <div class="col-6">

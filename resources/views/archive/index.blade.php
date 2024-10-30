@@ -1,6 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('folder.index') }}">Folders</a></li>
+            @admin
+                <li class="breadcrumb-item"><a href="{{ route('admin-report.index', $folderId) }}">Reports</a></li>
+            @endadmin
+            @organization
+                <li class="breadcrumb-item"><a href="{{ route('user-report.index', $folderId) }}">Reports</a></li>
+            @endorganization
+            <li class="breadcrumb-item active" aria-current="page">Archive</li>
+        </ol>
+    </nav>
+
     <div class="title-wrapper pt-30">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -29,8 +44,15 @@
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script type="module">
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'))
+            tooltipTriggerList.forEach(function(tooltipTriggerEl) {
+                new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        });
         $(() => {
-            const tableInstance = window.LaravelDataTables['archiveReport_dataTable'] = $('#archiveReport_dataTable')
+            const tableInstance = window.LaravelDataTables['archiveReport_dataTable'] = $(
+                    '#archiveReport_dataTable')
                 .DataTable()
             tableInstance.on('draw.dt', function() {
 

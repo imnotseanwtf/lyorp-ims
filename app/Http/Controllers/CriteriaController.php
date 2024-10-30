@@ -27,7 +27,13 @@ class CriteriaController extends Controller
      */
     public function store(StoreCriteriaRequest $storeCriteriaRequest): RedirectResponse
     {
-        Criteria::create($storeCriteriaRequest->validated());
+        Criteria::create(
+            $storeCriteriaRequest->validated()
+                +
+                [
+                    'user_id' => auth()->id()
+                ]
+        );
 
         alert()->success('Criteria Created Successfully!');
 

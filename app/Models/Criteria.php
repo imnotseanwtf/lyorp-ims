@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Criteria extends Model
@@ -11,7 +12,8 @@ class Criteria extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'user_id'
     ];
 
     public function questions(): HasMany
@@ -19,8 +21,8 @@ class Criteria extends Model
         return $this->hasMany(Question::class);
     }
 
-    public function evaluationAssignToAnswers(): HasMany
+    public function user(): BelongsTo
     {
-        return $this->hasMany(EvaluationAssignToAnswer::class);
+        return $this->belongsTo(User::class);
     }
 }

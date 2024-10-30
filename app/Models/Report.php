@@ -22,7 +22,8 @@ class Report extends Model
         'recruitment',
         'meeting_conducted',
         'others',
-        'status'
+        'status',
+        'is_notif'
     ];
     
 
