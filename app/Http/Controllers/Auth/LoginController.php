@@ -42,7 +42,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        if ($user->status === null || $user->status === '') {
+        if ($user->status == 0) {
             auth()->logout();
 
             throw ValidationException::withMessages([
@@ -52,7 +52,7 @@ class LoginController extends Controller
             return redirect()->route('login');
         }
 
-        if ($user->status == false || $user->status == 0) {
+        if ($user->status == 2) {
             auth()->logout();
 
             throw ValidationException::withMessages([
@@ -61,6 +61,8 @@ class LoginController extends Controller
 
             return redirect()->route('login');
         }
+
+        $user->update(['is_login' => true]);
 
         return redirect()->route('home');
     }

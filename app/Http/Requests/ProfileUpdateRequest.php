@@ -14,13 +14,13 @@ class ProfileUpdateRequest extends FormRequest
             // Basic Information
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'string', 'max:255', Rule::unique('users')->ignore(Auth::user())],
-            'name_of_the_primary_representative' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required', 'string', 'max:20', 'regex:/^([0-9\s\-\+\(\)]*)$/'],
+            'name_of_the_primary_representative' => ['nullable', 'string', 'max:255'],
+            'phone_number' => ['nullable', 'string', 'max:20', 'regex:/^([0-9\s\-\+\(\)]*)$/'],
 
             // Personal Information
-            'age' => ['required', 'integer', 'min:1', 'max:150'],
-            'sex' => ['required', 'string', 'in:male,female'],
-            'address' => ['required', 'string', 'max:500'],
+            'age' => ['nullable', 'integer', 'min:1', 'max:150'],
+            'sex' => ['nullable', 'string', 'in:male,female'],
+            'address' => ['nullable', 'string', 'max:500'],
 
             // Social Media
             'facebook_url' => ['nullable', 'url', 'max:255'],

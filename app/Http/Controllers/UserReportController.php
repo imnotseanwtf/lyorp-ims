@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\UserReportDataTable;
 use App\Http\Requests\Report\StoreReportRequest;
 use App\Http\Requests\Report\UpdateReportRequest;
+use App\Models\ActivityRequest;
 use App\Models\Report;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -28,10 +29,13 @@ class UserReportController extends Controller
      */
     public function store(StoreReportRequest $storeReportRequest): RedirectResponse
     {
+        $activityRequestCount = ActivityRequest::where('status', true)->count();
+
         $userId = auth()->id();
 
         $report = Report::create($storeReportRequest->except('file') +
             [
+                'seminars_and_activities_conducted' => $activityRequestCount,
                 'user_id' => $userId,
                 'file' => $storeReportRequest->file('file')->store('userReports', 'public')
             ]);

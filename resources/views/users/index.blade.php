@@ -15,6 +15,20 @@
                     <h2>{{ __('Organizations') }}</h2>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="dropdown text-end">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
+                        Filter
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{{ route('users.index') }}">All</a></li>
+                        <li><a class="dropdown-item" href="{{ route('users.index', 0) }}">Pending</a></li>
+                        <li><a class="dropdown-item" href="{{ route('users.index', 1) }}">Accepted</a></li>
+                        <li><a class="dropdown-item" href="{{ route('users.index', 2) }}">Rejected</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -36,7 +50,7 @@
 
 @push('scripts')
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
-    
+
     <script type="module">
         document.addEventListener('DOMContentLoaded', function() {
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'))

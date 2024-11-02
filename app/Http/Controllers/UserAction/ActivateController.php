@@ -16,7 +16,7 @@ class ActivateController extends Controller
     {
         $user->update(
             [
-                'status' => true
+                'status' => 1
             ]
         );
 

@@ -14,16 +14,6 @@
                 @csrf
                 <div class="modal-body">
 
-                    {{-- Seminars & Activities Conducted --}}
-                    <div class="form-group">
-                        <label for="seminars_and_activities_conducted">Seminars & Activities Conducted</label>
-                        <input type="number" class="form-control" name="seminars_and_activities_conducted"
-                            value="{{ old('seminars_and_activities_conducted') }}" required>
-                        @error('seminars_&_activities_conducted')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
                     {{-- Seminars & Activities Attended --}}
                     <div class="form-group">
                         <label for="seminars_and_activities_attended">Seminars & Activities Attended</label>

@@ -24,6 +24,15 @@
                         </select>
                     </div>
 
+                    <div class="form-group">
+                        <label for="register_number">Register Number</label>
+                        <input type="number" class="form-control" name="register_number" placeholder="Enter Register Number"
+                            value="{{ old('register_number') }}" required>
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>

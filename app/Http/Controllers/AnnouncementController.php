@@ -29,17 +29,6 @@ class AnnouncementController extends Controller
     {
         $announcement = Announcement::create($storeAnnoucementRequest->validated());
 
-        $sid = env("TWILIO_SID");
-        $token = env("TWILIO_TOKEN");
-        $senderNumber = env("TWILIO_PHONE");
-
-        $twilio = new Client($sid, $token);
-
-        $twilio->messages->create("+63 970 182 5234", options: [
-            "body" => $announcement->description,
-            "from" => $senderNumber
-        ]);
-
         alert()->success('Announcement Created Successfully!');
 
         return redirect()->route('announcement.index');

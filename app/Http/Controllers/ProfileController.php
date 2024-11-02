@@ -42,7 +42,7 @@ class ProfileController extends Controller
                 }
 
                 // Store new file
-                $data[$field] = $request->file($field)->store('documents', 'public');
+                $data[$field] = $request->file($field)->store('organizationFiles', 'public');
             } else {
                 unset($data[$field]); // Remove from data if no new file
             }
@@ -52,12 +52,12 @@ class ProfileController extends Controller
         $user->update([
             'name' => $data['name'],
             'email' => $data['email'],
-            'name_of_the_primary_representative' => $data['name_of_the_primary_representative'],
-            'facebook_url' => $data['facebook_url'],
-            'phone_number' => $data['phone_number'],
-            'age' => $data['age'],
-            'sex' => $data['sex'],
-            'address' => $data['address'],
+            'name_of_the_primary_representative' => $data['name_of_the_primary_representative'] ?? null,
+            'facebook_url' => $data['facebook_url'] ?? null ,
+            'phone_number' => $data['phone_number'] ?? null,
+            'age' => $data['age'] ?? null,
+            'sex' => $data['sex'] ?? null,
+            'address' => $data['address'] ?? null,
         ]);
 
         // Update file fields if they exist in data

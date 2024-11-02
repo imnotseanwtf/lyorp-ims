@@ -5,7 +5,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Technical Assist</li>
+            <li class="breadcrumb-item active" aria-current="page">Technical Assistance</li>
         </ol>
     </nav>
 
@@ -13,7 +13,7 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="title mb-30">
-                    <h2>{{ __('Technical Assist') }}</h2>
+                    <h2>{{ __('Technical Assistance') }}</h2>
                 </div>
             </div>
             <div class="col-md-6">
@@ -123,6 +123,8 @@
                                 const fileName = activity[fileKey];
                                 if (fileName) {
                                     $(`#${linkId}`).attr('href', '/storage/' + fileName).show();
+                                    $(`#${inputId}`).val(fileName);
+                                    $(`#${inputId}`).show();
                                 } else {
                                     $(`#${linkId}`).hide();
                                     $(`#${inputId}`).val('No file').show();

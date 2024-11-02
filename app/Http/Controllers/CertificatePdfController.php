@@ -15,10 +15,11 @@ class CertificatePdfController extends Controller
     {
         $data = [
             'organizationName' => $certificate->user->name,
+            'registerNumber' => $certificate->register_number,
         ];
 
         $pdf = Pdf::loadView('certificate.pdf', $data);
 
-        return $pdf->stream('certicate');
+        return $pdf->stream('certicate.pdf');
     }
 }

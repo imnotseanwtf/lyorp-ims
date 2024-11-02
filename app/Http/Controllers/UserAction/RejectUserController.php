@@ -16,7 +16,7 @@ class RejectUserController extends Controller
     {
         $user->update(
             [
-                'status' => false
+                'status' => 2
             ]
         );
 

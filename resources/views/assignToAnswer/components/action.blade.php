@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-around">
     @if ($assign->is_answered == true)
         <!-- View answered assignment button with tooltip -->
-        <a href="{{ route('answered', $assign->id) }}" class="btn btn-info" title="View Answered Assignment">
+        <a href="{{ route('answered', $assign->id) }}" class="btn btn-info" title="Additional Information">
             <i class="fa-solid fa-eye"></i>
         </a>
     @endif

@@ -6,7 +6,8 @@
             <div class="signin-wrapper">
                 <div class="form-wrapper">
                     <div class="text-center">
-                        <img src="{{ asset('images/logo/logo-ym.jpg') }}" alt="" style="height: 150px; width: 150px;" class="mt-2">
+                        <img src="{{ asset('images/logo/logo-ym.jpg') }}" alt="" style="height: 150px; width: 150px;"
+                            class="mt-2">
                         <h2 class="mb-3">{{ __('Localized Youth Organization Registration Program') }}</h2>
                         <h4 class="mb-3">{{ __('Login') }}</h4>
                     </div>
@@ -34,6 +35,10 @@
                                     <input type="password" @error('password') class="form-control is-invalid" @enderror
                                         name="password" id="password" placeholder="{{ __('Password') }}" required
                                         autocomplete="current-password">
+                                    <i class="fa-solid fa-eye-slash toggle-password position-absolute"
+                                        style="right: 10px; top: 70%; transform: translateY(-50%); cursor: pointer;"
+                                        onclick="togglePasswordVisibility('password', this)">
+                                    </i>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -83,4 +88,19 @@
         </div>
     </div>
     <!-- end col -->
+
+    <script>
+        function togglePasswordVisibility(inputId, icon) {
+            const passwordInput = document.getElementById(inputId);
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+    </script>
 @endsection

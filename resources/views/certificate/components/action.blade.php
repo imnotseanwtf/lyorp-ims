@@ -4,9 +4,11 @@
         <i class="fa-solid fa-eye"></i>
     </a>
 
-    <!-- Delete certificate button with tooltip -->
-    <button class="btn btn-danger deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"
-        data-certificate="{{ $certificate->id }}" title="Delete Certificate">
-        <i class="fa-solid fa-trash"></i>
-    </button>
+    @admin
+        <!-- Delete certificate button with tooltip -->
+        <button class="btn btn-danger deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"
+            data-certificate="{{ $certificate->id }}" title="Delete Certificate">
+            <i class="fa-solid fa-trash"></i>
+        </button>
+    @endadmin
 </div>

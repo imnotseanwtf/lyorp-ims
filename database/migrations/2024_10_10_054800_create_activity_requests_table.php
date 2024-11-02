@@ -25,7 +25,7 @@ return new class extends Migration
             $table->json('equipment')->nullable();
 
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(false);
             $table->string('file');
             $table->boolean('is_notif')->default(false);
 

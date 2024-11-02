@@ -9,10 +9,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<body style="background-color: #FBFBFB">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: rgba(0, 0, 0, 0.05);">
         <div class="container-fluid">
             <a class="navbar-brand ms-auto px-5" href="#">
                 <img src="{{ asset('images/logo/logo-ym.jpg') }}" alt="Logo" width="80" height="80">
@@ -48,75 +52,81 @@
         </div>
     </nav>
 
-    <div class="container text-center pt-5 pb-5">
-        <h1>FAQs</h1>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5>What is LYORP?</h5>
-                        <p>Localized Youth Organization Registration Program or LYORP is a program of City Social
-                            Services Department thru Youth Development Section that facilitates the registration of
-                            youth organizations and youth-serving organization to ensure access and participation to
-                            Youth Development Programs by the City of Calamba.</p>
+    <div class="container-fluid faq">
+        <div class="container text-center pt-5 pb-5">
+            <img src="{{ asset('images/welcome/faq1.jpg') }}" alt="" srcset=""
+                style="height: 300px; width:500px;">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5>What is LYORP?</h5>
+                            <p>Localized Youth Organization Registration Program or LYORP is a program of City Social
+                                Services Department thru Youth Development Section that facilitates the registration of
+                                youth organizations and youth-serving organization to ensure access and participation to
+                                Youth Development Programs by the City of Calamba.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5>What are the requirements to register?</h5>
-                        <p>
-                            There are five (5) documentary requirements to prepare:
-                        <ul>
-                            <li>Registration Form</li>
-                            <li>Directory of Officers/Adviser</li>
-                            <li>List of Members in Good Standing</li>
-                            <li>Constitution and By Laws</li>
-                            <li>Endorsement Letter</li>
-                        </ul>
-                        </p>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5>What are the requirements to register?</h5>
+                            <p>
+                                There are five (5) documentary requirements to prepare:
+                            <ul>
+                                <li>Registration Form</li>
+                                <li>Directory of Officers/Adviser</li>
+                                <li>List of Members in Good Standing</li>
+                                <li>Constitution and By Laws</li>
+                                <li>Endorsement Letter</li>
+                            </ul>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5>How to register to LYORP?</h5>
-                        <p>
-                            You may register your organization thru this link:
-                            <a href="{{ route('register') }}">Register</a><br>
-                            Or you may visit LG10 City Social Services Department, Bacnotan Rd, Brgy. Real, Calamba City
-                            and look for Mr. Kenneth John H. Capunitan and Mrs. Eden C. Robas.
-                        </p>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5>How to register to LYORP?</h5>
+                            <p>
+                                You may register your organization thru this link:
+                                <a href="{{ route('register') }}">Register</a><br>
+                                Or you may visit LG10 City Social Services Department, Bacnotan Rd, Brgy. Real, Calamba
+                                City
+                                and look for Mr. Kenneth John H. Capunitan and Mrs. Eden C. Robas.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5>What are the benefits of being a LYORP Member?</h5>
-                        <p>
-                        <ul>
-                            <li>To avail free training exclusively for LYORP;</li>
-                            <li>To use the LYORP logo/seal in letters, publication materials, collaterals and others;
-                            </li>
-                            <li>To be prioritized in the selection of representatives for youth consultations, Youth
-                                Development Section events, provincial and national programs etc.;</li>
-                            <li>To request for endorsement from YDS thru LYORP advisory;</li>
-                            <li>Help in marketing/advertising youth-led projects thru the City Youth Development Offices
-                                social media platform;</li>
-                            <li>Technical and logistical assistance to youth-led projects;</li>
-                            <li>and more.</li>
-                        </ul>
-                        </p>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5>What are the benefits of being a LYORP Member?</h5>
+                            <p>
+                            <ul>
+                                <li>To avail free training exclusively for LYORP;</li>
+                                <li>To use the LYORP logo/seal in letters, publication materials, collaterals and
+                                    others;
+                                </li>
+                                <li>To be prioritized in the selection of representatives for youth consultations, Youth
+                                    Development Section events, provincial and national programs etc.;</li>
+                                <li>To request for endorsement from YDS thru LYORP advisory;</li>
+                                <li>Help in marketing/advertising youth-led projects thru the City Youth Development
+                                    Offices
+                                    social media platform;</li>
+                                <li>Technical and logistical assistance to youth-led projects;</li>
+                                <li>and more.</li>
+                            </ul>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
 
     <footer>
         <!-- Section: Links  -->
@@ -128,13 +138,10 @@
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4">
-                            YOUTH ORGANIZATION REGISTRATION PROGRAM
+                            Localized Youth Organization Registration Program
                         </h6>
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque inventore temporibus
-                            corrupti
-                            quisquam error assumenda, perferendis ipsam maxime esse ipsa, fugit quibusdam sed aperiam
-                            accusamus enim. Voluptatibus repudiandae aspernatur molestiae?
+
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -146,16 +153,9 @@
                             Socials
                         </h6>
                         <p>
-                            <a href="#!" class="text-reset">Facebook</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Instagram</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Twitter</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Threads</a>
+                            <i class="fab fa-facebook"></i>
+                            <a href="https://www.facebook.com/CalambaCityYouthDevelopmentOffice?mibextid=ZbWKwL"
+                                class="text-reset">Facebook</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -165,13 +165,18 @@
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p><i class="fas fa-home me-3"></i>Calamba Laguna</p>
                         <p>
                             <i class="fas fa-envelope me-3"></i>
-                            lyorpcalamba.secretariat@gmail.com
+                            <a
+                                href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCGldMrbLrkdhHjBNlckXHKvrDVcfRdtJhcxnsThjbQlBfpQzRwfMQmfxCdcPrVnjwHBKg">Lyorpcalamba.secretariat@gmail.com</a>
                         </p>
-                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            <a
+                                href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCGldMrbLrkdhHjBNlckXHKvrDVcfRdtJhcxnsThjbQlBfpQzRwfMQmfxCdcPrVnjwHBKg">ydscalamba@gmail.com</a>
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> <b>+ (045) 545 6783 (loc 8120)</b></p>
                     </div>
                     <!-- Grid column -->
                 </div>

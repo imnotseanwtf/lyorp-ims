@@ -9,6 +9,10 @@
         data-criteria="{{ $criteria->id }}" title="Edit Criteria">
         <i class="fa-solid fa-pen"></i>
     </button>
+    <!-- Assign answer button with tooltip -->
+    <a href="{{ route('assign-answer.index', $criteria->id) }}" class="btn btn-success" title="Assign Answer">
+        <i class="fa-solid fa-pen-to-square"></i>
+    </a>
 
     <!-- Delete criteria button with tooltip -->
     <button class="btn btn-danger deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"
@@ -16,8 +20,5 @@
         <i class="fa-solid fa-trash"></i>
     </button>
 
-    <!-- Assign answer button with tooltip -->
-    <a href="{{ route('assign-answer.index', $criteria->id) }}" class="btn btn-success" title="Assign Answer">
-        <i class="fa-solid fa-pen-to-square"></i>
-    </a>
+
 </div>

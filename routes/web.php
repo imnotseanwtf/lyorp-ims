@@ -9,10 +9,12 @@ use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AnsweredController;
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\AssignToAnswerController;
+use App\Http\Controllers\AuditController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CertificatePdfController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\FolderController;
+use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ReportAction\SoftDeleteReportController;
 use App\Http\Controllers\UserAction\ActivateController;
@@ -30,11 +32,18 @@ Route::get('/faqs', function () {
     return view('faq');
 })->name('faq');
 
-Auth::routes();
+Auth::routes(
+    [
+        'logout' => false
+    ]
+);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
+
+    Route::post('/logout', LogOutController::class)->name('logout');
+
     Route::get('archive', [ArchiveController::class, 'index'])->name('archive.index');
     Route::get('archive/{report}', [ArchiveController::class, 'show'])->name('archive.show');
     Route::get('answered/{id}', AnsweredController::class)->name('answered');
@@ -62,6 +71,8 @@ Route::middleware('auth')->group(function () {
 
 
     Route::middleware('role:admin')->group(function () {
+
+        Route::get('/events', AuditController::class)->name('events');
 
         // RESOURCES
         Route::resources(

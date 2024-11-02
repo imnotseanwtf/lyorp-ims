@@ -24,6 +24,8 @@ class UpdateAnnoucementRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:1000'],
+            'announce_on' => ['required', 'date'],
+            'end_on' => ['required', 'date'],
         ];
     }
 }

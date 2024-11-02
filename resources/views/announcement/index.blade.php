@@ -12,7 +12,7 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="title mb-30">
-                    <h2>{{ __('Annoucement') }}</h2>
+                    <h2>{{ __('Announcement') }}</h2>
                 </div>
             </div>
             <div class="col-md-6">

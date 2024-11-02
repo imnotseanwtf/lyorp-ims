@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-around">
     <!-- View activity button with tooltip -->
     <button class="btn btn-info viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"
-        data-activity="{{ $activity->id }}" title="View Activity">
+        data-activity="{{ $activity->id }}" title="Additional Information">
         <i class="fa-solid fa-eye"></i>
     </button>
 
@@ -14,17 +14,19 @@
     @endorganization
 
     @admin
-        <!-- Accept activity button with tooltip -->
-        <button class="btn btn-success acceptBtn" data-bs-toggle="modal" data-bs-target="#acceptModal"
-            data-activity="{{ $activity->id }}" title="Accept Activity">
-            <i class="fa-solid fa-check"></i>
-        </button>
+        @if (!$activity->status)
+            <!-- Accept activity button with tooltip -->
+            <button class="btn btn-success acceptBtn" data-bs-toggle="modal" data-bs-target="#acceptModal"
+                data-activity="{{ $activity->id }}" title="Accept Activity">
+                <i class="fa-solid fa-check"></i>
+            </button>
 
-        <!-- Reject activity button with tooltip -->
-        <button class="btn btn-danger rejectBtn" data-bs-toggle="modal" data-bs-target="#rejectModal"
-            data-activity="{{ $activity->id }}" title="Reject Activity">
-            <i class="fa-solid fa-times"></i>
-        </button>
+            <!-- Reject activity button with tooltip -->
+            <button class="btn btn-danger rejectBtn" data-bs-toggle="modal" data-bs-target="#rejectModal"
+                data-activity="{{ $activity->id }}" title="Reject Activity">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        @endif
     @endadmin
 
     @organization

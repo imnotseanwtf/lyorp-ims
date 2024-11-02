@@ -13,6 +13,8 @@ class Announcement extends Model
     protected $fillable = [
         'title',
         'description',
+        'announce_on',
+        'end_on',
+        'is_texted',
     ];
-
 }

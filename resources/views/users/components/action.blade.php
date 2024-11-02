@@ -1,11 +1,11 @@
 <div class="d-flex justify-content-around">
     <!-- View button with tooltip -->
     <button class="btn btn-info viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal" data-user="{{ $user->id }}"
-        title="View User">
+        title="Additional Information">
         <i class="fa-solid fa-eye"></i>
     </button>
 
-    @if ($user->status == true)
+    @if ($user->status === 1)
         <div class="dropdown">
             <!-- Dropdown button with tooltip -->
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -40,7 +40,7 @@
                 </li>
             </ul>
         </div>
-    @elseif($user->status === null)
+    @elseif($user->status == 0)
         <!-- Activate button with tooltip -->
         <button class="btn btn-success activateBtn" data-bs-toggle="modal" data-bs-target="#activateModal"
             data-user="{{ $user->id }}" title="Activate User">

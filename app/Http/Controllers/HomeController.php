@@ -7,6 +7,7 @@ use App\Models\AssignToAnswer;
 use App\Models\Certificate;
 use App\Models\Report;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,6 +29,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $userId = auth()->id();
 
         $reportSent = Report::where('user_id', $userId)->count();;
@@ -48,7 +50,11 @@ class HomeController extends Controller
 
         $announcementCount = Announcement::count();
 
-        $announcements = Announcement::orderBy('created_at', 'desc')->get();
+        $announcements = Announcement::where('announce_on', '<=', Carbon::today())
+            ->where('end_on', '>=', Carbon::today())
+            ->orderBy('created_at', 'desc')
+            ->get();
+
 
         $reportCount = Report::count();
 

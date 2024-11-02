@@ -8,6 +8,9 @@
     <title>Localized Youth Organization Registration Program</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -42,8 +45,8 @@
     }
 </style>
 
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<body style="background-color: #FBFBFB">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: rgba(0, 0, 0, 0.05);">
         <div class="container-fluid">
             <a class="navbar-brand ms-auto px-5" href="#">
                 <img src="{{ asset('images/logo/logo-ym.jpg') }}" alt="Logo" width="80" height="80">
@@ -78,7 +81,8 @@
             </div>
         </div>
     </nav>
-    <div id="carouselExampleCaptions" class="carousel slide" style="height: 700px;"> <!-- Set fixed height here -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="height: 700px;">
+        <!-- Carousel Indicators -->
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
@@ -86,39 +90,79 @@
                 aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
+                aria-label="Slide 6"></button>
         </div>
-        <div class="carousel-inner" style="height: 100%;"> <!-- Full height of the carousel -->
+
+        <!-- Carousel Inner -->
+        <div class="carousel-inner" style="height: 100%;">
+            <!-- Slide 1 -->
             <div class="carousel-item active" style="height: 100%;">
-                <img src="{{ asset('images/homepage/calambacityhall.jpg') }}" class="d-block w-100 h-100 carousel-image"
-                    alt="..." style="object-fit: cover;">
-                <div class="overlay"></div> <!-- Overlay Div -->
-                <div class="carousel-caption d-none d-md-block text-end" style="z-index: 2;">
-                    <h2>CSSD-LYORP</h2>
-                    <p>Calamba City Youth Development Office</p>
-                    <a href="{{ route('register') }}" class="btn btn-primary">Join Us</a>
+                <img src="images/welcome/1.jpg" class="d-block w-100 h-100" alt="Slide 1" style="object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block text-end">
+                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
+                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
+                    <a href="#" class="btn btn-primary">Join Us</a>
                 </div>
             </div>
-            {{-- <div class="carousel-item" style="height: 100%;">
-                <img src="..." class="d-block w-100 h-100 carousel-image" alt="..."
-                    style="object-fit: cover;">
-                <div class="overlay"></div> <!-- Overlay Div -->
-                <div class="carousel-caption d-none d-md-block text-end" style="z-index: 2;">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                    <button class="btn btn-primary">Button</button>
-                </div>
-            </div>
+
+            <!-- Slide 2 -->
             <div class="carousel-item" style="height: 100%;">
-                <img src="..." class="d-block w-100 h-100 carousel-image" alt="..."
-                    style="object-fit: cover;">
-                <div class="overlay"></div> <!-- Overlay Div -->
-                <div class="carousel-caption d-none d-md-block text-end" style="z-index: 2;">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                    <button class="btn btn-primary">Button</button>
+                <img src="images/welcome/2.jpg" class="d-block w-100 h-100" alt="Slide 2" style="object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block text-end">
+                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
+                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
+                    <a href="#" class="btn btn-primary">Join Us</a>
                 </div>
-            </div> --}}
+            </div>
+
+            <!-- Additional Slides (3-6) -->
+            <div class="carousel-item" style="height: 100%;">
+                <img src="images/welcome/3.jpg" class="d-block w-100" alt="Slide 3"
+                    style="object-fit:contain; height: 700px">
+                <div class="carousel-caption d-none d-md-block text-end">
+                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
+                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
+                    <a href="#" class="btn btn-primary">Join Us</a>
+                </div>
+            </div>
+
+            <div class="carousel-item" style="height: 100%;">
+                <img src="images/welcome/4.jpg" class="d-block w-100" alt="Slide 4"
+                    style="object-fit:contain; height: 700px">
+                <div class="carousel-caption d-none d-md-block text-end">
+                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
+                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
+                    <a href="#" class="btn btn-primary">Join Us</a>
+                </div>
+            </div>
+
+            <div class="carousel-item" style="height: 100%;">
+                <img src="images/welcome/5.jpg" class="d-block w-100" alt="Slide 5"
+                    style="object-fit:contain; height: 700px">
+                <div class="carousel-caption d-none d-md-block text-end">
+                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
+                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
+                    <a href="#" class="btn btn-primary">Join Us</a>
+                </div>
+            </div>
+
+            <div class="carousel-item" style="height: 100%;">
+                <img src="images/welcome/6.jpg" class="d-block w-100" alt="Slide 6"
+                    style="object-fit:contain; height: 700px">
+                <div class="carousel-caption d-none d-md-block text-end">
+                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
+                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
+                    <a href="#" class="btn btn-primary">Join Us</a>
+                </div>
+            </div>
         </div>
+
+        <!-- Carousel Controls -->
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -131,9 +175,8 @@
         </button>
     </div>
 
-    <hr>
-    <div class="container mb-5">
-        <h2>About Us</h2>
+    <div class="container mb-5 mt-5">
+        <h2>City Social Services Department</h2>
         <div class="row">
             <div class="col">
                 <div class="card h-100">
@@ -170,6 +213,41 @@
             </div>
         </div>
     </div>
+
+    <hr>
+
+    <div class="container">
+        <h2>Article II. VISION, MISSION, CORE VALUES</h2>
+        <div class="d-flex ">
+            <div class="container-fluid" style="margin-top: 100px;">
+                <h2>Section 2.1. Vision Statement</h2>
+                <p style="font-size: 20px">The CCYDC envision a participative, globally competitive, and empowered <br>
+                    youth of Calamba City with
+                    realized needs and aspirations living in an inclusive and <br> sustainable community.</p>
+            </div>
+            <img src="{{ asset('images/welcome/vision.jpg') }}" alt="" srcset=""
+                style="width: 800px; height:300px;">
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <div class="d-flex ">
+            <img src="{{ asset('images/welcome/mission.jpg') }}" alt="" srcset=""
+                style="width: 800px; height:300px;">
+            <div class="container-fluid mx-3" style="margin-top: 50px;">
+                <h2>Section 2.2. Mission Statement</h2>
+                <p style="font-size: 20px">The CCYDC as the core of advocacy on the participation of the young
+                    Calambeños in nation-building and youth empowerment-commit to ensure that all youth subsectors are
+                    represented and that the Local Youth Development Plan be effectively and efficiently delivered to
+                    the youth of Calamba City through critical engagement and monitoring of all PPAs indicated.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
     <hr>
     <footer>
         <!-- Section: Links  -->
@@ -196,11 +274,9 @@
                             Socials
                         </h6>
                         <p>
+                            <i class="fab fa-facebook"></i>
                             <a href="https://www.facebook.com/CalambaCityYouthDevelopmentOffice?mibextid=ZbWKwL"
                                 class="text-reset">Facebook</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Instagram</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -210,13 +286,18 @@
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p><i class="fas fa-home me-3"></i>Calamba Laguna</p>
                         <p>
                             <i class="fas fa-envelope me-3"></i>
-                            lyorpcalamba.secretariat@gmail.com
+                            <a
+                                href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCGldMrbLrkdhHjBNlckXHKvrDVcfRdtJhcxnsThjbQlBfpQzRwfMQmfxCdcPrVnjwHBKg">Lyorpcalamba.secretariat@gmail.com</a>
                         </p>
-                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            <a
+                                href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCGldMrbLrkdhHjBNlckXHKvrDVcfRdtJhcxnsThjbQlBfpQzRwfMQmfxCdcPrVnjwHBKg">ydscalamba@gmail.com</a>
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> <b>+ (045) 545 6783 (loc 8120)</b></p>
                     </div>
                     <!-- Grid column -->
                 </div>

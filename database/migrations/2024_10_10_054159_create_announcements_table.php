@@ -16,6 +16,9 @@ return new class extends Migration
             
             $table->string('title');
             $table->string('description');
+            $table->date('announce_on');
+            $table->date('end_on');
+            $table->boolean('is_texted')->default(false);
 
             $table->timestamps();
         });

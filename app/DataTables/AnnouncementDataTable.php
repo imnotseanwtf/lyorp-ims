@@ -48,8 +48,6 @@ class AnnouncementDataTable extends DataTable
             ->orderBy(1)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
                 Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
@@ -65,6 +63,8 @@ class AnnouncementDataTable extends DataTable
             Column::make('id'),
             Column::make('title'),
             Column::make('description'),
+            Column::make('announce_on'),
+            Column::make('end_on'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

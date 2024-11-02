@@ -48,9 +48,9 @@ class ActivityRequestDataTable extends DataTable
             $query->where('user_id', $user->id);
         }
 
-        $statusQuery = array_key_first(request()->query()) ?? false;
+        $statusQuery = array_key_first(request()->query()) == 'draw' ? 0 : array_key_first(request()->query()) ?? 0;
 
-        if ($statusQuery == false || $statusQuery == 0) {
+        if ($statusQuery == 0) {
             $query->where('status', 0);
         }
         if ($statusQuery == '1') {
@@ -76,8 +76,6 @@ class ActivityRequestDataTable extends DataTable
             ->orderBy(1)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
                 Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')

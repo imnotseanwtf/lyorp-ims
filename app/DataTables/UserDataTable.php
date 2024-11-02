@@ -46,7 +46,7 @@ class UserDataTable extends DataTable
             ->addColumn('status', function (User $user) {
                 if ($user->status === true || $user->status === 1) {
                     return 'Activated'; // For true or 1
-                } elseif ($user->status === false || $user->status === 0) {
+                } elseif ($user->status === 2) {
                     return 'Rejected'; // For false or 0
                 } else {
                     return 'Pending'; // For null
@@ -75,9 +75,22 @@ class UserDataTable extends DataTable
      */
     public function query(User $model): QueryBuilder
     {
-        return $model
-            ->whereHas('roles', fn($q) => $q
-                ->where('name', 'organization'));
+        $query = $model::query()
+            ->whereHas('roles', fn($q) => $q->where('name', 'organization'));
+
+        $statusQuery = array_key_first(request()->query());
+
+        if ($statusQuery == '0') {
+            $query->where('status', 0);
+        }
+        if ($statusQuery == '1') {
+            $query->where('status', 1);
+        }
+        if ($statusQuery == '2') {
+            $query->where('status', 2);
+        }
+
+        return $query;
     }
 
     /**
@@ -93,8 +106,6 @@ class UserDataTable extends DataTable
             ->orderBy(1)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
                 Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')

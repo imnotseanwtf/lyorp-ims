@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('criteria.index') }}">Critera</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Pending Evaluation</li>
+        </ol>
+    </nav>
+
     @forelse ($assign as $assignment)
         @if (!$assignment->is_answered)
             <div class="card mt-3">

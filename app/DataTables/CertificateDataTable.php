@@ -61,8 +61,6 @@ class CertificateDataTable extends DataTable
             ->orderBy(1)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
                 Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
@@ -77,10 +75,11 @@ class CertificateDataTable extends DataTable
         return array_filter(
             [
                 Column::make('user.name', 'user.name'),
+                Column::make('register_number', 'register_number'),
                 Column::computed('action')
                     ->exportable(false)
                     ->printable(false)
-                    ->width(80)
+                    ->width(100)
                     ->addClass('text-center'),
             ]
         );

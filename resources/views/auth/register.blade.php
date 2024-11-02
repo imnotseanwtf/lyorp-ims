@@ -1,13 +1,36 @@
 @extends('layouts.guest')
 
 @section('content')
+    <style>
+        .requirement {
+            margin: 4px 0;
+            font-size: 0.875rem;
+        }
+
+        .text-danger {
+            color: #dc3545;
+        }
+
+        .text-success {
+            color: #198754;
+        }
+    </style>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card col-12 col-md-8 col-lg-6">
             <div class="signin-wrapper">
                 <div class="form-wrapper">
-                    <h2 class="mb-15">
-                        {{ __('WELCOME TO LOCALIZED YOUTH ORGANIZATION REGISTRATION PROGRAM - CALAMBA CITY') }}</h2>
-                    <div class="mb-4">
+                    <div class="row">
+                        <div class="col-2 mt-2">
+                            <img src="{{ asset('images/logo/logo-ym.jpg') }}" alt="" srcset=""
+                                style="height: 110px; width:110px;">
+                        </div>
+                        <div class="col">
+                            <h2 class="mb-15">
+                                {{ __('WELCOME TO LOCALIZED YOUTH ORGANIZATION REGISTRATION PROGRAM - CALAMBA CITY') }}</h2>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 mt-3">
                         <p>Do you have an organization consisting of members ages 15-30 years old?
                             or are you a part of a youth-serving organization operating in the City of Calamba? </p>
                         <p> <br> Be part of the LYORP Calamba! </p>
@@ -59,7 +82,8 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-style-1">
-                                    <label for="name">{{ __('Name of Organization ') }} <span style="color: red;">*</span></label>
+                                    <label for="name">{{ __('Name of Organization ') }} <span
+                                            style="color: red;">*</span></label>
                                     <input type="text" @error('name') class="form-control is-invalid" @enderror
                                         name="name" id="name" placeholder="{{ __('Name of Organization') }}"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -88,7 +112,8 @@
                             <div class="col-12">
                                 <div class="input-style-1">
                                     <label
-                                        for="name_of_the_primary_representative">{{ __('Name of the Primary Representative ( Surname, First Name, Middle Initial: eg Dela Cruz, Juan, D.) ') }}<span style="color: red;">*</span></label>
+                                        for="name_of_the_primary_representative">{{ __('Name of the Primary Representative ( Surname, First Name, Middle Initial: eg Dela Cruz, Juan, D.) ') }}<span
+                                            style="color: red;">*</span></label>
                                     <input type="text"
                                         @error('name_of_the_primary_representative') class="form-control is-invalid" @enderror
                                         name="name_of_the_primary_representative" id="name_of_the_primary_representative"
@@ -168,7 +193,8 @@
 
                             <div class="col-6">
                                 <div class="input-style-1">
-                                    <label for="phone_number">{{ __('Phone Number ') }}<span style="color: red;">*</span></label>
+                                    <label for="phone_number">{{ __('Phone Number ') }}<span
+                                            style="color: red;">*</span></label>
                                     <input type="number" @error('phone_number') class="form-control is-invalid" @enderror
                                         name="phone_number" id="phone_number" placeholder="{{ __('Phone Number') }}"
                                         value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus>
@@ -182,7 +208,8 @@
 
                             <div class="col-6">
                                 <div class="input-style-1">
-                                    <label for="facebook_url">{{ __('Facebook Url ') }}<span style="color: red;">*</span></label>
+                                    <label for="facebook_url">{{ __('Facebook Url ') }}<span
+                                            style="color: red;">*</span></label>
                                     <input type="url" @error('facebook_url') class="form-control is-invalid" @enderror
                                         name="facebook_url" id="facebook_url" placeholder="{{ __('Facebook Url') }}"
                                         value="{{ old('facebook_url') }}" required autocomplete="facebook_url">
@@ -197,7 +224,8 @@
                             <div class="col-6">
                                 <div class="input-style-1">
                                     <label
-                                        for="duty_accomplished_registration_form">{{ __('Duly Accomplished Registration Form ') }}<span style="color: red;">*</span></label>
+                                        for="duty_accomplished_registration_form">{{ __('Duly Accomplished Registration Form ') }}<span
+                                            style="color: red;">*</span></label>
                                     <input type="file"
                                         @error('duty_accomplished_registration_form') class="form-control is-invalid" @enderror
                                         name="duty_accomplished_registration_form"
@@ -216,7 +244,8 @@
                             <div class="col-6">
                                 <div class="input-style-1">
                                     <label
-                                        for="list_of_officers_and_adviser">{{ __('List of Officers and Adviser ') }}<span style="color: red;">*</span></label>
+                                        for="list_of_officers_and_adviser">{{ __('List of Officers and Adviser ') }}<span
+                                            style="color: red;">*</span></label>
                                     <input type="file"
                                         @error('list_of_officers_and_adviser') class="form-control is-invalid" @enderror
                                         name="list_of_officers_and_adviser" id="list_of_officers_and_adviser"
@@ -234,7 +263,8 @@
                             <div class="col-6">
                                 <div class="input-style-1">
                                     <label
-                                        for="list_of_member_in_good_standing">{{ __('List of member in good standing ') }}<span style="color: red;">*</span></label>
+                                        for="list_of_member_in_good_standing">{{ __('List of member in good standing ') }}<span
+                                            style="color: red;">*</span></label>
                                     <input type="file"
                                         @error('list_of_member_in_good_standing') class="form-control is-invalid" @enderror
                                         name="list_of_member_in_good_standing" id="list_of_member_in_good_standing"
@@ -291,9 +321,30 @@
                             <div class="col-6">
                                 <div class="input-style-1">
                                     <label for="password">{{ __('Password ') }}<span style="color: red;">*</span></label>
-                                    <input type="password" @error('password') class="form-control is-invalid" @enderror
-                                        name="password" id="password" placeholder="{{ __('Password') }}" required
-                                        autocomplete="new-password">
+                                    <div class="password-field position-relative">
+                                        <input type="password"
+                                            @error('password') class="form-control is-invalid" @enderror name="password"
+                                            id="password" placeholder="{{ __('Password') }}" required
+                                            autocomplete="new-password" onkeyup="validatePassword(this)">
+                                        <i class="fa-solid fa-eye-slash toggle-password position-absolute"
+                                            style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+                                            onclick="togglePasswordVisibility('password', this)">
+                                        </i>
+                                    </div>
+                                    <div id="password-requirements" class="mt-2 text-sm">
+                                        <div id="length-check" class="requirement text-danger">
+                                            <i class="fa-solid fa-circle-xmark"></i> At least 8 characters
+                                        </div>
+                                        <div id="uppercase-check" class="requirement text-danger">
+                                            <i class="fa-solid fa-circle-xmark"></i> At least 1 uppercase letter
+                                        </div>
+                                        <div id="lowercase-check" class="requirement text-danger">
+                                            <i class="fa-solid fa-circle-xmark"></i> At least 1 lowercase letter
+                                        </div>
+                                        <div id="number-check" class="requirement text-danger">
+                                            <i class="fa-solid fa-circle-xmark"></i> At least 1 number
+                                        </div>
+                                    </div>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -304,10 +355,21 @@
                             <!-- end col -->
                             <div class="col-6">
                                 <div class="input-style-1">
-                                    <label for="password_confirmation">{{ __('Confirm Password ') }}<span style="color: red;">*</span></label>
-                                    <input type="password" @error('password') class="form-control is-invalid" @enderror
-                                        name="password_confirmation" id="password_confirmation"
-                                        placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">
+                                    <label for="password_confirmation">{{ __('Confirm Password ') }}<span
+                                            style="color: red;">*</span></label>
+                                    <div class="password-field position-relative">
+                                        <input type="password"
+                                            @error('password') class="form-control is-invalid" @enderror
+                                            name="password_confirmation" id="password_confirmation"
+                                            placeholder="{{ __('Confirm Password') }}" required
+                                            autocomplete="new-password" onkeyup="validatePasswordMatch()">
+                                        <i class="fa-solid fa-eye-slash toggle-password position-absolute"
+                                            style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+                                            onclick="togglePasswordVisibility('password_confirmation', this)">
+                                        </i>
+                                    </div>
+                                    <div id="password-match" class="mt-2 text-sm text-danger">
+                                    </div>
                                 </div>
                             </div>
                             <!-- end col -->
@@ -337,4 +399,64 @@
         </div>
     </div>
     <!-- end col -->
+
+    <script>
+        function togglePasswordVisibility(inputId, icon) {
+            const passwordInput = document.getElementById(inputId);
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+
+        function validatePassword(input) {
+            const password = input.value;
+            const requirements = {
+                'length-check': password.length >= 8,
+                'uppercase-check': /[A-Z]/.test(password),
+                'lowercase-check': /[a-z]/.test(password),
+                'number-check': /[0-9]/.test(password)
+            };
+
+            for (const [id, valid] of Object.entries(requirements)) {
+                const element = document.getElementById(id);
+                if (valid) {
+                    element.classList.remove('text-danger');
+                    element.classList.add('text-success');
+                    element.querySelector('i').classList.remove('fa-circle-xmark');
+                    element.querySelector('i').classList.add('fa-circle-check');
+                } else {
+                    element.classList.remove('text-success');
+                    element.classList.add('text-danger');
+                    element.querySelector('i').classList.remove('fa-circle-check');
+                    element.querySelector('i').classList.add('fa-circle-xmark');
+                }
+            }
+
+            validatePasswordMatch();
+        }
+
+        function validatePasswordMatch() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('password_confirmation').value;
+            const matchElement = document.getElementById('password-match');
+
+            if (confirmPassword === '') {
+                matchElement.textContent = '';
+            } else if (password === confirmPassword) {
+                matchElement.classList.remove('text-danger');
+                matchElement.classList.add('text-success');
+                matchElement.innerHTML = '<i class="fa-solid fa-circle-check"></i> Passwords match';
+            } else {
+                matchElement.classList.remove('text-success');
+                matchElement.classList.add('text-danger');
+                matchElement.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Passwords do not match';
+            }
+        }
+    </script>
 @endsection

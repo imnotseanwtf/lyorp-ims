@@ -12,9 +12,8 @@ class Certificate extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'file',
         'user_id',
+        'register_number'
     ];
 
     public function user(): BelongsTo
