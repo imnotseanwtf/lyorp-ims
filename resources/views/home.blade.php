@@ -40,7 +40,7 @@
                             @organization
                                 <a href="{{ route('user-report.index') }}" style="text-decoration: none; color: inherit;">
                                     <div class="card-body">
-                                        <h6>Number Of Report Sentw</h6>
+                                        <h6>Number Of Report Sent</h6>
                                         <h5>{{ $reportSent }}</h5>
                                     </div>
                                 </a>
