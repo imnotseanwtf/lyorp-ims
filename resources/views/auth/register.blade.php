@@ -21,7 +21,7 @@
                 <div class="form-wrapper">
                     <div class="row">
                         <div class="col-2 mt-2">
-                            <img src="{{ asset('images/logo/logo-ym.jpg') }}" alt="" srcset=""
+                            <img src="{{ asset('images/logo/logo-ym.gif') }}" alt="" srcset=""
                                 style="height: 110px; width:110px;">
                         </div>
                         <div class="col">
@@ -43,20 +43,21 @@
                         <p> <br> 1. <b>Download</b> the necessary attachments such as Registration Form, List of Officers
                             and Advisers and Members in Good standing thru the ff links:</p>
 
-                        <p> <br> <b>***Registration form:</b> <br>
-                            <a
-                                href="https://docs.google.com/document/d/1pcL2tc8W9OA_4nmRLCr97cJClkAdfnW-dQCpLfKHVNo/edit">https://docs.google.com/document/d/1pcL2tc8W9OA_4nmRLCr97cJClkAdfnW-dQCpLfKHVNo/edit</a>
+                        <p>
+                            <a href="https://docs.google.com/document/d/1pcL2tc8W9OA_4nmRLCr97cJClkAdfnW-dQCpLfKHVNo/edit"><b>Registration
+                                    form</b></a>
                         </p>
 
-                        <p> <br> <b>***Directory of officers and advisers:</b> <br>
-                            <a href="https://docs.google.com/document/d/1zbxNnWxhpdBySn13NIKqh5pR-LD96AuTfyTFxRFq-ts/edit">https://docs.google.com/document/d/1zbxNnWxhpdBySn13NIKqh5pR-LD96AuTfyTFxRFq-ts/edit
+                        <p>
+                            <a href="https://docs.google.com/document/d/1zbxNnWxhpdBySn13NIKqh5pR-LD96AuTfyTFxRFq-ts/edit"><b>Directory
+                                    of officers and advisers</b>
                             </a>
                         </p>
 
-                        <p> <br> <b>*** Members in Good Standing:</b> <br>
+                        <p>
                             <a
                                 href="https://docs.google.com/spreadsheets/d/1vpVpFgV4qWhCW2iccTv-CPUEnlSEe0fgYA2r5M9ZGBE/edit#gid=1341368209">
-                                https://docs.google.com/spreadsheets/d/1vpVpFgV4qWhCW2iccTv-CPUEnlSEe0fgYA2r5M9ZGBE/edit#gid=1341368209</a>
+                                <b>Members in Good Standing</b></a>
                         </p>
 
                         <p> <br> 2. Accomplish all forms and save as file (Preferably PDF file).</p>
@@ -381,16 +382,6 @@
                                     </button>
                                 </div>
                             </div>
-
-                            @if (Route::has('login'))
-                                <div class="col-12 mt-3">
-                                    <hr>
-                                    <div class="button-group d-flex justify-content-center flex-wrap">
-                                        <a href="{{ route('login') }}"
-                                            class="main-btn success-btn btn-hover w-100 text-center">{{ __('Login') }}</a>
-                                    </div>
-                                </div>
-                            @endif
                         </div>
                         <!-- end row -->
                     </form>

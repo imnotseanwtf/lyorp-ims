@@ -32,12 +32,13 @@ class ActivityRequestController extends Controller
     public function store(StoreActivityRequest $storeActivityRequest): RedirectResponse
     {
         ActivityRequest::create(
-            $storeActivityRequest->except(['file', 'topics', 'equipment'])
+            $storeActivityRequest->except(['file', 'topics', 'equipment', 'audience'])
                 + [
                     'file' => $storeActivityRequest->file('file')->store('activityRequest', 'public'),
                     'user_id' => auth()->id(),
                     'topics' => json_encode($storeActivityRequest->topics),
                     'equipment' => json_encode($storeActivityRequest->equipment),
+                    'audience' => json_encode($storeActivityRequest->audience),
                 ]
         );
 
@@ -61,10 +62,11 @@ class ActivityRequestController extends Controller
     {
         // Prepare data, encoding arrays for JSON storage
         $data = array_merge(
-            $updateActivityRequest->except(['file', 'topics', 'equipment']),
+            $updateActivityRequest->except(['file', 'topics', 'equipment', 'audience']),
             [
-                'topics' => json_encode($updateActivityRequest->input('topics', [])),
-                'equipment' => json_encode($updateActivityRequest->input('equipment', [])),
+                'topics' => json_encode($updateActivityRequest->topics),
+                'equipment' => json_encode($updateActivityRequest->equipment),
+                'audience' => json_encode($updateActivityRequest->audience),
             ]
         );
 

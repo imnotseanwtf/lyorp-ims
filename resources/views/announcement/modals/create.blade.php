@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <label for="announce_in">Announce In</label>
                         <input type="date" class="form-control" name="announce_on" placeholder="Enter Announce In"
-                            value="{{ old('announce_in') }}" required>
+                            value="{{ old('announce_on') }}" min="{{ date('Y-m-d') }}" required>
                         @error('announce_in')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -44,11 +44,12 @@
                     <div class="form-group">
                         <label for="end_on">End In</label>
                         <input type="date" class="form-control" name="end_on" placeholder="Enter End In"
-                            value="{{ old('end_on') }}" required>
+                            value="{{ old('end_on') }}" min="{{ date('Y-m-d') }}" required>
                         @error('end_on')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

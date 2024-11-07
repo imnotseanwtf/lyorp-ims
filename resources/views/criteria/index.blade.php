@@ -19,7 +19,7 @@
                 <div class="title mb-30 text-end">
                     <a href="{{ route('evaluation.index') }}" class="main-btn btn-info btn-hover">Pending Evaluation</a>
                     <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
-                        Create Criteria
+                        Create Evaluation
                     </button>
                 </div>
             </div>

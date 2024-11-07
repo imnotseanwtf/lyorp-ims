@@ -14,9 +14,22 @@
     @vite('resources/sass/app.scss')
 </head>
 
+<style>
+    .bg {
+        background-image: url('{{ asset('images/logo/background.png') }}');
+        /* Replace with your image path */
+        background-size: cover;
+        /* Makes the image cover the entire background */
+        background-position: center;
+        /* Centers the image */
+        background-repeat: no-repeat;
+        /* Prevents the image from repeating */
+    }
+</style>
+
 <body>
     @include('sweetalert::alert')
-    <div class="row g-0 auth-row" style="background-color: #F9D6A8;">
+    <div class="row g-0 auth-row bg">
         @yield('content')
     </div>
 </body>

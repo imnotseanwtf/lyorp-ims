@@ -30,7 +30,7 @@
                                     <input type="hidden" value="{{ $assignment->id }}" name="assign_id">
 
                                     @foreach ($assignment->criteria->questions as $index => $question)
-                                        @if ($question->answer_type == 'Rating Legends')
+                                        @if ($question->answer_type == 'Rating Legends (Strongly Disagree - Strongly Agree)')
                                             <div class="row my-3">
                                                 <div class="col">
                                                     <p><strong>Question {{ $index + 1 }}:
@@ -51,7 +51,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @elseif($question->answer_type == 'Likert Scales')
+                                        @elseif($question->answer_type == 'Likert Scales (Poor - Excellent)')
                                             <div class="row my-3">
                                                 <div class="col">
                                                     <p><strong>Question {{ $index + 1 }}:

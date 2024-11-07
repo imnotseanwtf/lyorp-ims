@@ -6,7 +6,7 @@
 
     <!-- Edit criteria button with tooltip -->
     <button type="button" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#editModal"
-        data-criteria="{{ $criteria->id }}" title="Edit Criteria">
+        data-criteria="{{ $criteria->id }}" title="Edit Name">
         <i class="fa-solid fa-pen"></i>
     </button>
     <!-- Assign answer button with tooltip -->
@@ -19,6 +19,5 @@
         data-criteria="{{ $criteria->id }}" title="Delete Criteria">
         <i class="fa-solid fa-trash"></i>
     </button>
-
-
+    
 </div>

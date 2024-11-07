@@ -15,6 +15,17 @@
 </head>
 
 <style>
+    body {
+        background-image: url('{{ asset('images/logo/background.png') }}');
+        /* Replace with your image path */
+        background-size: cover;
+        /* Makes the image cover the entire background */
+        background-position: center;
+        /* Centers the image */
+        background-repeat: no-repeat;
+        /* Prevents the image from repeating */
+    }
+
     .carousel-image {
         opacity: 0.8;
         /* Adjust this value (0 to 1) for desired opacity */
@@ -43,13 +54,32 @@
         z-index: 1;
         /* Ensure overlay is above the image */
     }
+
+    .shadow-box {
+        background: rgba(0, 0, 0, 0.5);
+        /* Semi-transparent background */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        /* Shadow effect */
+        display: inline-block;
+    }
+
+    .shadow-box h2 {
+        font-size: 50px;
+        color: skyblue;
+    }
+
+    .shadow-box p {
+        color: skyblue;
+    }
 </style>
 
 <body style="background-color: #FBFBFB">
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: rgba(0, 0, 0, 0.05);">
         <div class="container-fluid">
-            <a class="navbar-brand ms-auto px-5" href="#">
-                <img src="{{ asset('images/logo/logo-ym.jpg') }}" alt="Logo" width="80" height="80">
+            <a class="navbar-brand ms-auto px-5" href="/">
+                <img src="{{ asset('images/logo/logo-ym.gif') }}" alt="Logo" width="100" height="100">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +111,7 @@
             </div>
         </div>
     </nav>
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="height: 700px;">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="height: 600px;">
         <!-- Carousel Indicators -->
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -103,61 +133,61 @@
             <!-- Slide 1 -->
             <div class="carousel-item active" style="height: 100%;">
                 <img src="images/welcome/1.jpg" class="d-block w-100 h-100" alt="Slide 1" style="object-fit: cover;">
-                <div class="carousel-caption d-none d-md-block text-end">
-                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
-                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
-                    <a href="#" class="btn btn-primary">Join Us</a>
+                <div class="carousel-caption d-none d-md-block text-center shadow-box">
+                    <h2>CSSD - LYORP</h2>
+                    <p>Calamba City Youth Development Office</p>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Join Us</a>
                 </div>
             </div>
 
             <!-- Slide 2 -->
             <div class="carousel-item" style="height: 100%;">
                 <img src="images/welcome/2.jpg" class="d-block w-100 h-100" alt="Slide 2" style="object-fit: cover;">
-                <div class="carousel-caption d-none d-md-block text-end">
-                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
-                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
-                    <a href="#" class="btn btn-primary">Join Us</a>
+                <div class="carousel-caption d-none d-md-block text-center shadow-box">
+                    <h2>CSSD - LYORP</h2>
+                    <p>Calamba City Youth Development Office</p>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Join Us</a>
                 </div>
             </div>
 
             <!-- Additional Slides (3-6) -->
             <div class="carousel-item" style="height: 100%;">
                 <img src="images/welcome/3.jpg" class="d-block w-100" alt="Slide 3"
-                    style="object-fit:contain; height: 700px">
-                <div class="carousel-caption d-none d-md-block text-end">
-                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
-                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
-                    <a href="#" class="btn btn-primary">Join Us</a>
+                    style="object-fit:contain; height: 600px">
+                <div class="carousel-caption d-none d-md-block text-center shadow-box">
+                    <h2>CSSD - LYORP</h2>
+                    <p>Calamba City Youth Development Office</p>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Join Us</a>
                 </div>
             </div>
 
             <div class="carousel-item" style="height: 100%;">
                 <img src="images/welcome/4.jpg" class="d-block w-100" alt="Slide 4"
-                    style="object-fit:contain; height: 700px">
-                <div class="carousel-caption d-none d-md-block text-end">
-                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
-                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
-                    <a href="#" class="btn btn-primary">Join Us</a>
+                    style="object-fit:contain; height: 600px">
+                <div class="carousel-caption d-none d-md-block text-center shadow-box">
+                    <h2>CSSD - LYORP</h2>
+                    <p>Calamba City Youth Development Office</p>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Join Us</a>
                 </div>
             </div>
 
             <div class="carousel-item" style="height: 100%;">
                 <img src="images/welcome/5.jpg" class="d-block w-100" alt="Slide 5"
-                    style="object-fit:contain; height: 700px">
-                <div class="carousel-caption d-none d-md-block text-end">
-                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
-                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
-                    <a href="#" class="btn btn-primary">Join Us</a>
+                    style="object-fit:contain; height: 600px">
+                <div class="carousel-caption d-none d-md-block text-center shadow-box">
+                    <h2>CSSD - LYORP</h2>
+                    <p>Calamba City Youth Development Office</p>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Join Us</a>
                 </div>
             </div>
 
             <div class="carousel-item" style="height: 100%;">
                 <img src="images/welcome/6.jpg" class="d-block w-100" alt="Slide 6"
-                    style="object-fit:contain; height: 700px">
-                <div class="carousel-caption d-none d-md-block text-end">
-                    <h2 style="font-size: 50px; color:#171369">CSSD-LYORP</h2>
-                    <p style="color: #F2110F">Calamba City Youth Development Office</p>
-                    <a href="#" class="btn btn-primary">Join Us</a>
+                    style="object-fit:contain; height: 600px">
+                <div class="carousel-caption d-none d-md-block text-center shadow-box">
+                    <h2>CSSD - LYORP</h2>
+                    <p>Calamba City Youth Development Office</p>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Join Us</a>
                 </div>
             </div>
         </div>

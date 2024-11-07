@@ -23,7 +23,11 @@ class ActivityRequest extends Model
         'status',
         'file',
         'user_id',
-        'is_notif'
+        'is_notif',
+        'audience',
+        'others',
+        'expected_number_of_participants',
+        'others_equipment',
     ];
 
     public function user(): BelongsTo

@@ -30,8 +30,8 @@
                         <select name="answer_type" required class="form-control">
                             <option value="" selected disabled>Select</option>
                             <option value="Yes Or No">Yes Or No</option>
-                            <option value="Likert Scales">Likert Scales</option>
-                            <option value="Rating Legends">Rating Legends</option>
+                            <option value="Likert Scales (Poor - Excellent)">Likert Scales (Poor - Excellent)</option>
+                            <option value="Rating Legends (Strongly Disagree - Strongly Agree)">Rating Legends (Strongly Disagree - Strongly Agree)</option>
                             <option value="Input">Input</option>
                         </select>
                     </div>

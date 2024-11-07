@@ -6,7 +6,7 @@
             <div class="signin-wrapper">
                 <div class="form-wrapper">
                     <div class="text-center">
-                        <img src="{{ asset('images/logo/logo-ym.jpg') }}" alt="" style="height: 150px; width: 150px;"
+                        <img src="{{ asset('images/logo/logo-ym.gif') }}" alt="" style="height: 150px; width: 150px;"
                             class="mt-2">
                         <h2 class="mb-3">{{ __('Localized Youth Organization Registration Program') }}</h2>
                         <h4 class="mb-3">{{ __('Login') }}</h4>

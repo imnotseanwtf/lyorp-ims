@@ -14,12 +14,24 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
+<style>
+    body {
+        background-image: url('{{ asset('images/logo/background.png') }}');
+        /* Replace with your image path */
+        background-size: cover;
+        /* Makes the image cover the entire background */
+        background-position: center;
+        /* Centers the image */
+        background-repeat: no-repeat;
+        /* Prevents the image from repeating */
+    }
+</style>
 
-<body style="background-color: #FBFBFB">
+<body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: rgba(0, 0, 0, 0.05);">
         <div class="container-fluid">
             <a class="navbar-brand ms-auto px-5" href="#">
-                <img src="{{ asset('images/logo/logo-ym.jpg') }}" alt="Logo" width="80" height="80">
+                <img src="{{ asset('images/logo/logo-ym.gif') }}" alt="Logo" width="100" height="100">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -126,7 +138,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 
     <footer>
         <!-- Section: Links  -->

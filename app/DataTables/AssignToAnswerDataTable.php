@@ -64,8 +64,8 @@ class AssignToAnswerDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('user.name'),
-            Column::make('is_answered'),
+            Column::make('user.name')->title('Organization Name'),
+            Column::make('is_answered')->title('Response Status'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

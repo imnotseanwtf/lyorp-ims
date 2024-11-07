@@ -7,17 +7,20 @@
     <title>Certificate</title>
     <style>
         body {
-        font-family: "Times New Roman", serif;
-        color: #000;
-        margin: 0;
-        padding: 20px;
-        background-image: url('{{ public_path('images/background/pdf.png') }}');
-        background-position: center center; /* Centers the image */
-        background-repeat: no-repeat; /* Prevents tiling */
+            font-family: "Times New Roman", serif;
+            color: #000;
+            margin: 0;
+            padding: 20px;
+            background-image: url('{{ public_path('images/background/pdf.png') }}');
+            background-position: center center;
+            /* Centers the image */
+            background-repeat: no-repeat;
+            /* Prevents tiling */
 
-        /* Adjust the size of the background image */
-        background-size: 100% auto; /* 50% width, auto height */
-    }
+            /* Adjust the size of the background image */
+            background-size: 100% auto;
+            /* 50% width, auto height */
+        }
 
         .container {
             max-width: 900px;

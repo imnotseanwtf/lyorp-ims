@@ -27,7 +27,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="date">Date</label>
-                                <input type="date" class="form-control" name="date" required>
+                                <input type="date" class="form-control" name="date" min="{{ date('Y-m-d') }}"
+                                    required>
                             </div>
                         </div>
                     </div>
@@ -48,10 +49,148 @@
                         </div>
                     </div>
 
-                    <!-- Part 2: Topics -->
+                    <h3 class="mt-2">Target Audience</h3>
+                    <div class="form-group">
+                        <label>Select Audience</label><br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="audience[]"
+                                value="Sangguniang Kabataan">
+                            <label class="form-check-label">Sangguniang Kabataan</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="audience[]"
+                                value="Youth Organization / Local Youth Development Council Member">
+                            <label class="form-check-label">Youth Organization / Local Youth Development Council
+                                Member</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="audience[]"
+                                value="Local Youth Development Officers">
+                            <label class="form-check-label">Local Youth Development Officers</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="audience[]" value="Students">
+                            <label class="form-check-label">Students</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="audience[]" value="OSYs">
+                            <label class="form-check-label">OSYs</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="audience[]" value="NGOs">
+                            <label class="form-check-label">NGOs</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="audience[]"
+                                value="Regional Line Agencies">
+                            <label class="form-check-label">Regional Line Agencies</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="audience[]" value="LGU Employees">
+                            <label class="form-check-label">LGU Employees</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="audience[]"
+                                value="General Public">
+                            <label class="form-check-label">General Public</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="others">Others</label>
+                                <textarea class="form-control" name="others" placeholder="Enter Others" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="expected_number_of_participants">Expected Number of participants</label>
+                                <input type="number" class="form-control" name="expected_number_of_participants"
+                                    placeholder="Enter Expected Number of participants" required></input>
+                            </div>
+                        </div>
+                    </div>
+
                     <h3 class="mt-2">Topics to be Discussed</h3>
                     <div class="form-group">
                         <label>Select Topics</label><br>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]" value="Leadership">
+                            <label class="form-check-label">Leadership</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]"
+                                value="Resource mobilization">
+                            <label class="form-check-label">Resource mobilization</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]"
+                                value="Legislative advocacy">
+                            <label class="form-check-label">Legislative advocacy</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]"
+                                value="Government procurement">
+                            <label class="form-check-label">Government procurement</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]" value="Budgeting">
+                            <label class="form-check-label">Budgeting</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]"
+                                value="Disaster risk response">
+                            <label class="form-check-label">Disaster risk response</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]" value="Proposal Making">
+                            <label class="form-check-label">Proposal Making</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]"
+                                value="Code of conduct and ethical standards">
+                            <label class="form-check-label">Code of conduct and ethical standards</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]" value="Team building">
+                            <label class="form-check-label">Team building</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]" value="Planning">
+                            <label class="form-check-label">Planning</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]" value="Public speaking">
+                            <label class="form-check-label">Public speaking</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]"
+                                value="Gender and development">
+                            <label class="form-check-label">Gender and development</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]"
+                                value="Environment protection">
+                            <label class="form-check-label">Environment protection</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]"
+                                value="Ordinance writing">
+                            <label class="form-check-label">Ordinance writing</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]"
+                                value="Situational Analysis">
+                            <label class="form-check-label">Situational Analysis</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="topics[]"
+                                value="Monitoring and evaluation">
+                            <label class="form-check-label">Monitoring and evaluation</label>
+                        </div>
+                        <!-- Existing topics below -->
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="topics[]"
                                 value="Financial management">
@@ -90,17 +229,19 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="specific_objectives">Specific Objectives of the Discussion of NYC</label>
+                                <label for="specific_objectives">Specific Objectives of the Discussion of CSSD</label>
                                 <textarea class="form-control" name="specific_objectives" placeholder="Enter specific objectives" required></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="specific_outputs">Specific Outputs of the Discussion of NYC</label>
+                                <label for="specific_outputs">Specific Outputs of the Discussion of CSSD</label>
                                 <textarea class="form-control" name="specific_outputs" placeholder="Enter specific outputs" required></textarea>
                             </div>
                         </div>
                     </div>
+
+                   
 
                     <!-- Part 4: Equipment Available -->
                     <h3 class="mt-2">Equipment Available</h3>
@@ -137,9 +278,15 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="others_equipment">Others</label>
+                        <textarea class="form-control" name="others_equipment" placeholder="Enter Others" required></textarea>
+                    </div>
+
                     <!-- File Upload -->
                     <div class="form-group">
-                        <label for="file">Name with signature of representative of organization (Pdf File)  + Date Signed</label>
+                        <label for="file">Name with signature of representative of organization (Pdf File) + Date
+                            Signed <span class="text-danger">*</span></label>
                         <input type="file" class="form-control" name="file" required>
                     </div>
 

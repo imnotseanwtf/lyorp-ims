@@ -24,6 +24,12 @@ return new class extends Migration
             $table->json('topics')->nullable(); // JSON array of selected topics
             $table->json('equipment')->nullable();
 
+            $table->json('audience')->nullable();
+            $table->string('others');
+            $table->integer('expected_number_of_participants');
+
+            $table->string('others_equipment');
+
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->integer('status')->default(false);
             $table->string('file');
