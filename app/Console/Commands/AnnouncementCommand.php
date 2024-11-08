@@ -46,13 +46,18 @@ class AnnouncementCommand extends Command
             $twilio = new Client($sid, $token);
 
             foreach ($users as $user) {
-                // Replace the first character with +63
-                $phoneNumber = '+63' . substr($user->phone, 1);
+                try {
+                    $phoneNumber = '+63' . substr($user->phone, 1);
 
-                $twilio->messages->create($phoneNumber, options: [
-                    "body" => 'New Announcement!' . "\n" . 'Title: ' . $announcement->title . "\n" . 'Description: ' . $announcement->description,
-                    "from" => $senderNumber
-                ]);
+                    $twilio->messages->create($phoneNumber, [
+                        "body" => 'New Announcement!' . "\n" . 'Title: ' . $announcement->title . "\n" . 'Description: ' . $announcement->description,
+                        "from" => $senderNumber
+                    ]);
+                } catch (\Exception $e) {
+                    error_log('Failed to send message to ' . $user->phone . ': ' . $e->getMessage());
+
+                    continue;
+                }
             }
 
             // Mark the announcement as texted

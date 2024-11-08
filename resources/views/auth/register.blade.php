@@ -194,11 +194,14 @@
 
                             <div class="col-6">
                                 <div class="input-style-1">
-                                    <label for="phone_number">{{ __('Phone Number ') }}<span
+                                    <label for="phone_number">{{ __('Phone Number (Number must start with 0 and contain exactly 11 digits.)') }}<span
                                             style="color: red;">*</span></label>
-                                    <input type="number" @error('phone_number') class="form-control is-invalid" @enderror
+                                    <input type="tel" @error('phone_number') class="form-control is-invalid" @enderror
                                         name="phone_number" id="phone_number" placeholder="{{ __('Phone Number') }}"
-                                        value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus>
+                                        value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus
+                                        maxlength="11" pattern="^0\d{10}$"
+                                        title="{{ __('Phone number must start with 0 and contain exactly 11 digits.') }}">
+                            
                                     @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -206,8 +209,9 @@
                                     @enderror
                                 </div>
                             </div>
+                            
 
-                            <div class="col-6">
+                            <div class="col-6" style="margin-top: 20px">
                                 <div class="input-style-1">
                                     <label for="facebook_url">{{ __('Facebook Url ') }}<span
                                             style="color: red;">*</span></label>

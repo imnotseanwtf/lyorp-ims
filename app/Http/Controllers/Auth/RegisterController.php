@@ -65,7 +65,7 @@ class RegisterController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'name_of_the_primary_representative' => ['required', 'string', 'max:255'],
             'facebook_url' => ['required', 'url', 'max:255'],
-            'phone_number' => ['required', 'string', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10', 'max:15'],
+            'phone_number' => ['required', 'string', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:11', 'max:11'],
             'age' => ['required', 'integer', 'min:1', 'max:120'],
             'sex' => ['required', 'string', 'in:male,female,other'],
             'duty_accomplished_registration_form' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:102400'],
