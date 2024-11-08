@@ -220,10 +220,6 @@
                             <input class="form-check-input" type="checkbox" name="topics[]" value="YORP">
                             <label class="form-check-label">YORP</label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topics[]" value="ASRH">
-                            <label class="form-check-label">ASRH</label>
-                        </div>
                     </div>
 
                     <div class="row">
@@ -241,7 +237,7 @@
                         </div>
                     </div>
 
-                   
+
 
                     <!-- Part 4: Equipment Available -->
                     <h3 class="mt-2">Equipment Available</h3>
