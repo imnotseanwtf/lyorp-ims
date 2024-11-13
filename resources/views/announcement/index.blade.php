@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" style="margin-top: 3rem !important;">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Annoucement</li>

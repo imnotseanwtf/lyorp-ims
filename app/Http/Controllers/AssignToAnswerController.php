@@ -32,6 +32,7 @@ class AssignToAnswerController extends Controller
                 $q->where('criteria_id', $criteriaId);
             })
             ->select('id', 'name')
+            ->where('status', 1)
             ->get();
 
         Answer::where('assign_to_answer_id', $assignId)

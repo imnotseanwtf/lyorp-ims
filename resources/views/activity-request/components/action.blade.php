@@ -35,5 +35,11 @@
             data-activity="{{ $activity->id }}" title="Delete Activity">
             <i class="fa-solid fa-trash"></i>
         </button>
+        @if ($activity->reason)
+            <button class="btn btn-danger reviewBtn" data-bs-toggle="modal" data-bs-target="#reviewModal"
+                data-activity="{{ $activity->id }}" title="Rejected Reason">
+                <i class="fa-solid fa-eye"></i>
+            </button>
+        @endif
     @endorganization
 </div>

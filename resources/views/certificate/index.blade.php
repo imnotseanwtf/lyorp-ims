@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    <nav aria-label="breadcrumb" style="margin-top: 3rem !important;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Certificate</li>
+        </ol>
+    </nav>
+
     <div class="title-wrapper pt-30">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -11,6 +18,9 @@
             <div class="col-md-6">
                 <div class="title mb-30 text-end">
                     @admin
+                        <button class="main-btn btn-secondary btn-hover" data-bs-target="#editModal" data-bs-toggle="modal">
+                            Edit Certificate Logo or Signiture
+                        </button>
                         <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
                             Create Certificate
                         </button>
@@ -31,6 +41,8 @@
 
     {{-- DELETE certificate --}}
     @include('certificate.modals.delete')
+
+    @include('certificate.modals.edit')
 @endsection
 
 @push('scripts')

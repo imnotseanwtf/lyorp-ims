@@ -11,10 +11,12 @@ use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\AssignToAnswerController;
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\CertificateImageController;
 use App\Http\Controllers\CertificatePdfController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\LogOutController;
+use App\Http\Controllers\PdfEvaluationController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ReportAction\SoftDeleteReportController;
 use App\Http\Controllers\UserAction\ActivateController;
@@ -22,14 +24,20 @@ use App\Http\Controllers\UserAction\RejectUserController;
 use App\Http\Controllers\UserAnsweredQuestion;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserReportController;
+use App\Http\Controllers\WelcomeInformationController;
+use App\Models\WelcomeInformation;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $welcome = WelcomeInformation::find(1);
+
+    return view('welcome', compact('welcome'));
 })->name('welcome');
 
 Route::get('/faqs', function () {
-    return view('faq');
+    $welcome = WelcomeInformation::find(1);
+
+    return view('faq', compact('welcome'));
 })->name('faq');
 
 Auth::routes(
@@ -41,6 +49,8 @@ Auth::routes(
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('evaluation-pdf', PdfEvaluationController::class)->name('pdf.evaluation');
 
     Route::post('/logout', LogOutController::class)->name('logout');
 
@@ -72,7 +82,11 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('role:admin')->group(function () {
 
+        Route::put('/information-update', WelcomeInformationController::class)->name('information');
+
         Route::get('/events', AuditController::class)->name('events');
+
+        Route::put('update-certificate', CertificateImageController::class)->name('updateCertificate');
 
         // RESOURCES
         Route::resources(

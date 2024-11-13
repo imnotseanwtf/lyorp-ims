@@ -25,15 +25,17 @@ return new class extends Migration
             $table->json('equipment')->nullable();
 
             $table->json('audience')->nullable();
-            $table->string('others');
+            $table->string('others')->nullable();
             $table->integer('expected_number_of_participants');
 
-            $table->string('others_equipment');
+            $table->string('others_equipment')->nullable();
 
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->integer('status')->default(false);
             $table->string('file');
             $table->boolean('is_notif')->default(false);
+
+            $table->string('reason');
 
             $table->timestamps();
         });

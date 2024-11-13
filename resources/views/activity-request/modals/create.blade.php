@@ -19,14 +19,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="activity_name">Activity Name</label>
+                                <label for="activity_name">Activity Name  <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="activity_name"
                                     placeholder="Enter activity name" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="date">Date</label>
+                                <label for="date">Date <span class="text-danger">*</span></label>
                                 <input type="date" class="form-control" name="date" min="{{ date('Y-m-d') }}"
                                     required>
                             </div>
@@ -36,14 +36,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="venue">Venue</label>
+                                <label for="venue">Venue  <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="venue" placeholder="Enter venue"
                                     required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="time">Time</label>
+                                <label for="time">Time  <span class="text-danger">*</span></label>
                                 <input type="time" class="form-control" name="time" required>
                             </div>
                         </div>
@@ -100,12 +100,12 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="others">Others</label>
-                                <textarea class="form-control" name="others" placeholder="Enter Others" required></textarea>
+                                <textarea class="form-control" name="others" placeholder="Enter Others"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="expected_number_of_participants">Expected Number of participants</label>
+                                <label for="expected_number_of_participants">Expected Number of participants  <span class="text-danger">*</span></label>
                                 <input type="number" class="form-control" name="expected_number_of_participants"
                                     placeholder="Enter Expected Number of participants" required></input>
                             </div>
@@ -114,7 +114,7 @@
 
                     <h3 class="mt-2">Topics to be Discussed</h3>
                     <div class="form-group">
-                        <label>Select Topics</label><br>
+                        <label>Select Topics  <span class="text-danger">*</span></label><br>
 
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="topics[]" value="Leadership">
@@ -198,40 +198,40 @@
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="topics[]" value="RA 8044">
-                            <label class="form-check-label">RA 8044</label>
+                            <label class="form-check-label">RA 8044 (Youth in Nation-Building Act)</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="topics[]" value="RA 10742">
-                            <label class="form-check-label">RA 10742</label>
+                            <label class="form-check-label">RA 10742 (Sangguniang Kabataan Reform Act of 2015)</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="topics[]" value="SK">
-                            <label class="form-check-label">SK</label>
+                            <label class="form-check-label">SK (Sangguniang Kabataan)</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="topics[]" value="LYDO">
-                            <label class="form-check-label">LYDO</label>
+                            <label class="form-check-label">LYDO (Local Youth Devt Office)</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="topics[]" value="LYDC">
-                            <label class="form-check-label">LYDC</label>
+                            <label class="form-check-label">LYDC (Local Youth Devt Council)</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="topics[]" value="YORP">
-                            <label class="form-check-label">YORP</label>
+                            <label class="form-check-label">YORP  (Youth Organziation Registration Program)</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="specific_objectives">Specific Objectives of the Discussion of CSSD</label>
+                                <label for="specific_objectives">Specific Objectives of the Discussion of CSSD  <span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="specific_objectives" placeholder="Enter specific objectives" required></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="specific_outputs">Specific Outputs of the Discussion of CSSD</label>
+                                <label for="specific_outputs">Specific Outputs of the Discussion of CSSD  <span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="specific_outputs" placeholder="Enter specific outputs" required></textarea>
                             </div>
                         </div>
@@ -242,7 +242,7 @@
                     <!-- Part 4: Equipment Available -->
                     <h3 class="mt-2">Equipment Available</h3>
                     <div class="form-group">
-                        <label>Check Equipment Available at the Activity Venue</label><br>
+                        <label>Check Equipment Available at the Activity Venue  <span class="text-danger">*</span></label><br>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="equipment[]" value="Projector">
                             <label class="form-check-label">Projector</label>
@@ -276,7 +276,7 @@
 
                     <div class="form-group">
                         <label for="others_equipment">Others</label>
-                        <textarea class="form-control" name="others_equipment" placeholder="Enter Others" required></textarea>
+                        <textarea class="form-control" name="others_equipment" placeholder="Enter Others"></textarea>
                     </div>
 
                     <!-- File Upload -->
@@ -285,7 +285,6 @@
                             Signed <span class="text-danger">*</span></label>
                         <input type="file" class="form-control" name="file" required>
                     </div>
-
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -16,5 +16,6 @@ class Announcement extends Model
         'announce_on',
         'end_on',
         'is_texted',
+        'image'
     ];
 }

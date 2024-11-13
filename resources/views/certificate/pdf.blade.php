@@ -115,7 +115,7 @@
     <table style="width: 98%; text-align: center; border-collapse: collapse; margin-left: 0px; ">
         <tr>
             <td style="width: 30%;">
-                <img src="{{ public_path('images/logo/logocity.webp') }}" alt="Logo" width="90px" height="auto" />
+                <img src="{{ public_path('storage/' . $certificateImage->left_logo) }}" alt="Logo" width="90px" height="auto" />
             </td>
             <td style="width: 60%;">
                 <div style="color: #5b56ab">Republic of the Philippines</div>
@@ -124,7 +124,7 @@
                 <div class="title" style="margin-top: 10px">Calamba City Youth Development Office</div>
             </td>
             <td style="width: 30%;">
-                <img src="{{ public_path('images/logo/logo-ym.jpg') }}" alt="Logo" width="90px" height="auto" />
+                <img src="{{ public_path('storage/' . $certificateImage->right_logo) }}" alt="Logo" width="90px" height="auto" />
             </td>
         </tr>
     </table>
@@ -140,11 +140,11 @@
 
         <div class="subtitle"><u>Certificate of Registration</u></div>
         <div class="text" style="text-align: center; font-weight: bold;font-size: 23px;">is confered to</div> <br>
-        <div class="subtitle"><u>{{ $organizationName }}</u></div>
+        <div class="subtitle"><u>{{ $certificate->user->name }}</u></div>
         <div class="text" style="text-align: center;font-size: 17px;">Calamba City, Laguna</div>
         <div class="text" style="text-align: center;font-size: 30px;">As a <span>Youth Organization</span></div>
         <div class="text" style="text-align: center;font-size: 23px;">with LYORP registration No. <u><b>
-                    {{ $registerNumber }}</b></u> </div>
+                    {{ $certificate->register_number }}</b></u> </div>
 
         <div class="text" style="text-align: center; text-indent: 15px;">
             <p>
@@ -179,13 +179,14 @@
                                 <p style="margin-right: 0px; margin-bottom:0px; text-align:left;">
                                     ______________________________________</p>
                             </div>
-                            <img src="{{ public_path('images/signiture/kristina.png') }}" alt="Signature Roseller"
-                                class="signature-image signature-roseller" />
+                            <img src="{{ public_path('storage/' . $certificateImage->left_signiture) }}"
+                                alt="Signature Roseller" class="signature-image signature-roseller" />
                         </div>
-                        <span>
-                            <p class="text-bold"
-                                style="margin-left: 8px;margin-top:0px;margin-bottom:0;text-align:left;">MA.
-                                KRISTINA G. LIANGCO, RN, RSW</p>
+                        <span
+                            style="display: block; text-align: center; margin-left: 8px; margin-top: 0; margin-bottom: 0;">
+                            <p class="text-bold" style="margin: 0;">
+                                {{ $certificateImage->left_name }}
+                            </p>
                         </span>
                         <span>
                             <p class="text"
@@ -200,13 +201,14 @@
                             <p style="margin-right: 0px; margin-bottom:0px;text-align:right; ">
                                 ____________________________</p>
                         </div>
-                        <img src="{{ public_path('images/signiture/celina.png') }}" alt="Signature Roseller"
-                            class="signature-image signature-celina" />
+                        <img src="{{ public_path('storage/' . $certificateImage->right_signiture) }}"
+                            alt="Signature Roseller" class="signature-image signature-celina" />
                     </div>
-                    <span>
-                        <p class="text-bold" style="margin-right: 6px;margin-top:0px;margin-bottom:0;text-align:right;">
-                            CELINA D.
-                            MANABAT, RSW</p>
+                    <span
+                        style="display: block; text-align: center; margin-left: 40px; margin-top: 0; margin-bottom: 0;">
+                        <p class="text-bold" style="margin: 0;">
+                            {{ $certificateImage->right_name }}
+                        </p>
                     </span>
                     <span>
                         <p class="text"
@@ -222,13 +224,14 @@
                             <p style="margin-right: 0px; margin-bottom:0px;text-align:center; ">
                                 ____________________________</p>
                         </div>
-                        <img src="{{ public_path('images/signiture/ross.png') }}" alt="Signature Roseller"
-                            class="signature-image signature-ross" />
+                        <img src="{{ public_path('storage/' . $certificateImage->middle_signiture) }}"
+                            alt="Signature Roseller" class="signature-image signature-ross" />
                     </div>
-                    <span>
-                        <p class="text-bold"
-                            style="margin-right: 0px;margin-top:0px;margin-bottom:0;text-align:center;">HON.
-                            ROSELLER H. RIZAL</p>
+                    <span
+                        style="display: block; text-align: center; margin-left: 8px; margin-top: 0; margin-bottom: 0;">
+                        <p class="text-bold" style="margin: 0;">
+                            {{ $certificateImage->middle_name }}
+                        </p>
                     </span>
                 </td>
             </tr>

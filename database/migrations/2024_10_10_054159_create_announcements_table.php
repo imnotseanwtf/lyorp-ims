@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->date('announce_on');
             $table->date('end_on');
+            $table->string('image')->nullable();
             $table->boolean('is_texted')->default(false);
 
             $table->timestamps();

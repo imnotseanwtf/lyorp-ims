@@ -216,31 +216,31 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="RA 8044" id="view_topic_ra8044"
                             disabled>
-                        <label class="form-check-label" for="view_topic_ra8044">RA 8044</label>
+                        <label class="form-check-label" for="view_topic_ra8044">RA 8044 (Youth in Nation-Building Act)</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="RA 10742" id="view_topic_ra10742"
                             disabled>
-                        <label class="form-check-label" for="view_topic_ra10742">RA 10742</label>
+                        <label class="form-check-label" for="view_topic_ra10742">RA 10742 (Sangguniang Kabataan Reform Act of 2015)</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="SK" id="view_topic_sk" disabled>
-                        <label class="form-check-label" for="view_topic_sk">SK</label>
+                        <label class="form-check-label" for="view_topic_sk">SK (Sangguniang Kabataan)</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="LYDO" id="view_topic_lydo"
                             disabled>
-                        <label class="form-check-label" for="view_topic_lydo">LYDO</label>
+                        <label class="form-check-label" for="view_topic_lydo">LYDO (Local Youth Devt Office)</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="LYDC" id="view_topic_lydc"
                             disabled>
-                        <label class="form-check-label" for="view_topic_lydc">LYDC</label>
+                        <label class="form-check-label" for="view_topic_lydc">LYDC (Local Youth Devt Council)</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="YORP" id="view_topic_yorp"
                             disabled>
-                        <label class="form-check-label" for="view_topic_yorp">YORP</label>
+                        <label class="form-check-label" for="view_topic_yorp">YORP (Youth Organziation Registration Program)</label>
                     </div>
                 </div>
 

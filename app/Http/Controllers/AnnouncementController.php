@@ -27,7 +27,13 @@ class AnnouncementController extends Controller
      */
     public function store(StoreAnnoucementRequest $storeAnnoucementRequest): RedirectResponse
     {
-        $announcement = Announcement::create($storeAnnoucementRequest->validated());
+        $announcement = Announcement::create(
+            $storeAnnoucementRequest->except('image')
+                +
+                [
+                    'image' => $storeAnnoucementRequest->file('image')->store('announcementImage', 'public') ?? null
+                ]
+        );
 
         alert()->success('Announcement Created Successfully!');
 
@@ -47,10 +53,21 @@ class AnnouncementController extends Controller
      */
     public function update(UpdateAnnoucementRequest $updateAnnoucementRequest, Announcement $announcement): RedirectResponse
     {
-        $announcement->update($updateAnnoucementRequest->validated());
+        // Prepare the data for updating the announcement
+        $data = $updateAnnoucementRequest->except('image');
 
+        // Check if an image file is provided
+        if ($updateAnnoucementRequest->hasFile('image')) {
+            $data['image'] = $updateAnnoucementRequest->file('image')->store('announcementImage', 'public');
+        }
+
+        // Update the announcement with the new data
+        $announcement->update($data);
+
+        // Flash a success message
         alert()->success('Announcement Updated Successfully!');
 
+        // Redirect to the announcements index page
         return redirect()->route('announcement.index');
     }
 

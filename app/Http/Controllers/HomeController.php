@@ -50,11 +50,13 @@ class HomeController extends Controller
 
         $announcementCount = Announcement::count();
 
-        $announcements = Announcement::where('announce_on', '<=', Carbon::today())
-            ->where('end_on', '>=', Carbon::today())
-            ->orderBy('created_at', 'desc')
+        $announcements = Announcement::whereDate('announce_on', '<=', Carbon::today())  // announce_on is on or before today
+            ->where(function ($query) {
+                $query->whereDate('end_on', '>=', Carbon::today())  // end_on is on or after today
+                    ->orWhereNull('end_on');  // Or end_on is null
+            })
+            ->orderBy('created_at', 'desc')  // Sort by created_at descending
             ->get();
-
 
         $reportCount = Report::count();
 

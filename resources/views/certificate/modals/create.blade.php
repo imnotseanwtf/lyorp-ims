@@ -13,7 +13,7 @@
             <form action="{{ route('certificate.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
-                    
+
                     <div class="form-group">
                         <label for="name">Name Organization</label>
                         <select name="user_id" class="form-control">
@@ -24,10 +24,10 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label for="register_number">Register Number</label>
-                        <input type="number" class="form-control" name="register_number" placeholder="Enter Register Number"
-                            value="{{ old('register_number') }}" required>
+                        <input type="text" class="form-control" name="register_number"
+                            placeholder="Enter Register Number" value="{{ old('register_number') }}" required>
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

@@ -50,6 +50,15 @@
                         @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <input type="file" class="form-control" name="image" placeholder="Enter description"
+                            value="{{ old('image') }}" required>
+                        @error('image')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -35,9 +35,9 @@ class StoreActivityRequest extends FormRequest
             'file' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:2048'],
             'audience' => ['required', 'array'],
             'audience.*' => ['string'], // Each topic should be a string
-            'others' => ['required', 'string'],
+            'others' => ['nullable', 'string'],
             'expected_number_of_participants' => ['required', 'integer'],
-            'others_equipment' => ['required', 'string'],
+            'others_equipment' => ['nullable', 'string'],
         ];
     }
 }

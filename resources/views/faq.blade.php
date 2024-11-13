@@ -52,10 +52,10 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                <a class="nav-link" href="{{ route('register') }}">Register</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">Register</a>
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
                             </li>
                         @endauth
                     @endif
@@ -166,8 +166,7 @@
                         </h6>
                         <p>
                             <i class="fab fa-facebook"></i>
-                            <a href="https://www.facebook.com/CalambaCityYouthDevelopmentOffice?mibextid=ZbWKwL"
-                                class="text-reset">Facebook</a>
+                            <a href="{{ $welcome->facebook }}" class="text-reset">Facebook</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -177,18 +176,16 @@
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                        <p><i class="fas fa-home me-3"></i>Calamba Laguna</p>
+                        <p><i class="fas fa-home me-3"></i>{{ $welcome->address }}</p>
                         <p>
                             <i class="fas fa-envelope me-3"></i>
-                            <a
-                                href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCGldMrbLrkdhHjBNlckXHKvrDVcfRdtJhcxnsThjbQlBfpQzRwfMQmfxCdcPrVnjwHBKg">Lyorpcalamba.secretariat@gmail.com</a>
+                            {{ $welcome->email }}
                         </p>
                         <p>
                             <i class="fas fa-envelope me-3"></i>
-                            <a
-                                href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCGldMrbLrkdhHjBNlckXHKvrDVcfRdtJhcxnsThjbQlBfpQzRwfMQmfxCdcPrVnjwHBKg">ydscalamba@gmail.com</a>
+                            {{ $welcome->email_two }}
                         </p>
-                        <p><i class="fas fa-phone me-3"></i> <b>+ (045) 545 6783 (loc 8120)</b></p>
+                        <p><i class="fas fa-phone me-3"></i> <b>{{ $welcome->number }}</b></p>
                     </div>
                     <!-- Grid column -->
                 </div>

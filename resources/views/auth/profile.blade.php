@@ -8,8 +8,87 @@
                     <h2>{{ __('My Profile') }}</h2>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="title mb-30 text-end">
+                    <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
+                        Home Information
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
+
+    {{-- CREATE --}}
+
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+
+                    <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <form action="{{ route('information') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" name="address" placeholder="Enter address"
+                                value="{{ old('address', $welcome->address) }}" required>
+                            @error('address')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter email"
+                                value="{{ old('email', $welcome->email) }}" required>
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="email_two">Secondary Email</label>
+                            <input type="email" class="form-control" name="email_two" placeholder="Enter secondary email"
+                                value="{{ old('email_two', $welcome->email_two) }}">
+                            @error('email_two')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="number">Phone Number</label>
+                            <input type="text" class="form-control" name="number" placeholder="Enter phone number"
+                                value="{{ old('number', $welcome->number) }}" required>
+                            @error('number')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="facebook">Facebook</label>
+                            <input type="url" class="form-control" name="facebook" placeholder="Enter Facebook URL"
+                                value="{{ old('facebook', $welcome->facebook) }}" required>
+                            @error('facebook')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <div class="card-styles">
         <div class="card-style-3 mb-30">
@@ -104,8 +183,8 @@
                             <div class="col-md-6">
                                 <div class="input-style-1">
                                     <label for="age">{{ __('Age') }}</label>
-                                    <input type="number" @error('age') class="form-control is-invalid" @enderror name="age"
-                                        id="age" value="{{ old('age', auth()->user()->age) }}"
+                                    <input type="number" @error('age') class="form-control is-invalid" @enderror
+                                        name="age" id="age" value="{{ old('age', auth()->user()->age) }}"
                                         placeholder="{{ __('Age') }}" required>
                                     @error('age')
                                         <span class="invalid-feedback" role="alert">
@@ -180,7 +259,8 @@
                                         for="duty_accomplished_registration_form">{{ __('Duty Accomplished Registration Form') }}</label>
                                     <input type="file"
                                         @error('duty_accomplished_registration_form') class="form-control is-invalid" @enderror
-                                        name="duty_accomplished_registration_form" id="duty_accomplished_registration_form" required>
+                                        name="duty_accomplished_registration_form" id="duty_accomplished_registration_form"
+                                        required>
                                     @error('duty_accomplished_registration_form')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

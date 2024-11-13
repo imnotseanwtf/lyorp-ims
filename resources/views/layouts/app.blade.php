@@ -16,8 +16,28 @@
 
     @vite('resources/sass/app.scss')
 </head>
+<style>
+    body {
+        background-image: url('{{ asset('images/logo/background.png') }}');
+        /* Set the background image path */
 
-<body>
+        background-size: cover;
+        /* Ensures the image covers the entire section */
+        background-position: center;
+        /* Centers the image in the section */
+        background-repeat: no-repeat;
+        /* Prevents the image from repeating */
+
+        /* Ensures the section takes up 100% of the viewport height */
+        width: 100%;
+        /* Ensures the section takes up 100% of the viewport width */
+
+        position: relative;
+        /* Allows for full positioning of any content inside */
+    }
+</style>
+
+<body >
     @include('sweetalert::alert')
     <!-- ======== sidebar-nav start =========== -->
     <aside class="sidebar-nav-wrapper">

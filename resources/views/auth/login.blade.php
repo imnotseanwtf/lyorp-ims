@@ -1,10 +1,30 @@
 @extends('layouts.guest')
 
 @section('content')
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <style>
+        .bglogin {
+            background-image: url('{{ asset('images/background/colorful.png') }}');
+            /* Set the background image path */
+
+            background-size: cover;
+            /* Ensures the image covers the entire section */
+            background-position: center;
+            /* Centers the image in the section */
+            background-repeat: no-repeat;
+            /* Prevents the image from repeating */
+            height: 100vh;
+            /* Ensures the section takes up 100% of the viewport height */
+            width: 100%;
+            /* Ensures the section takes up 100% of the viewport width */
+
+            position: relative;
+            /* Allows for full positioning of any content inside */
+        }
+    </style>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100 ">
         <div class="card col-12 col-md-8 col-lg-6">
-            <div class="signin-wrapper">
-                <div class="form-wrapper">
+            <div class="signin-wrapper bglogin">
+                <div class="form-wrapper ">
                     <div class="text-center">
                         <img src="{{ asset('images/logo/logo-ym.gif') }}" alt="" style="height: 150px; width: 150px;"
                             class="mt-2">
@@ -14,7 +34,7 @@
 
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
-                        <div class="row">
+                        <div class="row ">
                             <div class="col-12">
                                 <div class="input-style-1">
                                     <label for="email">{{ __('Email') }}</label>

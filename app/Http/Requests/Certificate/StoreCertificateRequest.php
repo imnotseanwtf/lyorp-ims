@@ -23,7 +23,7 @@ class StoreCertificateRequest extends FormRequest
     {
         return [
             'user_id' => ['required', 'integer', 'exists:users,id'],
-            'register_number' => ['required', 'integer', 'unique:certificates,register_number'],
+            'register_number' => ['required', 'string', 'unique:certificates,register_number'],
         ];
     }
 }

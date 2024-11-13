@@ -1,7 +1,6 @@
 {{-- Reject --}}
 
-<div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectPromoModal"
-    aria-hidden="true">
+<div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectPromoModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <form action="" method="POST" id="reject-form">
             @csrf
@@ -15,6 +14,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="text-center mb-2">Are you sure you want to reject this?</div>
+
+                    <div class="form-group mt-3">
+                        <label for="reason">Reason</label>
+                        <textarea type="text" class="form-control" name="reason" placeholder="Enter Reason"
+                            value="{{ old('reason') }}" required></textarea>
+                        @error('reason')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
                     <div class="modal-footer mt-2">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>

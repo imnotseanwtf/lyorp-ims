@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Certificate;
+use App\Models\CertificateImage;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
@@ -13,12 +14,9 @@ class CertificatePdfController extends Controller
      */
     public function __invoke(Certificate $certificate)
     {
-        $data = [
-            'organizationName' => $certificate->user->name,
-            'registerNumber' => $certificate->register_number,
-        ];
+        $certificateImage = CertificateImage::find(1);
 
-        $pdf = Pdf::loadView('certificate.pdf', $data);
+        $pdf = Pdf::loadView('certificate.pdf', compact('certificate', 'certificateImage'));
 
         return $pdf->stream('certicate.pdf');
     }

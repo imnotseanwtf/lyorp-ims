@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\WelcomeInformation;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
     public function show()
     {
-        return view('auth.profile');
+        $welcome = WelcomeInformation::findOrFail(1);
+
+        return view('auth.profile', compact('welcome'));
     }
 
     public function update(ProfileUpdateRequest $request)
@@ -53,7 +56,7 @@ class ProfileController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'name_of_the_primary_representative' => $data['name_of_the_primary_representative'] ?? null,
-            'facebook_url' => $data['facebook_url'] ?? null ,
+            'facebook_url' => $data['facebook_url'] ?? null,
             'phone_number' => $data['phone_number'] ?? null,
             'age' => $data['age'] ?? null,
             'sex' => $data['sex'] ?? null,
@@ -66,6 +69,7 @@ class ProfileController extends Controller
                 $user->update([$field => $data[$field]]);
             }
         }
+
 
         return redirect()->back()->with('success', 'Profile updated successfully.');
     }

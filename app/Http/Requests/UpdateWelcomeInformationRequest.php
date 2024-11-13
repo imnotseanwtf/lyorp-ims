@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Announcement;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreAnnoucementRequest extends FormRequest
+class UpdateWelcomeInformationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,11 @@ class StoreAnnoucementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:1000'],
-            'announce_on' => ['required', 'date'],
-            'end_on' => ['required', 'date'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'address'   => 'required|string|max:255',
+            'email'     => 'required|email|max:255',
+            'email_two' => 'required|email|max:255',
+            'number'    => 'required|string|max:20',
+            'facebook'  => 'required|url|max:255',
         ];
     }
 }

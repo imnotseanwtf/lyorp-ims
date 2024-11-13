@@ -141,21 +141,31 @@
                                         <hr>
                                         <p>{{ $announcement->description }}</p>
                                     </div>
+
+                                    <!-- Card Footer Section -->
+                                    @if ($announcement->image)
+                                        <div class="card-footer d-flex justify-content-center">
+                                            <img src="{{ asset('storage/' . $announcement->image) }}" alt="Announcement Image"
+                                                class="img-fluid" style="max-width: 800px; max-height: 800px;">
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                    @endforeach
                 </div>
-
-                <a class="carousel-control-prev" href="#announcementCarousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#announcementCarousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+                @endforeach
             </div>
+
+
+            <a class="carousel-control-prev" href="#announcementCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#announcementCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
         </div>
     @endorganization
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

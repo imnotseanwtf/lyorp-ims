@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" style="margin-top: 3rem !important;">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('criteria.index') }}">Critera</a></li>
             <li class="breadcrumb-item active" aria-current="page">Pending Evaluation</li>
         </ol>
+
+        <a href="{{ route('pdf.evaluation') }}" class="btn btn-primary btn-hover">Download Answers</a>
     </nav>
 
     @forelse ($assign as $assignment)

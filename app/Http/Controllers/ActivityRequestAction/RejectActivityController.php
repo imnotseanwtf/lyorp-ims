@@ -17,6 +17,7 @@ class RejectActivityController extends Controller
         $activity->update(
             [
                 'status' => 2,
+                'reason' => request()->input('reason'),
             ]
         );
 

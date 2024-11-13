@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" style="margin-top: 3rem !important;">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Technical Assistance</li>
@@ -202,7 +202,7 @@
                 $('.editBtn').click(function() {
                     const activityId = $(this).data('activity'); // Get activity ID from the button
                     fetch('/activity-request/' +
-                        activityId) // Fetch the activity data from the server
+                            activityId) // Fetch the activity data from the server
                         .then(response => response.json())
                         .then(activity => {
                             // General Information
@@ -217,7 +217,7 @@
                             $('#edit_audience_youth_organization').prop('checked', activity
                                 .audience.includes(
                                     'Youth Organization / Local Youth Development Council Member'
-                                    ));
+                                ));
                             $('#edit_audience_local_youth_development_officers').prop('checked',
                                 activity.audience.includes(
                                     'Local Youth Development Officers'));
@@ -325,6 +325,14 @@
                 $('.rejectBtn').click(function() {
                     $('#reject-form').attr('action', '/reject-activity/' + $(this).data(
                         'activity'));
+                })
+
+                $('.reviewBtn').click(function() {
+                    fetch('/activity-request/' + $(this).data('activity'))
+                        .then(response => response.json())
+                        .then(activity => {
+                            $('#view-reason').val(activity.reason);
+                        });
                 })
 
             })
