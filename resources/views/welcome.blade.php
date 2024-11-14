@@ -132,7 +132,8 @@
         <div class="carousel-inner" style="height: 100%;">
             <!-- Slide 1 -->
             <div class="carousel-item active" style="height: 100%;">
-                <img src="images/welcome/1.jpg" class="d-block w-100 h-100" alt="Slide 1" style="object-fit: cover;">
+                <img src="{{ asset('images/welcome/1.jpg') }}" class="d-block w-100 h-100" alt="Slide 1"
+                    style="object-fit: cover;">
                 <div class="carousel-caption d-none d-md-block text-center shadow-box">
                     <h2>CSSD - LYORP</h2>
                     <p>Calamba City Youth Development Office</p>
@@ -142,7 +143,7 @@
 
             <!-- Slide 2 -->
             <div class="carousel-item" style="height: 100%;">
-                <img src="images/welcome/2.jpg" class="d-block w-100 h-100" alt="Slide 2" style="object-fit: cover;">
+                <img src="{{ asset('images/fron/2.png') }}" class="d-block w-100 h-100" alt="Slide 2" style="object-fit: cover;">
                 <div class="carousel-caption d-none d-md-block text-center shadow-box">
                     <h2>CSSD - LYORP</h2>
                     <p>Calamba City Youth Development Office</p>
@@ -152,7 +153,7 @@
 
             <!-- Additional Slides (3-6) -->
             <div class="carousel-item" style="height: 100%;">
-                <img src="images/welcome/3.jpg" class="d-block w-100" alt="Slide 3"
+                <img src="{{ asset('images/fron/3.png') }}" class="d-block w-100" alt="Slide 3"
                     style="object-fit:contain; height: 600px">
                 <div class="carousel-caption d-none d-md-block text-center shadow-box">
                     <h2>CSSD - LYORP</h2>
@@ -162,7 +163,7 @@
             </div>
 
             <div class="carousel-item" style="height: 100%;">
-                <img src="images/welcome/4.jpg" class="d-block w-100" alt="Slide 4"
+                <img src="{{ asset('images/fron/4.png') }}" class="d-block w-100" alt="Slide 4"
                     style="object-fit:contain; height: 600px">
                 <div class="carousel-caption d-none d-md-block text-center shadow-box">
                     <h2>CSSD - LYORP</h2>
@@ -172,7 +173,7 @@
             </div>
 
             <div class="carousel-item" style="height: 100%;">
-                <img src="images/welcome/5.jpg" class="d-block w-100" alt="Slide 5"
+                <img src="{{ asset('images/fron/5.png') }}" class="d-block w-100" alt="Slide 5"
                     style="object-fit:contain; height: 600px">
                 <div class="carousel-caption d-none d-md-block text-center shadow-box">
                     <h2>CSSD - LYORP</h2>
@@ -182,7 +183,7 @@
             </div>
 
             <div class="carousel-item" style="height: 100%;">
-                <img src="images/welcome/6.jpg" class="d-block w-100" alt="Slide 6"
+                <img src="{{ asset('images/fron/6.png') }}" class="d-block w-100" alt="Slide 6"
                     style="object-fit:contain; height: 600px">
                 <div class="carousel-caption d-none d-md-block text-center shadow-box">
                     <h2>CSSD - LYORP</h2>
@@ -255,7 +256,7 @@
                     youth of Calamba City with
                     realized needs and aspirations living in an inclusive and <br> sustainable community.</p>
             </div>
-            <img src="{{ asset('images/welcome/vision.jpg') }}" alt="" srcset=""
+            <img src="{{ asset('images/fron/vision.png') }}" alt="" srcset=""
                 style="width: 800px; height:300px;">
         </div>
     </div>
@@ -264,7 +265,7 @@
 
     <div class="container">
         <div class="d-flex ">
-            <img src="{{ asset('images/welcome/mission.jpg') }}" alt="" srcset=""
+            <img src="{{ asset('images/fron/mission.png') }}" alt="" srcset=""
                 style="width: 800px; height:300px;">
             <div class="container-fluid mx-3" style="margin-top: 50px;">
                 <h2>Section 2.2. Mission Statement</h2>

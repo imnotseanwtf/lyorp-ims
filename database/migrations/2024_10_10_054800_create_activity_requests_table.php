@@ -35,7 +35,7 @@ return new class extends Migration
             $table->string('file');
             $table->boolean('is_notif')->default(false);
 
-            $table->string('reason');
+            $table->string('reason')->nullable();
 
             $table->timestamps();
         });

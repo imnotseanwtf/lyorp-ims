@@ -8,13 +8,15 @@
                     <h2>{{ __('My Profile') }}</h2>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="title mb-30 text-end">
-                    <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
-                        Home Information
-                    </button>
+            @admin
+                <div class="col-md-6">
+                    <div class="title mb-30 text-end">
+                        <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
+                            Home Information
+                        </button>
+                    </div>
                 </div>
-            </div>
+            @endadmin
         </div>
     </div>
 

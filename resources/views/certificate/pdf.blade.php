@@ -115,7 +115,10 @@
     <table style="width: 98%; text-align: center; border-collapse: collapse; margin-left: 0px; ">
         <tr>
             <td style="width: 30%;">
-                <img src="{{ public_path('storage/' . $certificateImage->left_logo) }}" alt="Logo" width="90px" height="auto" />
+                @if ($certificateImage->left_logo)
+                    <img src="{{ public_path('storage/' . $certificateImage->left_logo) }}" alt="Logo" width="90px"
+                        height="auto" />
+                @endif
             </td>
             <td style="width: 60%;">
                 <div style="color: #5b56ab">Republic of the Philippines</div>
@@ -124,7 +127,11 @@
                 <div class="title" style="margin-top: 10px">Calamba City Youth Development Office</div>
             </td>
             <td style="width: 30%;">
-                <img src="{{ public_path('storage/' . $certificateImage->right_logo) }}" alt="Logo" width="90px" height="auto" />
+                @if ($certificateImage->right_logo)
+                    <img src="{{ public_path('storage/' . $certificateImage->right_logo) }}" alt="Logo"
+                        width="90px" height="auto" />
+                @endif
+
             </td>
         </tr>
     </table>
@@ -179,13 +186,15 @@
                                 <p style="margin-right: 0px; margin-bottom:0px; text-align:left;">
                                     ______________________________________</p>
                             </div>
-                            <img src="{{ public_path('storage/' . $certificateImage->left_signiture) }}"
-                                alt="Signature Roseller" class="signature-image signature-roseller" />
+                            @if ($certificateImage->left_signiture)
+                                <img src="{{ public_path('storage/' . $certificateImage->left_signiture) }}"
+                                    alt="Signature Roseller" class="signature-image signature-roseller" />
+                            @endif
                         </div>
                         <span
                             style="display: block; text-align: center; margin-left: 8px; margin-top: 0; margin-bottom: 0;">
                             <p class="text-bold" style="margin: 0;">
-                                {{ $certificateImage->left_name }}
+                                {{ $certificateImage->left_name ?? null}}
                             </p>
                         </span>
                         <span>
@@ -201,13 +210,15 @@
                             <p style="margin-right: 0px; margin-bottom:0px;text-align:right; ">
                                 ____________________________</p>
                         </div>
-                        <img src="{{ public_path('storage/' . $certificateImage->right_signiture) }}"
-                            alt="Signature Roseller" class="signature-image signature-celina" />
+                        @if ($certificateImage->right_signiture)
+                            <img src="{{ public_path('storage/' . $certificateImage->right_signiture) }}"
+                                alt="Signature Roseller" class="signature-image signature-celina" />
+                        @endif
                     </div>
                     <span
                         style="display: block; text-align: center; margin-left: 40px; margin-top: 0; margin-bottom: 0;">
                         <p class="text-bold" style="margin: 0;">
-                            {{ $certificateImage->right_name }}
+                            {{ $certificateImage->right_name ?? null}}
                         </p>
                     </span>
                     <span>
@@ -224,13 +235,15 @@
                             <p style="margin-right: 0px; margin-bottom:0px;text-align:center; ">
                                 ____________________________</p>
                         </div>
-                        <img src="{{ public_path('storage/' . $certificateImage->middle_signiture) }}"
-                            alt="Signature Roseller" class="signature-image signature-ross" />
+                        @if ($certificateImage->middle_signiture)
+                            <img src="{{ public_path('storage/' . $certificateImage->middle_signiture) }}"
+                                alt="Signature Roseller" class="signature-image signature-ross" />
+                        @endif
                     </div>
                     <span
                         style="display: block; text-align: center; margin-left: 8px; margin-top: 0; margin-bottom: 0;">
                         <p class="text-bold" style="margin: 0;">
-                            {{ $certificateImage->middle_name }}
+                            {{ $certificateImage->middle_name ?? null}}
                         </p>
                     </span>
                 </td>

@@ -66,7 +66,7 @@
 
     <div class="container-fluid faq">
         <div class="container text-center pt-5 pb-5">
-            <img src="{{ asset('images/welcome/faq1.jpg') }}" alt="" srcset=""
+            <img src="{{ asset('images/fron/faq.png') }}" alt="" srcset=""
                 style="height: 300px; width:500px;">
         </div>
         <div class="container">
