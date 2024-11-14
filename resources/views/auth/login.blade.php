@@ -12,7 +12,6 @@
             /* Centers the image in the section */
             background-repeat: no-repeat;
             /* Prevents the image from repeating */
-            height: 100vh;
             /* Ensures the section takes up 100% of the viewport height */
             width: 100%;
             /* Ensures the section takes up 100% of the viewport width */
