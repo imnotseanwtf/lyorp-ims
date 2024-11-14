@@ -25,7 +25,7 @@ class UpdateWelcomeInformationRequest extends FormRequest
             'address'   => 'required|string|max:255',
             'email'     => 'required|email|max:255',
             'email_two' => 'required|email|max:255',
-            'number'    => 'required|string|max:20',
+            'number'    => 'required|string',
             'facebook'  => 'required|url|max:255',
         ];
     }
