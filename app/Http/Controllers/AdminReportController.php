@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\AdminReportDataTable;
+use App\Models\Folder;
 use App\Models\Report;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -17,6 +18,10 @@ class AdminReportController extends Controller
     {
         $folderId = array_key_first(request()->query());
 
+        Report::where('folder_id', $folderId)->update([
+            'is_notif' => true
+        ]);
+
         return $adminReportDataTable->render('admin-report.index', compact('folderId'));
     }
 
@@ -27,5 +32,4 @@ class AdminReportController extends Controller
     {
         return response()->json($report);
     }
-    
 }
