@@ -38,7 +38,7 @@
                                 </a>
                             @endadmin
                             @organization
-                                <a href="{{ route('user-report.index') }}" style="text-decoration: none; color: inherit;">
+                                <a href="{{ route('folder.index') }}" style="text-decoration: none; color: inherit;">
                                     <div class="card-body">
                                         <h6>Number Of Report Sent</h6>
                                         <h5>{{ $reportSent }}</h5>
@@ -90,7 +90,7 @@
                     @admin
                         <div class="col-4 mt-3">
                             <div class="card">
-                                <a href="{{ route('admin-report.index') }}" style="text-decoration: none; color: inherit;">
+                                <a href="{{ route('folder.index') }}" style="text-decoration: none; color: inherit;">
                                     <div class="card-body">
                                         <h6>Annual Report</h6>
                                         <h5>{{ $reportCount }}</h5>

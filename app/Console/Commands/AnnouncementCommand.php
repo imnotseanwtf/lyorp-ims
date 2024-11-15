@@ -32,7 +32,7 @@ class AnnouncementCommand extends Command
     {
 
         // Find the announcement to be sent
-        $announcement = Announcement::whereDate('announce_in', Carbon::today())
+        $announcement = Announcement::whereDate('announce_on', Carbon::today())
             ->where('is_texted', false)
             ->first();
 
@@ -47,15 +47,17 @@ class AnnouncementCommand extends Command
 
             foreach ($users as $user) {
                 try {
-                    $phoneNumber = '+63' . substr($user->phone, 1);
+                    $phoneNumber = '+63' . substr($user->phone_number, 1);
+
+                    // Log the phone number
+                    Log::info('Sending message to phone number: ' . $phoneNumber);
 
                     $twilio->messages->create($phoneNumber, [
                         "body" => 'New Announcement!' . "\n" . 'Title: ' . $announcement->title . "\n" . 'Description: ' . $announcement->description,
                         "from" => $senderNumber
                     ]);
                 } catch (\Exception $e) {
-                    error_log('Failed to send message to ' . $user->phone . ': ' . $e->getMessage());
-
+                    Log::error('Failed to send message to ' . $user->phone_number . ': ' . $e->getMessage());
                     continue;
                 }
             }
