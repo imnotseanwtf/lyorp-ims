@@ -18,12 +18,12 @@
             </div>
             <div class="col-md-6">
                 <div class="title mb-30 text-end">
-                    <a href="{{ route('archive.index', $folderId) }}" class="main-btn btn-danger btn-hover">
-                        Archive
-                    </a>
-                    <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
-                        Create Report
-                    </button>
+                    @if ($showCreateButton)
+                        <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
+                            Create Report
+                        </button>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
                 })
 
                 $('.deleteBtn').click(function() {
-                    $('#delete-form').attr('action', '/soft-delete/' + $(this).data('report'));
+                    $('#delete-form').attr('action', '/user-report/' + $(this).data('report'));
                 });
 
             })

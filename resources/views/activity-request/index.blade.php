@@ -54,6 +54,8 @@
     {{-- REJECT ACTIVITY REQUEST --}}
     @include('activity-request.modals.reject')
 
+    @include('activity-request.modals.review')
+
 @endsection
 
 @push('scripts')

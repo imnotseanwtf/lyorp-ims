@@ -18,9 +18,7 @@
             </div>
             <div class="col-md-6">
                 <div class="title mb-30 text-end">
-                    <a href="{{ route('archive.index', $folderId) }}" class="main-btn btn-danger btn-hover">
-                        Archive
-                    </a>
+                   
                 </div>
             </div>
         </div>

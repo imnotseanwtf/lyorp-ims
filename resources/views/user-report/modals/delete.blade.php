@@ -5,7 +5,7 @@ aria-hidden="true">
 <div class="modal-dialog" role="document">
     <form action="" method="POST" id="delete-form">
         @csrf
-        @method('PUT')
+        @method('DELETE')
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Delete</h5>

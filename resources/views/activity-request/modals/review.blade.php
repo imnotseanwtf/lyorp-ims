@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <label for="reason">{{ __('Reason') }}</label>
                     <div class="input-group">
-                        <textarea name="reason" type="reason" id="view_reason" @class(['form-control'])
+                        <textarea name="reason" type="reason" id="view-reason" @class(['form-control'])
                             placeholder="{{ __('Reason') }}" value="{{ old('reason') }}" readonly></textarea>
                     </div>
                 </div>

@@ -21,7 +21,16 @@ class UserReportController extends Controller
     {
         $folderId = array_key_first(request()->query());
 
-        return $userReportDataTable->render('user-report.index', compact('folderId'));
+        // Get the latest report for the authenticated user
+        $latestReport = Report::where('user_id', auth()->id())->latest()->first();
+
+        // Check if the latest report is older than 10 days
+        $showCreateButton = true; // default to true if no report exists
+        if ($latestReport) {
+            $showCreateButton = $latestReport->created_at->lt(now()->subDays(10));
+        }
+
+        return $userReportDataTable->render('user-report.index', compact('folderId', 'showCreateButton'));
     }
 
     /**
@@ -29,9 +38,10 @@ class UserReportController extends Controller
      */
     public function store(StoreReportRequest $storeReportRequest): RedirectResponse
     {
-        $activityRequestCount = ActivityRequest::where('status', true)->count();
-
         $userId = auth()->id();
+
+        $activityRequestCount = ActivityRequest::where('status', true)
+            ->where('user_id', $userId)->count();
 
         $report = Report::create($storeReportRequest->except('file') +
             [
