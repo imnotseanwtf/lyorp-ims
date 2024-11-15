@@ -54,7 +54,8 @@ class AnnouncementCommand extends Command
 
                     $twilio->messages->create($phoneNumber, [
                         "body" => 'New Announcement!' . "\n" . 'Title: ' . $announcement->title . "\n" . 'Description: ' . $announcement->description,
-                        "from" => $senderNumber
+                        "from" => $senderNumber,
+                        "title" => 'Youth Development Office - CSSD',
                     ]);
                 } catch (\Exception $e) {
                     Log::error('Failed to send message to ' . $user->phone_number . ': ' . $e->getMessage());
