@@ -23,7 +23,7 @@ class UpdateAnnoucementRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:1000'],
+            'description' => ['required', 'string'],
             'announce_on' => ['required', 'date'],
             'end_on' => ['required', 'date'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
