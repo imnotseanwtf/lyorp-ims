@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             <!-- end col -->
-                            <div class="col-xxl-6 col-lg-12 col-md-6">
+                            <div class="col-xxl-6 col-lg-12 col-md-6 mb-4">
                                 <div class="form-check checkbox-style mb-30">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                         value="" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -74,15 +74,6 @@
                                         {{ __('Remember Me') }}</label>
                                 </div>
                             </div>
-                            <!-- end col -->
-                            @if (Route::has('password.request'))
-                                <div class="col-xxl-6 col-lg-12 col-md-6">
-                                    <div class="text-start text-md-end text-lg-start text-xxl-end mb-30">
-                                        <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
-                                    </div>
-                                </div>
-                            @endif
-                            <!-- end col -->
                             <div class="col-12">
                                 <div class="button-group d-flex justify-content-center flex-wrap">
                                     <button type="submit" class="main-btn primary-btn btn-hover w-100 text-center">
