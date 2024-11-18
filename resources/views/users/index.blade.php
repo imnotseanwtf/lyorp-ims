@@ -26,6 +26,7 @@
                         <li><a class="dropdown-item" href="{{ route('users.index', 0) }}">Pending</a></li>
                         <li><a class="dropdown-item" href="{{ route('users.index', 1) }}">Accepted</a></li>
                         <li><a class="dropdown-item" href="{{ route('users.index', 2) }}">Rejected</a></li>
+                     
                     </ul>
                 </div>
             </div>
@@ -46,6 +47,8 @@
 
     {{-- VIEW --}}
     @include('users.modals.view')
+
+    @include('users.modals.password')
 @endsection
 
 @push('scripts')
@@ -113,6 +116,10 @@
 
                 $('.rejectBtn').click(function() {
                     $('#reject-form').attr('action', '/reject/' + $(this).data('user'));
+                })
+
+                $('.editBtn').click(function() {
+                    $('#update-form').attr('action', '/org-password/' + $(this).data('user'));
                 })
             })
         })

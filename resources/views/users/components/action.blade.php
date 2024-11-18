@@ -38,6 +38,12 @@
                         @endif
                     </a>
                 </li>
+
+                <li class="dropdown-item editBtn" data-bs-toggle="modal" data-bs-target="#editModal"
+                    data-user="{{ $user->id }}" style="cursor: pointer; transition: text-decoration 0.3s ease;"
+                    onmouseout="this.style.textDecoration='none'">
+                    Edit Password
+                </li>
             </ul>
         </div>
     @elseif($user->status == 0)

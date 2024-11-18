@@ -13,6 +13,7 @@ use App\Http\Controllers\AuditController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CertificateImageController;
 use App\Http\Controllers\CertificatePdfController;
+use App\Http\Controllers\ChangingPasswordOrganizationController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\LogOutController;
@@ -81,6 +82,8 @@ Route::middleware('auth')->group(function () {
 
 
     Route::middleware('role:admin')->group(function () {
+
+        Route::put('/org-password/{user}', ChangingPasswordOrganizationController::class)->name('org.password');
 
         Route::put('/information-update', WelcomeInformationController::class)->name('information');
 

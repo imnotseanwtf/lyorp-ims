@@ -115,60 +115,47 @@
         </div>
     </div>
     @organization
-        <!-- ========== title-wrapper start ========== -->
-        <div class="title-wrapper pt-30">
+        <!-- Announcements Section -->
+        <div class="title-wrapper pt-4">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <div class="title mb-30">
-                        <h3>{{ __('Announcement') }}</h3>
-                    </div>
+                    <h3>{{ __('Announcement') }}</h3>
                 </div>
-                <!-- end col -->
             </div>
-            <!-- end row -->
         </div>
-        <!-- ========== title-wrapper end ========== -->
-        <div class="container mt-5">
-            <div id="announcementCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
-                <div class="carousel-inner">
-                    @foreach ($announcements as $index => $announcement)
-                        <div class="carousel-item @if ($index === 0) active @endif">
-                            <div class="card-styles">
-                                <div class="card-style-3 mb-30">
-                                    <div class="card-content">
-                                        <h4>{{ $announcement->title }}</h4>
-                                        <span>{{ $announcement->created_at->diffForHumans(['options' => \Carbon\CarbonInterface::ROUND, 'parts' => 1]) }}</span>
-                                        <hr>
-                                        <p>{{ $announcement->description }}</p>
-                                    </div>
 
-                                    <!-- Card Footer Section -->
-                                    @if ($announcement->image)
-                                        <div class="card-footer d-flex justify-content-center">
-                                            <img src="{{ asset('storage/' . $announcement->image) }}" alt="Announcement Image"
-                                                class="img-fluid" style="max-width: 800px; max-height: 800px;">
-                                        </div>
-                                    @endif
-                                </div>
+        <div id="announcementCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach ($announcements as $index => $announcement)
+                    <div class="carousel-item @if ($index === 0) active @endif">
+                        <div class="card card-style-3 mb-3">
+                            <div class="card-body">
+                                <h4>{{ $announcement->title }}</h4>
+                                <small>{{ $announcement->created_at->diffForHumans(['options' => \Carbon\CarbonInterface::ROUND, 'parts' => 1]) }}</small>
+                                <hr>
+                                <p>{{ $announcement->description }}</p>
                             </div>
+
+                            @if ($announcement->image)
+                                <div class="card-footer text-center">
+                                    <img src="{{ asset('storage/' . $announcement->image) }}" alt="Announcement Image"
+                                        class="img-fluid">
+                                </div>
+                            @endif
                         </div>
-                </div>
+                    </div>
                 @endforeach
             </div>
 
-
-            <a class="carousel-control-prev" href="#announcementCarousel" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#announcementCarousel" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+                <span class="visually-hidden">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#announcementCarousel" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#announcementCarousel" role="button" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+                <span class="visually-hidden">Next</span>
             </a>
-        </div>
         </div>
     @endorganization
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 
 @endsection
