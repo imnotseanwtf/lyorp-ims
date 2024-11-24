@@ -24,7 +24,6 @@ class UpdateQuestionRequest extends FormRequest
         return [
             'criteria_id' => ['required', 'numeric', 'exists:criterias,id'],
             'question' => ['required', 'string', 'max:255', 'unique:questions,name'],
-            'answer_type' => ['required', 'string']
         ];
     }
 }

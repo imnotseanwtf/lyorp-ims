@@ -13,7 +13,8 @@ class Criteria extends Model
 
     protected $fillable = [
         'name',
-        'user_id'
+        'user_id',
+        'answer_type'
     ];
 
     public function questions(): HasMany

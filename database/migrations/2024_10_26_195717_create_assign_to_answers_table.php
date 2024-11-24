@@ -17,9 +17,10 @@ return new class extends Migration
         Schema::create('assign_to_answers', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignId('assign_user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignIdFor(Criteria::class)->constrained()->cascadeOnDelete();
-            
+
             $table->boolean('is_answered')->default(0);
 
             $table->timestamps();

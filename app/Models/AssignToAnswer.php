@@ -15,7 +15,8 @@ class AssignToAnswer extends Model
     protected $fillable = [
         'user_id',
         'criteria_id',
-        'is_answered'
+        'is_answered',
+        'assign_user_id',
     ];
 
     public function user(): BelongsTo

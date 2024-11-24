@@ -18,13 +18,23 @@
             </div>
             <div class="col-md-6">
                 <div class="title mb-30 text-end">
-                    <a href="{{ route('activity-request.index', 1) }}" class="main-btn btn-info btn-hover">Accepted</a>
-                    <a href="{{ route('activity-request.index', 2) }}" class="main-btn btn-danger btn-hover">Rejected</a>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
+                        Filter
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{{ route('activity-request.index') }}">All</a></li>
+                        <li><a class="dropdown-item" href="{{ route('activity-request.index', 1) }}">Accepted</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('activity-request.index', 2) }}">Rejected</a>
+                        </li>
+                    </ul>
                     @organization
                         <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
                             Create Activity Request
                         </button>
                     @endorganization
+
                 </div>
             </div>
         </div>

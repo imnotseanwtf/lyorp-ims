@@ -13,7 +13,7 @@
             <form action="{{ route('criteria.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
-                    
+
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Enter name"
@@ -23,8 +23,16 @@
                         @enderror
                     </div>
 
+                    <div class="form-group mt-3">
+                        <label for="">Select Answer Type</label>
+                        <select name="answer_type" required class="form-control">
+                            <option value="" selected disabled>Select</option>
+                            <option value="Likert Scales (Poor - Excellent)">Likert Scales (Poor - Excellent)</option>
+                            <option value="Input">Input</option>
+                        </select>
+                    </div>
+
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>

@@ -25,19 +25,9 @@
                         @enderror
                     </div>
 
-                    <div class="form-group mt-3">
-                        <label for="">Select Answer Type</label>
-                        <select name="answer_type" required class="form-control">
-                            <option value="" selected disabled>Select</option>
-                            <option value="Yes Or No">Yes Or No</option>
-                            <option value="Likert Scales (Poor - Excellent)">Likert Scales (Poor - Excellent)</option>
-                            <option value="Rating Legends (Strongly Disagree - Strongly Agree)">Rating Legends (Strongly Disagree - Strongly Agree)</option>
-                            <option value="Input">Input</option>
-                        </select>
-                    </div>
+                   
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>

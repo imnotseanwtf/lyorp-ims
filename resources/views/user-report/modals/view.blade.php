@@ -75,10 +75,6 @@
                         <a href="#" id="link_file" class="btn btn-link" target="_blank">Download</a>
                     </div>
                 </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
             </div>
         </div>
     </div>

@@ -50,6 +50,7 @@ class AssignToAnswerController extends Controller
             +
             [
                 'user_id' => $storeAssignToAnswerRequest->user_id ?? User::role('admin')->first()->id,
+                'assign_user_id' => auth()->id(),
             ]);
 
         alert()->success('The User Added Successfully!');
@@ -70,7 +71,7 @@ class AssignToAnswerController extends Controller
      */
     public function destroy(AssignToAnswer $assign): RedirectResponse
     {
-        $assignId = $assign->critera_id;
+        $assignId = $assign->criteria_id;
 
         $assign->delete();
 

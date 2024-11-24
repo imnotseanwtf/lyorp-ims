@@ -44,12 +44,17 @@ class ActivityRequestDataTable extends DataTable
         $query = $model->newQuery();
         $user = auth()->user();
 
+        // Filter by organization user ID if applicable
         if ($user->isOrganization()) {
             $query->where('user_id', $user->id);
         }
 
-        $statusQuery = array_key_first(request()->query()) == 'draw' ? 0 : array_key_first(request()->query()) ?? 0;
+        // Determine status from query string
+        $statusQuery = array_key_first(request()->query()) == 'draw'
+            ? 0
+            : array_key_first(request()->query()) ?? 0;
 
+        // Filter by status
         if ($statusQuery == 0) {
             $query->where('status', 0);
         }
@@ -60,8 +65,12 @@ class ActivityRequestDataTable extends DataTable
             $query->where('status', 2);
         }
 
+        // Order by latest created_at
+        $query->orderBy('created_at', 'desc');
+
         return $query;
     }
+
 
     /**
      * Optional method if you want to use the html builder.

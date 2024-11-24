@@ -38,7 +38,7 @@ class HomeController extends Controller
             ->role('organization')
             ->count();
 
-        $pendingOrganization = User::where('status', null)
+        $pendingOrganization = User::where('status', 0)
             ->role('organization')
             ->count();
 

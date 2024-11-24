@@ -25,16 +25,6 @@ class UpdateCertificateRequest extends FormRequest
             // Validation for logo fields
             'left_logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],  // Example: max 2MB image
             'right_logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],  // Example: max 2MB image
-
-            // Validation for signature and name fields
-            'left_signiture' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
-            'left_name' => ['nullable', 'string', 'max:255'],
-
-            'right_signiture' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
-            'right_name' => ['nullable', 'string', 'max:255'],
-
-            'middle_signiture' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
-            'middle_name' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

@@ -62,6 +62,7 @@ class CriteriaDataTable extends DataTable
     {
         return [
             Column::make('name', 'name'),
+            Column::make('answer_type', 'answer_type'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

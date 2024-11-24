@@ -32,28 +32,7 @@
                                     <input type="hidden" value="{{ $assignment->id }}" name="assign_id">
 
                                     @foreach ($assignment->criteria->questions as $index => $question)
-                                        @if ($question->answer_type == 'Rating Legends (Strongly Disagree - Strongly Agree)')
-                                            <div class="row my-3">
-                                                <div class="col">
-                                                    <p><strong>Question {{ $index + 1 }}:
-                                                        </strong>{{ $question->question }}</p>
-                                                    <div class="d-flex justify-content-between">
-                                                        @foreach (App\Enums\RatingLegendsEnum::cases() as $item)
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio"
-                                                                    name="ratings[{{ $question->id }}]"
-                                                                    id="rating-{{ $question->id }}-{{ $item->value }}"
-                                                                    value="{{ $item->value }}" required>
-                                                                <label class="form-check-label"
-                                                                    for="rating-{{ $question->id }}-{{ $item->value }}">
-                                                                    {{ $item->value }}
-                                                                </label>
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @elseif($question->answer_type == 'Likert Scales (Poor - Excellent)')
+                                        @if($assignment->criteria->answer_type == 'Likert Scales (Poor - Excellent)')
                                             <div class="row my-3">
                                                 <div class="col">
                                                     <p><strong>Question {{ $index + 1 }}:
@@ -74,35 +53,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @elseif($question->answer_type == 'Yes Or No')
-                                            <div class="row my-3">
-                                                <div class="col">
-                                                    <p><strong>Question {{ $index + 1 }}:
-                                                        </strong>{{ $question->question }}</p>
-                                                    <div class="d-flex gap-4">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="ratings[{{ $question->id }}]"
-                                                                id="rating-{{ $question->id }}-yes" value="Yes"
-                                                                required>
-                                                            <label class="form-check-label"
-                                                                for="rating-{{ $question->id }}-yes">
-                                                                Yes
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="ratings[{{ $question->id }}]"
-                                                                id="rating-{{ $question->id }}-no" value="No" required>
-                                                            <label class="form-check-label"
-                                                                for="rating-{{ $question->id }}-no">
-                                                                No
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @elseif($question->answer_type == 'Input')
+                                        @elseif($assignment->criteria->answer_type == 'Input')
                                             <div class="row my-3">
                                                 <div class="col">
                                                     <p><strong>Question {{ $index + 1 }}:

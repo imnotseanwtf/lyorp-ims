@@ -73,18 +73,56 @@
         </span>
     </div>
 
-    <table>
-        <tr>
-            <th>Question</th>
-            <th>Answers</th>
-        </tr>
-        @foreach ($answers as $answer)
-            <tr>
-                <td>{{ $answer->question->question }}</td>
-                <td>{{ $answer->answer }}</td>
-            </tr>
-        @endforeach
-    </table>
+    @foreach ($totals as $total)
+        <h3>{{ $total['criteria'] }} (Answered on: {{ $total['answered_on'] }})</h3>
+
+        <!-- Display the Answer Type -->
+        <p><strong>Answer Type:</strong> {{ $total['answers']->first()->question->criteria->answer_type ?? 'N/A' }}</p>
+
+        <!-- Questions and Answers Table -->
+        <table border="1" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($total['answers'] as $answer)
+                    <tr>
+                        <td>{{ $answer->question->question ?? 'N/A' }}</td>
+                        <td>{{ $answer->answer }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        <!-- Likert Tally and Percentage Table -->
+        @if (array_sum($total['tally']) > 0)
+            <table border="1" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                <thead>
+                    <tr>
+                        <th>Rating</th>
+                        <th>Tally</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($ratings as $rating)
+                        <tr>
+                            <td>{{ $rating }}</td>
+                            <td>{{ $total['tally'][$rating] }}</td>
+                            <td>{{ $total['percentages'][$rating] }}%</td>
+                        </tr>
+                    @endforeach
+                    <tr>
+                        <td><strong>Total Questions</strong></td>
+                        <td colspan="2">{{ $total['total_questions'] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        @endif
+    @endforeach
 
 </body>
 

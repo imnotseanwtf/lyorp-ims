@@ -26,7 +26,6 @@
                         <li><a class="dropdown-item" href="{{ route('users.index', 0) }}">Pending</a></li>
                         <li><a class="dropdown-item" href="{{ route('users.index', 1) }}">Accepted</a></li>
                         <li><a class="dropdown-item" href="{{ route('users.index', 2) }}">Rejected</a></li>
-                     
                     </ul>
                 </div>
             </div>

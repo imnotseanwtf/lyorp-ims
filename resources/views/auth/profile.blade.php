@@ -65,13 +65,15 @@
 
                         <div class="form-group mt-3">
                             <label for="number">Phone Number</label>
-                            <input type="text" class="form-control" name="number" placeholder="Enter phone number"
+                            <input type="text" class="form-control" name="phone_number" placeholder="Enter phone number"
                                 value="{{ old('number', $welcome->number) }}" required>
                             @error('number')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
+                        
+                    
                         <div class="form-group mt-3">
                             <label for="facebook">Facebook</label>
                             <input type="url" class="form-control" name="facebook" placeholder="Enter Facebook URL"
@@ -161,16 +163,18 @@
                                     @enderror
                                 </div>
                             </div>
-
-                            <div class="col-md-6">
+                            
+                            <div class="col-6">
                                 <div class="input-style-1">
-                                    <label for="phone_number">{{ __('Phone Number') }}</label>
+                                    <label for="phone_number">{{ __('Phone Number (Number must start with 0 and contain exactly 11 digits.)') }}</label>
                                     <input type="tel" @error('phone_number') class="form-control is-invalid" @enderror
-                                        name="phone_number" id="phone_number"
-                                        value="{{ old('phone_number', auth()->user()->phone_number) }}"
-                                        placeholder="{{ __('Phone Number') }}">
+                                        name="phone_number" id="phone_number" placeholder="{{ __('Phone Number') }}"
+                                        value="{{ old('phone_number', auth()->user()->phone_number) }}" required autocomplete="phone_number" autofocus
+                                        maxlength="11" pattern="^0\d{10}$"
+                                        title="{{ __('Phone number must start with 0 and contain exactly 11 digits.') }}">
+                            
                                     @error('phone_number')
-                                        <span class="invalid-feedback" role="alert" required>
+                                        <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
@@ -262,7 +266,7 @@
                                     <input type="file"
                                         @error('duty_accomplished_registration_form') class="form-control is-invalid" @enderror
                                         name="duty_accomplished_registration_form" id="duty_accomplished_registration_form"
-                                        required>
+                                        >
                                     @error('duty_accomplished_registration_form')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -276,7 +280,7 @@
                                     <label for="list_of_officers_and_adviser">{{ __('List of Officers and Adviser') }}</label>
                                     <input type="file"
                                         @error('list_of_officers_and_adviser') class="form-control is-invalid" @enderror
-                                        name="list_of_officers_and_adviser" id="list_of_officers_and_adviser" required>
+                                        name="list_of_officers_and_adviser" id="list_of_officers_and_adviser" >
                                     @error('list_of_officers_and_adviser')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -291,7 +295,7 @@
                                         for="list_of_member_in_good_standing">{{ __('List of Members in Good Standing') }}</label>
                                     <input type="file"
                                         @error('list_of_member_in_good_standing') class="form-control is-invalid" @enderror
-                                        name="list_of_member_in_good_standing" id="list_of_member_in_good_standing" required>
+                                        name="list_of_member_in_good_standing" id="list_of_member_in_good_standing" >
                                     @error('list_of_member_in_good_standing')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

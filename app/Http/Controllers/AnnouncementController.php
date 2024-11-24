@@ -31,7 +31,9 @@ class AnnouncementController extends Controller
             $storeAnnoucementRequest->except('image')
                 +
                 [
-                    'image' => $storeAnnoucementRequest->file('image')->store('announcementImage', 'public') ?? null
+                    'image' => $storeAnnoucementRequest->file('image')
+                        ? $storeAnnoucementRequest->file('image')->store('announcementImage', 'public')
+                        : null
                 ]
         );
 

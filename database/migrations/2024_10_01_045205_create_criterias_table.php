@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('criterias', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('answer_type')->nullable();
 
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             

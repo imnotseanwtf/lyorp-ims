@@ -64,7 +64,6 @@ class QuestionDataTable extends DataTable
     {
         return [
             Column::make('question', 'question'),
-            Column::make('answer_type', 'answer_type'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
