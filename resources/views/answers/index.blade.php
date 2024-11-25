@@ -5,7 +5,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('criteria.index') }}">Criteria</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('assign-answer.index', $assign->criteria->id) }}"></a>Review Answers
+            <li class="breadcrumb-item"><a href="{{ route('assign-answer.index', $assign->criteria->id) }}">Review Answers</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">Answer</li>
         </ol>
@@ -25,13 +25,35 @@
                         @foreach ($answers as $index => $answer)
                             <div class="row my-3">
                                 <div class="col">
-                                    <p><strong>Question {{ $index + 1 }}:
-                                        </strong>{{ $answer->question->question }}</p>
+                                    <p><strong>Question {{ $index + 1 }}:</strong> {{ $answer->question->question }}</p>
                                     <p><strong>Answer: </strong>{{ $answer->answer }}</p>
                                 </div>
                             </div>
                         @endforeach
                     </div>
+                    <!-- New table -->
+                    <table class="table table-bordered table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <th>Rating</th>
+                                <th>Tally</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($ratings as $rating)
+                                <tr>
+                                    <td>{{ $rating }}</td>
+                                    <td>{{ $totals[$rating]['tally'] }}</td>
+                                    <td>{{ $totals[$rating]['percentage'] }}%</td>
+                                </tr>
+                            @endforeach
+                            <tr>
+                                <td><strong>Total Questions</strong></td>
+                                <td colspan="2">{{ $totalQuestions }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

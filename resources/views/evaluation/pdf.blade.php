@@ -52,9 +52,12 @@
         .header span {
             display: grid;
             grid-template-columns: 1fr;
-            /* 1 column per sentence */
             gap: 5px;
-            /* Adds space between each sentence */
+        }
+
+        /* Page break before new total */
+        .new-page {
+            page-break-before: always;
         }
     </style>
 </head>
@@ -73,7 +76,12 @@
         </span>
     </div>
 
-    @foreach ($totals as $total)
+    @foreach ($totals as $index => $total)
+        <!-- Add a new page before the next total (except for the first one) -->
+        @if ($index > 0)
+            <div class="new-page"></div>
+        @endif
+
         <h3>{{ $total['criteria'] }} (Answered on: {{ $total['answered_on'] }})</h3>
 
         <!-- Display the Answer Type -->
