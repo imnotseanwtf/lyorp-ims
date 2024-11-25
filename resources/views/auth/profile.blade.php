@@ -262,7 +262,7 @@
                             <div class="col-md-6">
                                 <div class="input-style-1">
                                     <label
-                                        for="duty_accomplished_registration_form">{{ __('Duty Accomplished Registration Form  (pdf) (10 mb)') }}</label>
+                                        for="duty_accomplished_registration_form">{{ __('Duty Accomplished Registration Form (excel) (10mb)') }}</label>
                                     <input type="file"
                                         @error('duty_accomplished_registration_form') class="form-control is-invalid" @enderror
                                         name="duty_accomplished_registration_form" id="duty_accomplished_registration_form"
@@ -277,7 +277,7 @@
 
                             <div class="col-md-6">
                                 <div class="input-style-1">
-                                    <label for="list_of_officers_and_adviser">{{ __('List of Officers and Adviser  (pdf) (10 mb)') }}</label>
+                                    <label for="list_of_officers_and_adviser">{{ __('List of Officers and Adviser (excel) (10mb)') }}</label>
                                     <input type="file"
                                         @error('list_of_officers_and_adviser') class="form-control is-invalid" @enderror
                                         name="list_of_officers_and_adviser" id="list_of_officers_and_adviser" >

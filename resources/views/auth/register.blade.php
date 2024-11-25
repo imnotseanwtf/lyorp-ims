@@ -246,7 +246,7 @@
                             <div class="col-6">
                                 <div class="input-style-1">
                                     <label
-                                        for="duty_accomplished_registration_form">{{ __('Duly Accomplished Registration Form   (pdf) (10 mb)') }}<span
+                                        for="duty_accomplished_registration_form">{{ __('Duly Accomplished Registration Form (pdf) (10 mb)') }}<span
                                             style="color: red;">*</span></label>
                                     <input type="file"
                                         @error('duty_accomplished_registration_form') class="form-control is-invalid" @enderror
@@ -266,7 +266,7 @@
                             <div class="col-6">
                                 <div class="input-style-1">
                                     <label
-                                        for="list_of_officers_and_adviser">{{ __('List of Officers and Adviser  (pdf) (10 mb)') }}<span
+                                        for="list_of_officers_and_adviser">{{ __('List of Officers and Adviser  (excel) (10mb)') }}<span
                                             style="color: red;">*</span></label>
                                     <input type="file"
                                         @error('list_of_officers_and_adviser') class="form-control is-invalid" @enderror
@@ -285,7 +285,7 @@
                             <div class="col-6">
                                 <div class="input-style-1">
                                     <label
-                                        for="list_of_member_in_good_standing">{{ __('List of member in good standing  (pdf) (10 mb)') }}<span
+                                        for="list_of_member_in_good_standing">{{ __('List of member in good standing (excel) (10mb)') }}<span
                                             style="color: red;">*</span></label>
                                     <input type="file"
                                         @error('list_of_member_in_good_standing') class="form-control is-invalid" @enderror

@@ -27,8 +27,8 @@ class ProfileUpdateRequest extends FormRequest
 
             // Documents
             'duty_accomplished_registration_form' => ['nullable', 'mimes:pdf,doc,docx', 'max:102400'],
-            'list_of_officers_and_adviser' => ['nullable', 'mimes:pdf,doc,docx,xls,xlsx', 'max:102400'],
-            'list_of_member_in_good_standing' => ['nullable', 'mimes:pdf,doc,docx,xls,xlsx', 'max:102400'],
+            'list_of_officers_and_adviser' => ['nullable', 'mimes:xls,xlsx', 'max:102400'],
+            'list_of_member_in_good_standing' => ['nullable', 'mimes:xls,xlsx', 'max:102400'],
             'constitution_and_by_laws' => ['nullable', 'mimes:pdf,doc,docx', 'max:10240'],
             'endorsement_certification_from_proper_authority' => ['nullable', 'mimes:pdf,doc,docx', 'max:102400'],
 

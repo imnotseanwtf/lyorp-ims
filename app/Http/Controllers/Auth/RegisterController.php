@@ -69,8 +69,8 @@ class RegisterController extends Controller
             'age' => ['required', 'integer', 'min:1', 'max:120'],
             'sex' => ['required', 'string', 'in:male,female,other'],
             'duty_accomplished_registration_form' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:102400'],
-            'list_of_officers_and_adviser' => ['required', 'file', 'mimes:pdf,doc,docx,xls,xlsx', 'max:102400'],
-            'list_of_member_in_good_standing' => ['required', 'file', 'mimes:pdf,doc,docx,xls,xlsx', 'max:102400'],
+            'list_of_officers_and_adviser' => ['required', 'file', 'mimes:xls,xlsx', 'max:102400'],
+            'list_of_member_in_good_standing' => ['required', 'file', 'mimes:xls,xlsx', 'max:102400'],
             'constitution_and_by_laws' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:10240'],
             'endorsement_certification_from_proper_authority' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:102400'],
         ]);
