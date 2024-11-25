@@ -40,7 +40,7 @@
 <body >
     @include('sweetalert::alert')
     <!-- ======== sidebar-nav start =========== -->
-    <aside class="sidebar-nav-wrapper">
+    <aside class="sidebar-nav-wrapper bg-secondary">
         <div class="navbar-logo">
             <a href="{{ route('home') }}">
                 <img src="{{ asset('images/logo/logo-ym.gif') }}" alt="logo" style="width: 150px; height:150px;" />
@@ -56,7 +56,7 @@
     <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper">
         <!-- ========== header start ========== -->
-        <header class="header">
+        <header class="header bg-secondary">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-5 col-md-5 col-6">
