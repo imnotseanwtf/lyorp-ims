@@ -44,6 +44,12 @@
                     onmouseout="this.style.textDecoration='none'">
                     Edit Password
                 </li>
+
+                <li class="dropdown-item deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                    data-user="{{ $user->id }}" style="cursor: pointer; transition: text-decoration 0.3s ease;"
+                    onmouseout="this.style.textDecoration='none'">
+                    Edit Password
+                </li>
             </ul>
         </div>
     @elseif($user->status == 0)

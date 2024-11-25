@@ -119,7 +119,11 @@
 
                 $('.editBtn').click(function() {
                     $('#update-form').attr('action', '/org-password/' + $(this).data('user'));
-                })
+                });
+
+                $('.deleteBtn').click(function() {
+                    $('#delete-form').attr('action', '/users/' + $(this).data('user'));
+                });
             })
         })
     </script>
