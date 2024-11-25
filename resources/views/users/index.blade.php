@@ -114,7 +114,7 @@
                 })
 
                 $('.rejectBtn').click(function() {
-                    $('#reject-form').attr('action', '/reject/' + $(this).data('user'));
+                    $('#reject-form').attr('action', '/users/' + $(this).data('user'));
                 })
 
                 $('.editBtn').click(function() {
