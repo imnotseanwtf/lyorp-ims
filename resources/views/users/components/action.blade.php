@@ -48,7 +48,7 @@
                 <li class="dropdown-item deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"
                     data-user="{{ $user->id }}" style="cursor: pointer; transition: text-decoration 0.3s ease;"
                     onmouseout="this.style.textDecoration='none'">
-                    Edit Password
+                    Delete User
                 </li>
             </ul>
         </div>
