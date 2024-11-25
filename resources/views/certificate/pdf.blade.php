@@ -177,66 +177,6 @@
             </p>
 
         </div>
-
-        <br> <br> <br>
-
-        <table width="660px" height="auto" style="margin: 0 auto;">
-            <tr>
-                <td>
-                    <div class="container">
-                        <div class="signature-wrapper">
-                            <div class="signature-line">
-                                <p style="margin-right: 0px; margin-bottom:0px; text-align:left;">
-                                    ______________________________________</p>
-                            </div>
-                        </div>
-                        <span>
-                            <p class="text-bold"
-                                style="margin-left: 8px;margin-top:0px;margin-bottom:0;text-align:left;">MA.
-                                KRISTINA G. LIANGCO, RN, RSW</p>
-                        </span>
-                        <span>
-                            <p class="text"
-                                style="font-style: italic;font-weight:normal; font-size: 15px; margin-left: 50px; margin-top: 0;text-align:left;">
-                                Youth Development Officer III</p>
-                        </span>
-                    </div>
-                </td>
-                <td>
-                    <div class="signature-wrapper">
-                        <div class="signature-line">
-                            <p style="margin-right: 0px; margin-bottom:0px;text-align:right; ">
-                                ____________________________</p>
-                        </div>
-                    </div>
-                    <span>
-                        <p class="text-bold" style="margin-right: 6px;margin-top:0px;margin-bottom:0;text-align:right;">
-                            CELINA D.
-                            MANABAT, RSW</p>
-                    </span>
-                    <span>
-                        <p class="text"
-                            style="font-style: italic; font-weight:normal; font-size: 15px; margin-right: 37px; margin-top: 0;text-align:right;">
-                            Department Head -CSSD</p>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <div class="signature-wrapper">
-                        <div class="signature-line">
-                            <p style="margin-right: 0px; margin-bottom:0px;text-align:center; ">
-                                ____________________________</p>
-                        </div>
-                    </div>
-                    <span>
-                        <p class="text-bold"
-                            style="margin-right: 0px;margin-top:0px;margin-bottom:0;text-align:center;">HON.
-                            ROSELLER H. RIZAL</p>
-                    </span>
-                </td>
-            </tr>
-        </table>
     </div>
 </body>
 
