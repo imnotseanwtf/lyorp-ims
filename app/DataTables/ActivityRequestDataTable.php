@@ -50,9 +50,7 @@ class ActivityRequestDataTable extends DataTable
         }
 
         // Determine status from query string
-        $statusQuery = array_key_first(request()->query()) == 'draw'
-            ? 0
-            : array_key_first(request()->query()) ?? 0;
+        $statusQuery = array_key_first(request()->query());
 
         // Filter by status
         if ($statusQuery == 0) {

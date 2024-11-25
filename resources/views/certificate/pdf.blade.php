@@ -189,8 +189,6 @@
                                 <p style="margin-right: 0px; margin-bottom:0px; text-align:left;">
                                     ______________________________________</p>
                             </div>
-                            <img src="{{ public_path('images/signiture/kristina.png') }}" alt="Signature Roseller"
-                                class="signature-image signature-roseller" />
                         </div>
                         <span>
                             <p class="text-bold"
@@ -210,8 +208,6 @@
                             <p style="margin-right: 0px; margin-bottom:0px;text-align:right; ">
                                 ____________________________</p>
                         </div>
-                        <img src="{{ public_path('images/signiture/celina.png') }}" alt="Signature Roseller"
-                            class="signature-image signature-celina" />
                     </div>
                     <span>
                         <p class="text-bold" style="margin-right: 6px;margin-top:0px;margin-bottom:0;text-align:right;">
@@ -232,8 +228,6 @@
                             <p style="margin-right: 0px; margin-bottom:0px;text-align:center; ">
                                 ____________________________</p>
                         </div>
-                        <img src="{{ public_path('images/signiture/ross.png') }}" alt="Signature Roseller"
-                            class="signature-image signature-ross" />
                     </div>
                     <span>
                         <p class="text-bold"

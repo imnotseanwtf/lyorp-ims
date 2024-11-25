@@ -246,7 +246,7 @@
                             <div class="col-6">
                                 <div class="input-style-1">
                                     <label
-                                        for="duty_accomplished_registration_form">{{ __('Duly Accomplished Registration Form ') }}<span
+                                        for="duty_accomplished_registration_form">{{ __('Duly Accomplished Registration Form   (pdf) (10 mb)') }}<span
                                             style="color: red;">*</span></label>
                                     <input type="file"
                                         @error('duty_accomplished_registration_form') class="form-control is-invalid" @enderror
@@ -266,7 +266,7 @@
                             <div class="col-6">
                                 <div class="input-style-1">
                                     <label
-                                        for="list_of_officers_and_adviser">{{ __('List of Officers and Adviser ') }}<span
+                                        for="list_of_officers_and_adviser">{{ __('List of Officers and Adviser  (pdf) (10 mb)') }}<span
                                             style="color: red;">*</span></label>
                                     <input type="file"
                                         @error('list_of_officers_and_adviser') class="form-control is-invalid" @enderror
@@ -285,7 +285,7 @@
                             <div class="col-6">
                                 <div class="input-style-1">
                                     <label
-                                        for="list_of_member_in_good_standing">{{ __('List of member in good standing ') }}<span
+                                        for="list_of_member_in_good_standing">{{ __('List of member in good standing  (pdf) (10 mb)') }}<span
                                             style="color: red;">*</span></label>
                                     <input type="file"
                                         @error('list_of_member_in_good_standing') class="form-control is-invalid" @enderror
@@ -304,7 +304,7 @@
                             <div class="col-6">
                                 <div class="input-style-1">
                                     <label
-                                        for="constitution_and_by_laws">{{ __('Constitution and By- laws ( If available)') }}</label>
+                                        for="constitution_and_by_laws">{{ __('Constitution and By- laws ( If available)  (pdf) (10 mb)') }}</label>
                                     <input type="file"
                                         @error('constitution_and_by_laws') class="form-control is-invalid" @enderror
                                         name="constitution_and_by_laws" id="constitution_and_by_laws"
@@ -322,7 +322,7 @@
                             <div class="col-12">
                                 <div class="input-style-1">
                                     <label
-                                        for="endorsement_certification_from_proper_authority">{{ __('Endorsement / Certification from proper authority ( Brgy Certificate/ School Certificate/ Certification for Pastor or Church) -  ( If Available)') }}</label>
+                                        for="endorsement_certification_from_proper_authority">{{ __('Endorsement / Certification from proper authority ( Brgy Certificate/ School Certificate/ Certification for Pastor or Church) -  ( If Available)  (pdf) (10 mb)') }}</label>
                                     <input type="file"
                                         @error('endorsement_certification_from_proper_authority') class="form-control is-invalid" @enderror
                                         name="endorsement_certification_from_proper_authority"
