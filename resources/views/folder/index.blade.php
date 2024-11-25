@@ -80,25 +80,27 @@
                             <a href="{{ route('user-report.index', $folder->id) }}" class="">{{ $folder->name }}
                                 {{ $folder->year }}</a>
                         @endorganization
-                        <span>
-                            <div class="dropdown m-2 text-danger">
-                                <!-- Remove the 'btn' class and use the ellipsis icon directly -->
-                                <a class="dropdown-toggle custom-dropdown-toggle text-danger" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li>
-                                        <form action="{{ route('folder.destroy', $folder->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn-link mx-5">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        </span>
+                        @admin
+                            <span>
+                                <div class="dropdown m-2 text-danger">
+                                    <!-- Remove the 'btn' class and use the ellipsis icon directly -->
+                                    <a class="dropdown-toggle custom-dropdown-toggle text-danger" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li>
+                                            <form action="{{ route('folder.destroy', $folder->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn-link mx-5">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </span>
+                        @endadmin
                     </div>
                 </div>
             </div>
