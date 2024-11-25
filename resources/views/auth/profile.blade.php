@@ -65,7 +65,7 @@
 
                         <div class="form-group mt-3">
                             <label for="number">Phone Number</label>
-                            <input type="text" class="form-control" name="phone_number" placeholder="Enter phone number"
+                            <input type="text" class="form-control" name="number" placeholder="Enter phone number"
                                 value="{{ old('number', $welcome->number) }}" required>
                             @error('number')
                                 <div class="invalid-feedback">{{ $message }}</div>
