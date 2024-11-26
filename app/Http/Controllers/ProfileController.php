@@ -34,7 +34,7 @@ class ProfileController extends Controller
             'list_of_officers_and_adviser',
             'list_of_member_in_good_standing',
             'constitution_and_by_laws',
-            'endorsement_certification_from_proper_authority'
+            'endorsement_certification_from_proper_authority',
         ];
 
         foreach ($fileFields as $field) {
@@ -51,7 +51,7 @@ class ProfileController extends Controller
             }
         }
 
-        // Update basic user information
+        // Update user attributes
         $user->update([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -63,13 +63,17 @@ class ProfileController extends Controller
             'address' => $data['address'] ?? null,
         ]);
 
+        // Update password explicitly if it was provided
+        if (isset($data['password'])) {
+            $user->update(['password' => $data['password']]);
+        }
+
         // Update file fields if they exist in data
         foreach ($fileFields as $field) {
             if (isset($data[$field])) {
                 $user->update([$field => $data[$field]]);
             }
         }
-
 
         return redirect()->back()->with('success', 'Profile updated successfully.');
     }
