@@ -20,7 +20,7 @@ class RejectUserController extends Controller
             ]
         );
 
-        alert()->success('User Activated Successfully!');
+        alert()->success('User Rejected Successfully!');
 
         return redirect()->route('users.index');
     }

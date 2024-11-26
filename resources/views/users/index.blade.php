@@ -48,6 +48,8 @@
     @include('users.modals.view')
 
     @include('users.modals.password')
+
+    @include('users.modals.delete')
 @endsection
 
 @push('scripts')
@@ -114,7 +116,7 @@
                 })
 
                 $('.rejectBtn').click(function() {
-                    $('#reject-form').attr('action', '/users/' + $(this).data('user'));
+                    $('#reject-form').attr('action', '/reject/' + $(this).data('user'));
                 })
 
                 $('.editBtn').click(function() {

@@ -5,7 +5,7 @@
     <div class="modal-dialog" role="document">
         <form action="" method="POST" id="reject-form">
             @csrf
-            @method('DELETE')
+            @method('PUT')
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Reject</h5>

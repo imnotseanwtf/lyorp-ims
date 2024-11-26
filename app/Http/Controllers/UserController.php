@@ -24,6 +24,8 @@ class UserController extends Controller
     {
         $user->delete();
 
+        alert()->success('Organization Deleted Sucessfully!');
+
         return redirect()->route('users.index');
     }
 }
