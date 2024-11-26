@@ -261,7 +261,7 @@
 
                             <div class="col-md-6">
                                 <div class="input-style-1">
-                                    <label>Duty Accomplished Registration Form (Excel, 10MB)</label>
+                                    <label>Duty Accomplished Registration Form (PDF, 10MB)</label>
                                     <input type="file" name="duty_accomplished_registration_form"
                                         class="@error('duty_accomplished_registration_form') is-invalid @enderror">
                                     @error('duty_accomplished_registration_form')
@@ -283,7 +283,7 @@
 
                             <div class="col-md-6">
                                 <div class="input-style-1">
-                                    <label>List of Members in Good Standing (PDF, 10MB)</label>
+                                    <label>List of Members in Good Standing (Excel, 10MB)</label>
                                     <input type="file" name="list_of_member_in_good_standing"
                                         class="@error('list_of_member_in_good_standing') is-invalid @enderror">
                                     @error('list_of_member_in_good_standing')
