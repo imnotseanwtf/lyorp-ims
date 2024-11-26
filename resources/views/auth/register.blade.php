@@ -328,7 +328,7 @@
                                         name="endorsement_certification_from_proper_authority"
                                         id="endorsement_certification_from_proper_authority"
                                         placeholder="{{ __('Endorsement / Certification from proper authority') }}"
-                                        value="{{ old('endorsement_certification_from_proper_authority') }}" 
+                                        value="{{ old('endorsement_certification_from_proper_authority') }}"
                                         autocomplete="endorsement_certification_from_proper_authority" autofocus>
                                     @error('endorsement_certification_from_proper_authority')
                                         <span class="invalid-feedback" role="alert">
