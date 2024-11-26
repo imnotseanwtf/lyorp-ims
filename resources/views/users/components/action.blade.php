@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="{{ route('criteria.index') }}" title="Evaluate Criteria">
+                    <a class="dropdown-item" href="{{ route('user.index') }}" title="Evaluate user">
                         Evaluation @if ($answerAnnounced)
                             <span class="btn btn-primary text-white mx-2"
                                 style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">New</span>
@@ -63,6 +63,14 @@
         <button class="btn btn-danger rejectBtn" data-bs-toggle="modal" data-bs-target="#rejectModal"
             data-user="{{ $user->id }}" title="Reject User">
             <i class="fa-solid fa-times"></i>
+        </button>
+    @endif
+
+    @if ($user->status == 2)
+        <!-- Delete user button with tooltip -->
+        <button class="btn btn-danger deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"
+            data-user="{{ $user->id }}" title="Delete Organization">
+            <i class="fa-solid fa-trash"></i>
         </button>
     @endif
 </div>
