@@ -72,8 +72,8 @@
                             @enderror
                         </div>
 
-                        
-                    
+
+
                         <div class="form-group mt-3">
                             <label for="facebook">Facebook</label>
                             <input type="url" class="form-control" name="facebook" placeholder="Enter Facebook URL"
@@ -162,16 +162,17 @@
                                     @enderror
                                 </div>
                             </div>
-                            
+
                             <div class="col-6">
                                 <div class="input-style-1">
-                                    <label for="phone_number">{{ __('Phone Number (Number must start with 0 and contain exactly 11 digits.)') }}</label>
+                                    <label
+                                        for="phone_number">{{ __('Phone Number (Number must start with 0 and contain exactly 11 digits.)') }}</label>
                                     <input type="tel" @error('phone_number') class="form-control is-invalid" @enderror
                                         name="phone_number" id="phone_number" placeholder="{{ __('Phone Number') }}"
-                                        value="{{ old('phone_number', auth()->user()->phone_number) }}" required autocomplete="phone_number" autofocus
-                                        maxlength="11" pattern="^0\d{10}$"
+                                        value="{{ old('phone_number', auth()->user()->phone_number) }}" required
+                                        autocomplete="phone_number" autofocus maxlength="11" pattern="^0\d{10}$"
                                         title="{{ __('Phone number must start with 0 and contain exactly 11 digits.') }}">
-                            
+
                                     @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -260,75 +261,55 @@
 
                             <div class="col-md-6">
                                 <div class="input-style-1">
-                                    <label
-                                        for="duty_accomplished_registration_form">{{ __('Duty Accomplished Registration Form (excel) (10mb)') }}</label>
-                                    <input type="file"
-                                        @error('duty_accomplished_registration_form') class="form-control is-invalid" @enderror
-                                        name="duty_accomplished_registration_form" id="duty_accomplished_registration_form"
-                                        >
+                                    <label>Duty Accomplished Registration Form (Excel, 10MB)</label>
+                                    <input type="file" name="duty_accomplished_registration_form"
+                                        class="@error('duty_accomplished_registration_form') is-invalid @enderror">
                                     @error('duty_accomplished_registration_form')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="input-style-1">
-                                    <label for="list_of_officers_and_adviser">{{ __('List of Officers and Adviser (excel) (10mb)') }}</label>
-                                    <input type="file"
-                                        @error('list_of_officers_and_adviser') class="form-control is-invalid" @enderror
-                                        name="list_of_officers_and_adviser" id="list_of_officers_and_adviser" >
+                                    <label>List of Officers and Adviser (Excel, 10MB)</label>
+                                    <input type="file" name="list_of_officers_and_adviser"
+                                        class="@error('list_of_officers_and_adviser') is-invalid @enderror">
                                     @error('list_of_officers_and_adviser')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="input-style-1">
-                                    <label
-                                        for="list_of_member_in_good_standing">{{ __('List of Members in Good Standing  (pdf) (10 mb)') }}</label>
-                                    <input type="file"
-                                        @error('list_of_member_in_good_standing') class="form-control is-invalid" @enderror
-                                        name="list_of_member_in_good_standing" id="list_of_member_in_good_standing" >
+                                    <label>List of Members in Good Standing (PDF, 10MB)</label>
+                                    <input type="file" name="list_of_member_in_good_standing"
+                                        class="@error('list_of_member_in_good_standing') is-invalid @enderror">
                                     @error('list_of_member_in_good_standing')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="input-style-1">
-                                    <label for="constitution_and_by_laws">{{ __('Constitution and By-laws  (pdf) (10 mb)') }}</label>
-                                    <input type="file"
-                                        @error('constitution_and_by_laws') class="form-control is-invalid" @enderror
-                                        name="constitution_and_by_laws" id="constitution_and_by_laws">
+                                    <label>Constitution and By-laws (PDF, 10MB)</label>
+                                    <input type="file" name="constitution_and_by_laws"
+                                        class="@error('constitution_and_by_laws') is-invalid @enderror">
                                     @error('constitution_and_by_laws')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="input-style-1">
-                                    <label
-                                        for="endorsement_certification_from_proper_authority">{{ __('Endorsement Certification from Proper Authority  (pdf) (10 mb)') }}</label>
-                                    <input type="file"
-                                        @error('endorsement_certification_from_proper_authority') class="form-control is-invalid" @enderror
-                                        name="endorsement_certification_from_proper_authority"
-                                        id="endorsement_certification_from_proper_authority">
+                                    <label>Endorsement Certification from Proper Authority (PDF, 10MB)</label>
+                                    <input type="file" name="endorsement_certification_from_proper_authority"
+                                        class="@error('endorsement_certification_from_proper_authority') is-invalid @enderror">
                                     @error('endorsement_certification_from_proper_authority')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
                             </div>

@@ -26,11 +26,11 @@ class ProfileUpdateRequest extends FormRequest
             'facebook_url' => ['nullable', 'url', 'max:255'],
 
             // Documents
-            'duty_accomplished_registration_form' => ['nullable', 'mimes:pdf,doc,docx', 'max:102400'],
-            'list_of_officers_and_adviser' => ['nullable', 'mimes:xls,xlsx', 'max:102400'],
-            'list_of_member_in_good_standing' => ['nullable', 'mimes:xls,xlsx', 'max:102400'],
-            'constitution_and_by_laws' => ['nullable', 'mimes:pdf,doc,docx', 'max:10240'],
-            'endorsement_certification_from_proper_authority' => ['nullable', 'mimes:pdf,doc,docx', 'max:102400'],
+            'duty_accomplished_registration_form' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:102400'],
+            'list_of_officers_and_adviser' => ['nullable', 'file', 'mimes:xls,xlsx', 'max:102400'],
+            'list_of_member_in_good_standing' => ['nullable', 'file', 'mimes:xls,xlsx', 'max:102400'],
+            'constitution_and_by_laws' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:10240'],
+            'endorsement_certification_from_proper_authority' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:102400'],
 
             // Password Change
             'password' => ['nullable', 'string', 'confirmed', 'min:8'],
