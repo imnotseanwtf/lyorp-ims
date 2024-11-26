@@ -22,7 +22,7 @@ class UserReportController extends Controller
         $folderId = array_key_first(request()->query());
 
         // Get the latest report for the authenticated user
-        $latestReport = Report::where('user_id', auth()->id())->latest()->first();
+        $latestReport = Report::where('user_id', auth()->id())->where('folder_id', $folderId)->latest()->first();
 
         // Check if the latest report is older than 10 days
         $showCreateButton = true; // default to true if no report exists
