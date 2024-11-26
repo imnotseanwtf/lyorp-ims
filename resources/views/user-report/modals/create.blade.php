@@ -76,7 +76,7 @@
                     {{-- File Input --}}
                     <div class="form-group">
                         <label for="file">File</label>
-                        <input type="file" class="form-control" name="file">
+                        <input type="file" class="form-control" name="file" required>
                         @error('file')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
