@@ -24,6 +24,15 @@
                         @enderror
                     </div>
 
+                    <div class="form-group mt-3">
+                        <label for="">Select Answer Type</label>
+                        <select name="answer_type" required class="form-control">
+                            <option value="" selected disabled>Select</option>
+                            <option value="Likert Scales (Poor - Excellent)">Likert Scales (Poor - Excellent)</option>
+                            <option value="Input">Input</option>
+                        </select>
+                    </div>
+
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
