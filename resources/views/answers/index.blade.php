@@ -41,13 +41,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($ratings as $rating)
-                                <tr>
-                                    <td>{{ $rating }}</td>
-                                    <td>{{ $totals[$rating]['tally'] }}</td>
-                                    <td>{{ $totals[$rating]['percentage'] }}%</td>
-                                </tr>
+                            @foreach ($totals as $total)
+                                @foreach ($ratings as $rating)
+                                    <tr>
+                                        <td>{{ $rating }}</td>
+                                        <td>{{ $total['tally'][$rating] }}</td>
+                                        <td>{{ $total['percentages'][$rating] }}%</td>
+                                    </tr>
+                                @endforeach
                             @endforeach
+
                             <tr>
                                 <td><strong>Total Questions</strong></td>
                                 <td colspan="2">{{ $totalQuestions }}</td>

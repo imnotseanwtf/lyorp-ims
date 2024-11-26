@@ -21,39 +21,30 @@ class AnsweredController extends Controller
 
         $ratings = ['Excellent', 'Very Good', 'Good', 'Fair', 'Poor'];
         $totals = [];
-        $totalQuestions = 0;
+        $totalQuestions = $answers->count(); // Total number of answers
 
-        // Initialize totals for each rating
-        foreach ($ratings as $rating) {
-            $totals[$rating] = [
-                'tally' => 0,
-                'percentage' => 0,
-            ];
-        }
+        $tally = array_fill_keys($ratings, 0);
 
         foreach ($answers as $answer) {
-            $tally = array_fill_keys($ratings, 0);
-            $totalQuestions++; // Increase the total questions count
-
             // Tally answers based on Likert criteria
-            if ($answer->assignToAnswer->criteria->answer_type === 'Likert Scales (Poor - Excellent)' && array_key_exists($answer->answer, $tally)) {
+            if ($assign->criteria->answer_type === 'Likert Scales (Poor - Excellent)' && array_key_exists($answer->answer, $tally)) {
                 $tally[$answer->answer]++;
             }
-
-            // Calculate percentages for Likert answers
-            $percentages = [];
-            foreach ($ratings as $rating) {
-                $percentages[$rating] = array_sum($tally) > 0
-                    ? round(($tally[$rating] / array_sum($tally)) * 100, 1)
-                    : 0;
-            }
-
-            // Store tally and percentages by rating
-            foreach ($ratings as $rating) {
-                $totals[$rating]['tally'] += $tally[$rating];
-                $totals[$rating]['percentage'] = $percentages[$rating]; // Update the percentage for each rating
-            }
         }
+
+        // Calculate percentages for Likert answers
+        $percentages = [];
+        foreach ($ratings as $rating) {
+            $percentages[$rating] = array_sum($tally) > 0
+                ? round(($tally[$rating] / array_sum($tally)) * 100, 1)
+                : 0;
+        }
+
+        // Store the overall tally and percentages
+        $totals[] = [
+            'tally' => $tally,
+            'percentages' => $percentages,
+        ];
 
         return view('answers.index', compact('answers', 'assign', 'totals', 'ratings', 'totalQuestions'));
     }
