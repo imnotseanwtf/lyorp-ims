@@ -17,22 +17,6 @@
                     <h2>{{ __('Review Answers') }}</h2>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="title mb-30 text-end">
-                    @admin
-                        <button class="main-btn btn-primary btn-hover" data-bs-target="#assignToAnswerModal"
-                            data-bs-toggle="modal">
-                            Add User
-                        </button>
-                    @endadmin
-
-                    @organization
-                        <button class="main-btn btn-primary btn-hover" data-bs-target="#addAdminModal" data-bs-toggle="modal">
-                            Add Admin
-                        </button>
-                    @endorganization
-                </div>
-            </div>
         </div>
     </div>
 

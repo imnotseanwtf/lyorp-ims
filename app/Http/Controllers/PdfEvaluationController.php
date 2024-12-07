@@ -16,7 +16,7 @@ class PdfEvaluationController extends Controller
     {
         $assignToAnswers = AssignToAnswer::where('user_id', auth()->id())
             ->where('is_answered', true)
-            ->with(['answers.question', 'criteria'])
+            ->with(['answers.question', 'criteria', 'user'])
             ->get();
 
         $ratings = ['Excellent', 'Very Good', 'Good', 'Fair', 'Poor'];

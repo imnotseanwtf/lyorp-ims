@@ -16,21 +16,68 @@
         }
 
         .bgregister {
-        background-image: url('{{ asset('images/background/colorful.png') }}');
-        /* Set the background image path */
+            background-image: url('{{ asset('images/background/colorful.png') }}');
+            /* Set the background image path */
 
-        background-size: cover;
-        /* Ensures the image covers the entire section */
-        background-position: center;
-        /* Centers the image in the section */
-        background-repeat: no-repeat;
-        /* Prevents the image from repeating */
-        /* Ensures the section takes up 100% of the viewport height */
-        width: 100%;
-        /* Ensures the section takes up 100% of the viewport width */
-        position: relative;
-        /* Allows for full positioning of any content inside */
-    }
+            background-size: cover;
+            /* Ensures the image covers the entire section */
+            background-position: center;
+            /* Centers the image in the section */
+            background-repeat: no-repeat;
+            /* Prevents the image from repeating */
+            /* Ensures the section takes up 100% of the viewport height */
+            width: 100%;
+            /* Ensures the section takes up 100% of the viewport width */
+            position: relative;
+            /* Allows for full positioning of any content inside */
+        }
+
+        /* Make Select2 match the form style */
+        .select2-container .select2-selection--single {
+            height: 40px;
+            /* Match the height of other inputs */
+            border-radius: 5px;
+            /* Rounded corners */
+            border: 1px solid #ccc;
+            /* Border color */
+            padding: 8px 12px;
+            /* Padding for a neat look */
+            font-size: 14px;
+            /* Font size */
+        }
+
+        /* Focus state for the Select2 */
+        .select2-container .select2-selection--single:focus {
+            border-color: #007bff;
+            /* Blue border on focus */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            /* Focus shadow */
+        }
+
+        /* Dropdown styling */
+        .select2-container--default .select2-results__option {
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+
+        /* Add hover effect for dropdown items */
+        .select2-container--default .select2-results__option--highlighted {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+
+        /* Optional: Style the search input */
+        .select2-container--default .select2-search__field {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+
+        /* Style invalid feedback message */
+        .invalid-feedback {
+            font-size: 12px;
+            color: #e74a3b;
+            margin-top: 5px;
+        }
     </style>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card col-12 col-md-8 col-lg-6">
@@ -96,7 +143,6 @@
                     <hr>
                     <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-style-1">
@@ -127,18 +173,17 @@
                                 </div>
                             </div>
 
-                            <div class="col-12">
+                            <label
+                                for="">{{ __('Name of the Primary Representative ( Surname, First Name, Middle Initial: eg Dela Cruz, Juan, D.) ') }}<span
+                                    style="color: red;">*</span></label>
+
+                            <div class="col-6">
                                 <div class="input-style-1">
-                                    <label
-                                        for="name_of_the_primary_representative">{{ __('Name of the Primary Representative ( Surname, First Name, Middle Initial: eg Dela Cruz, Juan, D.) ') }}<span
-                                            style="color: red;">*</span></label>
-                                    <input type="text"
-                                        @error('name_of_the_primary_representative') class="form-control is-invalid" @enderror
-                                        name="name_of_the_primary_representative" id="name_of_the_primary_representative"
-                                        placeholder="{{ __('Name of the Primary Representative') }}"
-                                        value="{{ old('name_of_the_primary_representative') }}" required
-                                        autocomplete="name_of_the_primary_representative" autofocus>
-                                    @error('name_of_the_primary_representative')
+                                    <label for="">{{ __('Last Name ') }}<span style="color: red;">*</span></label>
+                                    <input type="text" @error('last_name') class="form-control is-invalid" @enderror
+                                        name="last_name" id="last_name" placeholder="{{ __('Last Name') }}"
+                                        value="{{ old('last_name') }}" required autocomplete="" autofocus>
+                                    @error('last_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -146,13 +191,148 @@
                                 </div>
                             </div>
 
-                            <div class="col-12">
+                            <div class="col-6">
                                 <div class="input-style-1">
-                                    <label for="name">{{ __('Address') }} <span style="color: red;">*</span></label>
-                                    <input type="text" @error('address') class="form-control is-invalid" @enderror
-                                        name="address" id="address" placeholder="{{ __('Address') }}"
-                                        value="{{ old('address') }}" required autocomplete="address" autofocus>
-                                    @error('address')
+                                    <label for="">{{ __('First Name ') }}<span style="color: red;">*</span></label>
+                                    <input type="text" @error('first_name') class="form-control is-invalid" @enderror
+                                        name="first_name" id="first_name" placeholder="{{ __('First Name') }}"
+                                        value="{{ old('first_name') }}" required autocomplete="" autofocus>
+                                    @error('first_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="input-style-1">
+                                    <label for="">{{ __('Middle Initial (N/A if none)') }}</label>
+                                    <input type="text" @error('middle_initial') class="form-control is-invalid" @enderror
+                                        name="middle_initial" id="middle_initial" placeholder="{{ __('Middle Initial') }}"
+                                        value="{{ old('middle_initial') }}" autocomplete="" autofocus minlength="1"
+                                        maxlength="1" required>
+                                    @error('middle_initial')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="col-6">
+                                <div class="input-style-1">
+                                    <label for="">{{ __('Extention (N/A if none)') }}</label>
+                                    <input type="text" @error('') class="form-control is-invalid" @enderror
+                                        name="extention" id="extention" placeholder="{{ __('Extention') }}"
+                                        value="{{ old('extention') }}" autocomplete="" autofocus>
+                                    @error('extention')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="input-style-1">
+                                    <label for="name">{{ __('Purok') }} <span style="color: red;">*</span></label>
+                                    <input type="text" @error('purok') class="form-control is-invalid" @enderror
+                                        name="purok" id="purok" placeholder="{{ __('Purok') }}"
+                                        value="{{ old('purok') }}" required autocomplete="purok" autofocus>
+                                    @error('purok')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="input-style-1">
+                                    <label for="name">{{ __('House Number') }} <span
+                                            style="color: red;">*</span></label>
+                                    <input type="text" @error('house_number') class="form-control is-invalid" @enderror
+                                        name="house_number" id="house_number" placeholder="{{ __('House Number') }}"
+                                        value="{{ old('house_number') }}" required autocomplete="house_number" autofocus>
+                                    @error('house_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            @php
+                                $barangays = [
+                                    'Bagong Kalsada',
+                                    'Uno (1)',
+                                    'Dos (2)',
+                                    'Tres (3)',
+                                    'Quatro (4)',
+                                    'Singko (5)',
+                                    'Sais (6)',
+                                    'Syete (7)',
+                                    'Bañadero',
+                                    'Banlic',
+                                    'Barandal',
+                                    'Batino',
+                                    'Bubuyan',
+                                    'Bucal',
+                                    'Bunggo',
+                                    'Burol',
+                                    'Camaligan',
+                                    'Canlubang',
+                                    'Halang',
+                                    'Hornalan',
+                                    'Kay-Anlog',
+                                    'Laguerta',
+                                    'La Mesa',
+                                    'Lawa',
+                                    'Lecheria',
+                                    'Lingga',
+                                    'Looc',
+                                    'Mabato',
+                                    'Majada Out / Majada Labas',
+                                    'Makiling',
+                                    'Mapagong',
+                                    'Masili',
+                                    'Maunong',
+                                    'Mayapa',
+                                    'Milagrosa',
+                                    'Paciano Rizal',
+                                    'Palingon',
+                                    'Palo Alto',
+                                    'Pansol',
+                                    'Parian',
+                                    'Prinza',
+                                    'Punta',
+                                    'Puting lupa',
+                                    'Real',
+                                    'Saimsim',
+                                    'Sampiruhan',
+                                    'San Cristobal',
+                                    'San Jose',
+                                    'San Juan',
+                                    'Sirang Lupa',
+                                    'Sucol',
+                                    'Turbina',
+                                    'Ulango',
+                                    'Uwisan',
+                                ];
+                            @endphp
+                            <div class="col-4">
+                                <div class="input-style-1">
+                                    <label for="barangay">{{ __('Barangay') }} <span style="color: red;">*</span></label>
+                                    <select name="barangay" id="barangay" class="form-control" required autofocus>
+                                        <option value="">{{ __('Select or Enter Barangay') }}</option>
+
+                                        @foreach ($barangays as $barangay)
+                                            <option value="{{ $barangay }}">{{ $barangay }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('barangay')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -180,8 +360,8 @@
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="sex" id="sexPreferNotToSay"
-                                            value="other">
+                                        <input class="form-check-input" type="radio" name="sex"
+                                            id="sexPreferNotToSay" value="other">
                                         <label class="form-check-label" for="sexPreferNotToSay">
                                             Prefer not to say
                                         </label>
@@ -211,14 +391,15 @@
 
                             <div class="col-6">
                                 <div class="input-style-1">
-                                    <label for="phone_number">{{ __('Phone Number (Number must start with 0 and contain exactly 11 digits.)') }}<span
+                                    <label
+                                        for="phone_number">{{ __('Phone Number (Number must start with 0 and contain exactly 11 digits.)') }}<span
                                             style="color: red;">*</span></label>
                                     <input type="tel" @error('phone_number') class="form-control is-invalid" @enderror
                                         name="phone_number" id="phone_number" placeholder="{{ __('Phone Number') }}"
                                         value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus
                                         maxlength="11" pattern="^0\d{10}$"
                                         title="{{ __('Phone number must start with 0 and contain exactly 11 digits.') }}">
-                            
+
                                     @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -226,7 +407,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            
+
 
                             <div class="col-6" style="margin-top: 20px">
                                 <div class="input-style-1">
@@ -294,7 +475,7 @@
                                         value="{{ old('list_of_member_in_good_standing') }}" required
                                         autocomplete="list_of_member_in_good_standing" autofocus>
                                     @error('list_of_member_in_good_standing')
-                                        <span class="invalid-feedback" role="alert">    
+                                        <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
@@ -413,6 +594,14 @@
     <!-- end col -->
 
     <script>
+        $(document).ready(function() {
+            $('#barangay').select2({
+                placeholder: "{{ __('Select or Enter Barangay') }}", // Placeholder text
+                tags: true, // Enable custom input
+                allowClear: true // Allow clearing the field
+            });
+        });
+
         function togglePasswordVisibility(inputId, icon) {
             const passwordInput = document.getElementById(inputId);
             if (passwordInput.type === 'password') {

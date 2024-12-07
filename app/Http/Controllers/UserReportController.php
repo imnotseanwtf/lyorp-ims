@@ -19,18 +19,20 @@ class UserReportController extends Controller
      */
     public function index(UserReportDataTable $userReportDataTable)
     {
-        $folderId = array_key_first(request()->query());
+        $user = auth()->user();
 
-        // Get the latest report for the authenticated user
-        $latestReport = Report::where('user_id', auth()->id())->where('folder_id', $folderId)->latest()->first();
+        $activity_request = ActivityRequest::where('status', 1)
+            ->where('user_id', $user->id)
+            ->whereNotIn('activity_name', function ($query) {
+                $query->select('title')
+                    ->from('reports')
+                    ->where('status_report', '!=', 2);
+            })
+            ->get();
 
-        // Check if the latest report is older than 10 days
-        $showCreateButton = true; // default to true if no report exists
-        if ($latestReport) {
-            $showCreateButton = $latestReport->created_at->lt(now()->subDays(10));
-        }
+        $folder_id = request()->query('folder_id');
 
-        return $userReportDataTable->render('user-report.index', compact('folderId', 'showCreateButton'));
+        return $userReportDataTable->render('user-report.index', compact('folder_id', 'activity_request'));
     }
 
     /**
@@ -47,12 +49,12 @@ class UserReportController extends Controller
             [
                 'seminars_and_activities_conducted' => $activityRequestCount,
                 'user_id' => $userId,
-                'file' => $storeReportRequest->file('file')->store('userReports', 'public')
+                'file' => $storeReportRequest->file('file')->store('userReports', 'public'),
             ]);
 
         alert()->success('Report Submitted Successfully!');
 
-        return redirect()->route('user-report.index', $report->folder_id);
+        return redirect()->route('user-report.index', ['folder_id' => $report->folder_id]);
     }
 
     /**
@@ -78,7 +80,7 @@ class UserReportController extends Controller
 
         alert()->success('Report Updated Successfully!');
 
-        return redirect()->route('user-report.index', $report->folder_id);
+        return redirect()->route('user-report.index', ['folder_id' => $report->folder_id]);
     }
 
     /**
@@ -92,6 +94,6 @@ class UserReportController extends Controller
 
         alert()->success('Report Deleted Successfully!');
 
-        return redirect()->route('user-report.index', $folderId);
+        return redirect()->route('user-report.index', ['folder_id' => $folderId]);
     }
 }

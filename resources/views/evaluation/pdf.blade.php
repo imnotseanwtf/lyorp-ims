@@ -73,6 +73,9 @@
             Province of Laguna <br>
             CITY GOVERNMENT OF CALAMBA <br>
             CITY SOCIAL SERVICES DEPARTMENT <br>
+            @organization
+                <h3>{{ auth()->user()->name }}</h3>
+            @endorganization
         </span>
     </div>
 

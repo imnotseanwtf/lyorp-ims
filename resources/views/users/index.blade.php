@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-6">
                 <div class="dropdown text-end">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    <button class="main-btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
                         Filter
                     </button>
@@ -74,34 +74,52 @@
                         .then(response => response.json())
                         .then(user => {
 
-                            function setLinkOrMessage(fileKey, linkId, inputId) {
+                            function setLinkOrMessage(fileKey, linkId, inputId, customName) {
                                 const fileName = user[fileKey];
                                 if (fileName) {
-                                    $(`#${linkId}`).attr('href', '/storage/' + fileName).show();
-                                    $(`#${inputId}`).val(fileName);
-                                    $(`#${inputId}`).show();
+                                    $(`#${linkId}`)
+                                        .attr('href', '/storage/' + fileName)
+                                        .attr('download', customName ||
+                                        fileName) // Set the download name
+                                        .show();
+                                    $(`#${inputId}`).val(fileName).show();
                                 } else {
                                     $(`#${linkId}`).hide();
                                     $(`#${inputId}`).val('No file').show();
                                 }
                             }
 
-                            // Set download links or show "No file" for each file
-                            setLinkOrMessage('duty_accomplished_registration_form',
+                            // Set download links or show "No file" for each file with custom names
+                            setLinkOrMessage(
+                                'duty_accomplished_registration_form',
                                 'link_duty_accomplished_registration_form',
-                                'view_duty_accomplished_registration_form');
-                            setLinkOrMessage('list_of_officers_and_adviser',
+                                'view_duty_accomplished_registration_form',
+                                'Duty_Accomplished_Registration_Form.pdf'
+                            );
+                            setLinkOrMessage(
+                                'list_of_officers_and_adviser',
                                 'link_list_of_officers_and_adviser',
-                                'view_list_of_officers_and_adviser');
-                            setLinkOrMessage('list_of_member_in_good_standing',
+                                'view_list_of_officers_and_adviser',
+                                'List_of_Officers_and_Adviser.pdf'
+                            );
+                            setLinkOrMessage(
+                                'list_of_member_in_good_standing',
                                 'link_list_of_member_in_good_standing',
-                                'view_list_of_member_in_good_standing');
-                            setLinkOrMessage('constitution_and_by_laws',
+                                'view_list_of_member_in_good_standing',
+                                'List_of_Member_in_Good_Standing.pdf'
+                            );
+                            setLinkOrMessage(
+                                'constitution_and_by_laws',
                                 'link_constitution_and_by_laws',
-                                'view_constitution_and_by_laws');
-                            setLinkOrMessage('endorsement_certification_from_proper_authority',
+                                'view_constitution_and_by_laws',
+                                'Constitution_and_By_Laws.pdf'
+                            );
+                            setLinkOrMessage(
+                                'endorsement_certification_from_proper_authority',
                                 'link_endorsement_certification',
-                                'view_endorsement_certification');
+                                'view_endorsement_certification',
+                                'Endorsement_Certification.pdf'
+                            );
 
                             // Show the modal
                             $('#viewModal').modal('show');

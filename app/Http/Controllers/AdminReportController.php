@@ -16,13 +16,13 @@ class AdminReportController extends Controller
      */
     public function index(AdminReportDataTable $adminReportDataTable)
     {
-        $folderId = array_key_first(request()->query());
+        $folder_id = request()->query('folder_id');
 
-        Report::where('folder_id', $folderId)->update([
+        Report::where('folder_id', $folder_id)->update([
             'is_notif' => true
         ]);
 
-        return $adminReportDataTable->render('admin-report.index', compact('folderId'));
+        return $adminReportDataTable->render('admin-report.index', compact('folder_id'));
     }
 
     /**

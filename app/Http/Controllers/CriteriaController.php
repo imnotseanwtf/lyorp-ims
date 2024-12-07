@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\DataTables\CriteriaDataTable;
 use App\Http\Requests\Criteria\StoreCriteriaRequest;
 use App\Http\Requests\Criteria\UpdateCriteriaRequest;
+use App\Models\ActivityRequest;
+use App\Models\AssignToAnswer;
 use App\Models\Criteria;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
@@ -19,7 +21,26 @@ class CriteriaController extends Controller
      */
     public function index(CriteriaDataTable $criteriaDataTable)
     {
-        return $criteriaDataTable->render('criteria.index');
+        $user = auth()->user();
+
+        if ($user->isOrganization()) {
+            $activity_request = ActivityRequest::where('status', 1)
+                ->where('user_id', $user->id)
+                ->whereNotIn('activity_name', function ($query) {
+                    $query->select('name')
+                        ->from('criterias');
+                })
+                ->get();
+        } else {
+            $activity_request = ActivityRequest::where('status', 1)
+                ->whereNotIn('activity_name', function ($query) {
+                    $query->select('name')
+                        ->from('criterias');
+                })
+                ->get();
+        }
+
+        return $criteriaDataTable->render('criteria.index',  compact('activity_request'));
     }
 
     /**
@@ -27,12 +48,28 @@ class CriteriaController extends Controller
      */
     public function store(StoreCriteriaRequest $storeCriteriaRequest): RedirectResponse
     {
-        Criteria::create(
+        $criteria =  Criteria::create(
             $storeCriteriaRequest->validated()
                 +
                 [
                     'user_id' => auth()->id()
                 ]
+        );
+
+        $user = auth()->user();
+
+        if ($user->isOrganization()) {
+            $user_id = User::role('admin')->first()->id;
+        } else {
+            $user_id = ActivityRequest::where('activity_name', $criteria->name)->firstOrFail()->user_id;
+        }
+
+        AssignToAnswer::create(
+            [
+                'criteria_id' => $criteria->id,
+                'user_id' => $user_id,
+                'assign_user_id' => auth()->id(),
+            ]
         );
 
         alert()->success('Criteria Created Successfully!');

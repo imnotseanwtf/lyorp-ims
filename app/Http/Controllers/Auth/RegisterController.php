@@ -62,17 +62,27 @@ class RegisterController extends Controller
                 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
                 'confirmed'
             ],
-            'address' => ['required', 'string', 'max:255'],
-            'name_of_the_primary_representative' => ['required', 'string', 'max:255'],
+
+            //  name_of_the_primary_representative
+            'last_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'middle_initial' => ['nullable', 'string', 'max:1'],
+            'extention' => ['nullable', 'string', 'max:20'],
+
+            // address
+            'purok' => ['required', 'string', 'max:255'],
+            'house_number' => ['required', 'string', 'max:255'],
+            'barangay' => ['required', 'string', 'max:255',],
+
             'facebook_url' => ['required', 'url', 'max:255'],
             'phone_number' => ['required', 'string', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:11', 'max:11'],
             'age' => ['required', 'integer', 'min:1', 'max:120'],
             'sex' => ['required', 'string', 'in:male,female,other'],
-            'duty_accomplished_registration_form' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:102400'],
+            'duty_accomplished_registration_form' => ['required', 'file', 'mimes:pdf', 'max:102400'],
             'list_of_officers_and_adviser' => ['required', 'file', 'mimes:xls,xlsx', 'max:102400'],
             'list_of_member_in_good_standing' => ['required', 'file', 'mimes:xls,xlsx', 'max:102400'],
-            'constitution_and_by_laws' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:10240'],
-            'endorsement_certification_from_proper_authority' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:102400'],
+            'constitution_and_by_laws' => ['nullable', 'file', 'mimes:pdf', 'max:10240'],
+            'endorsement_certification_from_proper_authority' => ['nullable', 'file', 'mimes:pdf', 'max:102400'],
         ]);
     }
 
@@ -88,12 +98,12 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'name_of_the_primary_representative' => $data['name_of_the_primary_representative'],
+            'name_of_the_primary_representative' => $data['first_name'] . ' ' . $data['middle_initial'] . ' ' . $data['last_name'] . ' ' . $data['extention'],
             'facebook_url' => $data['facebook_url'],
             'phone_number' => $data['phone_number'],
             'age' => $data['age'],
             'sex' => $data['sex'],
-            'address' => $data['address'],
+            'address' => $data['purok'] . ' ' . $data['house_number'] . ' ' . $data['barangay'] . ' Calamba City, Laguna', 
             // Handling file uploads
             'duty_accomplished_registration_form' => $data['duty_accomplished_registration_form']->store('organizationFiles', 'public'),
             'list_of_officers_and_adviser' => $data['list_of_officers_and_adviser']->store('organizationFiles', 'public'),
@@ -105,6 +115,11 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
+        if($user->email_verified_at == null)
+        {
+            return redirect()->route('home');
+        }
+
         auth()->logout();
 
         alert()->success('Wait For the Admin to Review your account.');

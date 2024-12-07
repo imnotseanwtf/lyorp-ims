@@ -25,6 +25,11 @@ class UserReportDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->addColumn('action', fn(Report $report) => view('user-report.components.action', compact('report')))
+            ->editColumn('report_status', fn(Report $report) => match ($report->status_report) {
+                0 => 'Pending',
+                1 => 'Accepted',
+                2 => 'Rejected',
+            })
             ->rawColumns(['action']);
     }
 
@@ -33,9 +38,20 @@ class UserReportDataTable extends DataTable
      */
     public function query(Report $model): QueryBuilder
     {
-        return $model->newQuery()
-            ->where('user_id', auth()->user()->id)
-            ->where('folder_id', array_key_first(request()->query()));
+        $folderId = request()->query('folder_id'); // Get 'folder_id' from query parameters
+        $status = request()->query('status'); // Get 'status' from query parameters
+
+        $query = $model->newQuery()
+            ->where('folder_id', $folderId)
+            ->where('user_id', auth()->id());
+
+        if (!is_null($status)) {
+            $query->where('status_report', $status);
+        }
+
+        return $query
+            ->with('user')
+            ->select('reports.*');
     }
 
     /**
@@ -71,6 +87,7 @@ class UserReportDataTable extends DataTable
             Column::make('recruitment', 'Recruitment'),
             Column::make('meeting_conducted', 'Meeting Conducted'),
             Column::make('others', 'Others'),
+            Column::make('report_status'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

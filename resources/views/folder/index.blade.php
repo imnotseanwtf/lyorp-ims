@@ -73,11 +73,13 @@
                     </div>
                     <div class="card-footer text-center">
                         @admin
-                            <a href="{{ route('admin-report.index', $folder->id) }}" class="">{{ $folder->name }}
+                            <a href="{{ route('admin-report.index', ['folder_id' => $folder->id]) }}"
+                                class="">{{ $folder->name }}
                                 {{ $folder->year }}</a>
                         @endadmin
                         @organization
-                            <a href="{{ route('user-report.index', $folder->id) }}" class="">{{ $folder->name }}
+                            <a href="{{ route('user-report.index', ['folder_id' => $folder->id]) }}"
+                                class="">{{ $folder->name }}
                                 {{ $folder->year }}</a>
                         @endorganization
                         @admin

@@ -14,7 +14,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li>
-                    <a class="dropdown-item" href="{{ route('folder.index') }}" title="View Reports">
+                    <a class="dropdown-item" href="{{ route('view-report.index', $user->id) }}" title="View Reports">
                         Report @if ($reportAnnounced)
                             <span class="btn btn-primary text-white mx-2"
                                 style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">New</span>
@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="{{ route('activity-request.index') }}"
+                    <a class="dropdown-item" href="{{ route('view-activity-request.index', $user->id) }}"
                         title="Request Technical Assistance">
                         Technical Assist @if ($activityRequestAnnounced)
                             <span class="btn btn-primary text-white mx-2"
@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="{{ route('criteria.index') }}" title="Evaluate Criteria">
+                    <a class="dropdown-item" href="{{ route('view-evaluation.index', $user->id) }}" title="Evaluate Criteria">
                         Evaluation @if ($answerAnnounced)
                             <span class="btn btn-primary text-white mx-2"
                                 style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">New</span>

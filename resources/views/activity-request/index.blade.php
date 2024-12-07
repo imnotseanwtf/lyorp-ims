@@ -10,7 +10,7 @@
             </ul>
         </div>
     @endif
-    
+
     <nav aria-label="breadcrumb" style="margin-top: 3rem !important;">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-6">
                 <div class="title mb-30 text-end">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    <button class="main-btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
                         Filter
                     </button>
@@ -186,6 +186,9 @@
                             $('#view_specific_objectives').val(activity.specific_objectives);
                             $('#view_specific_outputs').val(activity.specific_outputs);
 
+                            $('#view_others_audience').val(activity.others);
+                            $('#view_others_equipment').val(activity.others_equipment);
+
                             // Equipment Available
                             $('#view_equipment_projector').prop('checked', activity.equipment
                                 .includes('Projector'));
@@ -202,19 +205,25 @@
                             $('#view_equipment_video_conference').prop('checked', activity
                                 .equipment.includes('Video conference application'));
 
-                            // File Download Link
-                            function setLinkOrMessage(fileKey, linkId, inputId) {
+                            /// File Download Link
+                            function setLinkOrMessage(fileKey, linkId, inputId, customName) {
                                 const fileName = activity[fileKey];
                                 if (fileName) {
-                                    $(`#${linkId}`).attr('href', '/storage/' + fileName).show();
-                                    $(`#${inputId}`).val(fileName);
-                                    $(`#${inputId}`).show();
+                                    $(`#${linkId}`)
+                                        .attr('href', '/storage/' + fileName)
+                                        .attr('download', customName ||
+                                        fileName) // Set custom download name if provided
+                                        .show();
+                                    $(`#${inputId}`).val(fileName).show();
                                 } else {
                                     $(`#${linkId}`).hide();
                                     $(`#${inputId}`).val('No file').show();
                                 }
                             }
-                            setLinkOrMessage('file', 'link_file', 'view_file');
+
+                            // Call with custom download name
+                            setLinkOrMessage('file', 'link_file', 'view_file',
+                                'TechnicalAssistant.pdf');
                         });
                 });
 
@@ -312,6 +321,9 @@
                             // Specific Objectives and Outputs
                             $('#edit_specific_objectives').val(activity.specific_objectives);
                             $('#edit_specific_outputs').val(activity.specific_outputs);
+
+                            $('#edit_others_audience').val(activity.others);
+                            $('#edit_others_equipment').val(activity.others_equipment);
 
                             // Equipment Available
                             $('#edit_equipment_projector').prop('checked', activity.equipment

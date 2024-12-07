@@ -53,9 +53,13 @@ class AnnouncementCommand extends Command
                     Log::info('Sending message to phone number: ' . $phoneNumber);
 
                     $twilio->messages->create($phoneNumber, [
-                        "body" => 'New Announcement!' . "\n" . 'Title: ' . $announcement->title . "\n" . 'Description: ' . $announcement->description,
+                        "body" => "New Announcement!\n" .
+                            "Isang Mapagpalang Araw sa lahat ng Youth Organizations\n\n" .
+                            "Title: " . $announcement->title . "\n" .
+                            "Description: " . $announcement->description . "\n\n" .
+                            now()->format('F d, Y \a\t h:iA') . "\n" .
+                            "From: CSSD - Calamba City Youth Development Office",
                         "from" => $senderNumber,
-                        "title" => 'Youth Development Office - CSSD',
                     ]);
                 } catch (\Exception $e) {
                     Log::error('Failed to send message to ' . $user->phone_number . ': ' . $e->getMessage());

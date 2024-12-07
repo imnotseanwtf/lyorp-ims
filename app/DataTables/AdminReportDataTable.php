@@ -25,6 +25,11 @@ class AdminReportDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->addColumn('action', fn(Report $report) => view('admin-report.components.action', compact('report')))
+            ->addColumn('report_status', fn(Report $report) => match ($report->status_report) {
+                0 => 'Pending',
+                1 => 'Accepted',
+                2 => 'Rejected',
+            })
             ->rawColumns(['action']);
     }
 
@@ -33,8 +38,17 @@ class AdminReportDataTable extends DataTable
      */
     public function query(Report $model): QueryBuilder
     {
-        return $model->newQuery()
-            ->where('folder_id', array_key_first(request()->query()))
+        $folderId = request()->query('folder_id'); // Get 'folder_id' from query parameters
+        $status = request()->query('status'); // Get 'status' from query parameters
+
+        $query = $model->newQuery()
+            ->where('folder_id', $folderId);
+
+        if (!is_null($status)) {
+            $query->where('status_report', $status);
+        }
+
+        return $query
             ->with('user')
             ->select('reports.*');
     }
@@ -68,9 +82,15 @@ class AdminReportDataTable extends DataTable
             Column::make('user.name', 'user.name'),
             Column::make('title', 'title'),
             Column::make('content', 'content'),
+            Column::make('seminars_and_activities_conducted', 'seminars_and_activities_conducted'),
+            Column::make('seminars_and_activities_attended', 'seminars_and_activities_attended'),
+            Column::make('recruitment', 'Recruitment'),
+            Column::make('meeting_conducted', 'Meeting Conducted'),
+            Column::make('others', 'Others'),
+            Column::make('report_status'),
             Column::computed('action')
                 ->exportable(false)
-                ->printable(false)  
+                ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
         ];

@@ -99,7 +99,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="view_others">Others</label>
-                            <textarea class="form-control" id="view_others" placeholder="Enter Others" readonly></textarea>
+                            <textarea class="form-control" id="view_others_audience" readonly></textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -300,6 +300,12 @@
                             conference application</label>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="others_equipment">Others</label>
+                    <textarea class="form-control" name="others_equipment" id="view_others_equipment" readonly></textarea>
+                </div>
+
 
                 <!-- File Download -->
                 <div class="form-group">

@@ -19,12 +19,20 @@ use App\Http\Controllers\FolderController;
 use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\PdfEvaluationController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\RegisteredParticipantController;
+use App\Http\Controllers\ReportAction\AcceptReportController;
+use App\Http\Controllers\ReportAction\RejectReportController;
 use App\Http\Controllers\ReportAction\SoftDeleteReportController;
+use App\Http\Controllers\ReportAction\ViewAcceptReportController;
+use App\Http\Controllers\ReportAction\ViewRejectReportController;
 use App\Http\Controllers\UserAction\ActivateController;
 use App\Http\Controllers\UserAction\RejectUserController;
 use App\Http\Controllers\UserAnsweredQuestion;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserReportController;
+use App\Http\Controllers\ViewUserActivityRequestController;
+use App\Http\Controllers\ViewUserEvaluationController;
+use App\Http\Controllers\ViewUserReportController;
 use App\Http\Controllers\WelcomeInformationController;
 use App\Models\WelcomeInformation;
 use Illuminate\Support\Facades\Route;
@@ -43,13 +51,13 @@ Route::get('/faqs', function () {
 
 Auth::routes(
     [
-        'logout' => false
+        'logout' => false,
+        'verify' => true,
     ]
 );
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified', 'check_user_status'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('evaluation-pdf', PdfEvaluationController::class)->name('pdf.evaluation');
 
@@ -91,20 +99,28 @@ Route::middleware('auth')->group(function () {
 
         Route::put('update-certificate', CertificateImageController::class)->name('updateCertificate');
 
-        // RESOURCES
         Route::resources(
             [
                 'users' => UserController::class,
                 'admin-report' => AdminReportController::class,
                 'announcement' => AnnouncementController::class,
+                'registered' => RegisteredParticipantController::class,
+                'view-report' => ViewUserReportController::class,
+                'view-evaluation' => ViewUserEvaluationController::class,
+                'view-activity-request' => ViewUserActivityRequestController::class,
             ],
             [
                 'except' => ['create', 'edit'],
                 'parameters' => [
                     'admin-report' => 'report',
-                ]
+                    'view-report' => 'report',
+                    'view-evaluation' => 'assign',
+                    'view-activity-request' => 'activity'
+                ],
             ]
         );
+
+
         // ACTIVTY REQUEST ACTION
         Route::put('accept-activity/{activity}', AcceptActivityController::class);
         Route::put('reject-activity/{activity}', RejectActivityController::class);
@@ -112,6 +128,14 @@ Route::middleware('auth')->group(function () {
         // USERS ACTION
         Route::put('activate/{user}', ActivateController::class)->name('activate');
         Route::put('reject/{user}', RejectUserController::class)->name('reject');
+
+        
+        // REPORT ACTION
+        Route::put('activate-report/{report}', AcceptReportController::class);
+        Route::put('reject-report/{report}', RejectReportController::class);
+
+        Route::put('accept-view/{report}', ViewAcceptReportController::class);
+        Route::put('reject-view/{report}', ViewRejectReportController::class);
     });
 
 
@@ -131,8 +155,6 @@ Route::middleware('auth')->group(function () {
             ]
         );
     });
-
-
 
     Route::view('about', 'about')->name('about');
 

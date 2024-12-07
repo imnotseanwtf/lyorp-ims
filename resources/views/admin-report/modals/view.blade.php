@@ -10,6 +10,15 @@
                 </button>
             </div>
             <div class="modal-body">
+
+                <div class="form-group" id="reason_form_group">
+                    <label for="reason">{{ __('Reason') }}</label>
+                    <div class="input-group">
+                        <textarea name="reason" type="text" id="view_reason" @class(['form-control'])
+                            placeholder="{{ __('Reason') }}" value="{{ old('reason') }}" readonly></textarea>
+                    </div>
+                </div>
+                
                 <div class="form-group">
                     <label for="seminars_activities_conducted">{{ __('Seminars & Activities Conducted') }}</label>
                     <div class="input-group">

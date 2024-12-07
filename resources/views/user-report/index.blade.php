@@ -17,13 +17,31 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="title mb-30 text-end">
-                    @if ($showCreateButton)
-                        <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
-                            Create Report
-                        </button>
-                    @endif
+                <div class="d-flex justify-content-end align-items-center">
+                    <button class="main-btn btn-primary btn-hover me-3" data-bs-target="#createModal"
+                        data-bs-toggle="modal">
+                        Create Report
+                    </button>
 
+                    <div class="dropdown">
+                        <button class="main-btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
+                            Filter
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item"
+                                    href="{{ route('user-report.index', ['folder_id' => $folder_id]) }}">All</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('user-report.index', ['folder_id' => $folder_id, 'status' => 0]) }}">Pending</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('user-report.index', ['folder_id' => $folder_id, 'status' => 1]) }}">Accepted</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('user-report.index', ['folder_id' => $folder_id, 'status' => 2]) }}">Rejected</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,6 +86,13 @@
                         .then(response => response.json())
                         .then(report => {
                             $('#view_title').val(report.title);
+
+                            if (!report.reason) { // Check if reason is null or empty
+                                $('#reason_form_group').hide();
+                            } else {
+                                $('#view_reason').val(report.reason);
+                            }
+
                             $('#view_content').val(report.content);
                             $('#view_seminars_activities_conducted').val(report
                                 .seminars_and_activities_conducted || 'N/A');
@@ -80,7 +105,13 @@
                             function setLinkOrMessage(fileKey, linkId, inputId) {
                                 const fileName = report[fileKey];
                                 if (fileName) {
-                                    $(`#${linkId}`).attr('href', '/storage/' + fileName).show();
+                                    const newFileName =
+                                    `Reports`; // Set your desired file name here
+                                    $(`#${linkId}`)
+                                        .attr('href', '/storage/' + fileName)
+                                        .attr('download',
+                                        newFileName) // Set the download attribute
+                                        .show();
                                     $(`#${inputId}`).show();
                                 } else {
                                     $(`#${linkId}`).hide();
@@ -90,7 +121,7 @@
 
                             setLinkOrMessage('file', 'link_file', 'view_file');
                         });
-                })
+                });
 
                 $('.editBtn').click(function() {
                     fetch('/user-report/' + $(this).data('report'))

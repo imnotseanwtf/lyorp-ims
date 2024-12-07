@@ -5,10 +5,11 @@
     </a>
 
     <!-- Edit criteria button with tooltip -->
-    <button type="button" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#editModal"
+    {{-- <button type="button" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#editModal"
         data-criteria="{{ $criteria->id }}" title="Edit Name">
         <i class="fa-solid fa-pen"></i>
-    </button>
+    </button> --}}
+
     <!-- Assign answer button with tooltip -->
     <a href="{{ route('assign-answer.index', $criteria->id) }}" class="btn btn-success" title="Assign Answer">
         <i class="fa-solid fa-pen-to-square"></i>

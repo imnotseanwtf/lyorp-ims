@@ -54,16 +54,18 @@
                         @enderror
                     </div>
 
-                    {{-- Title Input --}}
                     <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" placeholder="Enter title"
-                            value="{{ old('title') }}" required>
-                        @error('title')
+                        <label for="name">Title</label>
+                        <select name="title" class="form-control" required>
+                            <option value="" selected disabled>Select Activity</option>
+                            @foreach($activity_request as $activity)
+                                <option value="{{ $activity->activity_name }}">{{ $activity->activity_name }}</option>
+                            @endforeach
+                        </select>
+                        @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-
                     {{-- Content Input --}}
                     <div class="form-group">
                         <label for="content">Content</label>
@@ -83,7 +85,7 @@
                     </div>
 
 
-                    <input type="hidden" value="{{ $folderId }}" name="folder_id">
+                    <input type="hidden" value="{{ $folder_id }}" name="folder_id">
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save</button>

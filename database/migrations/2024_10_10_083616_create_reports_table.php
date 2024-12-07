@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('others');
             $table->string('title');
             $table->string('content');
+            $table->integer('status_report')->default(0);
+            $table->string('reason')->nullable();
             $table->string('file')->nullable();
 
             $table->foreignIdFor(Folder::class)->constrained()->cascadeOnDelete();

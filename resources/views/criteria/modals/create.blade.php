@@ -15,9 +15,13 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter name"
-                            value="{{ old('name') }}" required>
+                        <label for="name">Activity Name</label>
+                        <select name="name" class="form-control" required>
+                            <option value="" selected disabled>Select Activity</option>
+                            @foreach($activity_request as $activity)
+                                <option value="{{ $activity->activity_name }}">{{ $activity->activity_name }}</option>
+                            @endforeach
+                        </select>
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

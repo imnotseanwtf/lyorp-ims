@@ -46,4 +46,9 @@
             </button>
         @endif
     @endorganization
+    @if ($activity->status == 1)
+        <a href="{{ route('registered.index', $activity->id) }}" class="btn btn-primary" title="View Registered">
+            <i class="fa-solid fa-user"></i>
+        </a>
+    @endif
 </div>

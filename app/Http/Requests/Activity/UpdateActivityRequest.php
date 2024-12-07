@@ -24,7 +24,7 @@ class UpdateActivityRequest extends FormRequest
         return [
             'activity_name' => ['required', 'string', 'max:255'],
             'date' => ['required', 'date'],
-            'time' => ['required',], // Ensure time is in the correct format
+            'time' => ['required'], // Ensure time is in the correct format
             'venue' => ['required', 'string', 'max:255'],
             'specific_objectives' => ['required', 'string'],
             'specific_outputs' => ['required', 'string'],
@@ -33,6 +33,11 @@ class UpdateActivityRequest extends FormRequest
             'equipment' => ['required', 'array'],
             'equipment.*' => ['string'], // Each equipment should be a string
             'file' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:2048'],
+            'audience' => ['required', 'array'],
+            'audience.*' => ['string'], // Each topic should be a string
+            'others' => ['nullable', 'string'],
+            'expected_number_of_participants' => ['required', 'integer'],
+            'others_equipment' => ['nullable', 'string'],
         ];
     }
 }
