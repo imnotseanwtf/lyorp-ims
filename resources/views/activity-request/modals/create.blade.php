@@ -300,11 +300,12 @@
                     <div class="form-group">
                         <label for="file">Name with signature of representative of organization (Pdf File) + Date
                             Signed <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" name="file" required>
+                        <input type="file" class="form-control" name="file" id="file" required onchange="validateFile(this)">
+                        <div id="fileError" class="invalid-feedback" style="display:none"></div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Save</button>
                     </div>
                 </div>
             </form>
@@ -348,4 +349,26 @@
             checkbox.checked = false;
         });
     });
+
+    function validateFile(input) {
+        const file = input.files[0];
+        const fileError = document.getElementById('fileError');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        // Reset
+        input.classList.remove('is-invalid');
+        fileError.style.display = 'none';
+        submitBtn.disabled = false;
+
+        // Validate file type
+        if (file.type !== 'application/pdf') {
+            input.classList.add('is-invalid');
+            fileError.textContent = 'Only PDF files are allowed';
+            fileError.style.display = 'block';
+            submitBtn.disabled = true;
+            return false;
+        }
+
+        return true;
+    }
 </script>

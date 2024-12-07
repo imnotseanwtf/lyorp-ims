@@ -435,7 +435,9 @@
                                         id="duty_accomplished_registration_form"
                                         placeholder="{{ __('Duly Accomplished Registration Form') }}"
                                         value="{{ old('duty_accomplished_registration_form') }}" required
-                                        autocomplete="duty_accomplished_registration_form" autofocus>
+                                        autocomplete="duty_accomplished_registration_form" autofocus
+                                        onchange="validateRegistrationForm(this)">
+                                    <div id="registrationFormError" class="invalid-feedback" style="display:none"></div>
                                     @error('duty_accomplished_registration_form')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -454,7 +456,9 @@
                                         name="list_of_officers_and_adviser" id="list_of_officers_and_adviser"
                                         placeholder="{{ __('List of Officers and Adviser') }}"
                                         value="{{ old('list_of_officers_and_adviser') }}" required
-                                        autocomplete="list_of_officers_and_adviser" autofocus>
+                                        autocomplete="list_of_officers_and_adviser" autofocus
+                                        onchange="validateOfficersList(this)">
+                                    <div id="officersListError" class="invalid-feedback" style="display:none"></div>
                                     @error('list_of_officers_and_adviser')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -473,7 +477,9 @@
                                         name="list_of_member_in_good_standing" id="list_of_member_in_good_standing"
                                         placeholder="{{ __('List of member in good standing') }}"
                                         value="{{ old('list_of_member_in_good_standing') }}" required
-                                        autocomplete="list_of_member_in_good_standing" autofocus>
+                                        autocomplete="list_of_member_in_good_standing" autofocus
+                                        onchange="validateMembersList(this)">
+                                    <div id="membersListError" class="invalid-feedback" style="display:none"></div>
                                     @error('list_of_member_in_good_standing')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -491,7 +497,9 @@
                                         name="constitution_and_by_laws" id="constitution_and_by_laws"
                                         placeholder="{{ __('Constitution and By- laws') }}"
                                         value="{{ old('constitution_and_by_laws') }}" required
-                                        autocomplete="constitution_and_by_laws" autofocus>
+                                        autocomplete="constitution_and_by_laws" autofocus
+                                        onchange="validateConstitution(this)">
+                                    <div id="constitutionError" class="invalid-feedback" style="display:none"></div>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -510,7 +518,9 @@
                                         id="endorsement_certification_from_proper_authority"
                                         placeholder="{{ __('Endorsement / Certification from proper authority') }}"
                                         value="{{ old('endorsement_certification_from_proper_authority') }}"
-                                        autocomplete="endorsement_certification_from_proper_authority" autofocus>
+                                        autocomplete="endorsement_certification_from_proper_authority" autofocus
+                                        onchange="validateEndorsement(this)">
+                                    <div id="endorsementError" class="invalid-feedback" style="display:none"></div>
                                     @error('endorsement_certification_from_proper_authority')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -601,6 +611,67 @@
                 allowClear: true // Allow clearing the field
             });
         });
+
+        function validateRegistrationForm(input) {
+            const file = input.files[0];
+            const errorDiv = document.getElementById('registrationFormError');
+            validateFile(input, errorDiv, 'application/pdf', 10);
+        }
+
+        function validateOfficersList(input) {
+            const file = input.files[0];
+            const errorDiv = document.getElementById('officersListError');
+            validateFile(input, errorDiv, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel', 10);
+        }
+
+        function validateMembersList(input) {
+            const file = input.files[0];
+            const errorDiv = document.getElementById('membersListError');
+            validateFile(input, errorDiv, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel', 10);
+        }
+
+        function validateConstitution(input) {
+            const file = input.files[0];
+            const errorDiv = document.getElementById('constitutionError');
+            validateFile(input, errorDiv, 'application/pdf', 10);
+        }
+
+        function validateEndorsement(input) {
+            const file = input.files[0];
+            const errorDiv = document.getElementById('endorsementError');
+            validateFile(input, errorDiv, 'application/pdf', 10);
+        }
+
+        function validateFile(input, errorDiv, allowedTypes, maxSizeMB) {
+            const file = input.files[0];
+            
+            // Reset
+            input.classList.remove('is-invalid');
+            errorDiv.style.display = 'none';
+            
+            if (file) {
+                // Validate file type
+                const allowedTypesArray = allowedTypes.split(',');
+                if (!allowedTypesArray.includes(file.type)) {
+                    input.classList.add('is-invalid');
+                    errorDiv.textContent = allowedTypes.includes('pdf') ? 'Only PDF files are allowed' : 'Only Excel files are allowed';
+                    errorDiv.style.display = 'block';
+                    input.value = '';
+                    return false;
+                }
+
+                // Validate file size (maxSizeMB in megabytes)
+                if (file.size > maxSizeMB * 1024 * 1024) {
+                    input.classList.add('is-invalid');
+                    errorDiv.textContent = `File size must be less than ${maxSizeMB}MB`;
+                    errorDiv.style.display = 'block';
+                    input.value = '';
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
         function togglePasswordVisibility(inputId, icon) {
             const passwordInput = document.getElementById(inputId);
