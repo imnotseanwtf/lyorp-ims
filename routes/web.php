@@ -51,8 +51,8 @@ Route::get('/faqs', function () {
 
 Auth::routes(
     [
-        'logout' => false,
         'verify' => true,
+        'logout' => false,
     ]
 );
 

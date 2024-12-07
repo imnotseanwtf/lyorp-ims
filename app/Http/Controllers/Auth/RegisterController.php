@@ -98,12 +98,12 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'name_of_the_primary_representative' => $data['first_name'] . ' ' . $data['middle_initial'] . ' ' . $data['last_name'] . ' ' . $data['extention'],
+            'name_of_the_primary_representative' => $data['first_name'] . ' ' . strtoupper($data['middle_initial']) . '. ' . $data['last_name'] . ' ' . $data['extention'],
             'facebook_url' => $data['facebook_url'],
             'phone_number' => $data['phone_number'],
             'age' => $data['age'],
             'sex' => $data['sex'],
-            'address' => $data['purok'] . ' ' . $data['house_number'] . ' ' . $data['barangay'] . ' Calamba City, Laguna', 
+            'address' => $data['house_number'] . ' Purok' .$data['purok'] . ' ' .  ' ' . $data['barangay'] . ' Calamba City, Laguna', 
             // Handling file uploads
             'duty_accomplished_registration_form' => $data['duty_accomplished_registration_form']->store('organizationFiles', 'public'),
             'list_of_officers_and_adviser' => $data['list_of_officers_and_adviser']->store('organizationFiles', 'public'),
@@ -111,19 +111,5 @@ class RegisterController extends Controller
             'constitution_and_by_laws' => isset($data['constitution_and_by_laws']) ? $data['constitution_and_by_laws']->store('organizationFiles', 'public') : null,
             'endorsement_certification_from_proper_authority' => isset($data['endorsement_certification_from_proper_authority']) ? $data['endorsement_certification_from_proper_authority']->store('organizationFiles', 'public') : null,
         ])->assignRole(Role::findByName(UserTypeEnum::Organization->value));
-    }
-
-    protected function registered(Request $request, $user)
-    {
-        if($user->email_verified_at == null)
-        {
-            return redirect()->route('home');
-        }
-
-        auth()->logout();
-
-        alert()->success('Wait For the Admin to Review your account.');
-
-        return redirect()->route('login');
     }
 }

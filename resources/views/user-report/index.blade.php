@@ -105,12 +105,12 @@
                             function setLinkOrMessage(fileKey, linkId, inputId) {
                                 const fileName = report[fileKey];
                                 if (fileName) {
-                                    const newFileName =
-                                    `Reports`; // Set your desired file name here
+                                    const date = new Date();
+                                    const formattedDate = date.toISOString().split('T')[0];
+                                    const newFileName = `Reports_${formattedDate}`; // Added date to filename
                                     $(`#${linkId}`)
                                         .attr('href', '/storage/' + fileName)
-                                        .attr('download',
-                                        newFileName) // Set the download attribute
+                                        .attr('download', newFileName)
                                         .show();
                                     $(`#${inputId}`).show();
                                 } else {

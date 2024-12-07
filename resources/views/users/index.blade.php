@@ -77,10 +77,12 @@
                             function setLinkOrMessage(fileKey, linkId, inputId, customName) {
                                 const fileName = user[fileKey];
                                 if (fileName) {
+                                    const date = new Date(user.created_at).toLocaleDateString();
+                                    const fileNameWithDate = `${customName.split('.')[0]}_${date}.pdf`;
+                                    
                                     $(`#${linkId}`)
                                         .attr('href', '/storage/' + fileName)
-                                        .attr('download', customName ||
-                                        fileName) // Set the download name
+                                        .attr('download', fileNameWithDate)
                                         .show();
                                     $(`#${inputId}`).val(fileName).show();
                                 } else {

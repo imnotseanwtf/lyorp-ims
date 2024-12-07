@@ -237,11 +237,12 @@
 
                             <div class="col-4">
                                 <div class="input-style-1">
-                                    <label for="name">{{ __('Purok') }} <span style="color: red;">*</span></label>
-                                    <input type="text" @error('purok') class="form-control is-invalid" @enderror
-                                        name="purok" id="purok" placeholder="{{ __('Purok') }}"
-                                        value="{{ old('purok') }}" required autocomplete="purok" autofocus>
-                                    @error('purok')
+                                    <label for="name">{{ __('House Number') }} <span
+                                            style="color: red;">*</span></label>
+                                    <input type="text" @error('house_number') class="form-control is-invalid" @enderror
+                                        name="house_number" id="house_number" placeholder="{{ __('House Number') }}"
+                                        value="{{ old('house_number') }}" required autocomplete="house_number" autofocus>
+                                    @error('house_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -251,12 +252,11 @@
 
                             <div class="col-4">
                                 <div class="input-style-1">
-                                    <label for="name">{{ __('House Number') }} <span
-                                            style="color: red;">*</span></label>
-                                    <input type="text" @error('house_number') class="form-control is-invalid" @enderror
-                                        name="house_number" id="house_number" placeholder="{{ __('House Number') }}"
-                                        value="{{ old('house_number') }}" required autocomplete="house_number" autofocus>
-                                    @error('house_number')
+                                    <label for="name">{{ __('Purok') }} <span style="color: red;">*</span></label>
+                                    <input type="text" @error('purok') class="form-control is-invalid" @enderror
+                                        name="purok" id="purok" placeholder="{{ __('Purok') }}"
+                                        value="{{ old('purok') }}" required autocomplete="purok" autofocus>
+                                    @error('purok')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

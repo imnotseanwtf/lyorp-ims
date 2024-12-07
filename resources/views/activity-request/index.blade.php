@@ -221,9 +221,12 @@
                                 }
                             }
 
-                            // Call with custom download name
+                            // Format date to YYYY-MM-DD
+                            const formattedDate = activity.date ? new Date(activity.created_at).toISOString().split('T')[0] : '';
+                            
+                            // Call with custom download name including date
                             setLinkOrMessage('file', 'link_file', 'view_file',
-                                'TechnicalAssistant.pdf');
+                                `TechnicalAssistant_${formattedDate}.pdf`);
                         });
                 });
 

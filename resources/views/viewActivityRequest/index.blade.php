@@ -185,18 +185,27 @@
                                 .equipment.includes('Video conference application'));
 
                             // File Download Link
-                            function setLinkOrMessage(fileKey, linkId, inputId) {
+                            function setLinkOrMessage(fileKey, linkId, inputId, customName) {
                                 const fileName = activity[fileKey];
                                 if (fileName) {
-                                    $(`#${linkId}`).attr('href', '/storage/' + fileName).show();
-                                    $(`#${inputId}`).val(fileName);
-                                    $(`#${inputId}`).show();
+                                    $(`#${linkId}`)
+                                        .attr('href', '/storage/' + fileName)
+                                        .attr('download', customName ||
+                                        fileName) // Set custom download name if provided
+                                        .show();
+                                    $(`#${inputId}`).val(fileName).show();
                                 } else {
                                     $(`#${linkId}`).hide();
                                     $(`#${inputId}`).val('No file').show();
                                 }
                             }
-                            setLinkOrMessage('file', 'link_file', 'view_file');
+
+                            // Format date to YYYY-MM-DD
+                            const formattedDate = activity.date ? new Date(activity.created_at).toISOString().split('T')[0] : '';
+                            
+                            // Call with custom download name including date
+                            setLinkOrMessage('file', 'link_file', 'view_file',
+                                `TechnicalAssistant_${formattedDate}.pdf`);
                         });
                 });
 
