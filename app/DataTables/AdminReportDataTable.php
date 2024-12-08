@@ -79,7 +79,7 @@ class AdminReportDataTable extends DataTable
     {
         return [
             Column::make('id', 'id'),
-            Column::make('user.name', 'user.name'),
+            Column::make('user.name', 'user.name')->title('Organization'),
             Column::make('title', 'title'),
             Column::make('content', 'content'),
             Column::make('seminars_and_activities_conducted', 'seminars_and_activities_conducted'),

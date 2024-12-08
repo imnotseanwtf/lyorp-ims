@@ -11,7 +11,7 @@
     </nav>
 
     @forelse ($assign as $assignment)
-        @if (!$assignment->is_answered)
+        @if (!$assignment->is_answered && $assignment->criteria->questions->count() > 0)
             <div class="card mt-3">
                 <div class="card-header">
                     <h3>{{ $assignment->criteria->name }}</h3>
@@ -87,7 +87,7 @@
     @if (
         $assign->count() > 0 &&
             $assign->every(function ($assignment) {
-                return $assignment->is_answered;
+                return $assignment->is_answered || $assignment->criteria->questions->count() == 0;
             }))
         <div>No Evaluation Form Yet.</div>
     @endif
