@@ -27,15 +27,17 @@ class CriteriaController extends Controller
             $activity_request = ActivityRequest::where('status', 1)
                 ->where('user_id', $user->id)
                 ->whereNotIn('activity_name', function ($query) {
-                    $query->select('name')
-                        ->from('criterias');
+                    $query->select('activity_name')
+                        ->from('criterias')
+                        ->where('user_id', auth()->id());
                 })
                 ->get();
         } else {
             $activity_request = ActivityRequest::where('status', 1)
                 ->whereNotIn('activity_name', function ($query) {
                     $query->select('name')
-                        ->from('criterias');
+                        ->from('criterias')
+                        ->where('user_id', auth()->id());
                 })
                 ->get();
         }

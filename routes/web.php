@@ -17,6 +17,7 @@ use App\Http\Controllers\ChangingPasswordOrganizationController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\LogOutController;
+use App\Http\Controllers\PdfAnswerController;
 use App\Http\Controllers\PdfEvaluationController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RegisteredParticipantController;
@@ -57,6 +58,9 @@ Auth::routes(
 );
 
 Route::middleware(['auth', 'verified', 'check_user_status'])->group(function () {
+
+    Route::get('pdf-answer/{id}', PdfAnswerController::class)->name('answer-pdf');
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('evaluation-pdf', PdfEvaluationController::class)->name('pdf.evaluation');

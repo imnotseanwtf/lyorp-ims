@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <nav aria-label="breadcrumb" style="margin-top: 3rem !important;">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
@@ -82,7 +91,8 @@
             tableInstance.on('draw.dt', function() {
 
                 $('.viewBtn').click(function() {
-                    fetch('/user-report/' + $(this).data('report'))
+                    const reportId = $(this).data('report'); // Fetch the id dynamically
+                    fetch('/user-report/' + reportId)
                         .then(response => response.json())
                         .then(report => {
                             $('#view_title').val(report.title);
@@ -96,18 +106,21 @@
                             $('#view_content').val(report.content);
                             $('#view_seminars_activities_conducted').val(report
                                 .seminars_and_activities_conducted || 'N/A');
-                            $('#view_seminars_activities_attended').val(report
-                                .seminars_and_activities_attended || 'N/A');
                             $('#view_recruitment').val(report.recruitment || 'N/A');
-                            $('#view_meeting_conducted').val(report.meeting_conducted || 'N/A');
                             $('#view_others').val(report.others || 'N/A');
+
+                            const route = $('.view-participants-btn').data('route');
+                            // Replace :id placeholder with actual ID
+                            $('.view-participants-btn').attr('href', route.replace(':id', report
+                                .id));
 
                             function setLinkOrMessage(fileKey, linkId, inputId) {
                                 const fileName = report[fileKey];
                                 if (fileName) {
-                                    const date = new Date();
+                                    const date = new Date(report.created_at);
                                     const formattedDate = date.toISOString().split('T')[0];
-                                    const newFileName = `Reports_${formattedDate}`; // Added date to filename
+                                    const newFileName =
+                                        `Reports_${formattedDate}`; // Added date to filename
                                     $(`#${linkId}`)
                                         .attr('href', '/storage/' + fileName)
                                         .attr('download', newFileName)
@@ -131,10 +144,7 @@
                             $('#edit_content').val(report.content);
                             $('#edit_seminars_activities_conducted').val(report
                                 .seminars_and_activities_conducted);
-                            $('#edit_seminars_activities_attended').val(report
-                                .seminars_and_activities_attended);
                             $('#edit_recruitment').val(report.recruitment);
-                            $('#edit_meeting_conducted').val(report.meeting_conducted);
                             $('#edit_others').val(report.others);
                             $('#update-form').attr('action', '/user-report/' + $(this).data(
                                 'report'));

@@ -16,60 +16,20 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="seminars_activities_conducted">{{ __('Seminars & Activities Conducted') }}</label>
-                        <input type="text" class="form-control" name="seminars_activities_conducted" 
-                            placeholder="{{ __('Seminars & Activities Conducted') }}" 
-                            value="{{ old('seminars_activities_conducted') }}" id="edit_seminars_activities_conducted">
-                        @error('seminars_activities_conducted')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="seminars_activities_attended">{{ __('Seminars & Activities Attended') }}</label>
-                        <input type="text" class="form-control" name="seminars_activities_attended" 
-                            placeholder="{{ __('Seminars & Activities Attended') }}" 
-                            value="{{ old('seminars_activities_attended') }}" id="edit_seminars_activities_attended">
-                        @error('seminars_activities_attended')
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" name="title" placeholder="Enter title"
+                            value="{{ old('title') }}" id="edit_title">
+                        @error('title')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="recruitment">{{ __('Recruitment') }}</label>
-                        <input type="text" class="form-control" name="recruitment" 
-                            placeholder="{{ __('Recruitment') }}" 
-                            value="{{ old('recruitment') }}" id="edit_recruitment">
+                        <input type="text" class="form-control" name="recruitment"
+                            placeholder="{{ __('Recruitment') }}" value="{{ old('recruitment') }}"
+                            id="edit_recruitment">
                         @error('recruitment')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="meeting_conducted">{{ __('Meeting Conducted') }}</label>
-                        <input type="text" class="form-control" name="meeting_conducted" 
-                            placeholder="{{ __('Meeting Conducted') }}" 
-                            value="{{ old('meeting_conducted') }}" id="edit_meeting_conducted">
-                        @error('meeting_conducted')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="others">{{ __('Others') }}</label>
-                        <input type="text" class="form-control" name="others" 
-                            placeholder="{{ __('Others') }}" 
-                            value="{{ old('others') }}" id="edit_others">
-                        @error('others')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" placeholder="Enter title"
-                            value="{{ old('title') }}" id="edit_title">
-                        @error('title')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -83,18 +43,62 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="file">File</label>
-                        <input type="file" class="form-control" name="file" id="edit_file">
+                        <label for="file">File (Pdf ) (10mb)</label>
+                        <input type="file" class="form-control" name="file" id="edit_file"
+                            onchange="validateEditFile(this)">
+                        <div id="editFileError" class="invalid-feedback" style="display:none"></div>
                         @error('file')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label for="others">{{ __('Others') }}</label>
+                        <input type="text" class="form-control" name="others" placeholder="{{ __('Others') }}"
+                            value="{{ old('others') }}" id="edit_others">
+                        @error('others')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary" id="editSubmitBtn">Save</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    function validateEditFile(input) {
+        const file = input.files[0];
+        const fileError = document.getElementById('editFileError');
+        const submitBtn = document.getElementById('editSubmitBtn');
+
+        // Reset
+        input.classList.remove('is-invalid');
+        fileError.style.display = 'none';
+        submitBtn.disabled = false;
+
+        if (!file) return; // Allow empty file for edit
+
+        // Validate file type
+        if (file.type !== 'application/pdf') {
+            input.classList.add('is-invalid');
+            fileError.textContent = 'Only PDF files are allowed';
+            fileError.style.display = 'block';
+            submitBtn.disabled = true;
+            return false;
+        }
+
+        // Validate file size (10MB = 10 * 1024 * 1024 bytes)
+        if (file.size > 10 * 1024 * 1024) {
+            input.classList.add('is-invalid');
+            fileError.textContent = 'File size must not exceed 10MB';
+            fileError.style.display = 'block';
+            submitBtn.disabled = true;
+            return false;
+        }
+    }
+</script>

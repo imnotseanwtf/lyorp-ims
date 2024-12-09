@@ -14,12 +14,21 @@
                 <div class="form-group" id="reason_form_group">
                     <label for="reason">{{ __('Reason') }}</label>
                     <div class="input-group">
-                        <textarea name="reason" type="text" id="view_reason" @class(['form-control'])
-                            placeholder="{{ __('Reason') }}" value="{{ old('reason') }}" readonly></textarea>
+                        <textarea name="reason" type="text" id="view_reason" @class(['form-control']) placeholder="{{ __('Reason') }}"
+                            value="{{ old('reason') }}" readonly></textarea>
                     </div>
                 </div>
-                
-                <div class="form-group">
+
+
+                <div class="form-group mt-3">
+                    <label for="title">{{ __('Title') }}</label>
+                    <div class="input-group">
+                        <input name="title" type="text" id="view_title" @class(['form-control'])
+                            placeholder="{{ __('Title') }}" value="{{ old('title') }}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
                     <label for="seminars_activities_conducted">{{ __('Seminars & Activities Conducted') }}</label>
                     <div class="input-group">
                         <input name="seminars_activities_conducted" type="text"
@@ -28,15 +37,14 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="seminars_activities_attended">{{ __('Seminars & Activities Attended') }}</label>
+                <div class="form-group mt-3">
+                    <label for="content">{{ __('Content') }}</label>
                     <div class="input-group">
-                        <input name="seminars_activities_attended" type="text" id="view_seminars_activities_attended"
-                            class="form-control" placeholder="{{ __('Seminars & Activities Attended') }}" readonly>
+                        <textarea name="content" id="view_content" @class(['form-control']) placeholder="{{ __('Content') }}" readonly>{{ old('content') }}</textarea>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mt-3">
                     <label for="recruitment">{{ __('Recruitment') }}</label>
                     <div class="input-group">
                         <input name="recruitment" type="text" id="view_recruitment" class="form-control"
@@ -44,15 +52,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="meeting_conducted">{{ __('Meeting Conducted') }}</label>
-                    <div class="input-group">
-                        <input name="meeting_conducted" type="text" id="view_meeting_conducted" class="form-control"
-                            placeholder="{{ __('Meeting Conducted') }}" readonly>
-                    </div>
-                </div>
-
-                <div class="form-group">
+                <div class="form-group mt-3">
                     <label for="others">{{ __('Others') }}</label>
                     <div class="input-group">
                         <input name="others" type="text" id="view_others" class="form-control"
@@ -60,23 +60,7 @@
                     </div>
                 </div>
 
-
-                <div class="form-group">
-                    <label for="title">{{ __('Title') }}</label>
-                    <div class="input-group">
-                        <input name="title" type="text" id="view_title" @class(['form-control'])
-                            placeholder="{{ __('Title') }}" value="{{ old('title') }}" readonly>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="content">{{ __('Content') }}</label>
-                    <div class="input-group">
-                        <textarea name="content" id="view_content" @class(['form-control']) placeholder="{{ __('Content') }}" readonly>{{ old('content') }}</textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
+                <div class="form-group mt-3">
                     <label for="view_file">{{ __('File') }}</label>
                     <div class="input-group">
                         <input name="file" type="text" id="view_file" class="form-control"
@@ -85,6 +69,13 @@
                     </div>
                 </div>
 
+                <div class="form-group mt-3">
+                    <label for="">View Participants</label>
+                    <a class="btn btn-primary view-participants-btn"
+                        data-route="{{ route('registered.index', ':id') }}" title="View Registered">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

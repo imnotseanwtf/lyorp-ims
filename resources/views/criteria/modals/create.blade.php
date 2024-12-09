@@ -16,12 +16,21 @@
 
                     <div class="form-group">
                         <label for="name">Activity Name</label>
-                        <select name="name" class="form-control" required>
+                        <select name="activity_name" class="form-control" required>
                             <option value="" selected disabled>Select Activity</option>
                             @foreach($activity_request as $activity)
                                 <option value="{{ $activity->activity_name }}">{{ $activity->activity_name }}</option>
                             @endforeach
                         </select>
+                        @error('activity_name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter name"
+                            value="{{ old('name') }}" required>
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

@@ -211,7 +211,7 @@
                                     <input type="text" @error('middle_initial') class="form-control is-invalid" @enderror
                                         name="middle_initial" id="middle_initial" placeholder="{{ __('Middle Initial') }}"
                                         value="{{ old('middle_initial') }}" autocomplete="" autofocus minlength="1"
-                                        maxlength="1" required>
+                                        maxlength="1">
                                     @error('middle_initial')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

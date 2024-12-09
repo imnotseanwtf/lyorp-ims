@@ -14,11 +14,12 @@ return new class extends Migration
     {
         Schema::create('criterias', function (Blueprint $table) {
             $table->id();
+            $table->string('activity_name');    
             $table->string('name');
             $table->string('answer_type')->nullable();
 
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            
+
             $table->timestamps();
         });
     }

@@ -72,12 +72,9 @@ class ViewReportDataTable extends DataTable
             Column::make('user.name', 'user.name')->title('Organization'),
             Column::make('title', 'title'),
             Column::make('content', 'content'),
-            Column::make('seminars_and_activities_conducted', 'seminars_and_activities_conducted'),
-            Column::make('seminars_and_activities_attended', 'seminars_and_activities_attended'),
-            Column::make('recruitment', 'Recruitment'),
-            Column::make('meeting_conducted', 'Meeting Conducted'),
-            Column::make('others', 'Others'),
             Column::make('report_status'),
+            Column::make('created_at')->title('Date Submitted')
+                ->dateTime('M d, Y h:i A'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

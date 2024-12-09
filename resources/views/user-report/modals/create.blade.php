@@ -14,12 +14,15 @@
                 @csrf
                 <div class="modal-body">
 
-                    {{-- Seminars & Activities Attended --}}
                     <div class="form-group">
-                        <label for="seminars_and_activities_attended">Seminars & Activities Attended</label>
-                        <input type="number" class="form-control" name="seminars_and_activities_attended"
-                            value="{{ old('seminars_and_activities_attended') }}" required>
-                        @error('seminars_&_activities_attended')
+                        <label for="name">Title</label>
+                        <select name="title" class="form-control" required>
+                            <option value="" selected disabled>Select Activity</option>
+                            @foreach($activity_request as $activity)
+                                <option value="{{ $activity->activity_name }}">{{ $activity->activity_name }}</option>
+                            @endforeach
+                        </select>
+                        @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -34,53 +37,30 @@
                         @enderror
                     </div>
 
-                    {{-- Meetings Conducted --}}
-                    <div class="form-group">
-                        <label for="meeting_conducted">Meetings Conducted</label>
-                        <input type="number" class="form-control" name="meeting_conducted"
-                            value="{{ old('meeting_conducted') }}" required>
-                        @error('meeting_conducted')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    {{-- Others --}}
-                    <div class="form-group">
-                        <label for="others">Others</label>
-                        <input type="text" class="form-control" name="others" value="{{ old('others') }}"
-                            placeholder="Any other information">
-                        @error('others')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="name">Title</label>
-                        <select name="title" class="form-control" required>
-                            <option value="" selected disabled>Select Activity</option>
-                            @foreach($activity_request as $activity)
-                                <option value="{{ $activity->activity_name }}">{{ $activity->activity_name }}</option>
-                            @endforeach
-                        </select>
-                        @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    {{-- Content Input --}}
-                    <div class="form-group">
+                     {{-- Content Input --}}
+                     <div class="form-group">
                         <label for="content">Content</label>
                         <textarea class="form-control" name="content" placeholder="Enter content" required>{{ old('content') }}</textarea>
                         @error('content')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-
-                    {{-- File Input --}}
+                  
                     <div class="form-group">
                         <label for="file">File (Pdf ) (10mb)</label>
                         <input type="file" class="form-control" name="file" id="file" required onchange="validateFile(this)">
                         <div id="fileError" class="invalid-feedback" style="display:none"></div>
                         @error('file')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    
+                    {{-- Others --}}
+                    <div class="form-group">
+                        <label for="others">Others</label>
+                        <input type="text" class="form-control" name="others" value="{{ old('others') }}"
+                            placeholder="Any other information">
+                        @error('others')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

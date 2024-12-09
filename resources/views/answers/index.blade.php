@@ -11,6 +11,8 @@
         </ol>
     </nav>
 
+    <a href="{{ route('answer-pdf', $assign->id) }}" class="btn btn-primary btn-hover">Download Answers</a>
+
     <div class="card mt-3">
         <div class="card-header">
             <h3>{{ $assign->user->name }}</h3>

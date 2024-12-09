@@ -300,7 +300,8 @@
                     <div class="form-group">
                         <label for="file">Name with signature of representative of organization (Pdf File) + Date
                             Signed <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" name="file" id="file" required onchange="validateFile(this)">
+                        <input type="file" class="form-control" name="file" id="file" required
+                            onchange="validateFile(this)">
                         <div id="fileError" class="invalid-feedback" style="display:none"></div>
                     </div>
 
@@ -314,6 +315,52 @@
 </div>
 
 <script>
+    // Get all checkboxes for all groups
+    const audienceCheckboxes = document.querySelectorAll('input[name="audience[]"]');
+    const topicsCheckboxes = document.querySelectorAll('input[name="topics[]"]');
+    const equipmentCheckboxes = document.querySelectorAll('input[name="equipment[]"]');
+
+    // Get first checkbox of each group
+    const firstAudienceCheckbox = audienceCheckboxes[0];
+    const firstTopicsCheckbox = topicsCheckboxes[0];
+    const firstEquipmentCheckbox = equipmentCheckboxes[0];
+
+    // Function to check if any checkbox in a group is checked and update required attribute
+    function updateRequired(checkboxes, firstCheckbox) {
+        const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+        if (anyChecked) {
+            // If any checkbox is checked, remove required from first checkbox
+            firstCheckbox.removeAttribute('required');
+        } else {
+            // If no checkbox is checked, add required to first checkbox
+            firstCheckbox.setAttribute('required', '');
+        }
+    }
+
+    // Function to handle all groups
+    function updateAllRequired() {
+        updateRequired(audienceCheckboxes, firstAudienceCheckbox);
+        updateRequired(topicsCheckboxes, firstTopicsCheckbox);
+        updateRequired(equipmentCheckboxes, firstEquipmentCheckbox);
+    }
+
+    // Add event listeners to all checkboxes in all groups
+    audienceCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateAllRequired);
+    });
+
+    topicsCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateAllRequired);
+    });
+
+    equipmentCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateAllRequired);
+    });
+
+    // Run once on page load to set initial state
+    updateAllRequired();
+
     document.getElementById('select-all-audience').addEventListener('click', function() {
         document.querySelectorAll('input[name="audience[]"]').forEach(function(checkbox) {
             checkbox.checked = true;
@@ -351,17 +398,25 @@
     });
 
     function validateFile(input) {
+        if (!input.files || !input.files[0]) {
+            return true;
+        }
+
         const file = input.files[0];
         const fileError = document.getElementById('fileError');
         const submitBtn = document.getElementById('submitBtn');
-        
-        // Reset
+
+        // Reset validation state
         input.classList.remove('is-invalid');
         fileError.style.display = 'none';
         submitBtn.disabled = false;
 
-        // Validate file type
+        // Check if file is PDF
         if (file.type !== 'application/pdf') {
+            // Clear the file input
+            input.value = '';
+
+            // Show error
             input.classList.add('is-invalid');
             fileError.textContent = 'Only PDF files are allowed';
             fileError.style.display = 'block';

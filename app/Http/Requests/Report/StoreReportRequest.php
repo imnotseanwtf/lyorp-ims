@@ -22,9 +22,7 @@ class StoreReportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'seminars_and_activities_attended' => ['required', 'integer',],
-            'recruitment' => ['required', 'integer',],
-            'meeting_conducted' => ['required', 'integer',],
+            'recruitment' => ['required', 'string',],
             'others' => ['required', 'string', 'max:255'],
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string'],

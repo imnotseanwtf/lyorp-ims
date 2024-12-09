@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\AdminReport;
 use App\Models\Report;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -29,6 +30,9 @@ class AdminReportDataTable extends DataTable
                 0 => 'Pending',
                 1 => 'Accepted',
                 2 => 'Rejected',
+            })
+            ->addColumn('date_submitted', function (Report $report) {
+                return Carbon::parse($report->created_at)->format('Y-m-d H:i:s');
             })
             ->rawColumns(['action']);
     }
@@ -82,12 +86,8 @@ class AdminReportDataTable extends DataTable
             Column::make('user.name', 'user.name')->title('Organization'),
             Column::make('title', 'title'),
             Column::make('content', 'content'),
-            Column::make('seminars_and_activities_conducted', 'seminars_and_activities_conducted'),
-            Column::make('seminars_and_activities_attended', 'seminars_and_activities_attended'),
-            Column::make('recruitment', 'Recruitment'),
-            Column::make('meeting_conducted', 'Meeting Conducted'),
-            Column::make('others', 'Others'),
             Column::make('report_status'),
+            Column::make('date_submitted'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

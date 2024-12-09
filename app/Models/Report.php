@@ -27,6 +27,8 @@ class Report extends Model
         'status_report',
         'reason'
     ];
+
+    protected $dates = ['created_at'];
     
 
     public function user(): BelongsTo

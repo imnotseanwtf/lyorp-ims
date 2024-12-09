@@ -130,7 +130,8 @@
                         <label>Select Topics <span class="text-danger">*</span></label><br>
                         <button type="button" id="edit-select-all-topics" class="btn btn-primary btn-sm">Select
                             All</button>
-                        <button type="button" id="edit-deselect-all-topics" class="btn btn-secondary btn-sm">Deselect
+                        <button type="button" id="edit-deselect-all-topics"
+                            class="btn btn-secondary btn-sm">Deselect
                             All</button>
                         <br><br>
                         <div class="form-check">
@@ -248,7 +249,8 @@
                                 class="text-danger">*</span></label><br>
                         <button type="button" id="edit-select-all-equipment" class="btn btn-primary btn-sm">Select
                             All</button>
-                        <button type="button" id="edit-deselect-all-equipment" class="btn btn-secondary btn-sm">Deselect
+                        <button type="button" id="edit-deselect-all-equipment"
+                            class="btn btn-secondary btn-sm">Deselect
                             All</button>
                         <br><br>
                         <div class="form-check">
@@ -296,8 +298,10 @@
 
                     <div class="form-group">
                         <label for="file">Name with signature of representative of organization (Pdf File) + Date
-                            Signed</label>
-                        <input type="file" class="form-control" name="file">
+                            Signed (Don't put a file if you dont want to change the file)</label>
+                        <input type="file" class="form-control" name="file" id="file"
+                            onchange="validateFile(this)">
+                        <div id="fileError" class="invalid-feedback" style="display:none"></div>
                     </div>
                 </div>
 
@@ -345,4 +349,34 @@
             checkbox.checked = false;
         });
     });
+
+    function validateFile(input) {
+        if (!input.files || !input.files[0]) {
+            return true;
+        }
+
+        const file = input.files[0];
+        const fileError = document.getElementById('fileError');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Reset validation state
+        input.classList.remove('is-invalid');
+        fileError.style.display = 'none';
+        submitBtn.disabled = false;
+
+        // Check if file is PDF
+        if (file.type !== 'application/pdf') {
+            // Clear the file input
+            input.value = '';
+
+            // Show error
+            input.classList.add('is-invalid');
+            fileError.textContent = 'Only PDF files are allowed';
+            fileError.style.display = 'block';
+            submitBtn.disabled = true;
+            return false;
+        }
+
+        return true;
+    }
 </script>

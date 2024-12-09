@@ -17,9 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->integer('seminars_and_activities_conducted');
-            $table->integer('seminars_and_activities_attended');
             $table->integer('recruitment');
-            $table->integer('meeting_conducted');
             $table->string('others');
             $table->string('title');
             $table->string('content');
