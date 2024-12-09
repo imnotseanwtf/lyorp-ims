@@ -42,6 +42,11 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        if($user->email_verified_at == null)
+        {
+            return redirect()->route('home');
+        }
+
         if ($user->status == 0) {
             auth()->logout();
 
