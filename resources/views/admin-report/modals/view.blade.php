@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                <div class="form-group mt-3">
+                    <div class="form-group mt-3">
                     <label for="seminars_activities_conducted">{{ __('Seminars & Activities Conducted') }}</label>
                     <div class="input-group">
                         <input name="seminars_activities_conducted" type="text"
