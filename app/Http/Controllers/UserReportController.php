@@ -23,8 +23,8 @@ class UserReportController extends Controller
 
         $activity_request = ActivityRequest::where('status', 1)
             ->where('user_id', $user->id)
-            ->whereNotIn('activity_name', function ($query) {
-                $query->select('title')
+            ->whereNotIn('id', function ($query) {
+                $query->select('activity_request_id')
                     ->from('reports')
                     ->where('status_report', '!=', 2);
             })

@@ -17,6 +17,7 @@ class AnswerController extends Controller
     {
         $assign = AssignToAnswer::where('user_id', auth()->id())
             ->with('criteria.questions')
+            ->with('assignUser')
             ->get();
 
         return view('evaluation.index', compact('assign'));

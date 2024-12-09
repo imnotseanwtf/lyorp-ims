@@ -34,6 +34,7 @@ class UserReportDataTable extends DataTable
             ->addColumn('date_submitted', function (Report $report) {
                 return Carbon::parse($report->created_at)->format('Y-m-d H:i:s');
             })
+            ->addColumn('title', fn(Report $report) =>  $report->activityRequest->activity_name)
             ->rawColumns(['action']);
     }
 
@@ -84,7 +85,7 @@ class UserReportDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('title', 'title'),
+            Column::make('title')->title('Activity Title'),
             Column::make('content', 'content'),
             Column::make('report_status'),
             Column::make('date_submitted'),

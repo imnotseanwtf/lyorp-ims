@@ -24,6 +24,7 @@ class CriteriaDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->addColumn('action', fn(Criteria $criteria) => view('criteria.components.action', compact('criteria')))
+            ->editColumn('activity_name', fn(Criteria $criteria) =>  $criteria->activityRequest->activity_name)
             ->rawColumns(['action']);
     }
 
@@ -33,7 +34,9 @@ class CriteriaDataTable extends DataTable
     public function query(Criteria $model): QueryBuilder
     {
         return $model->newQuery()
-            ->where('user_id', auth()->id());
+            ->where('user_id', auth()->id())
+            ->with('activityRequest')
+            ->select('criterias.*');
     }
 
     /**
@@ -49,7 +52,6 @@ class CriteriaDataTable extends DataTable
             ->orderBy(1)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
             ]);
@@ -61,6 +63,7 @@ class CriteriaDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('activity_name'),
             Column::make('name', 'name'),
             Column::make('answer_type', 'answer_type'),
             Column::computed('action')

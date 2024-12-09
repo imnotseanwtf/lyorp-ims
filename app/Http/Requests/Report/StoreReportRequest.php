@@ -23,8 +23,7 @@ class StoreReportRequest extends FormRequest
     {
         return [
             'recruitment' => ['required', 'string',],
-            'others' => ['required', 'string', 'max:255'],
-            'title' => ['required', 'string', 'max:255'],
+            'activity_request_id' => ['required', 'integer', 'max:255'],
             'content' => ['required', 'string'],
             'file' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:2048'],
             'folder_id' => ['required', 'numeric'],

@@ -15,11 +15,11 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="name">Title</label>
-                        <select name="title" class="form-control" required>
+                        <label for="name">Activity Title</label>
+                        <select name="activity_request_id" class="form-control" required>
                             <option value="" selected disabled>Select Activity</option>
                             @foreach($activity_request as $activity)
-                                <option value="{{ $activity->activity_name }}">{{ $activity->activity_name }}</option>
+                                <option value="{{ $activity->id }}">{{ $activity->activity_name }}</option>
                             @endforeach
                         </select>
                         @error('name')
@@ -55,16 +55,6 @@
                         @enderror
                     </div>
                     
-                    {{-- Others --}}
-                    <div class="form-group">
-                        <label for="others">Others</label>
-                        <input type="text" class="form-control" name="others" value="{{ old('others') }}"
-                            placeholder="Any other information">
-                        @error('others')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
                     <input type="hidden" value="{{ $folder_id }}" name="folder_id">
 
                     <div class="modal-footer">

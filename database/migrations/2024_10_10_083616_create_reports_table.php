@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ActivityRequest;
 use App\Models\Folder;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -17,9 +18,8 @@ return new class extends Migration
             $table->id();
 
             $table->integer('seminars_and_activities_conducted');
-            $table->integer('recruitment');
-            $table->string('others');
-            $table->string('title');
+            $table->string('recruitment');
+            $table->foreignIdFor(ActivityRequest::class)->constrained()->cascadeOnDelete();
             $table->string('content');
             $table->integer('status_report')->default(0);
             $table->string('reason')->nullable();

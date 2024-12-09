@@ -23,7 +23,6 @@ class UpdateCriteriaRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:125', 'unique:criterias,name'],
-            'answer_type' => ['required', 'string']
         ];
     }
 }

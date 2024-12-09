@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\Report;
 use App\Models\ViewReport;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -30,6 +31,10 @@ class ViewReportDataTable extends DataTable
                 1 => 'Accepted',
                 2 => 'Rejected',
             })
+            ->addColumn('date_submitted', function (Report $report) {
+                return Carbon::parse($report->created_at)->format('Y-m-d H:i:s');
+            })
+            ->addColumn('title', fn(Report $report) =>  $report->activityRequest->activity_name)
             ->rawColumns(['action']);
     }
 
@@ -70,10 +75,10 @@ class ViewReportDataTable extends DataTable
         return [
             Column::make('id', 'id'),
             Column::make('user.name', 'user.name')->title('Organization'),
-            Column::make('title', 'title'),
+            Column::make('title')->title('Activity Title'),
             Column::make('content', 'content'),
             Column::make('report_status'),
-            Column::make('created_at')->title('Date Submitted')
+            Column::make('date_submitted')->title('Date Submitted')
                 ->dateTime('M d, Y h:i A'),
             Column::computed('action')
                 ->exportable(false)

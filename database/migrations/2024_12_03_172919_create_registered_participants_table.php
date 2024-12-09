@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('age');
             $table->string('gender');
             $table->string('barangay');
-            $table->string('name_of_organization');
+            $table->string('name_of_organization')->nullable();
             $table->timestamps();
         });
     }

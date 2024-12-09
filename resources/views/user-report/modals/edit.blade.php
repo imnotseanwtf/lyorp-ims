@@ -16,17 +16,8 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" placeholder="Enter title"
-                            value="{{ old('title') }}" id="edit_title">
-                        @error('title')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
                         <label for="recruitment">{{ __('Recruitment') }}</label>
-                        <input type="text" class="form-control" name="recruitment"
+                        <input type="number" class="form-control" name="recruitment"
                             placeholder="{{ __('Recruitment') }}" value="{{ old('recruitment') }}"
                             id="edit_recruitment">
                         @error('recruitment')
@@ -48,15 +39,6 @@
                             onchange="validateEditFile(this)">
                         <div id="editFileError" class="invalid-feedback" style="display:none"></div>
                         @error('file')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="others">{{ __('Others') }}</label>
-                        <input type="text" class="form-control" name="others" placeholder="{{ __('Others') }}"
-                            value="{{ old('others') }}" id="edit_others">
-                        @error('others')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

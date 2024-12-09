@@ -22,6 +22,7 @@ class StoreCriteriaRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'activity_request_id' => ['required', 'integer', 'max:125'],
             'name' => ['required', 'string', 'max:125'],
             'answer_type' => ['required', 'string']
         ];

@@ -15,7 +15,7 @@ class Criteria extends Model
         'name',
         'user_id',
         'answer_type',
-        'activity_name',
+        'activity_request_id',
     ];
 
     public function questions(): HasMany
@@ -27,4 +27,9 @@ class Criteria extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function activityRequest(): BelongsTo
+    {
+        return $this->belongsTo(ActivityRequest::class);
+    } 
 }

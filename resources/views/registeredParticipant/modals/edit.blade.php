@@ -61,7 +61,7 @@
                         <label for="edit_name_of_organization">Name of Organization</label>
                         <input type="text" class="form-control" name="name_of_organization"
                             id="edit_name_of_organization" placeholder="Enter Name of Organization"
-                            value="{{ old('name_of_organization') }}" required>
+                            value="{{ old('name_of_organization') }}">
                         @error('name_of_organization')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

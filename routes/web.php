@@ -81,6 +81,7 @@ Route::middleware(['auth', 'verified', 'check_user_status'])->group(function () 
             'evaluation' => AnswerController::class,
             'criteria' => CriteriaController::class,
             'question' => QuestionController::class,
+            'registered' => RegisteredParticipantController::class,
         ],
         [
             'except' => ['create', 'edit'],
@@ -108,7 +109,6 @@ Route::middleware(['auth', 'verified', 'check_user_status'])->group(function () 
                 'users' => UserController::class,
                 'admin-report' => AdminReportController::class,
                 'announcement' => AnnouncementController::class,
-                'registered' => RegisteredParticipantController::class,
                 'view-report' => ViewUserReportController::class,
                 'view-evaluation' => ViewUserEvaluationController::class,
                 'view-activity-request' => ViewUserActivityRequestController::class,

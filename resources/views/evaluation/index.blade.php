@@ -13,8 +13,9 @@
     @forelse ($assign as $assignment)
         @if (!$assignment->is_answered && $assignment->criteria->questions->count() > 0)
             <div class="card mt-3">
-                <div class="card-header">
-                    <h3>{{ $assignment->criteria->name }}</h3>
+                <div class="card-header text-center">
+                    <h3> {{ strtoupper($assignment->assignUser->name) }}</h3>
+                    <h3> {{ strtoupper($assignment->criteria->name) }} </h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -32,7 +33,7 @@
                                     <input type="hidden" value="{{ $assignment->id }}" name="assign_id">
 
                                     @foreach ($assignment->criteria->questions as $index => $question)
-                                        @if($assignment->criteria->answer_type == 'Likert Scales (Poor - Excellent)')
+                                        @if ($assignment->criteria->answer_type == 'Likert Scales (Poor - Excellent)')
                                             <div class="row my-3">
                                                 <div class="col">
                                                     <p><strong>Question {{ $index + 1 }}:

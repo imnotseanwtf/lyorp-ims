@@ -19,15 +19,6 @@
                     </div>
                 </div>
 
-
-                <div class="form-group mt-3">
-                    <label for="title">{{ __('Title') }}</label>
-                    <div class="input-group">
-                        <input name="title" type="text" id="view_title" @class(['form-control'])
-                            placeholder="{{ __('Title') }}" value="{{ old('title') }}" readonly>
-                    </div>
-                </div>
-
                 <div class="form-group mt-3">
                     <label for="seminars_activities_conducted">{{ __('Seminars & Activities Conducted') }}</label>
                     <div class="input-group">
@@ -53,14 +44,6 @@
                 </div>
 
                 <div class="form-group mt-3">
-                    <label for="others">{{ __('Others') }}</label>
-                    <div class="input-group">
-                        <input name="others" type="text" id="view_others" class="form-control"
-                            placeholder="{{ __('Others') }}" readonly>
-                    </div>
-                </div>
-
-                <div class="form-group mt-3">
                     <label for="view_file">{{ __('File') }}</label>
                     <div class="input-group">
                         <input name="file" type="text" id="view_file" class="form-control"
@@ -70,10 +53,12 @@
                 </div>
 
                 <div class="form-group mt-3">
-                    <label for="">View Participants</label>
                     <a class="btn btn-primary view-participants-btn"
+                        style="text-decoration: none; color: inherit; background: none; border: none; padding: 0; margin: 0; cursor: pointer; transition: text-decoration 0.3s;"
+                        onmouseover="this.style.textDecoration='underline'"
+                        onmouseout="this.style.textDecoration='none'"
                         data-route="{{ route('registered.index', ':id') }}" title="View Registered">
-                        <i class="fa-solid fa-user"></i>
+                        View Participants
                     </a>
                 </div>
             </div>

@@ -27,7 +27,7 @@ class StoreRegisteredParticipant extends FormRequest
             'age' => ['required', 'integer'],
             'gender' => ['required', 'string', 'max:255'],
             'barangay' => ['required', 'string', 'max:255'],
-            'name_of_organization' => ['required', 'string', 'max:255'],
+            'name_of_organization' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

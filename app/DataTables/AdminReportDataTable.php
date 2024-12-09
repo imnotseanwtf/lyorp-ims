@@ -34,6 +34,7 @@ class AdminReportDataTable extends DataTable
             ->addColumn('date_submitted', function (Report $report) {
                 return Carbon::parse($report->created_at)->format('Y-m-d H:i:s');
             })
+            ->addColumn('title', fn(Report $report) =>  $report->activityRequest->activity_name)
             ->rawColumns(['action']);
     }
 
@@ -46,7 +47,7 @@ class AdminReportDataTable extends DataTable
         $status = request()->query('status'); // Get 'status' from query parameters
 
         $query = $model->newQuery()
-            ->where('folder_id', $folderId);
+            ->where(    'folder_id', $folderId);
 
         if (!is_null($status)) {
             $query->where('status_report', $status);
@@ -84,14 +85,14 @@ class AdminReportDataTable extends DataTable
         return [
             Column::make('id', 'id'),
             Column::make('user.name', 'user.name')->title('Organization'),
-            Column::make('title', 'title'),
+            Column::make('title')->title('Activity Title'),
             Column::make('content', 'content'),
             Column::make('report_status'),
             Column::make('date_submitted'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
+                ->width(140)
                 ->addClass('text-center'),
         ];
     }

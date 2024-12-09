@@ -16,10 +16,10 @@
 
                     <div class="form-group">
                         <label for="name">Activity Name</label>
-                        <select name="activity_name" class="form-control" required>
+                        <select name="activity_request_id" class="form-control" required>
                             <option value="" selected disabled>Select Activity</option>
                             @foreach($activity_request as $activity)
-                                <option value="{{ $activity->activity_name }}">{{ $activity->activity_name }}</option>
+                                <option value="{{ $activity->id }}">{{ $activity->activity_name }}</option>
                             @endforeach
                         </select>
                         @error('activity_name')

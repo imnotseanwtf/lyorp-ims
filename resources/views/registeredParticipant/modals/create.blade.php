@@ -57,9 +57,9 @@
                     </div>
 
                     <div class="form-group mt-3">
-                        <label for="name_of_organization">Name of Organization</label>
+                        <label for="name_of_organization">Name of Organization (leave blank if none)</label>
                         <input type="text" class="form-control" name="name_of_organization" id="name_of_organization"
-                            placeholder="Enter Name of Organization" value="{{ old('name_of_organization') }}" required>
+                            placeholder="Enter Name of Organization" value="{{ old('name_of_organization') }}">
                         @error('name_of_organization')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

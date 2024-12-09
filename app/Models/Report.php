@@ -14,14 +14,13 @@ class Report extends Model
     protected $fillable = [
         'user_id',
         'folder_id', // Assuming this is the foreign key for Folder
-        'title',
+        'activity_request_id',
         'content',
         'file',
         'seminars_and_activities_conducted',
         'seminars_and_activities_attended',
         'recruitment',
         'meeting_conducted',
-        'others',
         'status',
         'is_notif',
         'status_report',
@@ -34,5 +33,10 @@ class Report extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function activityRequest(): BelongsTo
+    {
+        return $this->belongsTo(ActivityRequest::class);
     }
 }

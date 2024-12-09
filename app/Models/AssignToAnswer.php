@@ -24,6 +24,11 @@ class AssignToAnswer extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function assignUser()
+    {
+        return $this->belongsTo(User::class, 'assign_user_id');
+    }
+
     public function criteria(): BelongsTo
     {
         return $this->belongsTo(Criteria::class);

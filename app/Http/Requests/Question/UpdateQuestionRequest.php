@@ -22,8 +22,7 @@ class UpdateQuestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'criteria_id' => ['required', 'numeric', 'exists:criterias,id'],
-            'question' => ['required', 'string', 'max:255', 'unique:questions,name'],
+            'question' => ['required', 'string', 'max:255', 'unique:questions,question'],
         ];
     }
 }

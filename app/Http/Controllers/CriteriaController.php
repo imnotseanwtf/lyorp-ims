@@ -26,16 +26,16 @@ class CriteriaController extends Controller
         if ($user->isOrganization()) {
             $activity_request = ActivityRequest::where('status', 1)
                 ->where('user_id', $user->id)
-                ->whereNotIn('activity_name', function ($query) {
-                    $query->select('activity_name')
+                ->whereNotIn('id', function ($query) {
+                    $query->select('activity_request_id')
                         ->from('criterias')
                         ->where('user_id', auth()->id());
                 })
                 ->get();
         } else {
             $activity_request = ActivityRequest::where('status', 1)
-                ->whereNotIn('activity_name', function ($query) {
-                    $query->select('name')
+                ->whereNotIn('id', function ($query) {
+                    $query->select('activity_request_id')
                         ->from('criterias')
                         ->where('user_id', auth()->id());
                 })
@@ -48,7 +48,7 @@ class CriteriaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCriteriaRequest $storeCriteriaRequest): RedirectResponse
+    public function store(StoreCriteriaRequest $storeCriteriaRequest)
     {
         $criteria =  Criteria::create(
             $storeCriteriaRequest->validated()
@@ -63,7 +63,7 @@ class CriteriaController extends Controller
         if ($user->isOrganization()) {
             $user_id = User::role('admin')->first()->id;
         } else {
-            $user_id = ActivityRequest::where('activity_name', $criteria->name)->firstOrFail()->user_id;
+            $user_id = ActivityRequest::where('id', $criteria->activity_request_id)->firstOrFail()->user_id;
         }
 
         AssignToAnswer::create(
