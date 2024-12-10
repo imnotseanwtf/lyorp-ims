@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('others')->nullable();
             $table->integer('expected_number_of_participants');
 
+            $table->integer('activity_status')->default(0);
+
             $table->string('others_equipment')->nullable();
 
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();

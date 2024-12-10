@@ -28,7 +28,8 @@ class ActivityRequest extends Model
         'others',
         'expected_number_of_participants',
         'others_equipment',
-        'reason'
+        'reason',
+        'activity_status'
     ];
 
     public function user(): BelongsTo

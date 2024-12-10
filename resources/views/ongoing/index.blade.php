@@ -75,15 +75,14 @@
 
     @include('activity-request.modals.review')
 
-    @include('activity-request.modals.done')
-
-    @include('activity-request.modals.cancel')
 @endsection
 
 @push('scripts')
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script type="module">
+      
+
         document.addEventListener('DOMContentLoaded', function() {
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'))
             tooltipTriggerList.forEach(function(tooltipTriggerEl) {
@@ -91,8 +90,8 @@
             })
         });
         $(() => {
-            const tableInstance = window.LaravelDataTables['activityRequest_dataTable'] = $(
-                    '#activityRequest_dataTable')
+            const tableInstance = window.LaravelDataTables['ongoingActivity_dataTable'] = $(
+                    '#ongoingActivity_dataTable')
                 .DataTable()
             tableInstance.on('draw.dt', function() {
 
@@ -238,7 +237,7 @@
 
                 $('.editBtn').click(function() {
                     const activityId = $(this).data('activity'); // Get activity ID from the button
-                    fetch('/activity-request/' +
+                    fetch('/activity-request/' +    
                             activityId) // Fetch the activity data from the server
                         .then(response => response.json())
                         .then(activity => {
@@ -364,16 +363,6 @@
 
                 $('.rejectBtn').click(function() {
                     $('#reject-form').attr('action', '/reject-activity/' + $(this).data(
-                        'activity'));
-                })
-
-                $('.doneBtn').click(function() {
-                    $('#done-form').attr('action', '/done-activity/' + $(this).data(
-                        'activity'));
-                })
-
-                $('.cancelBtn').click(function() {
-                    $('#cancel-form').attr('action', '/cancel-activity/' + $(this).data(
                         'activity'));
                 })
 

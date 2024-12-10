@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\ActivityRequest;
+use Illuminate\Http\Request;
+
+class CancelController extends Controller
+{
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(ActivityRequest $activityRequest)
+    {
+        $activityRequest->update(
+            [
+                'activity_status' => 3,
+                'status' => 4,
+            ]
+        );
+
+        alert()->success('Activity is Cancel!');
+
+        return redirect()->route('activity-request.index');
+    }
+}

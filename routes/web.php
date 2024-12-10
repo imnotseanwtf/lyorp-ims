@@ -17,6 +17,7 @@ use App\Http\Controllers\ChangingPasswordOrganizationController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\LogOutController;
+use App\Http\Controllers\OngoingActivityController;
 use App\Http\Controllers\PdfAnswerController;
 use App\Http\Controllers\PdfEvaluationController;
 use App\Http\Controllers\QuestionController;
@@ -95,6 +96,8 @@ Route::middleware(['auth', 'verified', 'check_user_status'])->group(function () 
 
 
     Route::middleware('role:admin')->group(function () {
+
+        Route::get('ongoing-activity', OngoingActivityController::class)->name('ongoing');
 
         Route::put('/org-password/{user}', ChangingPasswordOrganizationController::class)->name('org.password');
 

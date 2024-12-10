@@ -21,13 +21,15 @@ class RegisteredParticipantController extends Controller
     {
         $id = array_key_first(request()->query());
 
-        $reportExists = Report::where('activity_request_id', $id)->exists();
-
         $activityRequest = ActivityRequest::findOrFail($id);
+
+        $showCreate = true;
+
+        $showCreate = !in_array($activityRequest->status, [3, 4]);
 
         $registeredParticipantDataTable = new RegisteredParticipantDataTable($id);
 
-        return $registeredParticipantDataTable->render('registeredParticipant.index', compact('activityRequest', 'reportExists'));
+        return $registeredParticipantDataTable->render('registeredParticipant.index', compact('activityRequest', 'showCreate'));
     }
 
 

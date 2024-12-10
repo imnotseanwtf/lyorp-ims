@@ -3,8 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\ActivityRequest;
+use App\Models\OngoingActivity;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
-use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
@@ -13,7 +13,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ActivityRequestDataTable extends DataTable
+class OngoingActivityDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -23,20 +23,16 @@ class ActivityRequestDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->setRowId('id')
-            ->addColumn('organization.name', function (ActivityRequest $activityRequest) {
-                return $activityRequest->user->name;
-            })
-            ->addColumn('action', fn(ActivityRequest $activity) => view('activity-request.components.action', compact('activity')))
-            ->addColumn('status', fn(ActivityRequest $activity) => match ($activity->status) {
-                0 => 'Pending',
-                1 => 'Accepted',
-                2 => 'Rejected',
-                3 => 'Done',
-                4 => 'Canceled'
-            })
-            ->editColumn('time', fn(ActivityRequest $activityRequest) => \Carbon\Carbon::parse($activityRequest->time)->format('H:i A'))
-            ->rawColumns(['action']);
+        ->setRowId('id')
+        ->addColumn('organization.name', function (ActivityRequest $activityRequest) {
+            return $activityRequest->user->name;
+        })
+        ->addColumn('action', fn(ActivityRequest $activity) => view('activity-request.components.action', compact('activity')))
+        ->addColumn('activity_status', fn(ActivityRequest $activity) => match ($activity->activity_status) {
+            1 => 'Ongoing',
+        })
+        ->editColumn('time', fn(ActivityRequest $activityRequest) => \Carbon\Carbon::parse($activityRequest->time)->format('H:i A'))
+        ->rawColumns(['action']);
     }
 
     /**
@@ -44,34 +40,9 @@ class ActivityRequestDataTable extends DataTable
      */
     public function query(ActivityRequest $model): QueryBuilder
     {
-        $query = $model->newQuery();
-        $user = auth()->user();
-
-        // Filter by organization user ID if applicable
-        if ($user->isOrganization()) {
-            $query->where('user_id', $user->id);
-        }
-
-        // Determine status from query string
-        $statusQuery = array_key_first(request()->query());
-
-        // Filter by status
-        if ($statusQuery == 0) {
-            $query->where('status', 0);
-        }
-        if ($statusQuery == '1') {
-            $query->where('status', 1);
-        }
-        if ($statusQuery == '2') {
-            $query->where('status', 2);
-        }
-
-        // Order by latest created_at
-        $query->orderBy('created_at', 'desc');
-
-        return $query;
+        return $model->newQuery()
+            ->where('activity_status', 1);
     }
-
 
     /**
      * Optional method if you want to use the html builder.
@@ -79,7 +50,7 @@ class ActivityRequestDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('activityRequest_dataTable')
+            ->setTableId('ongoingActivity_dataTable')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
@@ -103,7 +74,7 @@ class ActivityRequestDataTable extends DataTable
             Column::make('date'),
             Column::make('time'),
             Column::make('venue'),
-            Column::make('status'),
+            Column::make('activity_status'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
@@ -117,6 +88,6 @@ class ActivityRequestDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'ActivityRequest_' . date('YmdHis');
+        return 'OngoingActivity_' . date('YmdHis');
     }
 }

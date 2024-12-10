@@ -17,7 +17,7 @@
                 </div>
             </div>
             @organization
-                @if (!$reportExists)
+                @if ($showCreate)
                     <div class="col-md-6">
                         <div class="title mb-30 text-end">
                             <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">

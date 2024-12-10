@@ -52,13 +52,13 @@
 
                     <div class="form-group">
                         <label for="image">Image</label>
-                        <input type="file" class="form-control" name="image" placeholder="Enter description"
-                            value="{{ old('image') }}">
+                        <input type="file" class="form-control" name="image" id="image" placeholder="Enter description"
+                            value="{{ old('image') }}" accept="image/*" required>
                         @error('image')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
+                        <small class="form-text text-muted">Accepted formats: jpg, png, gif. Max size: 2MB.</small>
                     </div>
-
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save</button>
@@ -68,3 +68,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('image').addEventListener('change', function() {
+        const file = this.files[0];
+        const errorMessage = document.querySelector('.invalid-feedback');
+
+        if (file) {
+            const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            if (!validTypes.includes(file.type)) {
+                errorMessage.textContent = 'Invalid file type. Please upload a jpg, png, or gif image.';
+                errorMessage.style.display = 'block';
+                this.classList.add('is-invalid');
+                this.value = ''; // Clear the input
+            } else {
+                errorMessage.style.display = 'none';
+                this.classList.remove('is-invalid');
+            }
+        }
+    });
+</script>

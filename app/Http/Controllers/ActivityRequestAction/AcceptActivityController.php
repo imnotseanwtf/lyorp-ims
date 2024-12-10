@@ -17,6 +17,7 @@ class AcceptActivityController extends Controller
         $activity->update(
             [
                 'status' => 1,
+                'activity_status' => 1,
             ]
         );
 

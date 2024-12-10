@@ -21,7 +21,7 @@ class UserReportController extends Controller
     {
         $user = auth()->user();
 
-        $activity_request = ActivityRequest::where('status', 1)
+        $activity_request = ActivityRequest::where('status', 3)
             ->where('user_id', $user->id)
             ->whereNotIn('id', function ($query) {
                 $query->select('activity_request_id')

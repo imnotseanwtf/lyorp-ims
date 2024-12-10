@@ -44,8 +44,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="time">Time <span class="text-danger">*</span></label>
-                                <input type="time" class="form-control" name="time" required
-                                    onchange="validateTime(this)">
+                                <input type="time" class="form-control" name="time" required>
                                 <div id="timeError" class="invalid-feedback" style="display:none">Please select a valid
                                     time.</div>
                             </div>
@@ -389,23 +388,6 @@
 
     // Run once on page load to set initial state
     updateAllRequired();
-
-    function validateTime(input) {
-        const timeValue = input.value;
-        const currentTime = new Date();
-        const selectedTime = new Date();
-        const [hours, minutes] = timeValue.split(':');
-        selectedTime.setHours(hours, minutes);
-
-        if (selectedTime <= currentTime) {
-            input.classList.add('is-invalid');
-            document.getElementById('timeError').style.display = 'block';
-        } else {
-            input.classList.remove('is-invalid');
-            document.getElementById('timeError').style.display = 'none';
-        }
-    }
-
 
 
     document.getElementById('select-all-audience').addEventListener('click', function() {

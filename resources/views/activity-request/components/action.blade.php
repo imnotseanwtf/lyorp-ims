@@ -39,7 +39,7 @@
                 <i class="fa-solid fa-trash"></i>
             </button>
         @endif
-        @if ($activity->reason)
+        @if ($activity->status == 2)
             <button class="btn btn-danger reviewBtn" data-bs-toggle="modal" data-bs-target="#reviewModal"
                 data-activity="{{ $activity->id }}" title="Rejected Reason">
                 <i class="fa-solid fa-eye"></i>
@@ -50,5 +50,22 @@
         <a href="{{ route('registered.index', $activity->id) }}" class="btn btn-primary" title="View Registered">
             <i class="fa-solid fa-user"></i>
         </a>
+
+        @organization
+            @if ($activity->activity_status == 1)
+                <!-- Accept activity button with tooltip -->
+                <button class="btn btn-success doneBtn" data-bs-toggle="modal" data-bs-target="#doneModal"
+                    data-activity="{{ $activity->id }}" title="Done Activity">
+                    <i class="fa-solid fa-check"></i>
+                </button>
+
+                <!-- Reject activity button with tooltip -->
+                <button class="btn btn-danger cancelBtn" data-bs-toggle="modal" data-bs-target="#cancelModal"
+                    data-activity="{{ $activity->id }}" title="Cancel Activity">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            @endif
+        @endorganization
+
     @endif
 </div>
