@@ -30,7 +30,6 @@ class AnnouncementCommand extends Command
      */
     public function handle()
     {
-
         // Find the announcement to be sent
         $announcement = Announcement::whereDate('announce_on', Carbon::today())
             ->where('is_texted', false)
