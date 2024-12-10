@@ -65,6 +65,12 @@ class ActivityRequestDataTable extends DataTable
         if ($statusQuery == '2') {
             $query->where('status', 2);
         }
+        if ($statusQuery == '3') {
+            $query->where('status', 3);
+        }
+        if ($statusQuery == '4') {
+            $query->where('status', 4);
+        }
 
         // Order by latest created_at
         $query->orderBy('created_at', 'desc');
