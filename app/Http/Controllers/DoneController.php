@@ -10,9 +10,9 @@ class DoneController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(ActivityRequest $activityRequest)
+    public function __invoke(ActivityRequest $activity)
     {
-        $activityRequest->update(
+        $activity->update(
             [
                 'activity_status' => 2,
                 'status' => 3,

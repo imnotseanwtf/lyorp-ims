@@ -39,13 +39,13 @@
                 <i class="fa-solid fa-trash"></i>
             </button>
         @endif
-        @if ($activity->reason)
-            <button class="btn btn-danger reviewBtn" data-bs-toggle="modal" data-bs-target="#reviewModal"
-                data-activity="{{ $activity->id }}" title="Rejected Reason">
-                <i class="fa-solid fa-eye"></i>
-            </button>
-        @endif
     @endorganization
+    @if ($activity->reason)
+        <button class="btn btn-danger reviewBtn" data-bs-toggle="modal" data-bs-target="#reviewModal"
+            data-activity="{{ $activity->id }}" title="Rejected Reason">
+            <i class="fa-solid fa-eye"></i>
+        </button>
+    @endif
     @if ($activity->status == 1)
         <a href="{{ route('registered.index', $activity->id) }}" class="btn btn-primary" title="View Registered">
             <i class="fa-solid fa-user"></i>

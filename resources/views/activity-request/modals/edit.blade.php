@@ -302,7 +302,7 @@
                             Signed (Don't put a file if you dont want to change the file)</label>
                         <input type="file" class="form-control" name="file" id="file"
                             onchange="validateFile(this)">
-                        <div id="fileError" class="invalid-feedback" style="display:none"></div>
+                        <div id="edit-fileError" class="invalid-feedback" style="display:none"></div>
                     </div>
                 </div>
 
@@ -397,7 +397,7 @@
         }
 
         const file = input.files[0];
-        const fileError = document.getElementById('fileError');
+        const fileError = document.getElementById('edit-fileError');
         const submitBtn = document.getElementById('submitBtn');
 
         // Reset validation state

@@ -31,14 +31,32 @@
                 @endif
 
                 <form action="{{ route('verification.resend') }}" method="POST">
-                @csrf
+                    @csrf
 
-                <!-- end col -->
+                    <!-- end col -->
                     <div class="col-12">
                         <div class="button-group d-flex justify-content-center flex-wrap">
                             <button type="submit" class="main-btn primary-btn btn-hover w-100 text-center">
                                 {{ __('click here to request another') }}
                             </button>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <div class="button-group d-flex justify-content-center flex-wrap">
+                            <a href="{{ route('home') }}" class="main-btn secondary-btn btn-hover w-100 text-center">Go Back
+                                Home</a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <div class="button-group d-flex justify-content-center flex-wrap">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); this.closest('form').submit();"> <i
+                                        class="main-btn danger-btn btn-hover w-100 text-center"></i> {{ __('Logout') }}</a>
+                            </form>
                         </div>
                     </div>
                     <!-- end row -->

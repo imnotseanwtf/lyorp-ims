@@ -10,9 +10,9 @@ class CancelController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(ActivityRequest $activityRequest)
+    public function __invoke(ActivityRequest $activity)
     {
-        $activityRequest->update(
+        $activity->update(
             [
                 'reason' => request()->input('reason'),
                 'activity_status' => 3,
