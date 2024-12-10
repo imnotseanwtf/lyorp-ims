@@ -44,7 +44,7 @@
 
                     <div class="col-12 mt-3">
                         <div class="button-group d-flex justify-content-center flex-wrap">
-                            <a href="{{ route('home') }}" class="main-btn secondary-btn btn-hover w-100 text-center">Go Back
+                            <a href="{{ route('welcome') }}" class="main-btn secondary-btn btn-hover w-100 text-center">Go Back
                                 Home</a>
                         </div>
                     </div>
