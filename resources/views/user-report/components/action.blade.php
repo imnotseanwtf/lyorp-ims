@@ -12,16 +12,18 @@
 
     <!-- Edit report button with tooltip -->
     @if ($isWithinLast10Days)
-        <button type="button" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#editModal"
-            data-report="{{ $report->id }}" title="Edit Report">
-            <i class="fa-solid fa-pen"></i>
-        </button>
+        @if ($report->status == 1 || $report->status == 2)
+            <button type="button" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#editModal"
+                data-report="{{ $report->id }}" title="Edit Report">
+                <i class="fa-solid fa-pen"></i>
+            </button>
 
-        <!-- Delete report button with tooltip -->
-        <button class="btn btn-danger deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"
-            data-report="{{ $report->id }}" title="Delete Report">
-            <i class="fa-solid fa-trash"></i>
-        </button>
+            <!-- Delete report button with tooltip -->
+            <button class="btn btn-danger deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                data-report="{{ $report->id }}" title="Delete Report">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        @endif
     @endif
 
 </div>
