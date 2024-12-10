@@ -16,12 +16,11 @@ class CheckUserStatus
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->status == false) {
-            alert()->success('Wait For the Admin to Review your account');
-
-            // Log the user out
+        if (Auth::check() && Auth::user()->status == 0) {
             Auth::logout();
             
+            alert()->success('Wait For the Admin to Review your account');
+
             // Redirect to the login page with a message
             return redirect()->route('login');
         }
