@@ -303,7 +303,7 @@
                         <label for="file">Name with signature of representative of organization (Pdf File) + Date
                             Signed <span class="text-danger">*</span></label>
                         <input type="file" class="form-control" name="file" id="file" required
-                            onchange="validateFile(this)">
+                            onchange="validateFiles(this)">
                         <div id="fileError" class="invalid-feedback" style="display:none"></div>
                     </div>
 
@@ -426,7 +426,7 @@
         });
     });
 
-    function validateFile(input) {
+    function validateFiles(input) {
         if (!input.files || !input.files[0]) {
             return true;
         }
