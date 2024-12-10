@@ -10,11 +10,13 @@ use App\Http\Controllers\AnsweredController;
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\AssignToAnswerController;
 use App\Http\Controllers\AuditController;
+use App\Http\Controllers\CancelController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CertificateImageController;
 use App\Http\Controllers\CertificatePdfController;
 use App\Http\Controllers\ChangingPasswordOrganizationController;
 use App\Http\Controllers\CriteriaController;
+use App\Http\Controllers\DoneController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\OngoingActivityController;
@@ -148,6 +150,10 @@ Route::middleware(['auth', 'verified', 'check_user_status'])->group(function () 
 
 
     Route::middleware('role:organization')->group(function () {
+
+        Route::put('done-activity/{activity}', DoneController::class);
+        Route::put('cancel-activity/{activity}', CancelController::class);
+
         Route::put('soft-delete/{report}', SoftDeleteReportController::class);
 
         Route::resources(

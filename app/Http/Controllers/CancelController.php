@@ -14,6 +14,7 @@ class CancelController extends Controller
     {
         $activityRequest->update(
             [
+                'reason' => request()->input('reason'),
                 'activity_status' => 3,
                 'status' => 4,
             ]
