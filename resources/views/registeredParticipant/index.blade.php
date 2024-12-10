@@ -17,13 +17,15 @@
                 </div>
             </div>
             @organization
-                <div class="col-md-6">
-                    <div class="title mb-30 text-end">
-                        <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
-                            Create Register Participant
-                        </button>
+                @if (!$reportExists)
+                    <div class="col-md-6">
+                        <div class="title mb-30 text-end">
+                            <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
+                                Create Register Participant
+                            </button>
+                        </div>
                     </div>
-                </div>
+                @endif
             @endorganization
         </div>
     </div>
@@ -67,7 +69,7 @@
                             $('#view_gender').val(registered.gender);
                             $('#view_barangay').val(registered.barangay);
                             $('#view_name_of_organization').val(registered
-                            .name_of_organization);
+                                .name_of_organization);
                         });
                 })
 
@@ -80,7 +82,7 @@
                             $('#edit_gender').val(registered.gender);
                             $('#edit_barangay').val(registered.barangay);
                             $('#edit_name_of_organization').val(registered
-                            .name_of_organization);
+                                .name_of_organization);
                             $('#update-form').attr('action', '/registered/' + $(this).data(
                                 'registered'));
                         });

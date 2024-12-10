@@ -55,54 +55,54 @@
                             All</button>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="audience[]"
+                            <input class="form-check-input audience" type="checkbox" name="audience[]"
                                 value="Sangguniang Kabataan" id="edit_audience_sangguniang_kabataan">
                             <label class="form-check-label" for="edit_audience_sangguniang_kabataan">Sangguniang
                                 Kabataan</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="audience[]"
+                            <input class="form-check-input audience" type="checkbox" name="audience[]"
                                 value="Youth Organization / Local Youth Development Council Member"
                                 id="edit_audience_youth_organization">
                             <label class="form-check-label" for="edit_audience_youth_organization">Youth Organization /
                                 Local Youth Development Council Member</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="audience[]"
+                            <input class="form-check-input audience" type="checkbox" name="audience[]"
                                 value="Local Youth Development Officers"
                                 id="edit_audience_local_youth_development_officers">
                             <label class="form-check-label" for="edit_audience_local_youth_development_officers">Local
                                 Youth Development Officers</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="audience[]" value="Students"
+                            <input class="form-check-input audience" type="checkbox" name="audience[]" value="Students"
                                 id="edit_audience_students">
                             <label class="form-check-label" for="edit_audience_students">Students</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="audience[]" value="OSYs"
+                            <input class="form-check-input audience" type="checkbox" name="audience[]" value="OSYs"
                                 id="edit_audience_osys">
                             <label class="form-check-label" for="edit_audience_osys">OSYs</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="audience[]" value="NGOs"
-                                id="edit_audience_ngos">
+                            <input class="form-check-input audience" type="checkbox" name="audience[]"
+                                value="NGOs" id="edit_audience_ngos">
                             <label class="form-check-label" for="edit_audience_ngos">NGOs</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="audience[]"
+                            <input class="form-check-input audience" type="checkbox" name="audience[]"
                                 value="Regional Line Agencies" id="edit_audience_regional_line_agencies">
                             <label class="form-check-label" for="edit_audience_regional_line_agencies">Regional Line
                                 Agencies</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="audience[]" value="LGU Employees"
-                                id="edit_audience_lgu_employees">
+                            <input class="form-check-input audience" type="checkbox" name="audience[]"
+                                value="LGU Employees" id="edit_audience_lgu_employees">
                             <label class="form-check-label" for="edit_audience_lgu_employees">LGU Employees</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="audience[]" value="General Public"
-                                id="edit_audience_general_public">
+                            <input class="form-check-input audience" type="checkbox" name="audience[]"
+                                value="General Public" id="edit_audience_general_public">
                             <label class="form-check-label" for="edit_audience_general_public">General Public</label>
                         </div>
                     </div>
@@ -135,91 +135,91 @@
                             All</button>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topics[]" value="Leadership"
-                                id="edit_topic_leadership">
+                            <input class="form-check-input discuss" type="checkbox" name="topics[]"
+                                value="Leadership" id="edit_topic_leadership">
                             <label class="form-check-label" for="edit_topic_leadership">Leadership</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Resource mobilization"
+                            <input class="form-check-input discuss" type="checkbox" value="Resource mobilization"
                                 name="topics[]" id="edit_topic_resource_mobilization">
                             <label class="form-check-label" for="edit_topic_resource_mobilization">Resource
                                 mobilization</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Legislative advocacy"
+                            <input class="form-check-input discuss" type="checkbox" value="Legislative advocacy"
                                 name="topics[]" id="edit_topic_legislative_advocacy">
                             <label class="form-check-label" for="edit_topic_legislative_advocacy">Legislative
                                 advocacy</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Government procurement"
+                            <input class="form-check-input discuss" type="checkbox" value="Government procurement"
                                 name="topics[]" id="edit_topic_government_procurement">
                             <label class="form-check-label" for="edit_topic_government_procurement">Government
                                 procurement</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Budgeting" name="topics[]"
-                                id="edit_topic_budgeting">
+                            <input class="form-check-input discuss" type="checkbox" value="Budgeting"
+                                name="topics[]" id="edit_topic_budgeting">
                             <label class="form-check-label" for="edit_topic_budgeting">Budgeting</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Disaster risk response"
+                            <input class="form-check-input discuss" type="checkbox" value="Disaster risk response"
                                 name="topics[]" id="edit_topic_disaster_risk_response">
                             <label class="form-check-label" for="edit_topic_disaster_risk_response">Disaster risk
                                 response</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Proposal Making" name="topics[]"
-                                id="edit_topic_proposal_making">
+                            <input class="form-check-input discuss" type="checkbox" value="Proposal Making"
+                                name="topics[]" id="edit_topic_proposal_making">
                             <label class="form-check-label" for="edit_topic_proposal_making">Proposal Making</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topics[]"
+                            <input class="form-check-input discuss" type="checkbox" name="topics[]"
                                 value="Code of conduct and ethical standards" id="edit_topic_code_of_conduct">
                             <label class="form-check-label" for="edit_topic_code_of_conduct">Code of conduct and
                                 ethical standards</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Team building" name="topics[]"
-                                id="edit_topic_team_building">
+                            <input class="form-check-input discuss" type="checkbox" value="Team building"
+                                name="topics[]" id="edit_topic_team_building">
                             <label class="form-check-label" for="edit_topic_team_building">Team building</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Planning" name="topics[]"
+                            <input class="form-check-input discuss" type="checkbox" value="Planning" name="topics[]"
                                 id="edit_topic_planning">
                             <label class="form-check-label" for="edit_topic_planning">Planning</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Public speaking" name="topics[]"
-                                id="edit_topic_public_speaking">
+                            <input class="form-check-input discuss" type="checkbox" value="Public speaking"
+                                name="topics[]" id="edit_topic_public_speaking">
                             <label class="form-check-label" for="edit_topic_public_speaking">Public speaking</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Gender and development"
+                            <input class="form-check-input discuss" type="checkbox" value="Gender and development"
                                 name="topics[]" id="edit_topic_gender_and_development">
                             <label class="form-check-label" for="edit_topic_gender_and_development">Gender and
                                 development</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Environment protection"
+                            <input class="form-check-input discuss" type="checkbox" value="Environment protection"
                                 name="topics[]" id="edit_topic_environment_protection">
                             <label class="form-check-label" for="edit_topic_environment_protection">Environment
                                 protection</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Ordinance writing"
+                            <input class="form-check-input discuss" type="checkbox" value="Ordinance writing"
                                 name="topics[]" id="edit_topic_ordinance_writing">
                             <label class="form-check-label" for="edit_topic_ordinance_writing">Ordinance
                                 writing</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Situational Analysis"
+                            <input class="form-check-input discuss" type="checkbox" value="Situational Analysis"
                                 name="topics[]" id="edit_topic_situational_analysis">
                             <label class="form-check-label" for="edit_topic_situational_analysis">Situational
                                 Analysis</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Monitoring and evaluation"
+                            <input class="form-check-input discuss" type="checkbox" value="Monitoring and evaluation"
                                 name="topics[]" id="edit_topic_monitoring_and_evaluation">
                             <label class="form-check-label" for="edit_topic_monitoring_and_evaluation">Monitoring and
                                 evaluation</label>
@@ -254,38 +254,39 @@
                             All</button>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="equipment[]" value="Projector"
-                                id="edit_equipment_projector">
+                            <input class="form-check-input equipment" type="checkbox" name="equipment[]"
+                                value="Projector" id="edit_equipment_projector">
                             <label class="form-check-label" for="edit_equipment_projector">Projector</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Speaker" name="equipment[]"
-                                id="edit_equipment_speaker">
+                            <input class="form-check-input equipment" type="checkbox" value="Speaker"
+                                name="equipment[]" id="edit_equipment_speaker">
                             <label class="form-check-label" for="edit_equipment_speaker">Speaker</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Microphone" name="equipment[]"
-                                id="edit_equipment_microphone">
+                            <input class="form-check-input equipment" type="checkbox" value="Microphone"
+                                name="equipment[]" id="edit_equipment_microphone">
                             <label class="form-check-label" for="edit_equipment_microphone">Microphone</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Clicker" name="equipment[]"
-                                id="edit_equipment_clicker">
+                            <input class="form-check-input equipment" type="checkbox" value="Clicker"
+                                name="equipment[]" id="edit_equipment_clicker">
                             <label class="form-check-label" for="edit_equipment_clicker">Clicker</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Podium" name="equipment[]"
-                                id="edit_equipment_podium">
+                            <input class="form-check-input equipment" type="checkbox" value="Podium"
+                                name="equipment[]" id="edit_equipment_podium">
                             <label class="form-check-label" for="edit_equipment_podium">Podium</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="LED Screen" name="equipment[]"
-                                id="edit_equipment_led_screen">
+                            <input class="form-check-input equipment" type="checkbox" value="LED Screen"
+                                name="equipment[]" id="edit_equipment_led_screen">
                             <label class="form-check-label" for="edit_equipment_led_screen">LED Screen</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Video conference application"
-                                name="equipment[]" id="edit_equipment_video_conference">
+                            <input class="form-check-input equipment" type="checkbox"
+                                value="Video conference application" name="equipment[]"
+                                id="edit_equipment_video_conference">
                             <label class="form-check-label" for="edit_equipment_video_conference">If webinar, video
                                 conference application</label>
                         </div>
@@ -314,6 +315,46 @@
 </div>
 
 <script>
+    function initializeFormValidation(...formGroupClasses) {
+        // Handle each class
+        formGroupClasses.forEach(formGroupClass => {
+            // Get all checkboxes by class
+            const checkboxes = document.querySelectorAll(`.${formGroupClass}`);
+
+            if (checkboxes.length === 0) return; // Skip if no elements found for this class
+
+            // Get the first checkbox
+            const firstCheckbox = checkboxes[0];
+
+            // Check if any checkbox is checked
+            function isAnyCheckboxChecked() {
+                return Array.from(checkboxes).some(checkbox => checkbox.checked);
+            }
+
+            // Handle checkbox changes
+            function handleCheckboxChange() {
+                if (isAnyCheckboxChecked()) {
+                    firstCheckbox.removeAttribute('required');
+                } else {
+                    firstCheckbox.setAttribute('required', true);
+                }
+            }
+
+            // Add change listeners to all checkboxes
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', handleCheckboxChange);
+            });
+
+            // Initial validation check
+            handleCheckboxChange();
+        });
+    }
+
+    // Initialize when document is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeFormValidation('equipment', 'audience', 'discuss'); // You can add as many classes as needed
+    });
+
     document.getElementById('edit-select-all-audience').addEventListener('click', function() {
         document.querySelectorAll('input[name="audience[]"]').forEach(function(checkbox) {
             checkbox.checked = true;

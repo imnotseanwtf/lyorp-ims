@@ -44,7 +44,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="time">Time <span class="text-danger">*</span></label>
-                                <input type="time" class="form-control" name="time" required>
+                                <input type="time" class="form-control" name="time" required
+                                    onchange="validateTime(this)">
+                                <div id="timeError" class="invalid-feedback" style="display:none">Please select a valid
+                                    time.</div>
                             </div>
                         </div>
                     </div>
@@ -320,10 +323,36 @@
     const topicsCheckboxes = document.querySelectorAll('input[name="topics[]"]');
     const equipmentCheckboxes = document.querySelectorAll('input[name="equipment[]"]');
 
+    audienceCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            console.log(
+                `Audience checkbox ${checkbox.value} is ${checkbox.checked ? 'checked' : 'unchecked'}`
+            );
+        });
+    });
+
+    topicsCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            console.log(
+                `Topics checkbox ${checkbox.value} is ${checkbox.checked ? 'checked' : 'unchecked'}`
+            );
+        });
+    });
+
+    equipmentCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            console.log(
+                `Equipment checkbox ${checkbox.value} is ${checkbox.checked ? 'checked' : 'unchecked'}`
+            );
+        });
+    });
+
+
     // Get first checkbox of each group
     const firstAudienceCheckbox = audienceCheckboxes[0];
     const firstTopicsCheckbox = topicsCheckboxes[0];
     const firstEquipmentCheckbox = equipmentCheckboxes[0];
+
 
     // Function to check if any checkbox in a group is checked and update required attribute
     function updateRequired(checkboxes, firstCheckbox) {
@@ -360,6 +389,24 @@
 
     // Run once on page load to set initial state
     updateAllRequired();
+
+    function validateTime(input) {
+        const timeValue = input.value;
+        const currentTime = new Date();
+        const selectedTime = new Date();
+        const [hours, minutes] = timeValue.split(':');
+        selectedTime.setHours(hours, minutes);
+
+        if (selectedTime <= currentTime) {
+            input.classList.add('is-invalid');
+            document.getElementById('timeError').style.display = 'block';
+        } else {
+            input.classList.remove('is-invalid');
+            document.getElementById('timeError').style.display = 'none';
+        }
+    }
+
+
 
     document.getElementById('select-all-audience').addEventListener('click', function() {
         document.querySelectorAll('input[name="audience[]"]').forEach(function(checkbox) {

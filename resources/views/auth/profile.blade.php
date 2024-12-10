@@ -263,7 +263,9 @@
                                 <div class="input-style-1">
                                     <label>Duty Accomplished Registration Form (PDF, 10MB)</label>
                                     <input type="file" name="duty_accomplished_registration_form"
-                                        class="@error('duty_accomplished_registration_form') is-invalid @enderror">
+                                        class="@error('duty_accomplished_registration_form') is-invalid @enderror"
+                                        onchange="validateFile(this, document.getElementById('dutyAccomplishedError'), 'application/pdf', 10)">
+                                    <div id="dutyAccomplishedError" class="invalid-feedback" style="display:none"></div>
                                     @error('duty_accomplished_registration_form')
                                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
@@ -274,7 +276,9 @@
                                 <div class="input-style-1">
                                     <label>List of Officers and Adviser (Excel, 10MB)</label>
                                     <input type="file" name="list_of_officers_and_adviser"
-                                        class="@error('list_of_officers_and_adviser') is-invalid @enderror">
+                                        class="@error('list_of_officers_and_adviser') is-invalid @enderror"
+                                        onchange="validateFile(this, document.getElementById('officersAdviserError'), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel', 10)">
+                                    <div id="officersAdviserError" class="invalid-feedback" style="display:none"></div>
                                     @error('list_of_officers_and_adviser')
                                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
@@ -285,7 +289,9 @@
                                 <div class="input-style-1">
                                     <label>List of Members in Good Standing (Excel, 10MB)</label>
                                     <input type="file" name="list_of_member_in_good_standing"
-                                        class="@error('list_of_member_in_good_standing') is-invalid @enderror">
+                                        class="@error('list_of_member_in_good_standing') is-invalid @enderror"
+                                        onchange="validateFile(this, document.getElementById('membersError'), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel', 10)">
+                                    <div id="membersError" class="invalid-feedback" style="display:none"></div>
                                     @error('list_of_member_in_good_standing')
                                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
@@ -296,7 +302,9 @@
                                 <div class="input-style-1">
                                     <label>Constitution and By-laws (PDF, 10MB)</label>
                                     <input type="file" name="constitution_and_by_laws"
-                                        class="@error('constitution_and_by_laws') is-invalid @enderror">
+                                        class="@error('constitution_and_by_laws') is-invalid @enderror"
+                                        onchange="validateFile(this, document.getElementById('constitutionError'), 'application/pdf', 10)">
+                                    <div id="constitutionError" class="invalid-feedback" style="display:none"></div>
                                     @error('constitution_and_by_laws')
                                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
@@ -307,7 +315,9 @@
                                 <div class="input-style-1">
                                     <label>Endorsement Certification from Proper Authority (PDF, 10MB)</label>
                                     <input type="file" name="endorsement_certification_from_proper_authority"
-                                        class="@error('endorsement_certification_from_proper_authority') is-invalid @enderror">
+                                        class="@error('endorsement_certification_from_proper_authority') is-invalid @enderror"
+                                        onchange="validateFile(this, document.getElementById('endorsementError'), 'application/pdf', 10)">
+                                    <div id="endorsementError" class="invalid-feedback" style="display:none"></div>
                                     @error('endorsement_certification_from_proper_authority')
                                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
@@ -319,11 +329,33 @@
                             <h4 class="mb-4 mt-4">Change Password</h4>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <div class="input-style-1">
                                 <label for="password">{{ __('New Password') }}</label>
-                                <input type="password" @error('password') class="form-control is-invalid" @enderror
-                                    name="password" id="password" placeholder="{{ __('New Password') }}">
+                                <div class="password-field position-relative">
+                                    <input type="password"
+                                        @error('password') class="form-control is-invalid" @enderror name="password"
+                                        id="password" placeholder="{{ __('Password') }}" 
+                                        autocomplete="new-password" onkeyup="validatePassword(this)">
+                                    <i class="fa-solid fa-eye-slash toggle-password position-absolute"
+                                        style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+                                        onclick="togglePasswordVisibility('password', this)">
+                                    </i>
+                                </div>
+                                <div id="password-requirements" class="mt-2 text-sm">
+                                    <div id="length-check" class="requirement text-danger">
+                                        <i class="fa-solid fa-circle-xmark"></i> At least 8 characters
+                                    </div>
+                                    <div id="uppercase-check" class="requirement text-danger">
+                                        <i class="fa-solid fa-circle-xmark"></i> At least 1 uppercase letter
+                                    </div>
+                                    <div id="lowercase-check" class="requirement text-danger">
+                                        <i class="fa-solid fa-circle-xmark"></i> At least 1 lowercase letter
+                                    </div>
+                                    <div id="number-check" class="requirement text-danger">
+                                        <i class="fa-solid fa-circle-xmark"></i> At least 1 number
+                                    </div>
+                                </div>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -331,12 +363,23 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="col-md-6">
+                        <!-- end col -->
+                        <div class="col-6">
                             <div class="input-style-1">
-                                <label for="password_confirmation">{{ __('Confirm New Password') }}</label>
-                                <input type="password" name="password_confirmation" id="password_confirmation"
-                                    placeholder="{{ __('Confirm New Password') }}">
+                                <label for="password_confirmation">{{ __('Confirm Password') }}</label>
+                                <div class="password-field position-relative">
+                                    <input type="password"
+                                        @error('password') class="form-control is-invalid" @enderror
+                                        name="password_confirmation" id="password_confirmation"
+                                        placeholder="{{ __('Confirm Password') }}"
+                                        autocomplete="new-password" onkeyup="validatePasswordMatch()">
+                                    <i class="fa-solid fa-eye-slash toggle-password position-absolute"
+                                        style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+                                        onclick="togglePasswordVisibility('password_confirmation', this)">
+                                    </i>
+                                </div>
+                                <div id="password-match" class="mt-2 text-sm text-danger">
+                                </div>
                             </div>
                         </div>
 
@@ -352,4 +395,95 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function validateFile(input, errorDiv, allowedTypes, maxSizeMB) {
+            const file = input.files[0];
+            
+            // Reset
+            input.classList.remove('is-invalid');
+            errorDiv.style.display = 'none';
+            
+            if (file) {
+                // Validate file type
+                const allowedTypesArray = allowedTypes.split(',');
+                if (!allowedTypesArray.includes(file.type)) {
+                    input.classList.add('is-invalid');
+                    errorDiv.textContent = allowedTypes.includes('pdf') ? 'Only PDF files are allowed' : 'Only Excel files are allowed';
+                    errorDiv.style.display = 'block';
+                    input.value = '';
+                    return false;
+                }
+
+                // Validate file size (maxSizeMB in megabytes)
+                if (file.size > maxSizeMB * 1024 * 1024) {
+                    input.classList.add('is-invalid');
+                    errorDiv.textContent = `File size must be less than ${maxSizeMB}MB`;
+                    errorDiv.style.display = 'block';
+                    input.value = '';
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function togglePasswordVisibility(inputId, icon) {
+            const passwordInput = document.getElementById(inputId);
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+
+        function validatePassword(input) {
+            const password = input.value;
+            const requirements = {
+                'length-check': password.length >= 8,
+                'uppercase-check': /[A-Z]/.test(password),
+                'lowercase-check': /[a-z]/.test(password),
+                'number-check': /[0-9]/.test(password)
+            };
+
+            for (const [id, valid] of Object.entries(requirements)) {
+                const element = document.getElementById(id);
+                if (valid) {
+                    element.classList.remove('text-danger');
+                    element.classList.add('text-success');
+                    element.querySelector('i').classList.remove('fa-circle-xmark');
+                    element.querySelector('i').classList.add('fa-circle-check');
+                } else {
+                    element.classList.remove('text-success');
+                    element.classList.add('text-danger');
+                    element.querySelector('i').classList.remove('fa-circle-check');
+                    element.querySelector('i').classList.add('fa-circle-xmark');
+                }
+            }
+
+            validatePasswordMatch();
+        }
+
+        function validatePasswordMatch() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('password_confirmation').value;
+            const matchElement = document.getElementById('password-match');
+
+            if (confirmPassword === '') {
+                matchElement.textContent = '';
+            } else if (password === confirmPassword) {
+                matchElement.classList.remove('text-danger');
+                matchElement.classList.add('text-success');
+                matchElement.innerHTML = '<i class="fa-solid fa-circle-check"></i> Passwords match';
+            } else {
+                matchElement.classList.remove('text-success');
+                matchElement.classList.add('text-danger');
+                matchElement.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Passwords do not match';
+            }
+        }
+    </script>
 @endsection

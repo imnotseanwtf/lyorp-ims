@@ -33,6 +33,7 @@ class ActivityRequestDataTable extends DataTable
                 1 => 'Accepted',
                 2 => 'Rejected',
             })
+            ->editColumn('time', fn(ActivityRequest $activityRequest) => \Carbon\Carbon::parse($activityRequest->time)->format('H:i A'))
             ->rawColumns(['action']);
     }
 

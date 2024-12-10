@@ -24,7 +24,7 @@ class StoreActivityRequest extends FormRequest
         return [
             'activity_name' => ['required', 'string', 'max:255'],
             'date' => ['required', 'date'],
-            'time' => ['required'], // Ensure time is in the correct format
+            'time' => ['required', 'date_format:H:i'], // Ensure time is in the correct format (HH:MM)
             'venue' => ['required', 'string', 'max:255'],
             'specific_objectives' => ['required', 'string'],
             'specific_outputs' => ['required', 'string'],

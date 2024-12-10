@@ -7,6 +7,7 @@ use App\Http\Requests\StoreRegisteredParticipant;
 use App\Http\Requests\UpdateRegisteredParticipant;
 use App\Models\ActivityRequest;
 use App\Models\RegisteredParticipant;
+use App\Models\Report;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,11 +21,13 @@ class RegisteredParticipantController extends Controller
     {
         $id = array_key_first(request()->query());
 
+        $reportExists = Report::where('activity_request_id', $id)->exists();
+
         $activityRequest = ActivityRequest::findOrFail($id);
 
         $registeredParticipantDataTable = new RegisteredParticipantDataTable($id);
 
-        return $registeredParticipantDataTable->render('registeredParticipant.index', compact('activityRequest'));
+        return $registeredParticipantDataTable->render('registeredParticipant.index', compact('activityRequest', 'reportExists'));
     }
 
 

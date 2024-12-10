@@ -36,10 +36,6 @@
                     <input type="text" class="form-control" id="view_name_of_organization" name="name_of_organization"
                         value="{{ old('name_of_organization') }}" readonly>
                 </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
             </div>
         </div>
     </div>

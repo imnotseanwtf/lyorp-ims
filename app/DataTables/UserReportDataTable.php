@@ -72,7 +72,6 @@ class UserReportDataTable extends DataTable
             ->orderBy(1)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
             ]);

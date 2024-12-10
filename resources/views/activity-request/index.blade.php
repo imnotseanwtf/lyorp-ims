@@ -81,6 +81,8 @@
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script type="module">
+      
+
         document.addEventListener('DOMContentLoaded', function() {
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'))
             tooltipTriggerList.forEach(function(tooltipTriggerEl) {
@@ -212,7 +214,7 @@
                                     $(`#${linkId}`)
                                         .attr('href', '/storage/' + fileName)
                                         .attr('download', customName ||
-                                        fileName) // Set custom download name if provided
+                                            fileName) // Set custom download name if provided
                                         .show();
                                     $(`#${inputId}`).val(fileName).show();
                                 } else {
@@ -222,8 +224,9 @@
                             }
 
                             // Format date to YYYY-MM-DD
-                            const formattedDate = activity.date ? new Date(activity.created_at).toISOString().split('T')[0] : '';
-                            
+                            const formattedDate = activity.date ? new Date(activity.created_at)
+                                .toISOString().split('T')[0] : '';
+
                             // Call with custom download name including date
                             setLinkOrMessage('file', 'link_file', 'view_file',
                                 `TechnicalAssistant_${formattedDate}.pdf`);
