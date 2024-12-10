@@ -54,8 +54,7 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); this.closest('form').submit();"> <i
-                                        class="main-btn danger-btn btn-hover w-100 text-center"></i> {{ __('Logout') }}</a>
+                                    onclick="event.preventDefault(); this.closest('form').submit();" class="main-btn danger-btn btn-hover w-100 text-center">{{ __('Logout') }}</a>
                             </form>
                         </div>
                     </div>
