@@ -55,6 +55,7 @@
                 new bootstrap.Tooltip(tooltipTriggerEl)
             })
         });
+        
         $(() => {
             const tableInstance = window.LaravelDataTables['question_dataTable'] = $('#question_dataTable')
                 .DataTable()
