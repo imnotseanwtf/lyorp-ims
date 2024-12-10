@@ -37,6 +37,10 @@
                         </li>
                         <li><a class="dropdown-item" href="{{ route('activity-request.index', 2) }}">Rejected</a>
                         </li>
+                        <li><a class="dropdown-item" href="{{ route('activity-request.index', 3) }}">Done</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('activity-request.index', 4) }}">Canceled</a>
+                        </li>
                     </ul>
                     @organization
                         <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
