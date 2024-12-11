@@ -33,7 +33,7 @@ class CriteriaController extends Controller
                 })
                 ->get();
         } else {
-            $activity_request = ActivityRequest::where('status', 1)
+            $activity_request = ActivityRequest::where('status', 3)
                 ->whereNotIn('id', function ($query) {
                     $query->select('activity_request_id')
                         ->from('criterias')
