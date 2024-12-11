@@ -73,6 +73,8 @@
 
     {{-- DELETE REPORT --}}
     @include('user-report.modals.delete')
+
+    @include('user-report.modals.viewReason')
 @endsection
 
 @push('scripts')
@@ -154,6 +156,14 @@
                 $('.deleteBtn').click(function() {
                     $('#delete-form').attr('action', '/user-report/' + $(this).data('report'));
                 });
+
+                $('.reviewBtn').click(function() {
+                    fetch('/user-report/' + $(this).data('report'))
+                        .then(response => response.json())
+                        .then(report => {
+                            $('#view-reason').val(report.reason);
+                        });
+                })
 
             })
         });

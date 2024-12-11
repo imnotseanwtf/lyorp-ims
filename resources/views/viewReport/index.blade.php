@@ -31,6 +31,8 @@
     @include('admin-report.modals.accept')
 
     @include('admin-report.modals.reject')
+
+    @include('user-report.modals.viewReason')
 @endsection
 
 @push('scripts')
@@ -101,6 +103,14 @@
 
                 $('.rejectBtn').click(function() {
                     $('#reject-form').attr('action', '/reject-view/' + $(this).data('report'));
+                })
+
+                $('.reviewBtn').click(function() {
+                    fetch('/admin-report/' + $(this).data('report'))
+                        .then(response => response.json())
+                        .then(report => {
+                            $('#view-reason').val(report.reason);
+                        });
                 })
             }) 
         });

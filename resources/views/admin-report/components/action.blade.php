@@ -19,4 +19,10 @@
         </button>
     @endif
 
+    @if ($report->reason)
+        <button class="btn btn-danger reviewBtn" data-bs-toggle="modal" data-bs-target="#reviewModal"
+            data-report="{{ $report->id }}" title="Rejected Reason">
+            <i class="fa-solid fa-eye"></i>
+        </button>
+    @endif
 </div>
