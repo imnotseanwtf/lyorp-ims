@@ -12,7 +12,7 @@
 
     <!-- Edit report button with tooltip -->
     @if ($isWithinLast10Days)
-        @if ($report->status == 1 || $report->status == 2)
+        @if ($report->status_report == 1 || $report->status_report == 2)
             <button type="button" class="btn btn-primary editBtn" data-bs-toggle="modal" data-bs-target="#editModal"
                 data-report="{{ $report->id }}" title="Edit Report">
                 <i class="fa-solid fa-pen"></i>
