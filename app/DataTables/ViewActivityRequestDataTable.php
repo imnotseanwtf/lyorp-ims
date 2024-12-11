@@ -32,6 +32,8 @@ class ViewActivityRequestDataTable extends DataTable
                 0 => 'Pending',
                 1 => 'Accepted',
                 2 => 'Rejected',
+                3 => 'Done', 
+                4 => 'Cancelled'
             })
             ->rawColumns(['action']);
     }
