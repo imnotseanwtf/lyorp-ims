@@ -37,14 +37,15 @@ class AuditDataTable extends DataTable
      */
     public function query(Audit $model): QueryBuilder
     {
-        return $model->newQuery()
+    return $model->newQuery()
             ->whereHas('user', function ($query) {
                 $query->whereHas('roles', function ($roleQuery) {
                     $roleQuery->where('name', 'organization');
                 });
             })
             ->whereRaw("JSON_EXTRACT(new_values, '$.is_login') IN (true, false)")
-            ->with('user');
+            ->with('user')
+            ->select('audits.*');
     }
     /**
      * Optional method if you want to use the html builder.
@@ -59,7 +60,6 @@ class AuditDataTable extends DataTable
             ->orderBy(1)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
             ]);
