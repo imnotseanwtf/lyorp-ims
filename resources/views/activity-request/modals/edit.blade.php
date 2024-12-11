@@ -213,16 +213,39 @@
                                 writing</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input discuss" type="checkbox" value="Situational Analysis"
-                                name="topics[]" id="edit_topic_situational_analysis">
-                            <label class="form-check-label" for="edit_topic_situational_analysis">Situational
-                                Analysis</label>
+                            <input class="form-check-input discuss" type="checkbox" value="Financial management"
+                                name="topics[]" id="edit_topic_financial_management">
+                            <label class="form-check-label" for="edit_topic_financial_management">Financial management</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input discuss" type="checkbox" value="Monitoring and evaluation"
-                                name="topics[]" id="edit_topic_monitoring_and_evaluation">
-                            <label class="form-check-label" for="edit_topic_monitoring_and_evaluation">Monitoring and
-                                evaluation</label>
+                            <input class="form-check-input discuss" type="checkbox" value="RA 8044"
+                                name="topics[]" id="edit_topic_ra8044">
+                            <label class="form-check-label" for="edit_topic_ra_8044">RA 8044 (Youth in Nation-Building Act)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input discuss" type="checkbox" value="RA 10742"
+                                name="topics[]" id="edit_topic_ra10742">
+                            <label class="form-check-label" for="edit_topic_ra_10742">RA 10742 (Sangguniang Kabataan Reform Act of 2015)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input discuss" type="checkbox" value="SK"
+                                name="topics[]" id="edit_topic_sk">
+                            <label class="form-check-label" for="edit_topic_sk">SK (Sangguniang Kabataan)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input discuss" type="checkbox" value="LYDO"
+                                name="topics[]" id="edit_topic_lydo">
+                            <label class="form-check-label" for="edit_topic_lydo">LYDO (Local Youth Devt Office)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input discuss" type="checkbox" value="LYDC"
+                                name="topics[]" id="edit_topic_lydc">
+                            <label class="form-check-label" for="edit_topic_lydc">LYDC (Local Youth Devt Council)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input discuss" type="checkbox" value="YORP"
+                                name="topics[]" id="edit_topic_yorp">
+                            <label class="form-check-label" for="edit_topic_yorp">YORP (Youth Organization Registration Program)</label>
                         </div>
                     </div>
 
