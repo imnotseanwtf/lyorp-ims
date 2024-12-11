@@ -112,7 +112,7 @@
                             const route = $('.view-participants-btn').data('route');
                             // Replace :id placeholder with actual ID
                             $('.view-participants-btn').attr('href', route.replace(':id', report
-                                .id));
+                                .activity_request_id));
 
                             function setLinkOrMessage(fileKey, linkId, inputId) {
                                 const fileName = report[fileKey];
