@@ -15,6 +15,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CertificateImageController;
 use App\Http\Controllers\CertificatePdfController;
 use App\Http\Controllers\ChangingPasswordOrganizationController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\DoneController;
 use App\Http\Controllers\FolderController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\OngoingActivityController;
 use App\Http\Controllers\PdfAnswerController;
 use App\Http\Controllers\PdfEvaluationController;
+use App\Http\Controllers\ProgressUpdateController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RegisteredParticipantController;
 use App\Http\Controllers\ReportAction\AcceptReportController;
@@ -29,6 +31,7 @@ use App\Http\Controllers\ReportAction\RejectReportController;
 use App\Http\Controllers\ReportAction\SoftDeleteReportController;
 use App\Http\Controllers\ReportAction\ViewAcceptReportController;
 use App\Http\Controllers\ReportAction\ViewRejectReportController;
+use App\Http\Controllers\ResubmitController;
 use App\Http\Controllers\UserAction\ActivateController;
 use App\Http\Controllers\UserAction\RejectUserController;
 use App\Http\Controllers\UserAnsweredQuestion;
@@ -85,6 +88,7 @@ Route::middleware(['auth', 'verified', 'check_user_status'])->group(function () 
             'criteria' => CriteriaController::class,
             'question' => QuestionController::class,
             'registered' => RegisteredParticipantController::class,
+            'progress' => ProgressUpdateController::class,
         ],
         [
             'except' => ['create', 'edit'],
@@ -98,6 +102,8 @@ Route::middleware(['auth', 'verified', 'check_user_status'])->group(function () 
 
 
     Route::middleware('role:admin')->group(function () {
+
+        Route::put('comment/{activity}', CommentController::class);
 
         Route::get('ongoing-activity', OngoingActivityController::class)->name('ongoing');
 
@@ -138,7 +144,7 @@ Route::middleware(['auth', 'verified', 'check_user_status'])->group(function () 
         Route::put('activate/{user}', ActivateController::class)->name('activate');
         Route::put('reject/{user}', RejectUserController::class)->name('reject');
 
-        
+
         // REPORT ACTION
         Route::put('activate-report/{report}', AcceptReportController::class);
         Route::put('reject-report/{report}', RejectReportController::class);
@@ -147,9 +153,9 @@ Route::middleware(['auth', 'verified', 'check_user_status'])->group(function () 
         Route::put('reject-view/{report}', ViewRejectReportController::class);
     });
 
-
-
     Route::middleware('role:organization')->group(function () {
+
+        Route::put('resubmit/{report}', ResubmitController::class)->name('resubmit');
 
         Route::put('done-activity/{activity}', DoneController::class);
         Route::put('cancel-activity/{activity}', CancelController::class);

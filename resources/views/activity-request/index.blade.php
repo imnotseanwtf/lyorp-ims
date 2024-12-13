@@ -82,6 +82,8 @@
     @include('activity-request.modals.done')
 
     @include('activity-request.modals.cancel')
+
+    @include('activity-request.modals.comment')
 @endsection
 
 @push('scripts')
@@ -355,6 +357,18 @@
                             $('#update-form').attr('action', '/activity-request/' + activityId);
                         });
                 });
+
+                $('.commentBtn').click(function() {
+                    const activityId = $(this).data('activity'); // Get activity ID from the button
+                    fetch('/activity-request/' +
+                            activityId) // Fetch the activity data from the server
+                        .then(response => response.json())
+                        .then(response => {
+                            $('#comment').val(response.comment);
+                        })
+
+                    $('#comment-form').attr('action', '/comment/' + activityId);
+                })
 
                 $('.deleteBtn').click(function() {
                     $('#delete-form').attr('action', '/activity-request/' + $(this).data(

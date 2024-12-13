@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ActivityRequest;
 use Illuminate\Http\Request;
 
-class CancelController extends Controller
+class CommentController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -14,13 +14,11 @@ class CancelController extends Controller
     {
         $activity->update(
             [
-                'reason' => request()->input('reason'),
-                'activity_status' => 4,
-                'status' => 4,
+                'comment' => request()->input('comment'),
             ]
         );
 
-        alert()->success('Activity is Cancel!');
+        alert()->success('Comment Sent Successfully!');
 
         return redirect()->route('activity-request.index');
     }

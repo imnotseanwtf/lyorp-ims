@@ -75,6 +75,8 @@
     @include('user-report.modals.delete')
 
     @include('user-report.modals.viewReason')
+
+    @include('user-report.modals.resubmit')
 @endsection
 
 @push('scripts')
@@ -155,6 +157,10 @@
 
                 $('.deleteBtn').click(function() {
                     $('#delete-form').attr('action', '/user-report/' + $(this).data('report'));
+                });
+
+                $('.resubmitBtn').click(function() {
+                    $('#resubmit-form').attr('action', '/resubmit/' + $(this).data('report'));
                 });
 
                 $('.reviewBtn').click(function() {

@@ -17,6 +17,11 @@
 
     @admin
         @if (!$activity->status)
+            <button class="btn btn-secondary commentBtn" data-bs-toggle="modal" data-bs-target="#commentModal"
+                data-activity="{{ $activity->id }}" title="Accept Activity">
+                <i class="fa-solid fa-comment"></i>
+            </button>
+
             <!-- Accept activity button with tooltip -->
             <button class="btn btn-success acceptBtn" data-bs-toggle="modal" data-bs-target="#acceptModal"
                 data-activity="{{ $activity->id }}" title="Accept Activity">
@@ -38,21 +43,34 @@
                 data-activity="{{ $activity->id }}" title="Delete Activity">
                 <i class="fa-solid fa-trash"></i>
             </button>
+
+            @if ($activity->comment)
+                <button class="btn btn-secondary commentBtn" data-bs-toggle="modal" data-bs-target="#commentModal"
+                    data-activity="{{ $activity->id }}" title="Accept Activity">
+                    <i class="fa-solid fa-comment"></i>
+                </button>
+            @endif
         @endif
     @endorganization
     @if ($activity->reason)
         <button class="btn btn-danger reviewBtn" data-bs-toggle="modal" data-bs-target="#reviewModal"
             data-activity="{{ $activity->id }}" title="Rejected Reason">
-            <i class="fa-solid fa-eye"></i>
+            <i class="fa-solid fa-comment"></i>
         </button>
     @endif
+
     @if ($activity->status == 1)
         <a href="{{ route('registered.index', $activity->id) }}" class="btn btn-primary" title="View Registered">
             <i class="fa-solid fa-user"></i>
         </a>
+        
+        <a href="{{ route('progress.index', $activity->id) }}" class="btn btn-secondary"> <i
+            class="fa-solid fa-file-export"></i></a>
 
         @organization
-            @if ($activity->activity_status == 1)
+            @if ($activity->status == 1)
+                
+
                 <!-- Accept activity button with tooltip -->
                 <button class="btn btn-success doneBtn" data-bs-toggle="modal" data-bs-target="#doneModal"
                     data-activity="{{ $activity->id }}" title="Done Activity">

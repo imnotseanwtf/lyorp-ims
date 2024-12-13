@@ -20,13 +20,18 @@
 
             <!-- Delete report button with tooltip -->
             <button class="btn btn-danger deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                data-report="{{ $report->id }}" title="Delete Report">
+            data-report="{{ $report->id }}" title="Delete Report">
                 <i class="fa-solid fa-trash"></i>
             </button>
         @endif
     @endif
 
-    @if ($report->reason)
+    @if ($report->status_report === 2)
+        <button class="btn btn-secondary resubmitBtn" data-bs-toggle="modal" data-bs-target="#resubmitModal"
+            data-report="{{ $report->id }}" title="Resubmit">
+            <i class="fa-solid fa-file-export"></i>
+        </button>
+
         <button class="btn btn-danger reviewBtn" data-bs-toggle="modal" data-bs-target="#reviewModal"
             data-report="{{ $report->id }}" title="Rejected Reason">
             <i class="fa-solid fa-eye"></i>

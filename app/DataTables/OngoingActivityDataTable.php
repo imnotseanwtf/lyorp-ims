@@ -23,16 +23,17 @@ class OngoingActivityDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        ->setRowId('id')
-        ->addColumn('organization.name', function (ActivityRequest $activityRequest) {
-            return $activityRequest->user->name;
-        })
-        ->addColumn('action', fn(ActivityRequest $activity) => view('activity-request.components.action', compact('activity')))
-        ->addColumn('activity_status', fn(ActivityRequest $activity) => match ($activity->activity_status) {
-            1 => 'Ongoing',
-        })
-        ->editColumn('time', fn(ActivityRequest $activityRequest) => \Carbon\Carbon::parse($activityRequest->time)->format('H:i A'))
-        ->rawColumns(['action']);
+            ->setRowId('id')
+            ->addColumn('organization.name', function (ActivityRequest $activityRequest) {
+                return $activityRequest->user->name;
+            })
+            ->addColumn('action', fn(ActivityRequest $activity) => view('activity-request.components.action', compact('activity')))
+            ->addColumn('activity_status', fn(ActivityRequest $activity) => match ($activity->activity_status) {
+                1 => 'On Going',
+                2 => 'In Progress'
+            })
+            ->editColumn('time', fn(ActivityRequest $activityRequest) => \Carbon\Carbon::parse($activityRequest->time)->format('H:i A'))
+            ->rawColumns(['action']);
     }
 
     /**
@@ -40,8 +41,15 @@ class OngoingActivityDataTable extends DataTable
      */
     public function query(ActivityRequest $model): QueryBuilder
     {
-        return $model->newQuery()
-            ->where('activity_status', 1);
+        $query = request()->query('status');
+
+        if (is_null($query)) {
+            return $model->newQuery()
+                ->whereIn('activity_status',  [1, 2]);
+        } else {
+            return $model->newQuery()
+                ->where('activity_status',  $query);
+        }
     }
 
     /**

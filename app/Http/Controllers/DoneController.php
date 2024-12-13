@@ -14,7 +14,7 @@ class DoneController extends Controller
     {
         $activity->update(
             [
-                'activity_status' => 2,
+                'activity_status' => 3,
                 'status' => 3,
             ]
         );

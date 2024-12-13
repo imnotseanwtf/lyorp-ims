@@ -38,7 +38,7 @@ return new class extends Migration
             $table->boolean('is_notif')->default(false);
 
             $table->string('reason')->nullable();
-
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }

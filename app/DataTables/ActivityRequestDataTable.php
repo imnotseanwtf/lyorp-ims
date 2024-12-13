@@ -101,22 +101,40 @@ class ActivityRequestDataTable extends DataTable
      * Get the dataTable columns definition.
      */
     public function getColumns(): array
-    {
+{
+    if (auth()->user()->isOrganization()) {
+        // If the authenticated user is an organization, show only specific columns
         return [
             Column::make('id'),
-            Column::make('organization.name'),
             Column::make('activity_name'),
             Column::make('date'),
-            Column::make('time'),
             Column::make('venue'),
             Column::make('status'),
             Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                ->width(140)
-                ->addClass('text-center'),
+            ->exportable(false)
+            ->printable(false)
+            ->width(240)
+            ->addClass('text-center'),
         ];
     }
+
+    // Default columns for other users
+    return [
+        Column::make('id'),
+        Column::make('organization.name'),
+        Column::make('activity_name'),
+        Column::make('date'),
+        Column::make('time'),
+        Column::make('venue'),
+        Column::make('status'),
+        Column::computed('action')
+            ->exportable(false)
+            ->printable(false)
+            ->width(240)
+            ->addClass('text-center'),
+    ];
+}
+
 
     /**
      * Get the filename for export.

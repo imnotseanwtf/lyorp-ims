@@ -25,6 +25,21 @@
                     <h2>{{ __('Technical Assistance') }}</h2>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="dropdown text-end">
+                    <button class="main-btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
+                        Filter
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{{ route('ongoing') }}">All</a></li>
+                        <li><a class="dropdown-item" href="{{ route('ongoing', ['status' => 1]) }}">On Going</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('ongoing', ['status' => 2]) }}">In
+                                Progress</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -60,8 +75,6 @@
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script type="module">
-      
-
         document.addEventListener('DOMContentLoaded', function() {
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'))
             tooltipTriggerList.forEach(function(tooltipTriggerEl) {
@@ -216,7 +229,7 @@
 
                 $('.editBtn').click(function() {
                     const activityId = $(this).data('activity'); // Get activity ID from the button
-                    fetch('/activity-request/' +    
+                    fetch('/activity-request/' +
                             activityId) // Fetch the activity data from the server
                         .then(response => response.json())
                         .then(activity => {
