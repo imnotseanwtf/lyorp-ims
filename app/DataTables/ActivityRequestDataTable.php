@@ -72,8 +72,8 @@ class ActivityRequestDataTable extends DataTable
             $query->where('status', 4);
         }
 
-        // Order by latest created_at
-        $query->orderBy('created_at', 'desc');
+        // Order by latest date (assuming 'date' is the relevant field)
+        $query->orderBy('date', 'desc');
 
         return $query;
     }

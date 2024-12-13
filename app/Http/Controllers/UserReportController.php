@@ -42,7 +42,7 @@ class UserReportController extends Controller
     {
         $userId = auth()->id();
 
-        $activityRequestCount = ActivityRequest::where('status', true)
+        $activityRequestCount = ActivityRequest::where('status', 3)
             ->where('user_id', $userId)->count();
 
         $report = Report::create($storeReportRequest->except('file') +

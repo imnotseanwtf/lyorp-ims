@@ -45,12 +45,15 @@ class OngoingActivityDataTable extends DataTable
 
         if (is_null($query)) {
             return $model->newQuery()
-                ->whereIn('activity_status',  [1, 2]);
+                ->whereIn('activity_status', [1, 2])
+                ->orderBy('created_at', 'desc'); // Sorting by latest date
         } else {
             return $model->newQuery()
-                ->where('activity_status',  $query);
+                ->where('activity_status', $query)
+                ->orderBy('created_at', 'desc'); // Sorting by latest date
         }
     }
+
 
     /**
      * Optional method if you want to use the html builder.

@@ -25,20 +25,20 @@ return new class extends Migration
             $table->json('equipment')->nullable();
 
             $table->json('audience')->nullable();
-            $table->string('others')->nullable();
+            $table->text('others')->nullable();
             $table->integer('expected_number_of_participants');
 
             $table->integer('activity_status')->default(0);
 
-            $table->string('others_equipment')->nullable();
+            $table->text('others_equipment')->nullable();
 
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->integer('status')->default(false);
             $table->string('file');
             $table->boolean('is_notif')->default(false);
 
-            $table->string('reason')->nullable();
-            $table->string('comment')->nullable();
+            $table->text('reason')->nullable();
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

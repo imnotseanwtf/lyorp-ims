@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('seminars_and_activities_conducted');
             $table->string('recruitment');
             $table->foreignIdFor(ActivityRequest::class)->constrained()->cascadeOnDelete();
-            $table->string('content');
+            $table->text('content');
             $table->integer('status_report')->default(0);
             $table->string('reason')->nullable();
             $table->string('file')->nullable();
