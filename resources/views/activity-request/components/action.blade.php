@@ -59,32 +59,33 @@
         </button>
     @endif
 
-    <a href="{{ route('progress.index', $activity->id) }}" class="btn btn-secondary"> <i
-            class="fa-solid fa-file-export"></i></a>
-            
-    @if (in_array($activity->status, [1, 3]))
+    @if ($activity->status == 1 || $activity->status == 3)
+        <a href="{{ route('progress.index', $activity->id) }}" class="btn btn-secondary"> <i
+                class="fa-solid fa-file-export"></i></a>
+    @endif
+
+    @if ($activity->status == 1)
         <a href="{{ route('registered.index', $activity->id) }}" class="btn btn-primary" title="View Registered">
             <i class="fa-solid fa-user"></i>
         </a>
-    @endif
 
 
 
-    @organization
-        @if ($activity->status == 1)
-            <!-- Accept activity button with tooltip -->
-            <button class="btn btn-success doneBtn" data-bs-toggle="modal" data-bs-target="#doneModal"
-                data-activity="{{ $activity->id }}" title="Done Activity">
-                <i class="fa-solid fa-check"></i>
-            </button>
+        @organization
+            @if ($activity->status == 1)
+                <!-- Accept activity button with tooltip -->
+                <button class="btn btn-success doneBtn" data-bs-toggle="modal" data-bs-target="#doneModal"
+                    data-activity="{{ $activity->id }}" title="Done Activity">
+                    <i class="fa-solid fa-check"></i>
+                </button>
 
-            <!-- Reject activity button with tooltip -->
-            <button class="btn btn-danger cancelBtn" data-bs-toggle="modal" data-bs-target="#cancelModal"
-                data-activity="{{ $activity->id }}" title="Cancel Activity">
-                <i class="fa-solid fa-times"></i>
-            </button>
-        @endif
-    @endorganization
+                <!-- Reject activity button with tooltip -->
+                <button class="btn btn-danger cancelBtn" data-bs-toggle="modal" data-bs-target="#cancelModal"
+                    data-activity="{{ $activity->id }}" title="Cancel Activity">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            @endif
+        @endorganization
 
     @endif
 </div>
