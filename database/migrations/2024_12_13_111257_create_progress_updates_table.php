@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('progress_updates', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(ActivityRequest::class)->constrained()->cascadeOnDelete();
+            $table->string('title');
             $table->string('progress_update');
             $table->string('file')->nullable();
             $table->timestamps();

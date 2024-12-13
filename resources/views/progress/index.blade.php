@@ -65,10 +65,10 @@
             tableInstance.on('draw.dt', function() {
 
                 $('.viewBtn').click(function() {
-                    const progressId = $(this).data('progress');
-                    fetch(`/progress/${progressId}`)
+                    fetch('/progress/' + $(this).data('progress'))
                         .then(response => response.json())
                         .then(progress => {
+                            $('#view_title').val(progress.title);
                             $('#view_progress_update').val(progress.progress_update);
 
                             function setLinkOrMessage(fileKey, linkId, inputId) {
@@ -99,6 +99,7 @@
                     fetch('/progress/' + $(this).data('progress'))
                         .then(response => response.json())
                         .then(progress => {
+                            $('#edit_title').val(progress.title);
                             $('#edit_progress_update').val(progress.progress_update);
                             $('#update-form').attr('action', '/progress/' + $(this).data(
                                 'progress'));

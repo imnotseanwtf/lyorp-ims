@@ -17,6 +17,15 @@
                     <input type="hidden" value="{{ $activity->id }}" name="activity_request_id">
 
                     <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" name="title"
+                            placeholder="Enter Title" value="{{ old('title') }}" required>
+                        @error('title')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         <label for="progress_update">Progress Update</label>
                         <input type="text" class="form-control" name="progress_update"
                             placeholder="Enter Progress Update" value="{{ old('progress_update') }}" required>

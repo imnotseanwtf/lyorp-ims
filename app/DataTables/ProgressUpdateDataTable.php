@@ -24,6 +24,9 @@ class ProgressUpdateDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->addColumn('action', fn(ProgressUpdate $progress) => view('progress.components.action', compact('progress')))
+            ->addColumn('date_submitted', function (ProgressUpdate $progressUpdate) {
+                return $progressUpdate->created_at->format('F j, Y'); // Format the date to a more human-readable format
+            })
             ->rawColumns(['action']);
     }
 
@@ -61,7 +64,8 @@ class ProgressUpdateDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('progress_update'),
+            Column::make('title'),
+            Column::make('date_submitted'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

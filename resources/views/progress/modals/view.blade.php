@@ -12,6 +12,14 @@
             <div class="modal-body">
 
                 <div class="form-group">
+                    <label for="title">{{ __('Title') }}</label>
+                    <div class="input-group">
+                        <input name="title" type="text" id="view_title" @class(['form-control'])
+                            placeholder="{{ __('Title') }}" value="{{ old('title') }}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="progress_name">{{ __('Progress Report') }}</label>
                     <div class="input-group">
                         <input name="progress_name" type="text" id="view_progress_name" @class(['form-control'])
