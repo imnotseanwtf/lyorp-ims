@@ -27,8 +27,8 @@
 
                     <div class="form-group">
                         <label for="progress_update">Progress Update</label>
-                        <input type="text" class="form-control" name="progress_update"
-                            placeholder="Enter Progress Update" value="{{ old('progress_update') }}" id="edit_progress_update">
+                        <textarea type="text" class="form-control" name="progress_update"
+                            placeholder="Enter Progress Update" value="{{ old('progress_update') }}" id="edit_progress_update"></textarea>
                         @error('progress_update')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

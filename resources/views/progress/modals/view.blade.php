@@ -22,8 +22,8 @@
                 <div class="form-group">
                     <label for="progress_name">{{ __('Progress Report') }}</label>
                     <div class="input-group">
-                        <input name="progress_update" type="text" id="view_progress_update" @class(['form-control'])
-                            placeholder="{{ __('Progress Report') }}" value="{{ old('progress_name') }}" readonly>
+                        <textarea name="progress_update" type="text" id="view_progress_update" @class(['form-control'])
+                            placeholder="{{ __('Progress Report') }}" value="{{ old('progress_name') }}" readonly></textarea>
                     </div>
                 </div>
 
