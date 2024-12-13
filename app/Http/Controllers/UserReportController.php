@@ -25,8 +25,7 @@ class UserReportController extends Controller
             ->where('user_id', $user->id)
             ->whereNotIn('id', function ($query) {
                 $query->select('activity_request_id')
-                    ->from('reports')
-                    ->where('status_report', '!=', 2);
+                    ->from('reports');
             })
             ->get();
 
