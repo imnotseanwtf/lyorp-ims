@@ -213,6 +213,18 @@
                                 writing</label>
                         </div>
                         <div class="form-check">
+                            <input class="form-check-input discuss" type="checkbox" value="Situational Analysis"
+                                name="topics[]" id="edit_topic_situational_analysis">
+                            <label class="form-check-label" for="edit_topic_situational_analysis">Situational
+                                Analysis</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input discuss" type="checkbox" value="Monitoring and evaluation"
+                                name="topics[]" id="edit_topic_monitoring_and_evaluation">
+                            <label class="form-check-label" for="edit_topic_monitoring_and_evaluation">Monitoring and
+                                evaluation</label>
+                        </div>
+                        <div class="form-check">
                             <input class="form-check-input discuss" type="checkbox" value="Financial management"
                                 name="topics[]" id="edit_topic_financial_management">
                             <label class="form-check-label" for="edit_topic_financial_management">Financial management</label>
