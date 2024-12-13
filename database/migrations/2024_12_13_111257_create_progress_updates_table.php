@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(ActivityRequest::class)->constrained()->cascadeOnDelete();
             $table->string('title');
-            $table->string('progress_update');
+            $table->text('progress_update');
             $table->string('file')->nullable();
             $table->timestamps();
         });
