@@ -22,6 +22,7 @@ class StoreProgressUpdate extends FormRequest
     public function rules(): array
     {
         return [
+            'title' => ['required', 'string'],
             'activity_request_id' => ['required', 'integer',],
             'progress_update' => ['required', 'string'],
             'file' => ['nullable', 'file'],

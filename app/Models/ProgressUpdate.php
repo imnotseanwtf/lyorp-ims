@@ -11,6 +11,7 @@ class ProgressUpdate extends Model
     use HasFactory;
 
     protected $fillable = [
+        'title',
         'activity_request_id',
         'progress_update',
         'file',
