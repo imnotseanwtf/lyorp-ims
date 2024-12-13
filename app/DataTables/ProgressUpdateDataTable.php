@@ -32,7 +32,9 @@ class ProgressUpdateDataTable extends DataTable
      */
     public function query(ProgressUpdate $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model
+        ->newQuery()
+        ->where('activity_request_id', array_key_first(request()->query()));
     }
 
     /**
