@@ -47,7 +47,8 @@ class AdminReportDataTable extends DataTable
         $status = request()->query('status'); // Get 'status' from query parameters
 
         $query = $model->newQuery()
-            ->where(    'folder_id', $folderId);
+            ->where(    'folder_id', $folderId)
+            ->orderBy('created_at', 'desc');
 
         if (!is_null($status)) {
             $query->where('status_report', $status);

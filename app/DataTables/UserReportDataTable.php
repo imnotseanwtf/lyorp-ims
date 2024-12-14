@@ -48,7 +48,8 @@ class UserReportDataTable extends DataTable
 
         $query = $model->newQuery()
             ->where('folder_id', $folderId)
-            ->where('user_id', auth()->id());
+            ->where('user_id', auth()->id())
+            ->orderBy('created_at', 'desc');
 
         if (!is_null($status)) {
             $query->where('status_report', $status);

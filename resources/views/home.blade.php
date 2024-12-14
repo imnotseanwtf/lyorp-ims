@@ -14,7 +14,12 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="title mb-30">
-                    <h2>{{ __('Dashboard') }}</h2>
+                    @admin
+                        <h2>{{ __('Dashboard') }}</h2>
+                    @endadmin
+                    @organization
+                        <h2>{{ __(auth()->user()->name) }}</h2>
+                    @endorganization
                 </div>
             </div>
             <!-- end col -->

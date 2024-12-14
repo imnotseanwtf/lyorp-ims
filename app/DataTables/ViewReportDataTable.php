@@ -46,6 +46,7 @@ class ViewReportDataTable extends DataTable
         return $model->newQuery()
             ->where('user_id', array_key_first(request()->query()))
             ->with('user')
+            ->orderBy('created_at', 'desc')
             ->select('reports.*');
     }
 
