@@ -46,15 +46,22 @@
 
             @if ($activity->comment)
                 <button class="btn btn-secondary commentBtn" data-bs-toggle="modal" data-bs-target="#commentModal"
-                    data-activity="{{ $activity->id }}" title="Accept Activity">
+                    data-activity="{{ $activity->id }}" title="View Comment">
                     <i class="fa-solid fa-comment"></i>
                 </button>
             @endif
         @endif
     @endorganization
-    @if ($activity->reason)
+    @if ($activity->status == 2)
         <button class="btn btn-danger reviewBtn" data-bs-toggle="modal" data-bs-target="#reviewModal"
             data-activity="{{ $activity->id }}" title="Rejected Reason">
+            <i class="fa-solid fa-comment"></i>
+        </button>
+    @endif
+
+    @if ($activity->status == 4)
+        <button class="btn btn-danger reviewBtn" data-bs-toggle="modal" data-bs-target="#reviewModal"
+            data-activity="{{ $activity->id }}" title="Cancelation Reason">
             <i class="fa-solid fa-comment"></i>
         </button>
     @endif
@@ -62,13 +69,13 @@
     @if ($activity->status == 1 || $activity->status == 3)
         <a href="{{ route('progress.index', $activity->id) }}" class="btn btn-secondary"> <i
                 class="fa-solid fa-file-export"></i></a>
-    @endif
 
-    @if ($activity->status == 1)
         <a href="{{ route('registered.index', $activity->id) }}" class="btn btn-primary" title="View Registered">
             <i class="fa-solid fa-user"></i>
         </a>
+    @endif
 
+    @if ($activity->status == 1)
 
 
         @organization

@@ -31,16 +31,20 @@
                         <div class="card">
                             @admin
                                 <a href="{{ route('users.index') }}" style="text-decoration: none; color: inherit;">
-                                    <div class="card-body">
-                                        <h6>Approved Organization</h6>
+                                    <div class="card-header text-center bg-primary">
+                                        <h6 class="text-white">Approved Organization</h6>
+                                    </div>
+                                    <div class="card-body text-center">
                                         <h5>{{ $approvedOrganization }}</h5>
                                     </div>
                                 </a>
                             @endadmin
                             @organization
                                 <a href="{{ route('folder.index') }}" style="text-decoration: none; color: inherit;">
+                                    <div class="card-header text-center bg-primary">
+                                        <h6 class="text-white">Number Of Report Sent</h6>
+                                    </div>
                                     <div class="card-body">
-                                        <h6>Number Of Report Sent</h6>
                                         <h5>{{ $reportSent }}</h5>
                                     </div>
                                 </a>
@@ -51,16 +55,20 @@
                         <div class="card">
                             @admin
                                 <a href="{{ route('users.index') }}" style="text-decoration: none; color: inherit;">
-                                    <div class="card-body">
-                                        <h6>Pending Organization</h6>
+                                    <div class="card-header text-center bg-primary">
+                                        <h6 class="text-white">Pending Organization</h6>
+                                    </div>
+                                    <div class="card-body text-center">
                                         <h5>{{ $pendingOrganization }}</h5>
                                     </div>
                                 </a>
                             @endadmin
                             @organization
                                 <a href="{{ route('evaluation.index') }}" style="text-decoration: none; color: inherit;">
-                                    <div class="card-body">
-                                        <h6>Pending Evaluation To Fill Up</h6>
+                                    <div class="card-header text-center bg-primary">
+                                        <h6 class="text-white">Pending Evaluation To Fill Up</h6>
+                                    </div>
+                                    <div class="card-body text-center">
                                         <h5>{{ $evaluationPending }}</h5>
                                     </div>
                                 </a>
@@ -71,16 +79,20 @@
                         <div class="card">
                             @admin
                                 <a href="{{ route('announcement.index') }}" style="text-decoration: none; color: inherit;">
-                                    <div class="card-body">
-                                        <h6>Announcement</h6>
+                                    <div class="card-header text-center bg-primary">
+                                        <h6 class="text-white">Announcement</h6>
+                                    </div>
+                                    <div class="card-body text-center">
                                         <h5>{{ $announcementCount }}</h5>
                                     </div>
                                 </a>
                             @endadmin
                             @organization
                                 <a href="{{ route('certificate.index') }}" style="text-decoration: none; color: inherit;">
-                                    <div class="card-body">
-                                        <h6>Number Of Certificate Received</h6>
+                                    <div class="card-header text-center bg-primary">
+                                        <h6 class="text-white">Number Of Certificate Received</h6>
+                                    </div>
+                                    <div class="card-body text-center">
                                         <h5>{{ $certificateRecieved }}</h5>
                                     </div>
                                 </a>
@@ -91,8 +103,10 @@
                         <div class="col-4 mt-3">
                             <div class="card">
                                 <a href="{{ route('folder.index') }}" style="text-decoration: none; color: inherit;">
-                                    <div class="card-body">
-                                        <h6>Annual Report</h6>
+                                    <div class="card-header text-center bg-primary">
+                                        <h6 class="text-white">Annual Report</h6>
+                                    </div>
+                                    <div class="card-body text-center">
                                         <h5>{{ $reportCount }}</h5>
                                     </div>
                                 </a>
@@ -101,9 +115,11 @@
 
                         <div class="col-4 mt-3">
                             <div class="card">
-                                <a href="{{ route('evaluation.index') }}"style="text-decoration: none; color: inherit;">
-                                    <div class="card-body">
-                                        <h6>Pending Evaluation To Fill Up</h6>
+                                <a href="{{ route('evaluation.index') }}" style="text-decoration: none; color: inherit;">
+                                    <div class="card-header text-center bg-primary">
+                                        <h6 class="text-white">Pending Evaluation To Fill Up</h6>
+                                    </div>
+                                    <div class="card-body text-center">
                                         <h5>{{ $evaluationPending }}</h5>
                                     </div>
                                 </a>
