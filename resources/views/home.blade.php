@@ -49,7 +49,7 @@
                                     <div class="card-header text-center bg-primary">
                                         <h6 class="text-white">Number Of Report Sent</h6>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body text-center">
                                         <h5>{{ $reportSent }}</h5>
                                     </div>
                                 </a>

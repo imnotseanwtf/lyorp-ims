@@ -68,7 +68,7 @@
 
     @if ($activity->status == 1 || $activity->status == 3)
         <a href="{{ route('progress.index', $activity->id) }}" class="btn btn-secondary"> <i
-                class="fa-solid fa-file-export"></i></a>
+                class="fa-solid fa-bars-progress" title="Progress Report"></i></a>
 
         <a href="{{ route('registered.index', $activity->id) }}" class="btn btn-primary" title="View Registered">
             <i class="fa-solid fa-user"></i>
