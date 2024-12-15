@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                @if (!$activity->status == 1)
+                @if ($activity->status === 1)
                     @organization
                         <div class="title mb-30 text-end">
                             <button class="main-btn btn-primary btn-hover" data-bs-target="#createModal" data-bs-toggle="modal">
