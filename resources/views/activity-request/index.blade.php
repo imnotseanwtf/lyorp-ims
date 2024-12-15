@@ -33,6 +33,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="{{ route('activity-request.index') }}">All</a></li>
+                        <li><a class="dropdown-item" href="{{ route('activity-request.index', 0) }}">Pending</a></li>
                         <li><a class="dropdown-item" href="{{ route('activity-request.index', 1) }}">Accepted</a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('activity-request.index', 2) }}">Rejected</a>

@@ -46,15 +46,15 @@ class ActivityRequestDataTable extends DataTable
     {
         $query = $model->newQuery();
         $user = auth()->user();
-    
+
         // Filter by organization user ID if applicable
         if ($user->isOrganization()) {
             $query->where('user_id', $user->id);
         }
-    
+
         // Determine status from query string
         $statusQuery = array_key_first(request()->query());
-    
+
         // Filter by status
         if ($statusQuery == 0) {
             $query->where('status', 0);
@@ -71,10 +71,10 @@ class ActivityRequestDataTable extends DataTable
         if ($statusQuery == '4') {
             $query->where('status', 4);
         }
-    
+
         // Order by created_at timestamp instead of date
         $query->orderBy('created_at', 'desc');
-    
+
         return $query;
     }
 
