@@ -17,14 +17,14 @@
                             <div class="form-group">
                                 <label for="edit_activity_name">Activity Name</label>
                                 <input type="text" class="form-control" name="activity_name" id="edit_activity_name"
-                                    placeholder="Activity Name">
+                                    placeholder="Activity Name" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_date">Date</label>
-                                <input type="text" class="form-control" name="date" id="edit_date"
-                                    placeholder="Date">
+                                <input type="date" class="form-control" name="date" id="edit_date"
+                                    placeholder="Date" required>
                             </div>
                         </div>
                     </div>
@@ -34,14 +34,14 @@
                             <div class="form-group">
                                 <label for="edit_venue">Venue</label>
                                 <input type="text" class="form-control" name="venue" id="edit_venue"
-                                    placeholder="Venue">
+                                    placeholder="Venue" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="edit_time">Time</label>
-                                <input type="text" class="form-control" name="time" id="edit_time"
-                                    placeholder="Time">
+                                <input type="time" class="form-control" name="time" id="edit_time"
+                                    placeholder="Time" required>
                             </div>
                         </div>
                     </div>
@@ -118,9 +118,9 @@
                             <div class="form-group">
                                 <label for="edit_expected_number_of_participants">Expected Number of
                                     Participants</label>
-                                <input type="text" class="form-control" name="expected_number_of_participants"
+                                <input type="number" class="form-control" name="expected_number_of_participants"
                                     id="edit_expected_number_of_participants"
-                                    placeholder="Expected Number of Participants">
+                                    placeholder="Expected Number of Participants" required>
                             </div>
                         </div>
                     </div>
