@@ -241,8 +241,6 @@
                         });
                 });
 
-
-
                 $('.editBtn').click(function() {
                     const activityId = $(this).data('activity'); // Get activity ID from the button
                     fetch('/activity-request/' +
@@ -314,8 +312,6 @@
                                 .topics.includes('Situational Analysis'));
                             $('#edit_topic_monitoring_and_evaluation').prop('checked', activity
                                 .topics.includes('Monitoring and evaluation'));
-
-                            // Existing topics (the ones that were already in the initial HTML)
                             $('#edit_topic_financial_management').prop('checked', activity
                                 .topics.includes('Financial management'));
                             $('#edit_topic_ra8044').prop('checked', activity.topics.includes(
@@ -335,7 +331,6 @@
                             // Specific Objectives and Outputs
                             $('#edit_specific_objectives').val(activity.specific_objectives);
                             $('#edit_specific_outputs').val(activity.specific_outputs);
-
                             $('#edit_others_audience').val(activity.others);
                             $('#edit_others_equipment').val(activity.others_equipment);
 
@@ -356,7 +351,120 @@
                                 .equipment.includes('Video conference application'));
 
                             $('#update-form').attr('action', '/activity-request/' + activityId);
+
                         });
+                });
+
+                $('#update-form').on('submit', function(e) {
+                    // Reset any previous validation states
+                    $('.validation-error').remove();
+                    $('.is-invalid').removeClass('is-invalid');
+
+                    let isValid = true;
+
+                    // Validate audience selection
+                    const audienceChecked = [
+                        'edit_audience_sangguniang_kabataan',
+                        'edit_audience_youth_organization',
+                        'edit_audience_local_youth_development_officers',
+                        'edit_audience_students',
+                        'edit_audience_osys',
+                        'edit_audience_ngos',
+                        'edit_audience_regional_line_agencies',
+                        'edit_audience_lgu_employees',
+                        'edit_audience_general_public'
+                    ].some(id => $('#' + id).is(':checked'));
+
+                    if (!audienceChecked) {
+                        isValid = false;
+                        $('#edit_audience_sangguniang_kabataan')
+                            .addClass('is-invalid')
+                            .parent()
+                            .append(
+                                '<div class="validation-error text-danger">Please select at least one target audience</div>'
+                            );
+                    }
+
+                    // Validate topics selection
+                    const topicsChecked = [
+                        'edit_topic_leadership',
+                        'edit_topic_resource_mobilization',
+                        'edit_topic_legislative_advocacy',
+                        'edit_topic_government_procurement',
+                        'edit_topic_budgeting',
+                        'edit_topic_disaster_risk_response',
+                        'edit_topic_proposal_making',
+                        'edit_topic_code_of_conduct',
+                        'edit_topic_team_building',
+                        'edit_topic_planning',
+                        'edit_topic_public_speaking',
+                        'edit_topic_gender_and_development',
+                        'edit_topic_environment_protection',
+                        'edit_topic_ordinance_writing',
+                        'edit_topic_situational_analysis',
+                        'edit_topic_monitoring_and_evaluation',
+                        'edit_topic_financial_management',
+                        'edit_topic_ra8044',
+                        'edit_topic_ra10742',
+                        'edit_topic_sk',
+                        'edit_topic_lydo',
+                        'edit_topic_lydc',
+                        'edit_topic_yorp',
+                        'edit_topic_asrh'
+                    ].some(id => $('#' + id).is(':checked'));
+
+                    if (!topicsChecked) {
+                        isValid = false;
+                        $('#edit_topic_leadership')
+                            .addClass('is-invalid')
+                            .parent()
+                            .append(
+                                '<div class="validation-error text-danger">Please select at least one topic</div>'
+                            );
+                    }
+
+                    // Validate equipment selection
+                    const equipmentChecked = [
+                        'edit_equipment_projector',
+                        'edit_equipment_speaker',
+                        'edit_equipment_microphone',
+                        'edit_equipment_clicker',
+                        'edit_equipment_podium',
+                        'edit_equipment_led_screen',
+                        'edit_equipment_video_conference'
+                    ].some(id => $('#' + id).is(':checked'));
+
+                    if (!equipmentChecked) {
+                        isValid = false;
+                        $('#edit_equipment_projector')
+                            .addClass('is-invalid')
+                            .parent()
+                            .append(
+                                '<div class="validation-error text-danger">Please select at least one equipment</div>'
+                            );
+                    }
+
+                    // If any validation failed, prevent form submission
+                    if (!isValid) {
+                        e.preventDefault();
+                        // Scroll the modal body to the first error
+                        $('.modal').animate({
+                            scrollTop: $('.modal-body').scrollTop() + $('.is-invalid')
+                                .first().position().top - 100
+                        }, 500);
+                    }
+                });
+
+                // Clear validation errors when a checkbox is checked
+                $('input[type="checkbox"]').on('change', function() {
+                    const groupClass = $(this).attr('id').split('_')[
+                        1]; // Get the group name (audience, topic, or equipment)
+                    if ($(this).is(':checked')) {
+                        // Remove validation error for the group
+                        $(`input[id^="edit_${groupClass}"]`).removeClass('is-invalid');
+                        $(`input[id^="edit_${groupClass}"]`).parent().find('.validation-error')
+                            .remove();
+                    }
                 });
 
                 $('.commentBtn').click(function() {

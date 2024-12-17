@@ -22,7 +22,7 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="title mb-30">
-                    <h2>{{ __('Technical Assistance') }}</h2>
+                    <h2>{{ __('Ongoing Activities') }}</h2>
                 </div>
             </div>
             <div class="col-md-6">

@@ -227,37 +227,43 @@
                         <div class="form-check">
                             <input class="form-check-input discuss" type="checkbox" value="Financial management"
                                 name="topics[]" id="edit_topic_financial_management">
-                            <label class="form-check-label" for="edit_topic_financial_management">Financial management</label>
+                            <label class="form-check-label" for="edit_topic_financial_management">Financial
+                                management</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input discuss" type="checkbox" value="RA 8044"
-                                name="topics[]" id="edit_topic_ra8044">
-                            <label class="form-check-label" for="edit_topic_ra_8044">RA 8044 (Youth in Nation-Building Act)</label>
+                            <input class="form-check-input discuss" type="checkbox" value="RA 8044" name="topics[]"
+                                id="edit_topic_ra8044">
+                            <label class="form-check-label" for="edit_topic_ra_8044">RA 8044 (Youth in Nation-Building
+                                Act)</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input discuss" type="checkbox" value="RA 10742"
-                                name="topics[]" id="edit_topic_ra10742">
-                            <label class="form-check-label" for="edit_topic_ra_10742">RA 10742 (Sangguniang Kabataan Reform Act of 2015)</label>
+                            <input class="form-check-input discuss" type="checkbox" value="RA 10742" name="topics[]"
+                                id="edit_topic_ra10742">
+                            <label class="form-check-label" for="edit_topic_ra_10742">RA 10742 (Sangguniang Kabataan
+                                Reform Act of 2015)</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input discuss" type="checkbox" value="SK"
-                                name="topics[]" id="edit_topic_sk">
+                            <input class="form-check-input discuss" type="checkbox" value="SK" name="topics[]"
+                                id="edit_topic_sk">
                             <label class="form-check-label" for="edit_topic_sk">SK (Sangguniang Kabataan)</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input discuss" type="checkbox" value="LYDO"
-                                name="topics[]" id="edit_topic_lydo">
-                            <label class="form-check-label" for="edit_topic_lydo">LYDO (Local Youth Devt Office)</label>
+                            <input class="form-check-input discuss" type="checkbox" value="LYDO" name="topics[]"
+                                id="edit_topic_lydo">
+                            <label class="form-check-label" for="edit_topic_lydo">LYDO (Local Youth Devt
+                                Office)</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input discuss" type="checkbox" value="LYDC"
-                                name="topics[]" id="edit_topic_lydc">
-                            <label class="form-check-label" for="edit_topic_lydc">LYDC (Local Youth Devt Council)</label>
+                            <input class="form-check-input discuss" type="checkbox" value="LYDC" name="topics[]"
+                                id="edit_topic_lydc">
+                            <label class="form-check-label" for="edit_topic_lydc">LYDC (Local Youth Devt
+                                Council)</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input discuss" type="checkbox" value="YORP"
-                                name="topics[]" id="edit_topic_yorp">
-                            <label class="form-check-label" for="edit_topic_yorp">YORP (Youth Organization Registration Program)</label>
+                            <input class="form-check-input discuss" type="checkbox" value="YORP" name="topics[]"
+                                id="edit_topic_yorp">
+                            <label class="form-check-label" for="edit_topic_yorp">YORP (Youth Organization
+                                Registration Program)</label>
                         </div>
                     </div>
 
@@ -350,46 +356,6 @@
 </div>
 
 <script>
-    function initializeFormValidation(...formGroupClasses) {
-        // Handle each class
-        formGroupClasses.forEach(formGroupClass => {
-            // Get all checkboxes by class
-            const checkboxes = document.querySelectorAll(`.${formGroupClass}`);
-
-            if (checkboxes.length === 0) return; // Skip if no elements found for this class
-
-            // Get the first checkbox
-            const firstCheckbox = checkboxes[0];
-
-            // Check if any checkbox is checked
-            function isAnyCheckboxChecked() {
-                return Array.from(checkboxes).some(checkbox => checkbox.checked);
-            }
-
-            // Handle checkbox changes
-            function handleCheckboxChange() {
-                if (isAnyCheckboxChecked()) {
-                    firstCheckbox.removeAttribute('required');
-                } else {
-                    firstCheckbox.setAttribute('required', true);
-                }
-            }
-
-            // Add change listeners to all checkboxes
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', handleCheckboxChange);
-            });
-
-            // Initial validation check
-            handleCheckboxChange();
-        });
-    }
-
-    // Initialize when document is ready
-    document.addEventListener('DOMContentLoaded', () => {
-        initializeFormValidation('equipment', 'audience', 'discuss'); // You can add as many classes as needed
-    });
-
     document.getElementById('edit-select-all-audience').addEventListener('click', function() {
         document.querySelectorAll('input[name="audience[]"]').forEach(function(checkbox) {
             checkbox.checked = true;
